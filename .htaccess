@@ -1,0 +1,24 @@
+php_value register_globals off
+# require valid-user
+RewriteEngine On    # Turn on the rewriting engine
+
+#RewriteCond %{QUERY_STRING} ^$
+#RewriteRule ^api/api$ /api? [L]
+
+# only one that works atm
+# where 
+# api/pen -sends-> api.php?name=pen to database
+#RewriteRule ^api/([0-9a-zA-Z_-]*)$ api/api.php?name=$1 [NC,L]
+
+# this one should be where 
+# api/pen/20 -sends-> api.php?name=pen&cost=20 to database
+#RewriteRule ^api/([0-9a-zA-Z_-]*)/([0-9a-zA-Z_-]*)$ api/api.php?name=$1&cost=$2 [NC,L]
+
+#RewriteRule ^api/([0-9a-zA-Z_-]*)/([0-9a-zA-Z_-]*)$ api/$1.php/$2 [NC,L]
+#RewriteRule ^api/([0-9a-zA-Z_-]*)/([0-9a-zA-Z_-]*)/([0-9a-zA-Z_-]*)$ api/user.php/$2?limit=20 [NC,L]
+#RewriteRule ^api/user/([0-9a-zA-Z_-]*)/20$ api/user.php/$2?limit=20 [NC,L]
+#RewriteRule ^api/user/list/20$
+#api/user.php/list?limit=20
+#api/$1.php/$2?limit=?3
+#RewriteCond %{QUERY_STRING}^$
+#RewriteRule ^api/user\.php/user/list$ /api/user/list/ [QSA,L]
