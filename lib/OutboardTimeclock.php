@@ -124,6 +124,10 @@ public function calculate() {
   $work_date = null;
   $work_start = null;
   $work_end = null;
+  $day_first_in = null;
+  $date_first_in = null;
+  $time_first_in = null;
+  $time_in_seconds = null;
 
   if (count($this->log) > 0) {
     foreach($this->log as $row) {
@@ -221,7 +225,7 @@ public function calculate() {
     $rv .= "<th>Time</th>";
     $rv .= "</thead><tbody>\n";
 		
-    for($i=0;$i<count($work_time);$i++) {
+    for($i=0;$i<count(array($work_time));$i++) { // in PHP8, count() requires that the $value is explicitly defined as an array
 
       $rv .= "<tr>";
       $rv .= "<td>" .date("M j, Y", strtotime($work_date[$i])) ."</td>";
