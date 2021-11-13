@@ -1,2 +1,0 @@
-# outboard
-The SOG Outboard
