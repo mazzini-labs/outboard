@@ -1,0 +1,87 @@
+#outboard{
+  background-color: #3e94ec;
+  font-family: "Roboto", "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  text-rendering: optimizeLegibility;
+  border-collapse: collapse;
+  border-left: 1px solid 3e94ec
+  width: 100%;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+#outboard td, #outboard th {
+  border-bottom: 1px solid #1b1e24;
+  padding: 1px;
+}
+
+#outboard tr:nth-child(even){background-color: #f2f2f2;}
+
+#outboard tr:hover {background-color: #ddd;}
+
+#outboard th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #005B97;
+  color: white;
+  animation: float 5s infinite;
+}
+
+#footer {
+  font-family: "Roboto", "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width=70%;
+}
+
+ #footer {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  text-align: center;
+  background-color: f0f0f0;
+}
+#footer a:link, #footer a:visited{
+ background-color: #005b97;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#footer a:hover{
+  background-color:blue;
+}
+
+
+#header {
+  font-family: Roboto, "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 70%;
+}
+
+h1.header {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+#header {
+  padding-top: 1px;
+  padding-bottom: 3px;
+  text-align: right;
+  color: #005B97;
+}
+
+#bd {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #005B97;
+  color: white;
+}
+#blank {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #d0d0d0;
+}

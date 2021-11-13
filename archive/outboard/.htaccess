@@ -1,0 +1,2 @@
+php_value register_globals off
+# require valid-user
