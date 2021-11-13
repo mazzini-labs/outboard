@@ -79,8 +79,15 @@ public function dateToName($datetime) {
   }
 }
 
+
+
+
 public function convertTime($dec)
 {
+    function lz($num) // lz = leading zero
+    {
+        return (strlen($num) < 2) ? "0{$num}" : $num;
+    }
     // start by converting to seconds
     $seconds = ($dec * 3600);
     // we're given hours, so let's get those the easy way
@@ -95,11 +102,7 @@ public function convertTime($dec)
     return lz($hours).":".lz($minutes).":".lz($seconds);
 }
 
-// lz = leading zero
-public function lz($num)
-{
-    return (strlen($num) < 2) ? "0{$num}" : $num;
-}
+
 public function calculate() {
 
   $DEBUG = false;  // Set to 'true' to turn on debugging
@@ -209,94 +212,37 @@ public function calculate() {
     // Generate the table of time worked (summary)
     //
     if (! $this->forPDF) { 
-      /*
-      $rv .= "<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0><TR><TD CLASS=tabline>\n";
-      }
-      $rv .= "<TABLE class=outboard BORDER=$border WIDTH=100% CELLPADDING=30 CELLSPACING=10>\n";
-      $rv .= "<tr><th colspan=4>Timeclock Summary:</th></tr>\n";
-      $rv .= "<tr>";
-      $rv .= "<th>Date</th>";
-      $rv .= "<th>In</th>";
-      $rv .= "<th>Out</th>";
-      $rv .= "<th>Hours</th>";
-      $rv .= "</tr>\n";
-      for($i=0;$i<count($work_time);$i++) {
-        $rv .= "<tr>";
-        $rv .= "<td class=tabdatafront align=center>" .$work_date[$i] ."</td>";
-        $rv .= "<td class=tabdatafront align=center>" .$work_start[$i] ."</td>";
-        $rv .= "<td align=center class=tabdatafront>" .$work_end[$i] ."</td>";
-        $rv .= "<td align=right class=tabdatafront>" .$work_time[$i] ."</td>";
-        $rv .= "</tr>\n";
-      }
-      $rv .= "<tr>";
-      $rv .= "<td align=right class=tabdatafront colspan=3><b>TOTAL:</b></td>";
-      $rv .= "<td align=right class=tabdatafront><b>" . sprintf("%4.2f",$total_time) ."</b></td>";
-      $rv .= "</tr>\n";
-      $rv .= "</TABLE>\n";
-      if (! $this->forPDF) { $rv .= "</TD></TR></TABLE>\n"; }
-	   */
       $rv .= "<div class='container'>\n";
     }
-    // $rv .= "<div class='row'>\n";
-    // $rv .= "<div class='col'>Timeclock Summary:</div>";
-    // $rv .= "</div>\n";
-    // $rv .= "<div class='row'>";
-    // $rv .= "<div class='col'>Date</div>";
-    // $rv .= "<div class='col'>In</div>";
-    // $rv .= "<div class='col'>Out</div>";
-    // $rv .= "<div class='col-auto'>Time (hh:mm:ss)</div>";
-    // $rv .= "</div>\n";
     $rv .= "<table class='table table-sm table-striped table-borderless table-hover caption-top' style='font-size:0.75rem;'><caption>Timeclock Summary</caption><thead class='thead-light'>";
     $rv .= "<th>Date</th>";
     $rv .= "<th>In</th>";
     $rv .= "<th>Out</th>";
-    // $rv .= "<th>Time (hh:mm:ss)</th>";
     $rv .= "<th>Time</th>";
     $rv .= "</thead><tbody>\n";
 		
     for($i=0;$i<count($work_time);$i++) {
-      // $rv .= "<div class='row'>";
-      // $rv .= "<div class='col'>" .date("M j, Y", strtotime($work_date[$i])) ."</div>";
-      // $rv .= "<div class='col'>" .date("g:i a", strtotime($work_start[$i])) ."</div>";
-      // $rv .= "<div class='col'>";
-      // ($work_end[$i] == '?') ? $rv .= $work_end[$i] : $rv .= date("g:i a", strtotime($work_end[$i]));
-      // $rv .= "</div>";
-      // $rv .= "<div class='col'>";
-      // $rv .= ($work_time[$i] == 0) ? $work_time[$i] : gmdate("g:i ", floor($work_time[$i] * 3600));
-      // $rv .= "</div>";
-      // $rv .= "</div>\n";
 
       $rv .= "<tr>";
       $rv .= "<td>" .date("M j, Y", strtotime($work_date[$i])) ."</td>";
       $rv .= "<td>" .date("g:i a", strtotime($work_start[$i])) ."</td>";
       $rv .= "<td>";
       ($work_end[$i] == '?') ? $rv .= /*date("g:i a", time())*/$work_end[$i] : $rv .= date("g:i a", strtotime($work_end[$i]));
-      // $rv .= date("g:i a", strtotime($work_end[$i]));
       $rv .= "</td>";
       $rv .= "<td>";
-      // $rv .= ($work_time[$i] == 0) ? $work_time[$i] : gmdate("g:i ", floor($work_time[$i] * 3600));
       $rv .= $work_time[$i];
       $rv .= "</td>";
       $rv .= "</tr>\n";
 
     }
-    // $rv .= "<hr>";
-    // $rv .= "<div class='row'>";
-	  // $rv .= "<div class='col'></div>";
-    // $rv .= "<div class='col'></div>";
-    // $rv .= "<div class='col'>TOTAL:</div>";
-    // $rv .= "<div class='col'>";
-    // $rv .= "<div class='col'><strong>" . $total_time ." hours </strong></div>";
     $rv .= "</tbody><tfoot><tr>";
 	  $rv .= "<td></td>";
     $rv .= "<td></td>";
     $rv .= "<td>Total:</td>";
     $rv .= "<td><strong>" . $total_time ." hours </strong></tr></td></tfoot>";
 
-    // $rv .= "</div>\n";
     $rv .= "</table>\n";
     $rv .= "</div>\n";
-    //if (! $this->forPDF) { $rv .= "</TD></TR></TABLE>\n"; }
 
 
 
@@ -309,87 +255,8 @@ public function calculate() {
   //-----------------------------------------------
   // If we want details, show them
   //
-	/*
-  if (count($this->log) > 0) {
-    if (! $this->forPDF) {
-      $class = "class=tabdatafront";
-    } else {
-      $class = "";
-    }
-    reset($this->log);
-    if (! $this->forPDF) {
-      $rv .= "<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0><TR><TD CLASS=tabline>\n";
-    } else {
-      // $rv .= "<!-- NEED 6in -->\n";  // This is for VERTICAL spacing
-    }
-    $rv .= "<TABLE BORDER=$border CELLPADDING=3 CELLSPACING=1>\n";
-    if (! $this->forPDF) {
-      $rv .= "<tr><th colspan=4>Outboard Details:</th></tr>\n";
-    } else {
-      $rv .= "<tr><th colspan=4>Outboard Details for ".$this->userid."</th></tr>\n";
-    }
-    $rv .= "<tr>";
-    $rv .= "<th>Date</th>";
-    $rv .= "<th>Dot</th>";
-    $rv .= "<th>Change</th>";
-    $rv .= "<th>Remarks</th>";
-    $rv .= "</tr>\n";
-
-    $rowcount = 0;
-    $previous_remarks = "";
-    foreach($this->log as $row) {
-      $rowcount++;
-      if ($this->forPDF and ($rowcount > 20) and 0) {
-        $rv .= "</TABLE><p>\n";
-        $rv .= "<!--NewPage-->\n";
-        $rv .= "<HR class=PAGE-BREAK>\n";
-        $rv .= "Details continued...<p>\n";
-        $rv .= "<TABLE BORDER=$border CELLPADDING=3 CELLSPACING=1>\n";
-        $rv .= "<tr><th colspan=4>Outboard Details for ".$this->userid."</th></tr>\n";
-        $rv .= "<tr>";
-        $rv .= "<th>Date</th>";
-        $rv .= "<th>Dot</th>";
-        $rv .= "<th>Change</th>";
-        $rv .= "<th>Remarks</th>";
-        $rv .= "</tr>\n";
-        $rowcount = 0;
-      }
-      $rv .= "<tr>";
-      $rv .= "<td $class align=center>".$row['changedate']."</td>";
-      $back = $this->dateToName($row['back']);
-      if ($back != "IN" && $back != "OUT") {
-        $back = $row['backtime'];
-      } 
-      $rv .= "<td $class align=center>$back</td>";
-      $rv .= "<td $class align=center>".$row['changetime']."</td>";
-      if ($row['remarks'] != $previous_remarks) { 
-        $previous_remarks = $row['remarks'];
-	$row['remarks'] = htmlspecialchars($row['remarks']); 
-        $rv .= "<td $class>".$row['remarks']."</td>";
-      } else {
-        $rv .= "<td $class>&nbsp;</td>";
-      }
-      $rv .= "</tr>\n";
-    }
-    $rv .= "</TABLE>\n";
-    $rv .= "</TD></TR></TABLE>\n";
-  }
-	*/
   if (count($this->log) > 0) {
     reset($this->log);
-    // $rv .= "<div class='container'>\n";
-	  // $rv .= "<div class='row'>\n";
-    // $rv .= "<div class='col'>Outboard Details:</div>\n";
-    // $rv .= "</div>";
-	  // $rv .= "<div class='row'>\n";
-    // $rv .= "<div class='col-3'>Date</div>";
-    // $rv .= "<div class='col-3'>Dot</div>";
-    // $rv .= "<div class='col-3'>Change</div>";
-    // $rv .= "<div class='col-3'>Remarks</div>";
-    // $rv .= "</div>\n";
-    // $rv .= "<div class='row'>\n";
-    // $rv .= "<div class='col'></div>\n";
-    // $rv .= "</div>";
 	  $rv .= "<table class='table table-sm table-striped table-borderless table-hover' style='font-size:0.75rem;'><caption>Outboard Details</caption><thead>\n";
     $rv .= "<th>Date</th>";
     $rv .= "<th>Dot</th>";
@@ -415,32 +282,23 @@ public function calculate() {
         $rv .= "</tr>\n";
         $rowcount = 0;
       }
-      // $rv .= "<div class='row'>\n";
-      // $rv .= "<div class='col-3'>".date("M j, Y", strtotime($row['changedate']))."</div>";
       $rv .= "<tr>";
       $rv .= "<td>".date("M j, Y", strtotime($row['changedate']))."</td>";
       $back = $this->dateToName($row['back']);
       if ($back != "IN" && $back != "OUT") {
         $back = $row['backtime'];
       } 
-      // $rv .= "<div class='col-2'>$back</div>";
-      // $rv .= "<div class='col-3'>".date("g:i a", strtotime($row['changetime']))."</div>";
       $rv .= "<td>$back</td>";
       $rv .= "<td>".date("g:i a", strtotime($row['changetime']))."</td>";
       if ($row['remarks'] != $previous_remarks) { 
         $previous_remarks = $row['remarks'];
 	      $row['remarks'] = htmlspecialchars($row['remarks']); 
-        // $rv .= "<div class='col-3'>".$row['remarks']."</div>";
         $rv .= "<td>".$row['remarks']."</td>";
       } else {
-        // $rv .= "<div class='col-3'>&nbsp;</div class='col'>";
         $rv .= "<td><small>(no remark)</small></td>";
       }
-      // $rv .= "</div>\n";
       $rv .= "</tr\n";
     }
-    // $rv .= "</div>\n";
-    // $rv .= "</table></div></div>\n";
     $rv .= "</TD></TR></TABLE>\n";
   }
   $this->details = $rv;
