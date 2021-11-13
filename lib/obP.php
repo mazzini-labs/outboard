@@ -34,7 +34,7 @@ Class OutboardPayroll extends OutboardConfig {
     $this->setStartDate($startDate);
     $this->setEndDate($endDate);
     $this->_createPeriods();
-    //$this->_setNumPeriods();
+    $this->_setNumPeriods();
   }
 
 public function getNumPeriods() {
@@ -102,7 +102,7 @@ public function getCurrentPeriod() {
 }
 
 public function _setNumPeriods() {
-  return $this->numPeriods = count($this->periodStart);
+  return $this->numPeriods = count(array($this->periodStart));
 }
 
 public function _createPeriods(){ 
@@ -122,7 +122,7 @@ public function _createPeriods(){
   list($eyear,$emonth,$eday) = preg_split("/-/",$this->endDate);
   $emonth = $emonth * 1; 
   $eday = $eday * 1; 
-  $endloop = date("Y-m-d",mktime(0,0,0,$emonth,$eday,$eyear));
+  // $endloop = date("Y-m-d",mktime(0,0,0,$emonth,$eday,$eyear));
  //do{
 	for($year;$year<=$cyear;$year++){
 	  $leapcheck = date("y",$cyear);
@@ -154,7 +154,8 @@ public function _createPeriods(){
 	//bar:
   for($i=0;$i<=$numPeriods;$i++) {
     $name = $this->periodStart[$i]."|".$this->periodEnd[$i];
-    $this->periodName[$name] = $this->periodStart[$i]." to ".$this->periodEnd[$i];
+    $periodNamed = array($this->periodName);
+    $periodNamed[$name] = $this->periodStart[$i]." to ".$this->periodEnd[$i];
     if (! $this->currentPeriod 
 	and $today_date >= $this->periodStart[$i] 
 	and $today_date <= $this->periodEnd[$i]) {

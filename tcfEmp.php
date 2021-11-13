@@ -51,24 +51,24 @@ if (isset($userHash[$userid])) {
 if (! $payperiod = getPostValue('payperiod')) {
   $payperiod = $pay->getCurrentPeriod();
 }
-Function timeAll(){
-	while ($row = $ob->getRow()) { 
-		pullAll("userid", getPostValue('userid'), $userHash); 
-				//echo $timearray['summary'];
+// Function timeAll(){
+// 	while ($row = $ob->getRow()) { 
+// 		pullAll("userid", getPostValue('userid'), $userHash); 
+// 				//echo $timearray['summary'];
 						
 				
-		list($paystart,$payend) = explode("|",$payperiod);
-		$log = $ob->getLogDataArray($userid,$paystart,$payend);
-		$tc = new OutboardTimeclock($log,$userid,$paystart,$payend);
-		if (getPostValue('timesheet')) { $tc->setPDF(true); }
-		$tc->calculate();
-		$totalHoursWorked = $tc->getTotalHoursWorked();
-		//$timearray['details'] = $tc->getDetails();
-		//$timearray['summary'] = $tc->getsummary();
-		$rowcount++;
-		}
-	return $totalHoursWorked;
-}
+// 		list($paystart,$payend) = explode("|",$payperiod);
+// 		$log = $ob->getLogDataArray($userid,$paystart,$payend);
+// 		$tc = new OutboardTimeclock($log,$userid,$paystart,$payend);
+// 		if (getPostValue('timesheet')) { $tc->setPDF(true); }
+// 		$tc->calculate();
+// 		$totalHoursWorked = $tc->getTotalHoursWorked();
+// 		//$timearray['details'] = $tc->getDetails();
+// 		//$timearray['summary'] = $tc->getsummary();
+// 		$rowcount++;
+// 		}
+// 	return $totalHoursWorked;
+// }
 if (getPostValue('Show') || count($userHash) == 1) {
   $show_data = true;
 } else {

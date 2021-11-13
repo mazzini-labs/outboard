@@ -73,32 +73,32 @@ if (getPostValue('timesheet')) {
   exit;
 }
 ###### PTO TEST CODE #####
-$rolloverFullDate = mktime(0,0,0,date("Y")-1,7,1);
-$rolloverDate = date("Y-m-d",$rolloverFullDate);
-$ryear = 2019;
-$rolloverDate = "$ryear-7-1";
-$ptoVDate = date('Y-m-d', strtotime($rolloverDate));
-$rolloverOB = new OutboardPayroll($ptoVDate,$ob->getLogEndDate());
+// $rolloverFullDate = mktime(0,0,0,date("Y")-1,7,1);
+// $rolloverDate = date("Y-m-d",$rolloverFullDate);
+// $ryear = 2019;
+// $rolloverDate = "$ryear-7-1";
+// $ptoVDate = date('Y-m-d', strtotime($rolloverDate));
+// $rolloverOB = new OutboardPayroll($ptoVDate,$ob->getLogEndDate());
 
-$periodCount = $rolloverOB->_setNumPeriods();
-while ($row = $ob->getRow()) {
-	//$sdate = date("Y-m-d",$row['start_date']);
-	$sdate = date("Y-m-d","2008-12-01"); //TEST DATE ...didnt work
-	//maybe try date diff?
-	//conditional would be:
-	//if date diff > 9 then add 6.67 hours to pto else add 5 hours to pto
-	$nineYears = new DateTime(date("Y",$row['start_date'])+9,date("m",$row['start_date']),date("d",$row['start_date']));
-	$ptoIncrease = date("Y-m-d",$nineYears);
-	list($syear,$smonth,$sday) = split("-",$sdate);
-	list($nyear,$nmonth,$nday) = split("-",$ptoIncrease);
-	$syear = $syear * 1;
-	$nyear = $nyear * 1;
-	if ($syear >= $nyear){ 
-	$ptoTotalHours = $periodCount * 6.67;
-	} else { 
-	$ptoTotalHours = $periodCount * 5;
-	}
-}
+// $periodCount = $rolloverOB->_setNumPeriods();
+// while ($row = $ob->getRow()) {
+// 	//$sdate = date("Y-m-d",$row['start_date']);
+// 	$sdate = date("Y-m-d","2008-12-01"); //TEST DATE ...didnt work
+// 	//maybe try date diff?
+// 	//conditional would be:
+// 	//if date diff > 9 then add 6.67 hours to pto else add 5 hours to pto
+// 	$nineYears = new DateTime(date("Y",$row['start_date'])+9,date("m",$row['start_date']),date("d",$row['start_date']));
+// 	$ptoIncrease = date("Y-m-d",$nineYears);
+// 	list($syear,$smonth,$sday) = split("-",$sdate);
+// 	list($nyear,$nmonth,$nday) = split("-",$ptoIncrease);
+// 	$syear = $syear * 1;
+// 	$nyear = $nyear * 1;
+// 	if ($syear >= $nyear){ 
+// 	$ptoTotalHours = $periodCount * 6.67;
+// 	} else { 
+// 	$ptoTotalHours = $periodCount * 5;
+// 	}
+// }
 ?>
 <HTML>
 <HEAD>
