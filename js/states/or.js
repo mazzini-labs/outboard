@@ -1,0 +1,41 @@
+function populate(form)
+{
+form.options.length = 0;
+form.options[0] = new Option("Select a county of Oregon","");
+form.options[1] = new Option("Baker","Baker");
+form.options[2] = new Option("Benton","Benton");
+form.options[3] = new Option("Clackamas","Clackamas");
+form.options[4] = new Option("Clatsop","Clatsop");
+form.options[5] = new Option("Columbia","Columbia");
+form.options[6] = new Option("Coos","Coos");
+form.options[7] = new Option("Crook","Crook");
+form.options[8] = new Option("Curry","Curry");
+form.options[9] = new Option("Deschutes","Deschutes");
+form.options[10] = new Option("Douglas","Douglas");
+form.options[11] = new Option("Gilliam","Gilliam");
+form.options[12] = new Option("Grant","Grant");
+form.options[13] = new Option("Harney","Harney");
+form.options[14] = new Option("Hood River","Hood River");
+form.options[15] = new Option("Jackson","Jackson");
+form.options[16] = new Option("Jefferson","Jefferson");
+form.options[17] = new Option("Josephine","Josephine");
+form.options[18] = new Option("Klamath","Klamath");
+form.options[19] = new Option("Lake","Lake");
+form.options[20] = new Option("Lane","Lane");
+form.options[21] = new Option("Lincoln","Lincoln");
+form.options[22] = new Option("Linn","Linn");
+form.options[23] = new Option("Malheur","Malheur");
+form.options[24] = new Option("Marion","Marion");
+form.options[25] = new Option("Morrow","Morrow");
+form.options[26] = new Option("Multnomah","Multnomah");
+form.options[27] = new Option("Polk","Polk");
+form.options[28] = new Option("Sherman","Sherman");
+form.options[29] = new Option("Tillamook","Tillamook");
+form.options[30] = new Option("Umatilla","Umatilla");
+form.options[31] = new Option("Union","Union");
+form.options[32] = new Option("Wallowa","Wallowa");
+form.options[33] = new Option("Wasco","Wasco");
+form.options[34] = new Option("Washington","Washington");
+form.options[35] = new Option("Wheeler","Wheeler");
+form.options[36] = new Option("Yamhill","Yamhill");
+}
