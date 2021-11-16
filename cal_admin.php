@@ -108,7 +108,7 @@ if ($ob->isADstaffspr()) {
  <head>
  <title>Spindletop Calendar</title>
  <!-- <?php //include 'dependencies.php'; ?> -->
-  <link rel="stylesheet" href="fullcalendar/packages/core/main.css" />
+  <link rel="stylesheet" href="fullcalendar/packages/core/main.css?" />
   <link rel="stylesheet" href="fullcalendar/packages/daygrid/main.css"></link>
   <link rel="stylesheet" href="fullcalendar/packages/timegrid/main.css"></link>
   <link rel="stylesheet" href="fullcalendar/packages/list/main.css"></link>
@@ -694,7 +694,7 @@ $(document).ready(function() {
 #calendar {
 	float: center;
 	justify-content: center;
-	align: center;
+	/* align: center; */
 	/* width: 70%; */
 	max-width: 900 px;
 	display: table-cell;

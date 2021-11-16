@@ -224,9 +224,10 @@ public function calculate() {
     $rv .= "<th>Out</th>";
     $rv .= "<th>Time</th>";
     $rv .= "</thead><tbody>\n";
-		
-    for($i=0;$i<count(array($work_time));$i++) { // in PHP8, count() requires that the $value is explicitly defined as an array
-
+    // in PHP8, count() requires that the $value is explicitly defined as an array [ so count(array($value)) ]
+    // apparently not as that ran the for loop only once. removing it now allows for it to work.
+    for($i=0;$i<count($work_time);$i++) { 
+      
       $rv .= "<tr>";
       $rv .= "<td>" .date("M j, Y", strtotime($work_date[$i])) ."</td>";
       $rv .= "<td>" .date("g:i a", strtotime($work_start[$i])) ."</td>";
