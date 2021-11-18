@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include './../dependencies.php'; ?>
+    <?php include './../include/dependencies.php'; ?>
 <script>
 // $(document).on('click', '.view_data', function(){  
     $(document).ready(function() {

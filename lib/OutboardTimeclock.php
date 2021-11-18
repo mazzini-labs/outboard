@@ -1,5 +1,5 @@
 <?php
-
+// namespace Outboard;
 // OutboardTimeclock.php
 //
 // Calculates and displays timeclock information
@@ -8,7 +8,9 @@
 // 2001-03-16	Richard F. Feuerriegel	(richardf@acesag.auburn.edu)
 //
 
-require_once("lib/OutboardConfig.php");
+define("PROJECT_ROOT_PATH", $_SERVER['DOCUMENT_ROOT']);
+require_once(PROJECT_ROOT_PATH . "/lib/OutboardConfig.php");
+// require_once("lib/OutboardConfig.php");
 
 class OutboardTimeclock extends OutboardConfig {
 
@@ -120,7 +122,7 @@ public function calculate() {
   // Go through all the log data for this person
   //
   $total_time = 0;
-  $work_time = null;
+  $work_time = array();
   $work_date = null;
   $work_start = null;
   $work_end = null;
@@ -226,7 +228,10 @@ public function calculate() {
     $rv .= "</thead><tbody>\n";
     // in PHP8, count() requires that the $value is explicitly defined as an array [ so count(array($value)) ]
     // apparently not as that ran the for loop only once. removing it now allows for it to work.
-    for($i=0;$i<count($work_time);$i++) { 
+    // lol okay so it works for the single user but not multi user?
+    $arr_length = count($work_time);
+    // for($i=0;$i<count($work_time);$i++) { 
+    for($i=0;$i<$arr_length;$i++) { 
       
       $rv .= "<tr>";
       $rv .= "<td>" .date("M j, Y", strtotime($work_date[$i])) ."</td>";

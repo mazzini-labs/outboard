@@ -88,8 +88,8 @@ if (getPostValue('timesheet')) {
 
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/maintest.css?=v1.2">
+	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/maintest.css?=v1.2">
     <link href="WSB/stylesheet/bootstrap.min.css" rel="stylesheet">
 
     <link href="WSB/stylesheet/offcanvas.css?v1" rel="stylesheet">
@@ -99,7 +99,7 @@ if (getPostValue('timesheet')) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css"/> -->
 
 
-<?php  include 'dependencies.php' ?>
+<?php  include 'include/dependencies.php' ?>
 
 <SCRIPT>
   $("#startdate").datepicker();

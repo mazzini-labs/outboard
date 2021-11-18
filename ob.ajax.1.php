@@ -308,7 +308,7 @@ while($row = $ob->getRow()) {
     if ($update && $isChangeable) 
     {
         $change = "true";
-        $hours = $row["hours"];
+        $hours = @($row["hours"]);
         // echo "<td $user_bg'><a style='color: black;' href=\"javascript:this.change_remark('"
         // . addslashes(htmlspecialchars($row['remarks']))
         // . addslashes($row['remarks'])

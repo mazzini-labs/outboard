@@ -16,7 +16,7 @@ $con = connect_outboard();
 <head>
 <meta charset="utf-8">
 <title>View Records</title>
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 <div class="form">

@@ -115,7 +115,7 @@ the main CSS is imported.
     height: 400px;
   }
 </style>
-<link rel="stylesheet" href="css/perfect-scrollbar.css">
+<link rel="stylesheet" href="assets/css/perfect-scrollbar.css">
 ```
 
 

@@ -1,5 +1,5 @@
 <?php
-
+// namespace Outboard;
 /**
  * OutboardPayroll.php
  *
@@ -9,8 +9,8 @@
  * 	- Initial creation
  *
  **/
-
-require_once("lib/OutboardConfig.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/lib/OutboardConfig.php");
+// require_once("lib/OutboardConfig.php");
 
 Class OutboardPayroll extends OutboardConfig {
 

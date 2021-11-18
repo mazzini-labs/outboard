@@ -78,7 +78,7 @@ else { $endDay = "-31-"; }
 ($currentDateArrayS[1] < 15)? $paystart = $currentDateArrayS[0] . "-1-" . $currentDateArrayS[2] : $paystart = $currentDateArrayS[0] . "-15-" . $currentDateArrayS[2];
 ($currentDateArrayE[1] < 15)? $payend = $currentDateArrayE[0] . "-15-" . $currentDateArrayE[2] : $payend = $currentDateArrayE[0] . $endDay . $currentDateArrayE[2];
 
-$result = $ob->test();
+$result = $ob->userSelect();
 
 //while($row = mysql_fetch_array($result)){
 	//$userid = $row['userid'];

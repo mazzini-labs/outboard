@@ -237,7 +237,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include 'dependencies.php'; ?>
+    <?php include 'include/dependencies.php'; ?>
     <!-- <script src="https://unpkg.com/feather-icons"></script> -->
     <script type="text/javascript" src="js/chart.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>

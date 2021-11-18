@@ -13,7 +13,7 @@ include 'include/wsbFunctions.php';
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 	<title>Edit Well Notes</title>
-	<?php include 'dependencies.php'; ?>
+	<?php include 'include/dependencies.php'; ?>
 
 	<style type="text/css" class="init">
 	

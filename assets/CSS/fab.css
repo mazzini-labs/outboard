@@ -1,0 +1,1247 @@
+.bmd-btn-fab.btn-primary.custom-file-control:before,.btn-group-raised .btn-primary.custom-file-control:before,.btn-group-raised .btn.btn-primary,.btn-raised.btn-primary.custom-file-control:before,.btn.bmd-btn-fab.btn-primary,.btn.btn-raised.btn-primary {
+    color: #fff;
+    background-color: #3f51b5;
+    border-color: #3f51b5
+}
+
+.bmd-btn-fab.btn-primary.active.custom-file-control:before,.bmd-btn-fab.btn-primary.custom-file-control:active:before,.bmd-btn-fab.btn-primary.custom-file-control:focus:before,.bmd-btn-fab.btn-primary.custom-file-control:hover:before,.bmd-btn-fab.btn-primary.focus.custom-file-control:before,.btn-group-raised .btn-primary.active.custom-file-control:before,.btn-group-raised .btn-primary.custom-file-control:active:before,.btn-group-raised .btn-primary.custom-file-control:focus:before,.btn-group-raised .btn-primary.custom-file-control:hover:before,.btn-group-raised .btn-primary.focus.custom-file-control:before,.btn-group-raised .btn.btn-primary.active,.btn-group-raised .btn.btn-primary.focus,.btn-group-raised .btn.btn-primary:active,.btn-group-raised .btn.btn-primary:focus,.btn-group-raised .btn.btn-primary:hover,.btn-raised.btn-primary.active.custom-file-control:before,.btn-raised.btn-primary.custom-file-control:active:before,.btn-raised.btn-primary.custom-file-control:focus:before,.btn-raised.btn-primary.custom-file-control:hover:before,.btn-raised.btn-primary.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-primary.active,.btn.bmd-btn-fab.btn-primary.focus,.btn.bmd-btn-fab.btn-primary:active,.btn.bmd-btn-fab.btn-primary:focus,.btn.bmd-btn-fab.btn-primary:hover,.btn.btn-raised.btn-primary.active,.btn.btn-raised.btn-primary.focus,.btn.btn-raised.btn-primary:active,.btn.btn-raised.btn-primary:focus,.btn.btn-raised.btn-primary:hover,.open>.bmd-btn-fab.btn-primary.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn-primary.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn.btn-primary.dropdown-toggle,.open>.btn-raised.btn-primary.dropdown-toggle.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-primary.dropdown-toggle,.open>.btn.btn-raised.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #495bc0;
+    border-color: #2f3d88
+}
+
+.bmd-btn-fab.btn-primary.active.custom-file-control:focus:before,.bmd-btn-fab.btn-primary.active.custom-file-control:hover:before,.bmd-btn-fab.btn-primary.active.focus.custom-file-control:before,.bmd-btn-fab.btn-primary.custom-file-control:active.focus:before,.bmd-btn-fab.btn-primary.custom-file-control:active:focus:before,.bmd-btn-fab.btn-primary.custom-file-control:active:hover:before,.btn-group-raised .btn-primary.active.custom-file-control:focus:before,.btn-group-raised .btn-primary.active.custom-file-control:hover:before,.btn-group-raised .btn-primary.active.focus.custom-file-control:before,.btn-group-raised .btn-primary.custom-file-control:active.focus:before,.btn-group-raised .btn-primary.custom-file-control:active:focus:before,.btn-group-raised .btn-primary.custom-file-control:active:hover:before,.btn-group-raised .btn.btn-primary.active.focus,.btn-group-raised .btn.btn-primary.active:focus,.btn-group-raised .btn.btn-primary.active:hover,.btn-group-raised .btn.btn-primary:active.focus,.btn-group-raised .btn.btn-primary:active:focus,.btn-group-raised .btn.btn-primary:active:hover,.btn-raised.btn-primary.active.custom-file-control:focus:before,.btn-raised.btn-primary.active.custom-file-control:hover:before,.btn-raised.btn-primary.active.focus.custom-file-control:before,.btn-raised.btn-primary.custom-file-control:active.focus:before,.btn-raised.btn-primary.custom-file-control:active:focus:before,.btn-raised.btn-primary.custom-file-control:active:hover:before,.btn.bmd-btn-fab.btn-primary.active.focus,.btn.bmd-btn-fab.btn-primary.active:focus,.btn.bmd-btn-fab.btn-primary.active:hover,.btn.bmd-btn-fab.btn-primary:active.focus,.btn.bmd-btn-fab.btn-primary:active:focus,.btn.bmd-btn-fab.btn-primary:active:hover,.btn.btn-raised.btn-primary.active.focus,.btn.btn-raised.btn-primary.active:focus,.btn.btn-raised.btn-primary.active:hover,.btn.btn-raised.btn-primary:active.focus,.btn.btn-raised.btn-primary:active:focus,.btn.btn-raised.btn-primary:active:hover,.open>.bmd-btn-fab.btn-primary.dropdown-toggle.custom-file-control:focus:before,.open>.bmd-btn-fab.btn-primary.dropdown-toggle.custom-file-control:hover:before,.open>.bmd-btn-fab.btn-primary.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn-primary.dropdown-toggle.custom-file-control:focus:before,.open>.btn-group-raised .btn-primary.dropdown-toggle.custom-file-control:hover:before,.open>.btn-group-raised .btn-primary.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn.btn-primary.dropdown-toggle.focus,.open>.btn-group-raised .btn.btn-primary.dropdown-toggle:focus,.open>.btn-group-raised .btn.btn-primary.dropdown-toggle:hover,.open>.btn-raised.btn-primary.dropdown-toggle.custom-file-control:focus:before,.open>.btn-raised.btn-primary.dropdown-toggle.custom-file-control:hover:before,.open>.btn-raised.btn-primary.dropdown-toggle.focus.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-primary.dropdown-toggle.focus,.open>.btn.bmd-btn-fab.btn-primary.dropdown-toggle:focus,.open>.btn.bmd-btn-fab.btn-primary.dropdown-toggle:hover,.open>.btn.btn-raised.btn-primary.dropdown-toggle.focus,.open>.btn.btn-raised.btn-primary.dropdown-toggle:focus,.open>.btn.btn-raised.btn-primary.dropdown-toggle:hover {
+    color: #fff;
+    background-color: #495bc0;
+    border-color: #1e2756
+}
+
+.open>.bmd-btn-fab.btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn.btn-primary.dropdown-toggle.bmd-btn-icon,.open>.btn-raised.btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-primary.dropdown-toggle.bmd-btn-icon,.open>.btn.btn-raised.btn-primary.dropdown-toggle.bmd-btn-icon {
+    color: inherit;
+    background-color: #3f51b5
+}
+
+.open>.bmd-btn-fab.btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn.btn-primary.dropdown-toggle.bmd-btn-icon:hover,.open>.btn-raised.btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn.bmd-btn-fab.btn-primary.dropdown-toggle.bmd-btn-icon:hover,.open>.btn.btn-raised.btn-primary.dropdown-toggle.bmd-btn-icon:hover {
+    background-color: #495bc0
+}
+
+.bmd-btn-fab.btn-primary.custom-file-control:disabled.focus:before,.bmd-btn-fab.btn-primary.custom-file-control:disabled:focus:before,.bmd-btn-fab.btn-primary.custom-file-control:disabled:hover:before,.bmd-btn-fab.btn-primary.disabled.custom-file-control:focus:before,.bmd-btn-fab.btn-primary.disabled.custom-file-control:hover:before,.bmd-btn-fab.btn-primary.disabled.focus.custom-file-control:before,.btn-group-raised .btn-primary.custom-file-control:disabled.focus:before,.btn-group-raised .btn-primary.custom-file-control:disabled:focus:before,.btn-group-raised .btn-primary.custom-file-control:disabled:hover:before,.btn-group-raised .btn-primary.disabled.custom-file-control:focus:before,.btn-group-raised .btn-primary.disabled.custom-file-control:hover:before,.btn-group-raised .btn-primary.disabled.focus.custom-file-control:before,.btn-group-raised .btn.btn-primary.disabled.focus,.btn-group-raised .btn.btn-primary.disabled:focus,.btn-group-raised .btn.btn-primary.disabled:hover,.btn-group-raised .btn.btn-primary:disabled.focus,.btn-group-raised .btn.btn-primary:disabled:focus,.btn-group-raised .btn.btn-primary:disabled:hover,.btn-raised.btn-primary.custom-file-control:disabled.focus:before,.btn-raised.btn-primary.custom-file-control:disabled:focus:before,.btn-raised.btn-primary.custom-file-control:disabled:hover:before,.btn-raised.btn-primary.disabled.custom-file-control:focus:before,.btn-raised.btn-primary.disabled.custom-file-control:hover:before,.btn-raised.btn-primary.disabled.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-primary.disabled.focus,.btn.bmd-btn-fab.btn-primary.disabled:focus,.btn.bmd-btn-fab.btn-primary.disabled:hover,.btn.bmd-btn-fab.btn-primary:disabled.focus,.btn.bmd-btn-fab.btn-primary:disabled:focus,.btn.bmd-btn-fab.btn-primary:disabled:hover,.btn.btn-raised.btn-primary.disabled.focus,.btn.btn-raised.btn-primary.disabled:focus,.btn.btn-raised.btn-primary.disabled:hover,.btn.btn-raised.btn-primary:disabled.focus,.btn.btn-raised.btn-primary:disabled:focus,.btn.btn-raised.btn-primary:disabled:hover {
+    background-color: #3f51b5;
+    border-color: #3f51b5
+}
+
+.bmd-btn-fab.btn-secondary.custom-file-control:before,.btn-group-raised .btn-secondary.custom-file-control:before,.btn-group-raised .btn.btn-secondary,.btn-raised.btn-secondary.custom-file-control:before,.btn.bmd-btn-fab.btn-secondary,.btn.btn-raised.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d
+}
+
+.bmd-btn-fab.btn-secondary.active.custom-file-control:before,.bmd-btn-fab.btn-secondary.custom-file-control:active:before,.bmd-btn-fab.btn-secondary.custom-file-control:focus:before,.bmd-btn-fab.btn-secondary.custom-file-control:hover:before,.bmd-btn-fab.btn-secondary.focus.custom-file-control:before,.btn-group-raised .btn-secondary.active.custom-file-control:before,.btn-group-raised .btn-secondary.custom-file-control:active:before,.btn-group-raised .btn-secondary.custom-file-control:focus:before,.btn-group-raised .btn-secondary.custom-file-control:hover:before,.btn-group-raised .btn-secondary.focus.custom-file-control:before,.btn-group-raised .btn.btn-secondary.active,.btn-group-raised .btn.btn-secondary.focus,.btn-group-raised .btn.btn-secondary:active,.btn-group-raised .btn.btn-secondary:focus,.btn-group-raised .btn.btn-secondary:hover,.btn-raised.btn-secondary.active.custom-file-control:before,.btn-raised.btn-secondary.custom-file-control:active:before,.btn-raised.btn-secondary.custom-file-control:focus:before,.btn-raised.btn-secondary.custom-file-control:hover:before,.btn-raised.btn-secondary.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-secondary.active,.btn.bmd-btn-fab.btn-secondary.focus,.btn.bmd-btn-fab.btn-secondary:active,.btn.bmd-btn-fab.btn-secondary:focus,.btn.bmd-btn-fab.btn-secondary:hover,.btn.btn-raised.btn-secondary.active,.btn.btn-raised.btn-secondary.focus,.btn.btn-raised.btn-secondary:active,.btn.btn-raised.btn-secondary:focus,.btn.btn-raised.btn-secondary:hover,.open>.bmd-btn-fab.btn-secondary.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn-secondary.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn.btn-secondary.dropdown-toggle,.open>.btn-raised.btn-secondary.dropdown-toggle.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-secondary.dropdown-toggle,.open>.btn.btn-raised.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: #636b72;
+    border-color: #50565c
+}
+
+.bmd-btn-fab.btn-secondary.active.custom-file-control:focus:before,.bmd-btn-fab.btn-secondary.active.custom-file-control:hover:before,.bmd-btn-fab.btn-secondary.active.focus.custom-file-control:before,.bmd-btn-fab.btn-secondary.custom-file-control:active.focus:before,.bmd-btn-fab.btn-secondary.custom-file-control:active:focus:before,.bmd-btn-fab.btn-secondary.custom-file-control:active:hover:before,.btn-group-raised .btn-secondary.active.custom-file-control:focus:before,.btn-group-raised .btn-secondary.active.custom-file-control:hover:before,.btn-group-raised .btn-secondary.active.focus.custom-file-control:before,.btn-group-raised .btn-secondary.custom-file-control:active.focus:before,.btn-group-raised .btn-secondary.custom-file-control:active:focus:before,.btn-group-raised .btn-secondary.custom-file-control:active:hover:before,.btn-group-raised .btn.btn-secondary.active.focus,.btn-group-raised .btn.btn-secondary.active:focus,.btn-group-raised .btn.btn-secondary.active:hover,.btn-group-raised .btn.btn-secondary:active.focus,.btn-group-raised .btn.btn-secondary:active:focus,.btn-group-raised .btn.btn-secondary:active:hover,.btn-raised.btn-secondary.active.custom-file-control:focus:before,.btn-raised.btn-secondary.active.custom-file-control:hover:before,.btn-raised.btn-secondary.active.focus.custom-file-control:before,.btn-raised.btn-secondary.custom-file-control:active.focus:before,.btn-raised.btn-secondary.custom-file-control:active:focus:before,.btn-raised.btn-secondary.custom-file-control:active:hover:before,.btn.bmd-btn-fab.btn-secondary.active.focus,.btn.bmd-btn-fab.btn-secondary.active:focus,.btn.bmd-btn-fab.btn-secondary.active:hover,.btn.bmd-btn-fab.btn-secondary:active.focus,.btn.bmd-btn-fab.btn-secondary:active:focus,.btn.bmd-btn-fab.btn-secondary:active:hover,.btn.btn-raised.btn-secondary.active.focus,.btn.btn-raised.btn-secondary.active:focus,.btn.btn-raised.btn-secondary.active:hover,.btn.btn-raised.btn-secondary:active.focus,.btn.btn-raised.btn-secondary:active:focus,.btn.btn-raised.btn-secondary:active:hover,.open>.bmd-btn-fab.btn-secondary.dropdown-toggle.custom-file-control:focus:before,.open>.bmd-btn-fab.btn-secondary.dropdown-toggle.custom-file-control:hover:before,.open>.bmd-btn-fab.btn-secondary.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn-secondary.dropdown-toggle.custom-file-control:focus:before,.open>.btn-group-raised .btn-secondary.dropdown-toggle.custom-file-control:hover:before,.open>.btn-group-raised .btn-secondary.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn.btn-secondary.dropdown-toggle.focus,.open>.btn-group-raised .btn.btn-secondary.dropdown-toggle:focus,.open>.btn-group-raised .btn.btn-secondary.dropdown-toggle:hover,.open>.btn-raised.btn-secondary.dropdown-toggle.custom-file-control:focus:before,.open>.btn-raised.btn-secondary.dropdown-toggle.custom-file-control:hover:before,.open>.btn-raised.btn-secondary.dropdown-toggle.focus.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-secondary.dropdown-toggle.focus,.open>.btn.bmd-btn-fab.btn-secondary.dropdown-toggle:focus,.open>.btn.bmd-btn-fab.btn-secondary.dropdown-toggle:hover,.open>.btn.btn-raised.btn-secondary.dropdown-toggle.focus,.open>.btn.btn-raised.btn-secondary.dropdown-toggle:focus,.open>.btn.btn-raised.btn-secondary.dropdown-toggle:hover {
+    color: #fff;
+    background-color: #636b72;
+    border-color: #313539
+}
+
+.open>.bmd-btn-fab.btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn.btn-secondary.dropdown-toggle.bmd-btn-icon,.open>.btn-raised.btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-secondary.dropdown-toggle.bmd-btn-icon,.open>.btn.btn-raised.btn-secondary.dropdown-toggle.bmd-btn-icon {
+    color: inherit;
+    background-color: #6c757d
+}
+
+.open>.bmd-btn-fab.btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn.btn-secondary.dropdown-toggle.bmd-btn-icon:hover,.open>.btn-raised.btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn.bmd-btn-fab.btn-secondary.dropdown-toggle.bmd-btn-icon:hover,.open>.btn.btn-raised.btn-secondary.dropdown-toggle.bmd-btn-icon:hover {
+    background-color: #636b72
+}
+
+.bmd-btn-fab.btn-secondary.custom-file-control:disabled.focus:before,.bmd-btn-fab.btn-secondary.custom-file-control:disabled:focus:before,.bmd-btn-fab.btn-secondary.custom-file-control:disabled:hover:before,.bmd-btn-fab.btn-secondary.disabled.custom-file-control:focus:before,.bmd-btn-fab.btn-secondary.disabled.custom-file-control:hover:before,.bmd-btn-fab.btn-secondary.disabled.focus.custom-file-control:before,.btn-group-raised .btn-secondary.custom-file-control:disabled.focus:before,.btn-group-raised .btn-secondary.custom-file-control:disabled:focus:before,.btn-group-raised .btn-secondary.custom-file-control:disabled:hover:before,.btn-group-raised .btn-secondary.disabled.custom-file-control:focus:before,.btn-group-raised .btn-secondary.disabled.custom-file-control:hover:before,.btn-group-raised .btn-secondary.disabled.focus.custom-file-control:before,.btn-group-raised .btn.btn-secondary.disabled.focus,.btn-group-raised .btn.btn-secondary.disabled:focus,.btn-group-raised .btn.btn-secondary.disabled:hover,.btn-group-raised .btn.btn-secondary:disabled.focus,.btn-group-raised .btn.btn-secondary:disabled:focus,.btn-group-raised .btn.btn-secondary:disabled:hover,.btn-raised.btn-secondary.custom-file-control:disabled.focus:before,.btn-raised.btn-secondary.custom-file-control:disabled:focus:before,.btn-raised.btn-secondary.custom-file-control:disabled:hover:before,.btn-raised.btn-secondary.disabled.custom-file-control:focus:before,.btn-raised.btn-secondary.disabled.custom-file-control:hover:before,.btn-raised.btn-secondary.disabled.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-secondary.disabled.focus,.btn.bmd-btn-fab.btn-secondary.disabled:focus,.btn.bmd-btn-fab.btn-secondary.disabled:hover,.btn.bmd-btn-fab.btn-secondary:disabled.focus,.btn.bmd-btn-fab.btn-secondary:disabled:focus,.btn.bmd-btn-fab.btn-secondary:disabled:hover,.btn.btn-raised.btn-secondary.disabled.focus,.btn.btn-raised.btn-secondary.disabled:focus,.btn.btn-raised.btn-secondary.disabled:hover,.btn.btn-raised.btn-secondary:disabled.focus,.btn.btn-raised.btn-secondary:disabled:focus,.btn.btn-raised.btn-secondary:disabled:hover {
+    background-color: #6c757d;
+    border-color: #6c757d
+}
+
+.bmd-btn-fab.btn-success.custom-file-control:before,.btn-group-raised .btn-success.custom-file-control:before,.btn-group-raised .btn.btn-success,.btn-raised.btn-success.custom-file-control:before,.btn.bmd-btn-fab.btn-success,.btn.btn-raised.btn-success {
+    color: #fff;
+    background-color: #4caf50;
+    border-color: #4caf50
+}
+
+.bmd-btn-fab.btn-success.active.custom-file-control:before,.bmd-btn-fab.btn-success.custom-file-control:active:before,.bmd-btn-fab.btn-success.custom-file-control:focus:before,.bmd-btn-fab.btn-success.custom-file-control:hover:before,.bmd-btn-fab.btn-success.focus.custom-file-control:before,.btn-group-raised .btn-success.active.custom-file-control:before,.btn-group-raised .btn-success.custom-file-control:active:before,.btn-group-raised .btn-success.custom-file-control:focus:before,.btn-group-raised .btn-success.custom-file-control:hover:before,.btn-group-raised .btn-success.focus.custom-file-control:before,.btn-group-raised .btn.btn-success.active,.btn-group-raised .btn.btn-success.focus,.btn-group-raised .btn.btn-success:active,.btn-group-raised .btn.btn-success:focus,.btn-group-raised .btn.btn-success:hover,.btn-raised.btn-success.active.custom-file-control:before,.btn-raised.btn-success.custom-file-control:active:before,.btn-raised.btn-success.custom-file-control:focus:before,.btn-raised.btn-success.custom-file-control:hover:before,.btn-raised.btn-success.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-success.active,.btn.bmd-btn-fab.btn-success.focus,.btn.bmd-btn-fab.btn-success:active,.btn.bmd-btn-fab.btn-success:focus,.btn.bmd-btn-fab.btn-success:hover,.btn.btn-raised.btn-success.active,.btn.btn-raised.btn-success.focus,.btn.btn-raised.btn-success:active,.btn.btn-raised.btn-success:focus,.btn.btn-raised.btn-success:hover,.open>.bmd-btn-fab.btn-success.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn-success.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn.btn-success.dropdown-toggle,.open>.btn-raised.btn-success.dropdown-toggle.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-success.dropdown-toggle,.open>.btn.btn-raised.btn-success.dropdown-toggle {
+    color: #fff;
+    background-color: #46a149;
+    border-color: #39843c
+}
+
+.bmd-btn-fab.btn-success.active.custom-file-control:focus:before,.bmd-btn-fab.btn-success.active.custom-file-control:hover:before,.bmd-btn-fab.btn-success.active.focus.custom-file-control:before,.bmd-btn-fab.btn-success.custom-file-control:active.focus:before,.bmd-btn-fab.btn-success.custom-file-control:active:focus:before,.bmd-btn-fab.btn-success.custom-file-control:active:hover:before,.btn-group-raised .btn-success.active.custom-file-control:focus:before,.btn-group-raised .btn-success.active.custom-file-control:hover:before,.btn-group-raised .btn-success.active.focus.custom-file-control:before,.btn-group-raised .btn-success.custom-file-control:active.focus:before,.btn-group-raised .btn-success.custom-file-control:active:focus:before,.btn-group-raised .btn-success.custom-file-control:active:hover:before,.btn-group-raised .btn.btn-success.active.focus,.btn-group-raised .btn.btn-success.active:focus,.btn-group-raised .btn.btn-success.active:hover,.btn-group-raised .btn.btn-success:active.focus,.btn-group-raised .btn.btn-success:active:focus,.btn-group-raised .btn.btn-success:active:hover,.btn-raised.btn-success.active.custom-file-control:focus:before,.btn-raised.btn-success.active.custom-file-control:hover:before,.btn-raised.btn-success.active.focus.custom-file-control:before,.btn-raised.btn-success.custom-file-control:active.focus:before,.btn-raised.btn-success.custom-file-control:active:focus:before,.btn-raised.btn-success.custom-file-control:active:hover:before,.btn.bmd-btn-fab.btn-success.active.focus,.btn.bmd-btn-fab.btn-success.active:focus,.btn.bmd-btn-fab.btn-success.active:hover,.btn.bmd-btn-fab.btn-success:active.focus,.btn.bmd-btn-fab.btn-success:active:focus,.btn.bmd-btn-fab.btn-success:active:hover,.btn.btn-raised.btn-success.active.focus,.btn.btn-raised.btn-success.active:focus,.btn.btn-raised.btn-success.active:hover,.btn.btn-raised.btn-success:active.focus,.btn.btn-raised.btn-success:active:focus,.btn.btn-raised.btn-success:active:hover,.open>.bmd-btn-fab.btn-success.dropdown-toggle.custom-file-control:focus:before,.open>.bmd-btn-fab.btn-success.dropdown-toggle.custom-file-control:hover:before,.open>.bmd-btn-fab.btn-success.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn-success.dropdown-toggle.custom-file-control:focus:before,.open>.btn-group-raised .btn-success.dropdown-toggle.custom-file-control:hover:before,.open>.btn-group-raised .btn-success.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn.btn-success.dropdown-toggle.focus,.open>.btn-group-raised .btn.btn-success.dropdown-toggle:focus,.open>.btn-group-raised .btn.btn-success.dropdown-toggle:hover,.open>.btn-raised.btn-success.dropdown-toggle.custom-file-control:focus:before,.open>.btn-raised.btn-success.dropdown-toggle.custom-file-control:hover:before,.open>.btn-raised.btn-success.dropdown-toggle.focus.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-success.dropdown-toggle.focus,.open>.btn.bmd-btn-fab.btn-success.dropdown-toggle:focus,.open>.btn.bmd-btn-fab.btn-success.dropdown-toggle:hover,.open>.btn.btn-raised.btn-success.dropdown-toggle.focus,.open>.btn.btn-raised.btn-success.dropdown-toggle:focus,.open>.btn.btn-raised.btn-success.dropdown-toggle:hover {
+    color: #fff;
+    background-color: #46a149;
+    border-color: #255627
+}
+
+.open>.bmd-btn-fab.btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn.btn-success.dropdown-toggle.bmd-btn-icon,.open>.btn-raised.btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-success.dropdown-toggle.bmd-btn-icon,.open>.btn.btn-raised.btn-success.dropdown-toggle.bmd-btn-icon {
+    color: inherit;
+    background-color: #4caf50
+}
+
+.open>.bmd-btn-fab.btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn.btn-success.dropdown-toggle.bmd-btn-icon:hover,.open>.btn-raised.btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn.bmd-btn-fab.btn-success.dropdown-toggle.bmd-btn-icon:hover,.open>.btn.btn-raised.btn-success.dropdown-toggle.bmd-btn-icon:hover {
+    background-color: #46a149
+}
+
+.bmd-btn-fab.btn-success.custom-file-control:disabled.focus:before,.bmd-btn-fab.btn-success.custom-file-control:disabled:focus:before,.bmd-btn-fab.btn-success.custom-file-control:disabled:hover:before,.bmd-btn-fab.btn-success.disabled.custom-file-control:focus:before,.bmd-btn-fab.btn-success.disabled.custom-file-control:hover:before,.bmd-btn-fab.btn-success.disabled.focus.custom-file-control:before,.btn-group-raised .btn-success.custom-file-control:disabled.focus:before,.btn-group-raised .btn-success.custom-file-control:disabled:focus:before,.btn-group-raised .btn-success.custom-file-control:disabled:hover:before,.btn-group-raised .btn-success.disabled.custom-file-control:focus:before,.btn-group-raised .btn-success.disabled.custom-file-control:hover:before,.btn-group-raised .btn-success.disabled.focus.custom-file-control:before,.btn-group-raised .btn.btn-success.disabled.focus,.btn-group-raised .btn.btn-success.disabled:focus,.btn-group-raised .btn.btn-success.disabled:hover,.btn-group-raised .btn.btn-success:disabled.focus,.btn-group-raised .btn.btn-success:disabled:focus,.btn-group-raised .btn.btn-success:disabled:hover,.btn-raised.btn-success.custom-file-control:disabled.focus:before,.btn-raised.btn-success.custom-file-control:disabled:focus:before,.btn-raised.btn-success.custom-file-control:disabled:hover:before,.btn-raised.btn-success.disabled.custom-file-control:focus:before,.btn-raised.btn-success.disabled.custom-file-control:hover:before,.btn-raised.btn-success.disabled.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-success.disabled.focus,.btn.bmd-btn-fab.btn-success.disabled:focus,.btn.bmd-btn-fab.btn-success.disabled:hover,.btn.bmd-btn-fab.btn-success:disabled.focus,.btn.bmd-btn-fab.btn-success:disabled:focus,.btn.bmd-btn-fab.btn-success:disabled:hover,.btn.btn-raised.btn-success.disabled.focus,.btn.btn-raised.btn-success.disabled:focus,.btn.btn-raised.btn-success.disabled:hover,.btn.btn-raised.btn-success:disabled.focus,.btn.btn-raised.btn-success:disabled:focus,.btn.btn-raised.btn-success:disabled:hover {
+    background-color: #4caf50;
+    border-color: #4caf50
+}
+
+.bmd-btn-fab.btn-info.custom-file-control:before,.btn-group-raised .btn-info.custom-file-control:before,.btn-group-raised .btn.btn-info,.btn-raised.btn-info.custom-file-control:before,.btn.bmd-btn-fab.btn-info,.btn.btn-raised.btn-info {
+    color: #fff;
+    background-color: #03a9f4;
+    border-color: #03a9f4
+}
+
+.bmd-btn-fab.btn-info.active.custom-file-control:before,.bmd-btn-fab.btn-info.custom-file-control:active:before,.bmd-btn-fab.btn-info.custom-file-control:focus:before,.bmd-btn-fab.btn-info.custom-file-control:hover:before,.bmd-btn-fab.btn-info.focus.custom-file-control:before,.btn-group-raised .btn-info.active.custom-file-control:before,.btn-group-raised .btn-info.custom-file-control:active:before,.btn-group-raised .btn-info.custom-file-control:focus:before,.btn-group-raised .btn-info.custom-file-control:hover:before,.btn-group-raised .btn-info.focus.custom-file-control:before,.btn-group-raised .btn.btn-info.active,.btn-group-raised .btn.btn-info.focus,.btn-group-raised .btn.btn-info:active,.btn-group-raised .btn.btn-info:focus,.btn-group-raised .btn.btn-info:hover,.btn-raised.btn-info.active.custom-file-control:before,.btn-raised.btn-info.custom-file-control:active:before,.btn-raised.btn-info.custom-file-control:focus:before,.btn-raised.btn-info.custom-file-control:hover:before,.btn-raised.btn-info.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-info.active,.btn.bmd-btn-fab.btn-info.focus,.btn.bmd-btn-fab.btn-info:active,.btn.bmd-btn-fab.btn-info:focus,.btn.bmd-btn-fab.btn-info:hover,.btn.btn-raised.btn-info.active,.btn.btn-raised.btn-info.focus,.btn.btn-raised.btn-info:active,.btn.btn-raised.btn-info:focus,.btn.btn-raised.btn-info:hover,.open>.bmd-btn-fab.btn-info.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn-info.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn.btn-info.dropdown-toggle,.open>.btn-raised.btn-info.dropdown-toggle.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-info.dropdown-toggle,.open>.btn.btn-raised.btn-info.dropdown-toggle {
+    color: #fff;
+    background-color: #039be0;
+    border-color: #027fb8
+}
+
+.bmd-btn-fab.btn-info.active.custom-file-control:focus:before,.bmd-btn-fab.btn-info.active.custom-file-control:hover:before,.bmd-btn-fab.btn-info.active.focus.custom-file-control:before,.bmd-btn-fab.btn-info.custom-file-control:active.focus:before,.bmd-btn-fab.btn-info.custom-file-control:active:focus:before,.bmd-btn-fab.btn-info.custom-file-control:active:hover:before,.btn-group-raised .btn-info.active.custom-file-control:focus:before,.btn-group-raised .btn-info.active.custom-file-control:hover:before,.btn-group-raised .btn-info.active.focus.custom-file-control:before,.btn-group-raised .btn-info.custom-file-control:active.focus:before,.btn-group-raised .btn-info.custom-file-control:active:focus:before,.btn-group-raised .btn-info.custom-file-control:active:hover:before,.btn-group-raised .btn.btn-info.active.focus,.btn-group-raised .btn.btn-info.active:focus,.btn-group-raised .btn.btn-info.active:hover,.btn-group-raised .btn.btn-info:active.focus,.btn-group-raised .btn.btn-info:active:focus,.btn-group-raised .btn.btn-info:active:hover,.btn-raised.btn-info.active.custom-file-control:focus:before,.btn-raised.btn-info.active.custom-file-control:hover:before,.btn-raised.btn-info.active.focus.custom-file-control:before,.btn-raised.btn-info.custom-file-control:active.focus:before,.btn-raised.btn-info.custom-file-control:active:focus:before,.btn-raised.btn-info.custom-file-control:active:hover:before,.btn.bmd-btn-fab.btn-info.active.focus,.btn.bmd-btn-fab.btn-info.active:focus,.btn.bmd-btn-fab.btn-info.active:hover,.btn.bmd-btn-fab.btn-info:active.focus,.btn.bmd-btn-fab.btn-info:active:focus,.btn.bmd-btn-fab.btn-info:active:hover,.btn.btn-raised.btn-info.active.focus,.btn.btn-raised.btn-info.active:focus,.btn.btn-raised.btn-info.active:hover,.btn.btn-raised.btn-info:active.focus,.btn.btn-raised.btn-info:active:focus,.btn.btn-raised.btn-info:active:hover,.open>.bmd-btn-fab.btn-info.dropdown-toggle.custom-file-control:focus:before,.open>.bmd-btn-fab.btn-info.dropdown-toggle.custom-file-control:hover:before,.open>.bmd-btn-fab.btn-info.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn-info.dropdown-toggle.custom-file-control:focus:before,.open>.btn-group-raised .btn-info.dropdown-toggle.custom-file-control:hover:before,.open>.btn-group-raised .btn-info.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn.btn-info.dropdown-toggle.focus,.open>.btn-group-raised .btn.btn-info.dropdown-toggle:focus,.open>.btn-group-raised .btn.btn-info.dropdown-toggle:hover,.open>.btn-raised.btn-info.dropdown-toggle.custom-file-control:focus:before,.open>.btn-raised.btn-info.dropdown-toggle.custom-file-control:hover:before,.open>.btn-raised.btn-info.dropdown-toggle.focus.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-info.dropdown-toggle.focus,.open>.btn.bmd-btn-fab.btn-info.dropdown-toggle:focus,.open>.btn.bmd-btn-fab.btn-info.dropdown-toggle:hover,.open>.btn.btn-raised.btn-info.dropdown-toggle.focus,.open>.btn.btn-raised.btn-info.dropdown-toggle:focus,.open>.btn.btn-raised.btn-info.dropdown-toggle:hover {
+    color: #fff;
+    background-color: #039be0;
+    border-color: #015276
+}
+
+.open>.bmd-btn-fab.btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn.btn-info.dropdown-toggle.bmd-btn-icon,.open>.btn-raised.btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-info.dropdown-toggle.bmd-btn-icon,.open>.btn.btn-raised.btn-info.dropdown-toggle.bmd-btn-icon {
+    color: inherit;
+    background-color: #03a9f4
+}
+
+.open>.bmd-btn-fab.btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn.btn-info.dropdown-toggle.bmd-btn-icon:hover,.open>.btn-raised.btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn.bmd-btn-fab.btn-info.dropdown-toggle.bmd-btn-icon:hover,.open>.btn.btn-raised.btn-info.dropdown-toggle.bmd-btn-icon:hover {
+    background-color: #039be0
+}
+
+.bmd-btn-fab.btn-info.custom-file-control:disabled.focus:before,.bmd-btn-fab.btn-info.custom-file-control:disabled:focus:before,.bmd-btn-fab.btn-info.custom-file-control:disabled:hover:before,.bmd-btn-fab.btn-info.disabled.custom-file-control:focus:before,.bmd-btn-fab.btn-info.disabled.custom-file-control:hover:before,.bmd-btn-fab.btn-info.disabled.focus.custom-file-control:before,.btn-group-raised .btn-info.custom-file-control:disabled.focus:before,.btn-group-raised .btn-info.custom-file-control:disabled:focus:before,.btn-group-raised .btn-info.custom-file-control:disabled:hover:before,.btn-group-raised .btn-info.disabled.custom-file-control:focus:before,.btn-group-raised .btn-info.disabled.custom-file-control:hover:before,.btn-group-raised .btn-info.disabled.focus.custom-file-control:before,.btn-group-raised .btn.btn-info.disabled.focus,.btn-group-raised .btn.btn-info.disabled:focus,.btn-group-raised .btn.btn-info.disabled:hover,.btn-group-raised .btn.btn-info:disabled.focus,.btn-group-raised .btn.btn-info:disabled:focus,.btn-group-raised .btn.btn-info:disabled:hover,.btn-raised.btn-info.custom-file-control:disabled.focus:before,.btn-raised.btn-info.custom-file-control:disabled:focus:before,.btn-raised.btn-info.custom-file-control:disabled:hover:before,.btn-raised.btn-info.disabled.custom-file-control:focus:before,.btn-raised.btn-info.disabled.custom-file-control:hover:before,.btn-raised.btn-info.disabled.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-info.disabled.focus,.btn.bmd-btn-fab.btn-info.disabled:focus,.btn.bmd-btn-fab.btn-info.disabled:hover,.btn.bmd-btn-fab.btn-info:disabled.focus,.btn.bmd-btn-fab.btn-info:disabled:focus,.btn.bmd-btn-fab.btn-info:disabled:hover,.btn.btn-raised.btn-info.disabled.focus,.btn.btn-raised.btn-info.disabled:focus,.btn.btn-raised.btn-info.disabled:hover,.btn.btn-raised.btn-info:disabled.focus,.btn.btn-raised.btn-info:disabled:focus,.btn.btn-raised.btn-info:disabled:hover {
+    background-color: #03a9f4;
+    border-color: #03a9f4
+}
+
+.bmd-btn-fab.btn-warning.custom-file-control:before,.btn-group-raised .btn-warning.custom-file-control:before,.btn-group-raised .btn.btn-warning,.btn-raised.btn-warning.custom-file-control:before,.btn.bmd-btn-fab.btn-warning,.btn.btn-raised.btn-warning {
+    color: #fff;
+    background-color: #ff5722;
+    border-color: #ff5722
+}
+
+.bmd-btn-fab.btn-warning.active.custom-file-control:before,.bmd-btn-fab.btn-warning.custom-file-control:active:before,.bmd-btn-fab.btn-warning.custom-file-control:focus:before,.bmd-btn-fab.btn-warning.custom-file-control:hover:before,.bmd-btn-fab.btn-warning.focus.custom-file-control:before,.btn-group-raised .btn-warning.active.custom-file-control:before,.btn-group-raised .btn-warning.custom-file-control:active:before,.btn-group-raised .btn-warning.custom-file-control:focus:before,.btn-group-raised .btn-warning.custom-file-control:hover:before,.btn-group-raised .btn-warning.focus.custom-file-control:before,.btn-group-raised .btn.btn-warning.active,.btn-group-raised .btn.btn-warning.focus,.btn-group-raised .btn.btn-warning:active,.btn-group-raised .btn.btn-warning:focus,.btn-group-raised .btn.btn-warning:hover,.btn-raised.btn-warning.active.custom-file-control:before,.btn-raised.btn-warning.custom-file-control:active:before,.btn-raised.btn-warning.custom-file-control:focus:before,.btn-raised.btn-warning.custom-file-control:hover:before,.btn-raised.btn-warning.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-warning.active,.btn.bmd-btn-fab.btn-warning.focus,.btn.bmd-btn-fab.btn-warning:active,.btn.bmd-btn-fab.btn-warning:focus,.btn.bmd-btn-fab.btn-warning:hover,.btn.btn-raised.btn-warning.active,.btn.btn-raised.btn-warning.focus,.btn.btn-raised.btn-warning:active,.btn.btn-raised.btn-warning:focus,.btn.btn-raised.btn-warning:hover,.open>.bmd-btn-fab.btn-warning.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn-warning.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn.btn-warning.dropdown-toggle,.open>.btn-raised.btn-warning.dropdown-toggle.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-warning.dropdown-toggle,.open>.btn.btn-raised.btn-warning.dropdown-toggle {
+    color: #fff;
+    background-color: #ff470e;
+    border-color: #e43700
+}
+
+.bmd-btn-fab.btn-warning.active.custom-file-control:focus:before,.bmd-btn-fab.btn-warning.active.custom-file-control:hover:before,.bmd-btn-fab.btn-warning.active.focus.custom-file-control:before,.bmd-btn-fab.btn-warning.custom-file-control:active.focus:before,.bmd-btn-fab.btn-warning.custom-file-control:active:focus:before,.bmd-btn-fab.btn-warning.custom-file-control:active:hover:before,.btn-group-raised .btn-warning.active.custom-file-control:focus:before,.btn-group-raised .btn-warning.active.custom-file-control:hover:before,.btn-group-raised .btn-warning.active.focus.custom-file-control:before,.btn-group-raised .btn-warning.custom-file-control:active.focus:before,.btn-group-raised .btn-warning.custom-file-control:active:focus:before,.btn-group-raised .btn-warning.custom-file-control:active:hover:before,.btn-group-raised .btn.btn-warning.active.focus,.btn-group-raised .btn.btn-warning.active:focus,.btn-group-raised .btn.btn-warning.active:hover,.btn-group-raised .btn.btn-warning:active.focus,.btn-group-raised .btn.btn-warning:active:focus,.btn-group-raised .btn.btn-warning:active:hover,.btn-raised.btn-warning.active.custom-file-control:focus:before,.btn-raised.btn-warning.active.custom-file-control:hover:before,.btn-raised.btn-warning.active.focus.custom-file-control:before,.btn-raised.btn-warning.custom-file-control:active.focus:before,.btn-raised.btn-warning.custom-file-control:active:focus:before,.btn-raised.btn-warning.custom-file-control:active:hover:before,.btn.bmd-btn-fab.btn-warning.active.focus,.btn.bmd-btn-fab.btn-warning.active:focus,.btn.bmd-btn-fab.btn-warning.active:hover,.btn.bmd-btn-fab.btn-warning:active.focus,.btn.bmd-btn-fab.btn-warning:active:focus,.btn.bmd-btn-fab.btn-warning:active:hover,.btn.btn-raised.btn-warning.active.focus,.btn.btn-raised.btn-warning.active:focus,.btn.btn-raised.btn-warning.active:hover,.btn.btn-raised.btn-warning:active.focus,.btn.btn-raised.btn-warning:active:focus,.btn.btn-raised.btn-warning:active:hover,.open>.bmd-btn-fab.btn-warning.dropdown-toggle.custom-file-control:focus:before,.open>.bmd-btn-fab.btn-warning.dropdown-toggle.custom-file-control:hover:before,.open>.bmd-btn-fab.btn-warning.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn-warning.dropdown-toggle.custom-file-control:focus:before,.open>.btn-group-raised .btn-warning.dropdown-toggle.custom-file-control:hover:before,.open>.btn-group-raised .btn-warning.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn.btn-warning.dropdown-toggle.focus,.open>.btn-group-raised .btn.btn-warning.dropdown-toggle:focus,.open>.btn-group-raised .btn.btn-warning.dropdown-toggle:hover,.open>.btn-raised.btn-warning.dropdown-toggle.custom-file-control:focus:before,.open>.btn-raised.btn-warning.dropdown-toggle.custom-file-control:hover:before,.open>.btn-raised.btn-warning.dropdown-toggle.focus.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-warning.dropdown-toggle.focus,.open>.btn.bmd-btn-fab.btn-warning.dropdown-toggle:focus,.open>.btn.bmd-btn-fab.btn-warning.dropdown-toggle:hover,.open>.btn.btn-raised.btn-warning.dropdown-toggle.focus,.open>.btn.btn-raised.btn-warning.dropdown-toggle:focus,.open>.btn.btn-raised.btn-warning.dropdown-toggle:hover {
+    color: #fff;
+    background-color: #ff470e;
+    border-color: #a22700
+}
+
+.open>.bmd-btn-fab.btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn.btn-warning.dropdown-toggle.bmd-btn-icon,.open>.btn-raised.btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-warning.dropdown-toggle.bmd-btn-icon,.open>.btn.btn-raised.btn-warning.dropdown-toggle.bmd-btn-icon {
+    color: inherit;
+    background-color: #ff5722
+}
+
+.open>.bmd-btn-fab.btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn.btn-warning.dropdown-toggle.bmd-btn-icon:hover,.open>.btn-raised.btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn.bmd-btn-fab.btn-warning.dropdown-toggle.bmd-btn-icon:hover,.open>.btn.btn-raised.btn-warning.dropdown-toggle.bmd-btn-icon:hover {
+    background-color: #ff470e
+}
+
+.bmd-btn-fab.btn-warning.custom-file-control:disabled.focus:before,.bmd-btn-fab.btn-warning.custom-file-control:disabled:focus:before,.bmd-btn-fab.btn-warning.custom-file-control:disabled:hover:before,.bmd-btn-fab.btn-warning.disabled.custom-file-control:focus:before,.bmd-btn-fab.btn-warning.disabled.custom-file-control:hover:before,.bmd-btn-fab.btn-warning.disabled.focus.custom-file-control:before,.btn-group-raised .btn-warning.custom-file-control:disabled.focus:before,.btn-group-raised .btn-warning.custom-file-control:disabled:focus:before,.btn-group-raised .btn-warning.custom-file-control:disabled:hover:before,.btn-group-raised .btn-warning.disabled.custom-file-control:focus:before,.btn-group-raised .btn-warning.disabled.custom-file-control:hover:before,.btn-group-raised .btn-warning.disabled.focus.custom-file-control:before,.btn-group-raised .btn.btn-warning.disabled.focus,.btn-group-raised .btn.btn-warning.disabled:focus,.btn-group-raised .btn.btn-warning.disabled:hover,.btn-group-raised .btn.btn-warning:disabled.focus,.btn-group-raised .btn.btn-warning:disabled:focus,.btn-group-raised .btn.btn-warning:disabled:hover,.btn-raised.btn-warning.custom-file-control:disabled.focus:before,.btn-raised.btn-warning.custom-file-control:disabled:focus:before,.btn-raised.btn-warning.custom-file-control:disabled:hover:before,.btn-raised.btn-warning.disabled.custom-file-control:focus:before,.btn-raised.btn-warning.disabled.custom-file-control:hover:before,.btn-raised.btn-warning.disabled.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-warning.disabled.focus,.btn.bmd-btn-fab.btn-warning.disabled:focus,.btn.bmd-btn-fab.btn-warning.disabled:hover,.btn.bmd-btn-fab.btn-warning:disabled.focus,.btn.bmd-btn-fab.btn-warning:disabled:focus,.btn.bmd-btn-fab.btn-warning:disabled:hover,.btn.btn-raised.btn-warning.disabled.focus,.btn.btn-raised.btn-warning.disabled:focus,.btn.btn-raised.btn-warning.disabled:hover,.btn.btn-raised.btn-warning:disabled.focus,.btn.btn-raised.btn-warning:disabled:focus,.btn.btn-raised.btn-warning:disabled:hover {
+    background-color: #ff5722;
+    border-color: #ff5722
+}
+
+.bmd-btn-fab.btn-danger.custom-file-control:before,.btn-group-raised .btn-danger.custom-file-control:before,.btn-group-raised .btn.btn-danger,.btn-raised.btn-danger.custom-file-control:before,.btn.bmd-btn-fab.btn-danger,.btn.btn-raised.btn-danger {
+    color: #fff;
+    background-color: #f44336;
+    border-color: #f44336
+}
+
+.bmd-btn-fab.btn-danger.active.custom-file-control:before,.bmd-btn-fab.btn-danger.custom-file-control:active:before,.bmd-btn-fab.btn-danger.custom-file-control:focus:before,.bmd-btn-fab.btn-danger.custom-file-control:hover:before,.bmd-btn-fab.btn-danger.focus.custom-file-control:before,.btn-group-raised .btn-danger.active.custom-file-control:before,.btn-group-raised .btn-danger.custom-file-control:active:before,.btn-group-raised .btn-danger.custom-file-control:focus:before,.btn-group-raised .btn-danger.custom-file-control:hover:before,.btn-group-raised .btn-danger.focus.custom-file-control:before,.btn-group-raised .btn.btn-danger.active,.btn-group-raised .btn.btn-danger.focus,.btn-group-raised .btn.btn-danger:active,.btn-group-raised .btn.btn-danger:focus,.btn-group-raised .btn.btn-danger:hover,.btn-raised.btn-danger.active.custom-file-control:before,.btn-raised.btn-danger.custom-file-control:active:before,.btn-raised.btn-danger.custom-file-control:focus:before,.btn-raised.btn-danger.custom-file-control:hover:before,.btn-raised.btn-danger.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-danger.active,.btn.bmd-btn-fab.btn-danger.focus,.btn.bmd-btn-fab.btn-danger:active,.btn.bmd-btn-fab.btn-danger:focus,.btn.bmd-btn-fab.btn-danger:hover,.btn.btn-raised.btn-danger.active,.btn.btn-raised.btn-danger.focus,.btn.btn-raised.btn-danger:active,.btn.btn-raised.btn-danger:focus,.btn.btn-raised.btn-danger:hover,.open>.bmd-btn-fab.btn-danger.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn-danger.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn.btn-danger.dropdown-toggle,.open>.btn-raised.btn-danger.dropdown-toggle.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-danger.dropdown-toggle,.open>.btn.btn-raised.btn-danger.dropdown-toggle {
+    color: #fff;
+    background-color: #f55549;
+    border-color: #e11b0c
+}
+
+.bmd-btn-fab.btn-danger.active.custom-file-control:focus:before,.bmd-btn-fab.btn-danger.active.custom-file-control:hover:before,.bmd-btn-fab.btn-danger.active.focus.custom-file-control:before,.bmd-btn-fab.btn-danger.custom-file-control:active.focus:before,.bmd-btn-fab.btn-danger.custom-file-control:active:focus:before,.bmd-btn-fab.btn-danger.custom-file-control:active:hover:before,.btn-group-raised .btn-danger.active.custom-file-control:focus:before,.btn-group-raised .btn-danger.active.custom-file-control:hover:before,.btn-group-raised .btn-danger.active.focus.custom-file-control:before,.btn-group-raised .btn-danger.custom-file-control:active.focus:before,.btn-group-raised .btn-danger.custom-file-control:active:focus:before,.btn-group-raised .btn-danger.custom-file-control:active:hover:before,.btn-group-raised .btn.btn-danger.active.focus,.btn-group-raised .btn.btn-danger.active:focus,.btn-group-raised .btn.btn-danger.active:hover,.btn-group-raised .btn.btn-danger:active.focus,.btn-group-raised .btn.btn-danger:active:focus,.btn-group-raised .btn.btn-danger:active:hover,.btn-raised.btn-danger.active.custom-file-control:focus:before,.btn-raised.btn-danger.active.custom-file-control:hover:before,.btn-raised.btn-danger.active.focus.custom-file-control:before,.btn-raised.btn-danger.custom-file-control:active.focus:before,.btn-raised.btn-danger.custom-file-control:active:focus:before,.btn-raised.btn-danger.custom-file-control:active:hover:before,.btn.bmd-btn-fab.btn-danger.active.focus,.btn.bmd-btn-fab.btn-danger.active:focus,.btn.bmd-btn-fab.btn-danger.active:hover,.btn.bmd-btn-fab.btn-danger:active.focus,.btn.bmd-btn-fab.btn-danger:active:focus,.btn.bmd-btn-fab.btn-danger:active:hover,.btn.btn-raised.btn-danger.active.focus,.btn.btn-raised.btn-danger.active:focus,.btn.btn-raised.btn-danger.active:hover,.btn.btn-raised.btn-danger:active.focus,.btn.btn-raised.btn-danger:active:focus,.btn.btn-raised.btn-danger:active:hover,.open>.bmd-btn-fab.btn-danger.dropdown-toggle.custom-file-control:focus:before,.open>.bmd-btn-fab.btn-danger.dropdown-toggle.custom-file-control:hover:before,.open>.bmd-btn-fab.btn-danger.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn-danger.dropdown-toggle.custom-file-control:focus:before,.open>.btn-group-raised .btn-danger.dropdown-toggle.custom-file-control:hover:before,.open>.btn-group-raised .btn-danger.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn.btn-danger.dropdown-toggle.focus,.open>.btn-group-raised .btn.btn-danger.dropdown-toggle:focus,.open>.btn-group-raised .btn.btn-danger.dropdown-toggle:hover,.open>.btn-raised.btn-danger.dropdown-toggle.custom-file-control:focus:before,.open>.btn-raised.btn-danger.dropdown-toggle.custom-file-control:hover:before,.open>.btn-raised.btn-danger.dropdown-toggle.focus.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-danger.dropdown-toggle.focus,.open>.btn.bmd-btn-fab.btn-danger.dropdown-toggle:focus,.open>.btn.bmd-btn-fab.btn-danger.dropdown-toggle:hover,.open>.btn.btn-raised.btn-danger.dropdown-toggle.focus,.open>.btn.btn-raised.btn-danger.dropdown-toggle:focus,.open>.btn.btn-raised.btn-danger.dropdown-toggle:hover {
+    color: #fff;
+    background-color: #f55549;
+    border-color: #a21309
+}
+
+.open>.bmd-btn-fab.btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn.btn-danger.dropdown-toggle.bmd-btn-icon,.open>.btn-raised.btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-danger.dropdown-toggle.bmd-btn-icon,.open>.btn.btn-raised.btn-danger.dropdown-toggle.bmd-btn-icon {
+    color: inherit;
+    background-color: #f44336
+}
+
+.open>.bmd-btn-fab.btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn.btn-danger.dropdown-toggle.bmd-btn-icon:hover,.open>.btn-raised.btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn.bmd-btn-fab.btn-danger.dropdown-toggle.bmd-btn-icon:hover,.open>.btn.btn-raised.btn-danger.dropdown-toggle.bmd-btn-icon:hover {
+    background-color: #f55549
+}
+
+.bmd-btn-fab.btn-danger.custom-file-control:disabled.focus:before,.bmd-btn-fab.btn-danger.custom-file-control:disabled:focus:before,.bmd-btn-fab.btn-danger.custom-file-control:disabled:hover:before,.bmd-btn-fab.btn-danger.disabled.custom-file-control:focus:before,.bmd-btn-fab.btn-danger.disabled.custom-file-control:hover:before,.bmd-btn-fab.btn-danger.disabled.focus.custom-file-control:before,.btn-group-raised .btn-danger.custom-file-control:disabled.focus:before,.btn-group-raised .btn-danger.custom-file-control:disabled:focus:before,.btn-group-raised .btn-danger.custom-file-control:disabled:hover:before,.btn-group-raised .btn-danger.disabled.custom-file-control:focus:before,.btn-group-raised .btn-danger.disabled.custom-file-control:hover:before,.btn-group-raised .btn-danger.disabled.focus.custom-file-control:before,.btn-group-raised .btn.btn-danger.disabled.focus,.btn-group-raised .btn.btn-danger.disabled:focus,.btn-group-raised .btn.btn-danger.disabled:hover,.btn-group-raised .btn.btn-danger:disabled.focus,.btn-group-raised .btn.btn-danger:disabled:focus,.btn-group-raised .btn.btn-danger:disabled:hover,.btn-raised.btn-danger.custom-file-control:disabled.focus:before,.btn-raised.btn-danger.custom-file-control:disabled:focus:before,.btn-raised.btn-danger.custom-file-control:disabled:hover:before,.btn-raised.btn-danger.disabled.custom-file-control:focus:before,.btn-raised.btn-danger.disabled.custom-file-control:hover:before,.btn-raised.btn-danger.disabled.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-danger.disabled.focus,.btn.bmd-btn-fab.btn-danger.disabled:focus,.btn.bmd-btn-fab.btn-danger.disabled:hover,.btn.bmd-btn-fab.btn-danger:disabled.focus,.btn.bmd-btn-fab.btn-danger:disabled:focus,.btn.bmd-btn-fab.btn-danger:disabled:hover,.btn.btn-raised.btn-danger.disabled.focus,.btn.btn-raised.btn-danger.disabled:focus,.btn.btn-raised.btn-danger.disabled:hover,.btn.btn-raised.btn-danger:disabled.focus,.btn.btn-raised.btn-danger:disabled:focus,.btn.btn-raised.btn-danger:disabled:hover {
+    background-color: #f44336;
+    border-color: #f44336
+}
+
+.bmd-btn-fab.btn-light.custom-file-control:before,.btn-group-raised .btn-light.custom-file-control:before,.btn-group-raised .btn.btn-light,.btn-raised.btn-light.custom-file-control:before,.btn.bmd-btn-fab.btn-light,.btn.btn-raised.btn-light {
+    color: #fff;
+    background-color: #f5f5f5;
+    border-color: #f5f5f5
+}
+
+.bmd-btn-fab.btn-light.active.custom-file-control:before,.bmd-btn-fab.btn-light.custom-file-control:active:before,.bmd-btn-fab.btn-light.custom-file-control:focus:before,.bmd-btn-fab.btn-light.custom-file-control:hover:before,.bmd-btn-fab.btn-light.focus.custom-file-control:before,.btn-group-raised .btn-light.active.custom-file-control:before,.btn-group-raised .btn-light.custom-file-control:active:before,.btn-group-raised .btn-light.custom-file-control:focus:before,.btn-group-raised .btn-light.custom-file-control:hover:before,.btn-group-raised .btn-light.focus.custom-file-control:before,.btn-group-raised .btn.btn-light.active,.btn-group-raised .btn.btn-light.focus,.btn-group-raised .btn.btn-light:active,.btn-group-raised .btn.btn-light:focus,.btn-group-raised .btn.btn-light:hover,.btn-raised.btn-light.active.custom-file-control:before,.btn-raised.btn-light.custom-file-control:active:before,.btn-raised.btn-light.custom-file-control:focus:before,.btn-raised.btn-light.custom-file-control:hover:before,.btn-raised.btn-light.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-light.active,.btn.bmd-btn-fab.btn-light.focus,.btn.bmd-btn-fab.btn-light:active,.btn.bmd-btn-fab.btn-light:focus,.btn.bmd-btn-fab.btn-light:hover,.btn.btn-raised.btn-light.active,.btn.btn-raised.btn-light.focus,.btn.btn-raised.btn-light:active,.btn.btn-raised.btn-light:focus,.btn.btn-raised.btn-light:hover,.open>.bmd-btn-fab.btn-light.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn-light.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn.btn-light.dropdown-toggle,.open>.btn-raised.btn-light.dropdown-toggle.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-light.dropdown-toggle,.open>.btn.btn-raised.btn-light.dropdown-toggle {
+    color: #fff;
+    background-color: #ebebeb;
+    border-color: #d6d6d6
+}
+
+.bmd-btn-fab.btn-light.active.custom-file-control:focus:before,.bmd-btn-fab.btn-light.active.custom-file-control:hover:before,.bmd-btn-fab.btn-light.active.focus.custom-file-control:before,.bmd-btn-fab.btn-light.custom-file-control:active.focus:before,.bmd-btn-fab.btn-light.custom-file-control:active:focus:before,.bmd-btn-fab.btn-light.custom-file-control:active:hover:before,.btn-group-raised .btn-light.active.custom-file-control:focus:before,.btn-group-raised .btn-light.active.custom-file-control:hover:before,.btn-group-raised .btn-light.active.focus.custom-file-control:before,.btn-group-raised .btn-light.custom-file-control:active.focus:before,.btn-group-raised .btn-light.custom-file-control:active:focus:before,.btn-group-raised .btn-light.custom-file-control:active:hover:before,.btn-group-raised .btn.btn-light.active.focus,.btn-group-raised .btn.btn-light.active:focus,.btn-group-raised .btn.btn-light.active:hover,.btn-group-raised .btn.btn-light:active.focus,.btn-group-raised .btn.btn-light:active:focus,.btn-group-raised .btn.btn-light:active:hover,.btn-raised.btn-light.active.custom-file-control:focus:before,.btn-raised.btn-light.active.custom-file-control:hover:before,.btn-raised.btn-light.active.focus.custom-file-control:before,.btn-raised.btn-light.custom-file-control:active.focus:before,.btn-raised.btn-light.custom-file-control:active:focus:before,.btn-raised.btn-light.custom-file-control:active:hover:before,.btn.bmd-btn-fab.btn-light.active.focus,.btn.bmd-btn-fab.btn-light.active:focus,.btn.bmd-btn-fab.btn-light.active:hover,.btn.bmd-btn-fab.btn-light:active.focus,.btn.bmd-btn-fab.btn-light:active:focus,.btn.bmd-btn-fab.btn-light:active:hover,.btn.btn-raised.btn-light.active.focus,.btn.btn-raised.btn-light.active:focus,.btn.btn-raised.btn-light.active:hover,.btn.btn-raised.btn-light:active.focus,.btn.btn-raised.btn-light:active:focus,.btn.btn-raised.btn-light:active:hover,.open>.bmd-btn-fab.btn-light.dropdown-toggle.custom-file-control:focus:before,.open>.bmd-btn-fab.btn-light.dropdown-toggle.custom-file-control:hover:before,.open>.bmd-btn-fab.btn-light.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn-light.dropdown-toggle.custom-file-control:focus:before,.open>.btn-group-raised .btn-light.dropdown-toggle.custom-file-control:hover:before,.open>.btn-group-raised .btn-light.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn.btn-light.dropdown-toggle.focus,.open>.btn-group-raised .btn.btn-light.dropdown-toggle:focus,.open>.btn-group-raised .btn.btn-light.dropdown-toggle:hover,.open>.btn-raised.btn-light.dropdown-toggle.custom-file-control:focus:before,.open>.btn-raised.btn-light.dropdown-toggle.custom-file-control:hover:before,.open>.btn-raised.btn-light.dropdown-toggle.focus.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-light.dropdown-toggle.focus,.open>.btn.bmd-btn-fab.btn-light.dropdown-toggle:focus,.open>.btn.bmd-btn-fab.btn-light.dropdown-toggle:hover,.open>.btn.btn-raised.btn-light.dropdown-toggle.focus,.open>.btn.btn-raised.btn-light.dropdown-toggle:focus,.open>.btn.btn-raised.btn-light.dropdown-toggle:hover {
+    color: #fff;
+    background-color: #ebebeb;
+    border-color: #b5b5b5
+}
+
+.open>.bmd-btn-fab.btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn.btn-light.dropdown-toggle.bmd-btn-icon,.open>.btn-raised.btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-light.dropdown-toggle.bmd-btn-icon,.open>.btn.btn-raised.btn-light.dropdown-toggle.bmd-btn-icon {
+    color: inherit;
+    background-color: #f5f5f5
+}
+
+.open>.bmd-btn-fab.btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn.btn-light.dropdown-toggle.bmd-btn-icon:hover,.open>.btn-raised.btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn.bmd-btn-fab.btn-light.dropdown-toggle.bmd-btn-icon:hover,.open>.btn.btn-raised.btn-light.dropdown-toggle.bmd-btn-icon:hover {
+    background-color: #ebebeb
+}
+
+.bmd-btn-fab.btn-light.custom-file-control:disabled.focus:before,.bmd-btn-fab.btn-light.custom-file-control:disabled:focus:before,.bmd-btn-fab.btn-light.custom-file-control:disabled:hover:before,.bmd-btn-fab.btn-light.disabled.custom-file-control:focus:before,.bmd-btn-fab.btn-light.disabled.custom-file-control:hover:before,.bmd-btn-fab.btn-light.disabled.focus.custom-file-control:before,.btn-group-raised .btn-light.custom-file-control:disabled.focus:before,.btn-group-raised .btn-light.custom-file-control:disabled:focus:before,.btn-group-raised .btn-light.custom-file-control:disabled:hover:before,.btn-group-raised .btn-light.disabled.custom-file-control:focus:before,.btn-group-raised .btn-light.disabled.custom-file-control:hover:before,.btn-group-raised .btn-light.disabled.focus.custom-file-control:before,.btn-group-raised .btn.btn-light.disabled.focus,.btn-group-raised .btn.btn-light.disabled:focus,.btn-group-raised .btn.btn-light.disabled:hover,.btn-group-raised .btn.btn-light:disabled.focus,.btn-group-raised .btn.btn-light:disabled:focus,.btn-group-raised .btn.btn-light:disabled:hover,.btn-raised.btn-light.custom-file-control:disabled.focus:before,.btn-raised.btn-light.custom-file-control:disabled:focus:before,.btn-raised.btn-light.custom-file-control:disabled:hover:before,.btn-raised.btn-light.disabled.custom-file-control:focus:before,.btn-raised.btn-light.disabled.custom-file-control:hover:before,.btn-raised.btn-light.disabled.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-light.disabled.focus,.btn.bmd-btn-fab.btn-light.disabled:focus,.btn.bmd-btn-fab.btn-light.disabled:hover,.btn.bmd-btn-fab.btn-light:disabled.focus,.btn.bmd-btn-fab.btn-light:disabled:focus,.btn.bmd-btn-fab.btn-light:disabled:hover,.btn.btn-raised.btn-light.disabled.focus,.btn.btn-raised.btn-light.disabled:focus,.btn.btn-raised.btn-light.disabled:hover,.btn.btn-raised.btn-light:disabled.focus,.btn.btn-raised.btn-light:disabled:focus,.btn.btn-raised.btn-light:disabled:hover {
+    background-color: #f5f5f5;
+    border-color: #f5f5f5
+}
+
+.bmd-btn-fab.btn-dark.custom-file-control:before,.btn-group-raised .btn-dark.custom-file-control:before,.btn-group-raised .btn.btn-dark,.btn-raised.btn-dark.custom-file-control:before,.btn.bmd-btn-fab.btn-dark,.btn.btn-raised.btn-dark {
+    color: #fff;
+    background-color: #424242;
+    border-color: #424242
+}
+
+.bmd-btn-fab.btn-dark.active.custom-file-control:before,.bmd-btn-fab.btn-dark.custom-file-control:active:before,.bmd-btn-fab.btn-dark.custom-file-control:focus:before,.bmd-btn-fab.btn-dark.custom-file-control:hover:before,.bmd-btn-fab.btn-dark.focus.custom-file-control:before,.btn-group-raised .btn-dark.active.custom-file-control:before,.btn-group-raised .btn-dark.custom-file-control:active:before,.btn-group-raised .btn-dark.custom-file-control:focus:before,.btn-group-raised .btn-dark.custom-file-control:hover:before,.btn-group-raised .btn-dark.focus.custom-file-control:before,.btn-group-raised .btn.btn-dark.active,.btn-group-raised .btn.btn-dark.focus,.btn-group-raised .btn.btn-dark:active,.btn-group-raised .btn.btn-dark:focus,.btn-group-raised .btn.btn-dark:hover,.btn-raised.btn-dark.active.custom-file-control:before,.btn-raised.btn-dark.custom-file-control:active:before,.btn-raised.btn-dark.custom-file-control:focus:before,.btn-raised.btn-dark.custom-file-control:hover:before,.btn-raised.btn-dark.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-dark.active,.btn.bmd-btn-fab.btn-dark.focus,.btn.bmd-btn-fab.btn-dark:active,.btn.bmd-btn-fab.btn-dark:focus,.btn.bmd-btn-fab.btn-dark:hover,.btn.btn-raised.btn-dark.active,.btn.btn-raised.btn-dark.focus,.btn.btn-raised.btn-dark:active,.btn.btn-raised.btn-dark:focus,.btn.btn-raised.btn-dark:hover,.open>.bmd-btn-fab.btn-dark.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn-dark.dropdown-toggle.custom-file-control:before,.open>.btn-group-raised .btn.btn-dark.dropdown-toggle,.open>.btn-raised.btn-dark.dropdown-toggle.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-dark.dropdown-toggle,.open>.btn.btn-raised.btn-dark.dropdown-toggle {
+    color: #fff;
+    background-color: #383838;
+    border-color: #232323
+}
+
+.bmd-btn-fab.btn-dark.active.custom-file-control:focus:before,.bmd-btn-fab.btn-dark.active.custom-file-control:hover:before,.bmd-btn-fab.btn-dark.active.focus.custom-file-control:before,.bmd-btn-fab.btn-dark.custom-file-control:active.focus:before,.bmd-btn-fab.btn-dark.custom-file-control:active:focus:before,.bmd-btn-fab.btn-dark.custom-file-control:active:hover:before,.btn-group-raised .btn-dark.active.custom-file-control:focus:before,.btn-group-raised .btn-dark.active.custom-file-control:hover:before,.btn-group-raised .btn-dark.active.focus.custom-file-control:before,.btn-group-raised .btn-dark.custom-file-control:active.focus:before,.btn-group-raised .btn-dark.custom-file-control:active:focus:before,.btn-group-raised .btn-dark.custom-file-control:active:hover:before,.btn-group-raised .btn.btn-dark.active.focus,.btn-group-raised .btn.btn-dark.active:focus,.btn-group-raised .btn.btn-dark.active:hover,.btn-group-raised .btn.btn-dark:active.focus,.btn-group-raised .btn.btn-dark:active:focus,.btn-group-raised .btn.btn-dark:active:hover,.btn-raised.btn-dark.active.custom-file-control:focus:before,.btn-raised.btn-dark.active.custom-file-control:hover:before,.btn-raised.btn-dark.active.focus.custom-file-control:before,.btn-raised.btn-dark.custom-file-control:active.focus:before,.btn-raised.btn-dark.custom-file-control:active:focus:before,.btn-raised.btn-dark.custom-file-control:active:hover:before,.btn.bmd-btn-fab.btn-dark.active.focus,.btn.bmd-btn-fab.btn-dark.active:focus,.btn.bmd-btn-fab.btn-dark.active:hover,.btn.bmd-btn-fab.btn-dark:active.focus,.btn.bmd-btn-fab.btn-dark:active:focus,.btn.bmd-btn-fab.btn-dark:active:hover,.btn.btn-raised.btn-dark.active.focus,.btn.btn-raised.btn-dark.active:focus,.btn.btn-raised.btn-dark.active:hover,.btn.btn-raised.btn-dark:active.focus,.btn.btn-raised.btn-dark:active:focus,.btn.btn-raised.btn-dark:active:hover,.open>.bmd-btn-fab.btn-dark.dropdown-toggle.custom-file-control:focus:before,.open>.bmd-btn-fab.btn-dark.dropdown-toggle.custom-file-control:hover:before,.open>.bmd-btn-fab.btn-dark.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn-dark.dropdown-toggle.custom-file-control:focus:before,.open>.btn-group-raised .btn-dark.dropdown-toggle.custom-file-control:hover:before,.open>.btn-group-raised .btn-dark.dropdown-toggle.focus.custom-file-control:before,.open>.btn-group-raised .btn.btn-dark.dropdown-toggle.focus,.open>.btn-group-raised .btn.btn-dark.dropdown-toggle:focus,.open>.btn-group-raised .btn.btn-dark.dropdown-toggle:hover,.open>.btn-raised.btn-dark.dropdown-toggle.custom-file-control:focus:before,.open>.btn-raised.btn-dark.dropdown-toggle.custom-file-control:hover:before,.open>.btn-raised.btn-dark.dropdown-toggle.focus.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-dark.dropdown-toggle.focus,.open>.btn.bmd-btn-fab.btn-dark.dropdown-toggle:focus,.open>.btn.bmd-btn-fab.btn-dark.dropdown-toggle:hover,.open>.btn.btn-raised.btn-dark.dropdown-toggle.focus,.open>.btn.btn-raised.btn-dark.dropdown-toggle:focus,.open>.btn.btn-raised.btn-dark.dropdown-toggle:hover {
+    color: #fff;
+    background-color: #383838;
+    border-color: #020202
+}
+
+.open>.bmd-btn-fab.btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn-group-raised .btn.btn-dark.dropdown-toggle.bmd-btn-icon,.open>.btn-raised.btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control:before,.open>.btn.bmd-btn-fab.btn-dark.dropdown-toggle.bmd-btn-icon,.open>.btn.btn-raised.btn-dark.dropdown-toggle.bmd-btn-icon {
+    color: inherit;
+    background-color: #424242
+}
+
+.open>.bmd-btn-fab.btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn-group-raised .btn.btn-dark.dropdown-toggle.bmd-btn-icon:hover,.open>.btn-raised.btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control:hover:before,.open>.btn.bmd-btn-fab.btn-dark.dropdown-toggle.bmd-btn-icon:hover,.open>.btn.btn-raised.btn-dark.dropdown-toggle.bmd-btn-icon:hover {
+    background-color: #383838
+}
+
+.bmd-btn-fab.btn-dark.custom-file-control:disabled.focus:before,.bmd-btn-fab.btn-dark.custom-file-control:disabled:focus:before,.bmd-btn-fab.btn-dark.custom-file-control:disabled:hover:before,.bmd-btn-fab.btn-dark.disabled.custom-file-control:focus:before,.bmd-btn-fab.btn-dark.disabled.custom-file-control:hover:before,.bmd-btn-fab.btn-dark.disabled.focus.custom-file-control:before,.btn-group-raised .btn-dark.custom-file-control:disabled.focus:before,.btn-group-raised .btn-dark.custom-file-control:disabled:focus:before,.btn-group-raised .btn-dark.custom-file-control:disabled:hover:before,.btn-group-raised .btn-dark.disabled.custom-file-control:focus:before,.btn-group-raised .btn-dark.disabled.custom-file-control:hover:before,.btn-group-raised .btn-dark.disabled.focus.custom-file-control:before,.btn-group-raised .btn.btn-dark.disabled.focus,.btn-group-raised .btn.btn-dark.disabled:focus,.btn-group-raised .btn.btn-dark.disabled:hover,.btn-group-raised .btn.btn-dark:disabled.focus,.btn-group-raised .btn.btn-dark:disabled:focus,.btn-group-raised .btn.btn-dark:disabled:hover,.btn-raised.btn-dark.custom-file-control:disabled.focus:before,.btn-raised.btn-dark.custom-file-control:disabled:focus:before,.btn-raised.btn-dark.custom-file-control:disabled:hover:before,.btn-raised.btn-dark.disabled.custom-file-control:focus:before,.btn-raised.btn-dark.disabled.custom-file-control:hover:before,.btn-raised.btn-dark.disabled.focus.custom-file-control:before,.btn.bmd-btn-fab.btn-dark.disabled.focus,.btn.bmd-btn-fab.btn-dark.disabled:focus,.btn.bmd-btn-fab.btn-dark.disabled:hover,.btn.bmd-btn-fab.btn-dark:disabled.focus,.btn.bmd-btn-fab.btn-dark:disabled:focus,.btn.bmd-btn-fab.btn-dark:disabled:hover,.btn.btn-raised.btn-dark.disabled.focus,.btn.btn-raised.btn-dark.disabled:focus,.btn.btn-raised.btn-dark.disabled:hover,.btn.btn-raised.btn-dark:disabled.focus,.btn.btn-raised.btn-dark:disabled:focus,.btn.btn-raised.btn-dark:disabled:hover {
+    background-color: #424242;
+    border-color: #424242
+}
+
+.bmd-btn-fab.custom-file-control:focus:before,.bmd-btn-fab.custom-file-control:hover:before,.btn-group-raised .btn:focus,.btn-group-raised .btn:hover,.btn-group-raised .custom-file-control:focus:before,.btn-group-raised .custom-file-control:hover:before,.btn-raised.custom-file-control:focus:before,.btn-raised.custom-file-control:hover:before,.btn.bmd-btn-fab:focus,.btn.bmd-btn-fab:hover,.btn.btn-raised:focus,.btn.btn-raised:hover {
+    z-index: 1;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2)
+}
+
+.bmd-btn-fab.active.custom-file-control:before,.bmd-btn-fab.custom-file-control:active:before,.btn-group-raised .active.custom-file-control:before,.btn-group-raised .btn.active,.btn-group-raised .btn:active,.btn-group-raised .custom-file-control:active:before,.btn-raised.active.custom-file-control:before,.btn-raised.custom-file-control:active:before,.btn.bmd-btn-fab.active,.btn.bmd-btn-fab:active,.btn.btn-raised.active,.btn.btn-raised:active {
+    z-index: 1;
+    box-shadow: 0 0 8px rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.36)
+}
+
+.bmd-btn-fab.custom-file-control:focus:before,.bmd-btn-fab.focus.custom-file-control:before,.btn-group-raised .btn.focus,.btn-group-raised .btn:focus,.btn-group-raised .custom-file-control:focus:before,.btn-group-raised .focus.custom-file-control:before,.btn-raised.custom-file-control:focus:before,.btn-raised.focus.custom-file-control:before,.btn.bmd-btn-fab.focus,.btn.bmd-btn-fab:focus,.btn.btn-raised.focus,.btn.btn-raised:focus {
+    outline: 0
+}
+.bmd-btn-fab.custom-file-control:before,.bmd-btn-icon.custom-file-control:before,.btn.bmd-btn-fab,.btn.bmd-btn-icon {
+    overflow: hidden;
+    font-size: 1.5rem;
+    line-height: 0
+}
+
+.bmd-btn-fab.custom-file-control:before,.bmd-btn-icon.custom-file-control:before,.btn-group-lg .bmd-btn-fab.custom-file-control:before,.btn-group-lg .bmd-btn-icon.custom-file-control:before,.btn-group-lg .btn.bmd-btn-fab,.btn-group-lg .btn.bmd-btn-icon,.btn-group-sm .bmd-btn-fab.custom-file-control:before,.btn-group-sm .bmd-btn-icon.custom-file-control:before,.btn-group-sm .btn.bmd-btn-fab,.btn-group-sm .btn.bmd-btn-icon,.btn.bmd-btn-fab,.btn.bmd-btn-icon {
+    padding: 0;
+    border-radius: 50%;
+    line-height: 0
+}
+
+.bmd-btn-fab.custom-file-control:before .material-icons,.bmd-btn-icon.custom-file-control:before .material-icons,.btn.bmd-btn-fab .material-icons,.btn.bmd-btn-icon .material-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    transform: translate(-.75rem,-.75rem)
+}
+
+.bmd-btn-fab.custom-file-control:before,.btn.bmd-btn-fab {
+    width: 3.5rem;
+    min-width: 3.5rem;
+    height: 3.5rem;
+    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.26)
+}
+
+.bmd-btn-fab.custom-file-control:before .ripple-container,.btn.bmd-btn-fab .ripple-container {
+    border-radius: 50%
+}
+
+.bmd-btn-fab.bmd-btn-fab-sm.custom-file-control:before,.btn-group-sm .bmd-btn-fab.custom-file-control:before,.btn-group-sm .btn.bmd-btn-fab,.btn.bmd-btn-fab.bmd-btn-fab-sm {
+    width: 2.5rem;
+    min-width: 2.5rem;
+    height: 2.5rem
+}
+
+.dropdown-toggle.bmd-btn-fab:after,.dropdown-toggle.bmd-btn-icon:after {
+    display: none
+}
+
+.dropdown-toggle.bmd-btn-fab~.dropdown-menu.dropdown-menu-top-left,.dropdown-toggle.bmd-btn-fab~.dropdown-menu.dropdown-menu-top-right,.dropdown-toggle.bmd-btn-icon~.dropdown-menu.dropdown-menu-top-left,.dropdown-toggle.bmd-btn-icon~.dropdown-menu.dropdown-menu-top-right {
+    bottom: 2rem
+}
+
+.dropdown-toggle.bmd-btn-fab-sm~.dropdown-menu.dropdown-menu-top-left,.dropdown-toggle.bmd-btn-fab-sm~.dropdown-menu.dropdown-menu-top-right {
+    bottom: 2.5rem
+}
+
+.dropdown-toggle.bmd-btn-icon~.dropdown-menu {
+    margin: 0
+}
+
+.show .dropdown-toggle.btn,.show .dropdown-toggle.btn-danger,.show .dropdown-toggle.btn-info,.show .dropdown-toggle.btn-secondary,.show .dropdown-toggle.btn-success,.show .dropdown-toggle.btn-warning,.show .dropdown-toggle.custom-file-control:before {
+    background-color: transparent
+}
+
+.btn.bmd-btn-fab.btn-primary, .bmd-btn-fab.btn-primary.custom-file-control::before, .btn.btn-raised.btn-primary, .btn-raised.btn-primary.custom-file-control::before,
+  .btn-group-raised .btn.btn-primary,
+  .btn-group-raised .btn-primary.custom-file-control::before {
+    color: #fff;
+    background-color: #009688;
+    border-color: #009688; }
+    .btn.bmd-btn-fab.btn-primary:hover, .bmd-btn-fab.btn-primary.custom-file-control:hover::before, .btn.btn-raised.btn-primary:hover, .btn-raised.btn-primary.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-primary:hover,
+    .btn-group-raised .btn-primary.custom-file-control:hover::before {
+      color: #fff;
+      background-color: #008276;
+      border-color: #005951; }
+    .btn.bmd-btn-fab.btn-primary:focus, .bmd-btn-fab.btn-primary.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-primary.focus, .bmd-btn-fab.btn-primary.focus.custom-file-control::before, .btn.btn-raised.btn-primary:focus, .btn-raised.btn-primary.custom-file-control:focus::before, .btn.btn-raised.btn-primary.focus, .btn-raised.btn-primary.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-primary:focus,
+    .btn-group-raised .btn-primary.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-primary.focus,
+    .btn-group-raised .btn-primary.focus.custom-file-control::before {
+      color: #fff;
+      background-color: #008276;
+      border-color: #005951; }
+    .btn.bmd-btn-fab.btn-primary:active, .bmd-btn-fab.btn-primary.custom-file-control:active::before, .btn.bmd-btn-fab.btn-primary.active, .bmd-btn-fab.btn-primary.active.custom-file-control::before,
+    .open > .btn.bmd-btn-fab.btn-primary.dropdown-toggle,
+    .open > .bmd-btn-fab.btn-primary.dropdown-toggle.custom-file-control::before, .btn.btn-raised.btn-primary:active, .btn-raised.btn-primary.custom-file-control:active::before, .btn.btn-raised.btn-primary.active, .btn-raised.btn-primary.active.custom-file-control::before,
+    .open > .btn.btn-raised.btn-primary.dropdown-toggle,
+    .open > .btn-raised.btn-primary.dropdown-toggle.custom-file-control::before,
+    .btn-group-raised .btn.btn-primary:active,
+    .btn-group-raised .btn-primary.custom-file-control:active::before,
+    .btn-group-raised .btn.btn-primary.active,
+    .btn-group-raised .btn-primary.active.custom-file-control::before,
+    .open > .btn-group-raised .btn.btn-primary.dropdown-toggle,
+    .open > .btn-group-raised .btn-primary.dropdown-toggle.custom-file-control::before {
+      color: #fff;
+      background-color: #008276;
+      border-color: #005951; }
+      .btn.bmd-btn-fab.btn-primary:active:hover, .bmd-btn-fab.btn-primary.custom-file-control:active:hover::before, .btn.bmd-btn-fab.btn-primary:active:focus, .bmd-btn-fab.btn-primary.custom-file-control:active:focus::before, .btn.bmd-btn-fab.btn-primary:active.focus, .bmd-btn-fab.btn-primary.custom-file-control:active.focus::before, .btn.bmd-btn-fab.btn-primary.active:hover, .bmd-btn-fab.btn-primary.active.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-primary.active:focus, .bmd-btn-fab.btn-primary.active.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-primary.active.focus, .bmd-btn-fab.btn-primary.active.focus.custom-file-control::before,
+      .open > .btn.bmd-btn-fab.btn-primary.dropdown-toggle:hover,
+      .open > .bmd-btn-fab.btn-primary.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.bmd-btn-fab.btn-primary.dropdown-toggle:focus,
+      .open > .bmd-btn-fab.btn-primary.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.bmd-btn-fab.btn-primary.dropdown-toggle.focus,
+      .open > .bmd-btn-fab.btn-primary.dropdown-toggle.focus.custom-file-control::before, .btn.btn-raised.btn-primary:active:hover, .btn-raised.btn-primary.custom-file-control:active:hover::before, .btn.btn-raised.btn-primary:active:focus, .btn-raised.btn-primary.custom-file-control:active:focus::before, .btn.btn-raised.btn-primary:active.focus, .btn-raised.btn-primary.custom-file-control:active.focus::before, .btn.btn-raised.btn-primary.active:hover, .btn-raised.btn-primary.active.custom-file-control:hover::before, .btn.btn-raised.btn-primary.active:focus, .btn-raised.btn-primary.active.custom-file-control:focus::before, .btn.btn-raised.btn-primary.active.focus, .btn-raised.btn-primary.active.focus.custom-file-control::before,
+      .open > .btn.btn-raised.btn-primary.dropdown-toggle:hover,
+      .open > .btn-raised.btn-primary.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.btn-raised.btn-primary.dropdown-toggle:focus,
+      .open > .btn-raised.btn-primary.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.btn-raised.btn-primary.dropdown-toggle.focus,
+      .open > .btn-raised.btn-primary.dropdown-toggle.focus.custom-file-control::before,
+      .btn-group-raised .btn.btn-primary:active:hover,
+      .btn-group-raised .btn-primary.custom-file-control:active:hover::before,
+      .btn-group-raised .btn.btn-primary:active:focus,
+      .btn-group-raised .btn-primary.custom-file-control:active:focus::before,
+      .btn-group-raised .btn.btn-primary:active.focus,
+      .btn-group-raised .btn-primary.custom-file-control:active.focus::before,
+      .btn-group-raised .btn.btn-primary.active:hover,
+      .btn-group-raised .btn-primary.active.custom-file-control:hover::before,
+      .btn-group-raised .btn.btn-primary.active:focus,
+      .btn-group-raised .btn-primary.active.custom-file-control:focus::before,
+      .btn-group-raised .btn.btn-primary.active.focus,
+      .btn-group-raised .btn-primary.active.focus.custom-file-control::before,
+      .open > .btn-group-raised .btn.btn-primary.dropdown-toggle:hover,
+      .open > .btn-group-raised .btn-primary.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn-group-raised .btn.btn-primary.dropdown-toggle:focus,
+      .open > .btn-group-raised .btn-primary.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn-group-raised .btn.btn-primary.dropdown-toggle.focus,
+      .open > .btn-group-raised .btn-primary.dropdown-toggle.focus.custom-file-control::before {
+        color: #fff;
+        background-color: #008276;
+        border-color: #001714; }
+    .open > .btn.bmd-btn-fab.btn-primary.dropdown-toggle.bmd-btn-icon, .open > .bmd-btn-fab.btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn.btn-raised.btn-primary.dropdown-toggle.bmd-btn-icon, .open > .btn-raised.btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn-group-raised .btn.btn-primary.dropdown-toggle.bmd-btn-icon, .open > .btn-group-raised .btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control::before {
+      color: inherit;
+      background-color: #009688; }
+      .open > .btn.bmd-btn-fab.btn-primary.dropdown-toggle.bmd-btn-icon:hover, .open > .bmd-btn-fab.btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn.btn-raised.btn-primary.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-raised.btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn-group-raised .btn.btn-primary.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-group-raised .btn-primary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before {
+        background-color: #008276; }
+    .btn.bmd-btn-fab.btn-primary.disabled:focus, .bmd-btn-fab.btn-primary.disabled.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-primary.disabled.focus, .bmd-btn-fab.btn-primary.disabled.focus.custom-file-control::before, .btn.bmd-btn-fab.btn-primary:disabled:focus, .bmd-btn-fab.btn-primary.custom-file-control:disabled:focus::before, .btn.bmd-btn-fab.btn-primary:disabled.focus, .bmd-btn-fab.btn-primary.custom-file-control:disabled.focus::before, .btn.btn-raised.btn-primary.disabled:focus, .btn-raised.btn-primary.disabled.custom-file-control:focus::before, .btn.btn-raised.btn-primary.disabled.focus, .btn-raised.btn-primary.disabled.focus.custom-file-control::before, .btn.btn-raised.btn-primary:disabled:focus, .btn-raised.btn-primary.custom-file-control:disabled:focus::before, .btn.btn-raised.btn-primary:disabled.focus, .btn-raised.btn-primary.custom-file-control:disabled.focus::before,
+    .btn-group-raised .btn.btn-primary.disabled:focus,
+    .btn-group-raised .btn-primary.disabled.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-primary.disabled.focus,
+    .btn-group-raised .btn-primary.disabled.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-primary:disabled:focus,
+    .btn-group-raised .btn-primary.custom-file-control:disabled:focus::before,
+    .btn-group-raised .btn.btn-primary:disabled.focus,
+    .btn-group-raised .btn-primary.custom-file-control:disabled.focus::before {
+      background-color: #009688;
+      border-color: #009688; }
+    .btn.bmd-btn-fab.btn-primary.disabled:hover, .bmd-btn-fab.btn-primary.disabled.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-primary:disabled:hover, .bmd-btn-fab.btn-primary.custom-file-control:disabled:hover::before, .btn.btn-raised.btn-primary.disabled:hover, .btn-raised.btn-primary.disabled.custom-file-control:hover::before, .btn.btn-raised.btn-primary:disabled:hover, .btn-raised.btn-primary.custom-file-control:disabled:hover::before,
+    .btn-group-raised .btn.btn-primary.disabled:hover,
+    .btn-group-raised .btn-primary.disabled.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-primary:disabled:hover,
+    .btn-group-raised .btn-primary.custom-file-control:disabled:hover::before {
+      background-color: #009688;
+      border-color: #009688; }
+  .btn.bmd-btn-fab.btn-secondary, .bmd-btn-fab.btn-secondary.custom-file-control::before, .btn.btn-raised.btn-secondary, .btn-raised.btn-secondary.custom-file-control::before,
+  .btn-group-raised .btn.btn-secondary,
+  .btn-group-raised .btn-secondary.custom-file-control::before {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d; }
+    .btn.bmd-btn-fab.btn-secondary:hover, .bmd-btn-fab.btn-secondary.custom-file-control:hover::before, .btn.btn-raised.btn-secondary:hover, .btn-raised.btn-secondary.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-secondary:hover,
+    .btn-group-raised .btn-secondary.custom-file-control:hover::before {
+      color: #fff;
+      background-color: #636b72;
+      border-color: #50565c; }
+    .btn.bmd-btn-fab.btn-secondary:focus, .bmd-btn-fab.btn-secondary.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-secondary.focus, .bmd-btn-fab.btn-secondary.focus.custom-file-control::before, .btn.btn-raised.btn-secondary:focus, .btn-raised.btn-secondary.custom-file-control:focus::before, .btn.btn-raised.btn-secondary.focus, .btn-raised.btn-secondary.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-secondary:focus,
+    .btn-group-raised .btn-secondary.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-secondary.focus,
+    .btn-group-raised .btn-secondary.focus.custom-file-control::before {
+      color: #fff;
+      background-color: #636b72;
+      border-color: #50565c; }
+    .btn.bmd-btn-fab.btn-secondary:active, .bmd-btn-fab.btn-secondary.custom-file-control:active::before, .btn.bmd-btn-fab.btn-secondary.active, .bmd-btn-fab.btn-secondary.active.custom-file-control::before,
+    .open > .btn.bmd-btn-fab.btn-secondary.dropdown-toggle,
+    .open > .bmd-btn-fab.btn-secondary.dropdown-toggle.custom-file-control::before, .btn.btn-raised.btn-secondary:active, .btn-raised.btn-secondary.custom-file-control:active::before, .btn.btn-raised.btn-secondary.active, .btn-raised.btn-secondary.active.custom-file-control::before,
+    .open > .btn.btn-raised.btn-secondary.dropdown-toggle,
+    .open > .btn-raised.btn-secondary.dropdown-toggle.custom-file-control::before,
+    .btn-group-raised .btn.btn-secondary:active,
+    .btn-group-raised .btn-secondary.custom-file-control:active::before,
+    .btn-group-raised .btn.btn-secondary.active,
+    .btn-group-raised .btn-secondary.active.custom-file-control::before,
+    .open > .btn-group-raised .btn.btn-secondary.dropdown-toggle,
+    .open > .btn-group-raised .btn-secondary.dropdown-toggle.custom-file-control::before {
+      color: #fff;
+      background-color: #636b72;
+      border-color: #50565c; }
+      .btn.bmd-btn-fab.btn-secondary:active:hover, .bmd-btn-fab.btn-secondary.custom-file-control:active:hover::before, .btn.bmd-btn-fab.btn-secondary:active:focus, .bmd-btn-fab.btn-secondary.custom-file-control:active:focus::before, .btn.bmd-btn-fab.btn-secondary:active.focus, .bmd-btn-fab.btn-secondary.custom-file-control:active.focus::before, .btn.bmd-btn-fab.btn-secondary.active:hover, .bmd-btn-fab.btn-secondary.active.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-secondary.active:focus, .bmd-btn-fab.btn-secondary.active.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-secondary.active.focus, .bmd-btn-fab.btn-secondary.active.focus.custom-file-control::before,
+      .open > .btn.bmd-btn-fab.btn-secondary.dropdown-toggle:hover,
+      .open > .bmd-btn-fab.btn-secondary.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.bmd-btn-fab.btn-secondary.dropdown-toggle:focus,
+      .open > .bmd-btn-fab.btn-secondary.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.bmd-btn-fab.btn-secondary.dropdown-toggle.focus,
+      .open > .bmd-btn-fab.btn-secondary.dropdown-toggle.focus.custom-file-control::before, .btn.btn-raised.btn-secondary:active:hover, .btn-raised.btn-secondary.custom-file-control:active:hover::before, .btn.btn-raised.btn-secondary:active:focus, .btn-raised.btn-secondary.custom-file-control:active:focus::before, .btn.btn-raised.btn-secondary:active.focus, .btn-raised.btn-secondary.custom-file-control:active.focus::before, .btn.btn-raised.btn-secondary.active:hover, .btn-raised.btn-secondary.active.custom-file-control:hover::before, .btn.btn-raised.btn-secondary.active:focus, .btn-raised.btn-secondary.active.custom-file-control:focus::before, .btn.btn-raised.btn-secondary.active.focus, .btn-raised.btn-secondary.active.focus.custom-file-control::before,
+      .open > .btn.btn-raised.btn-secondary.dropdown-toggle:hover,
+      .open > .btn-raised.btn-secondary.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.btn-raised.btn-secondary.dropdown-toggle:focus,
+      .open > .btn-raised.btn-secondary.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.btn-raised.btn-secondary.dropdown-toggle.focus,
+      .open > .btn-raised.btn-secondary.dropdown-toggle.focus.custom-file-control::before,
+      .btn-group-raised .btn.btn-secondary:active:hover,
+      .btn-group-raised .btn-secondary.custom-file-control:active:hover::before,
+      .btn-group-raised .btn.btn-secondary:active:focus,
+      .btn-group-raised .btn-secondary.custom-file-control:active:focus::before,
+      .btn-group-raised .btn.btn-secondary:active.focus,
+      .btn-group-raised .btn-secondary.custom-file-control:active.focus::before,
+      .btn-group-raised .btn.btn-secondary.active:hover,
+      .btn-group-raised .btn-secondary.active.custom-file-control:hover::before,
+      .btn-group-raised .btn.btn-secondary.active:focus,
+      .btn-group-raised .btn-secondary.active.custom-file-control:focus::before,
+      .btn-group-raised .btn.btn-secondary.active.focus,
+      .btn-group-raised .btn-secondary.active.focus.custom-file-control::before,
+      .open > .btn-group-raised .btn.btn-secondary.dropdown-toggle:hover,
+      .open > .btn-group-raised .btn-secondary.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn-group-raised .btn.btn-secondary.dropdown-toggle:focus,
+      .open > .btn-group-raised .btn-secondary.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn-group-raised .btn.btn-secondary.dropdown-toggle.focus,
+      .open > .btn-group-raised .btn-secondary.dropdown-toggle.focus.custom-file-control::before {
+        color: #fff;
+        background-color: #636b72;
+        border-color: #313539; }
+    .open > .btn.bmd-btn-fab.btn-secondary.dropdown-toggle.bmd-btn-icon, .open > .bmd-btn-fab.btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn.btn-raised.btn-secondary.dropdown-toggle.bmd-btn-icon, .open > .btn-raised.btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn-group-raised .btn.btn-secondary.dropdown-toggle.bmd-btn-icon, .open > .btn-group-raised .btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control::before {
+      color: inherit;
+      background-color: #6c757d; }
+      .open > .btn.bmd-btn-fab.btn-secondary.dropdown-toggle.bmd-btn-icon:hover, .open > .bmd-btn-fab.btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn.btn-raised.btn-secondary.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-raised.btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn-group-raised .btn.btn-secondary.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-group-raised .btn-secondary.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before {
+        background-color: #636b72; }
+    .btn.bmd-btn-fab.btn-secondary.disabled:focus, .bmd-btn-fab.btn-secondary.disabled.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-secondary.disabled.focus, .bmd-btn-fab.btn-secondary.disabled.focus.custom-file-control::before, .btn.bmd-btn-fab.btn-secondary:disabled:focus, .bmd-btn-fab.btn-secondary.custom-file-control:disabled:focus::before, .btn.bmd-btn-fab.btn-secondary:disabled.focus, .bmd-btn-fab.btn-secondary.custom-file-control:disabled.focus::before, .btn.btn-raised.btn-secondary.disabled:focus, .btn-raised.btn-secondary.disabled.custom-file-control:focus::before, .btn.btn-raised.btn-secondary.disabled.focus, .btn-raised.btn-secondary.disabled.focus.custom-file-control::before, .btn.btn-raised.btn-secondary:disabled:focus, .btn-raised.btn-secondary.custom-file-control:disabled:focus::before, .btn.btn-raised.btn-secondary:disabled.focus, .btn-raised.btn-secondary.custom-file-control:disabled.focus::before,
+    .btn-group-raised .btn.btn-secondary.disabled:focus,
+    .btn-group-raised .btn-secondary.disabled.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-secondary.disabled.focus,
+    .btn-group-raised .btn-secondary.disabled.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-secondary:disabled:focus,
+    .btn-group-raised .btn-secondary.custom-file-control:disabled:focus::before,
+    .btn-group-raised .btn.btn-secondary:disabled.focus,
+    .btn-group-raised .btn-secondary.custom-file-control:disabled.focus::before {
+      background-color: #6c757d;
+      border-color: #6c757d; }
+    .btn.bmd-btn-fab.btn-secondary.disabled:hover, .bmd-btn-fab.btn-secondary.disabled.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-secondary:disabled:hover, .bmd-btn-fab.btn-secondary.custom-file-control:disabled:hover::before, .btn.btn-raised.btn-secondary.disabled:hover, .btn-raised.btn-secondary.disabled.custom-file-control:hover::before, .btn.btn-raised.btn-secondary:disabled:hover, .btn-raised.btn-secondary.custom-file-control:disabled:hover::before,
+    .btn-group-raised .btn.btn-secondary.disabled:hover,
+    .btn-group-raised .btn-secondary.disabled.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-secondary:disabled:hover,
+    .btn-group-raised .btn-secondary.custom-file-control:disabled:hover::before {
+      background-color: #6c757d;
+      border-color: #6c757d; }
+  .btn.bmd-btn-fab.btn-success, .bmd-btn-fab.btn-success.custom-file-control::before, .btn.btn-raised.btn-success, .btn-raised.btn-success.custom-file-control::before,
+  .btn-group-raised .btn.btn-success,
+  .btn-group-raised .btn-success.custom-file-control::before {
+    color: #fff;
+    background-color: #4caf50;
+    border-color: #4caf50; }
+    .btn.bmd-btn-fab.btn-success:hover, .bmd-btn-fab.btn-success.custom-file-control:hover::before, .btn.btn-raised.btn-success:hover, .btn-raised.btn-success.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-success:hover,
+    .btn-group-raised .btn-success.custom-file-control:hover::before {
+      color: #fff;
+      background-color: #46a149;
+      border-color: #39843c; }
+    .btn.bmd-btn-fab.btn-success:focus, .bmd-btn-fab.btn-success.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-success.focus, .bmd-btn-fab.btn-success.focus.custom-file-control::before, .btn.btn-raised.btn-success:focus, .btn-raised.btn-success.custom-file-control:focus::before, .btn.btn-raised.btn-success.focus, .btn-raised.btn-success.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-success:focus,
+    .btn-group-raised .btn-success.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-success.focus,
+    .btn-group-raised .btn-success.focus.custom-file-control::before {
+      color: #fff;
+      background-color: #46a149;
+      border-color: #39843c; }
+    .btn.bmd-btn-fab.btn-success:active, .bmd-btn-fab.btn-success.custom-file-control:active::before, .btn.bmd-btn-fab.btn-success.active, .bmd-btn-fab.btn-success.active.custom-file-control::before,
+    .open > .btn.bmd-btn-fab.btn-success.dropdown-toggle,
+    .open > .bmd-btn-fab.btn-success.dropdown-toggle.custom-file-control::before, .btn.btn-raised.btn-success:active, .btn-raised.btn-success.custom-file-control:active::before, .btn.btn-raised.btn-success.active, .btn-raised.btn-success.active.custom-file-control::before,
+    .open > .btn.btn-raised.btn-success.dropdown-toggle,
+    .open > .btn-raised.btn-success.dropdown-toggle.custom-file-control::before,
+    .btn-group-raised .btn.btn-success:active,
+    .btn-group-raised .btn-success.custom-file-control:active::before,
+    .btn-group-raised .btn.btn-success.active,
+    .btn-group-raised .btn-success.active.custom-file-control::before,
+    .open > .btn-group-raised .btn.btn-success.dropdown-toggle,
+    .open > .btn-group-raised .btn-success.dropdown-toggle.custom-file-control::before {
+      color: #fff;
+      background-color: #46a149;
+      border-color: #39843c; }
+      .btn.bmd-btn-fab.btn-success:active:hover, .bmd-btn-fab.btn-success.custom-file-control:active:hover::before, .btn.bmd-btn-fab.btn-success:active:focus, .bmd-btn-fab.btn-success.custom-file-control:active:focus::before, .btn.bmd-btn-fab.btn-success:active.focus, .bmd-btn-fab.btn-success.custom-file-control:active.focus::before, .btn.bmd-btn-fab.btn-success.active:hover, .bmd-btn-fab.btn-success.active.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-success.active:focus, .bmd-btn-fab.btn-success.active.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-success.active.focus, .bmd-btn-fab.btn-success.active.focus.custom-file-control::before,
+      .open > .btn.bmd-btn-fab.btn-success.dropdown-toggle:hover,
+      .open > .bmd-btn-fab.btn-success.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.bmd-btn-fab.btn-success.dropdown-toggle:focus,
+      .open > .bmd-btn-fab.btn-success.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.bmd-btn-fab.btn-success.dropdown-toggle.focus,
+      .open > .bmd-btn-fab.btn-success.dropdown-toggle.focus.custom-file-control::before, .btn.btn-raised.btn-success:active:hover, .btn-raised.btn-success.custom-file-control:active:hover::before, .btn.btn-raised.btn-success:active:focus, .btn-raised.btn-success.custom-file-control:active:focus::before, .btn.btn-raised.btn-success:active.focus, .btn-raised.btn-success.custom-file-control:active.focus::before, .btn.btn-raised.btn-success.active:hover, .btn-raised.btn-success.active.custom-file-control:hover::before, .btn.btn-raised.btn-success.active:focus, .btn-raised.btn-success.active.custom-file-control:focus::before, .btn.btn-raised.btn-success.active.focus, .btn-raised.btn-success.active.focus.custom-file-control::before,
+      .open > .btn.btn-raised.btn-success.dropdown-toggle:hover,
+      .open > .btn-raised.btn-success.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.btn-raised.btn-success.dropdown-toggle:focus,
+      .open > .btn-raised.btn-success.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.btn-raised.btn-success.dropdown-toggle.focus,
+      .open > .btn-raised.btn-success.dropdown-toggle.focus.custom-file-control::before,
+      .btn-group-raised .btn.btn-success:active:hover,
+      .btn-group-raised .btn-success.custom-file-control:active:hover::before,
+      .btn-group-raised .btn.btn-success:active:focus,
+      .btn-group-raised .btn-success.custom-file-control:active:focus::before,
+      .btn-group-raised .btn.btn-success:active.focus,
+      .btn-group-raised .btn-success.custom-file-control:active.focus::before,
+      .btn-group-raised .btn.btn-success.active:hover,
+      .btn-group-raised .btn-success.active.custom-file-control:hover::before,
+      .btn-group-raised .btn.btn-success.active:focus,
+      .btn-group-raised .btn-success.active.custom-file-control:focus::before,
+      .btn-group-raised .btn.btn-success.active.focus,
+      .btn-group-raised .btn-success.active.focus.custom-file-control::before,
+      .open > .btn-group-raised .btn.btn-success.dropdown-toggle:hover,
+      .open > .btn-group-raised .btn-success.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn-group-raised .btn.btn-success.dropdown-toggle:focus,
+      .open > .btn-group-raised .btn-success.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn-group-raised .btn.btn-success.dropdown-toggle.focus,
+      .open > .btn-group-raised .btn-success.dropdown-toggle.focus.custom-file-control::before {
+        color: #fff;
+        background-color: #46a149;
+        border-color: #255627; }
+    .open > .btn.bmd-btn-fab.btn-success.dropdown-toggle.bmd-btn-icon, .open > .bmd-btn-fab.btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn.btn-raised.btn-success.dropdown-toggle.bmd-btn-icon, .open > .btn-raised.btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn-group-raised .btn.btn-success.dropdown-toggle.bmd-btn-icon, .open > .btn-group-raised .btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control::before {
+      color: inherit;
+      background-color: #4caf50; }
+      .open > .btn.bmd-btn-fab.btn-success.dropdown-toggle.bmd-btn-icon:hover, .open > .bmd-btn-fab.btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn.btn-raised.btn-success.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-raised.btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn-group-raised .btn.btn-success.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-group-raised .btn-success.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before {
+        background-color: #46a149; }
+    .btn.bmd-btn-fab.btn-success.disabled:focus, .bmd-btn-fab.btn-success.disabled.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-success.disabled.focus, .bmd-btn-fab.btn-success.disabled.focus.custom-file-control::before, .btn.bmd-btn-fab.btn-success:disabled:focus, .bmd-btn-fab.btn-success.custom-file-control:disabled:focus::before, .btn.bmd-btn-fab.btn-success:disabled.focus, .bmd-btn-fab.btn-success.custom-file-control:disabled.focus::before, .btn.btn-raised.btn-success.disabled:focus, .btn-raised.btn-success.disabled.custom-file-control:focus::before, .btn.btn-raised.btn-success.disabled.focus, .btn-raised.btn-success.disabled.focus.custom-file-control::before, .btn.btn-raised.btn-success:disabled:focus, .btn-raised.btn-success.custom-file-control:disabled:focus::before, .btn.btn-raised.btn-success:disabled.focus, .btn-raised.btn-success.custom-file-control:disabled.focus::before,
+    .btn-group-raised .btn.btn-success.disabled:focus,
+    .btn-group-raised .btn-success.disabled.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-success.disabled.focus,
+    .btn-group-raised .btn-success.disabled.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-success:disabled:focus,
+    .btn-group-raised .btn-success.custom-file-control:disabled:focus::before,
+    .btn-group-raised .btn.btn-success:disabled.focus,
+    .btn-group-raised .btn-success.custom-file-control:disabled.focus::before {
+      background-color: #4caf50;
+      border-color: #4caf50; }
+    .btn.bmd-btn-fab.btn-success.disabled:hover, .bmd-btn-fab.btn-success.disabled.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-success:disabled:hover, .bmd-btn-fab.btn-success.custom-file-control:disabled:hover::before, .btn.btn-raised.btn-success.disabled:hover, .btn-raised.btn-success.disabled.custom-file-control:hover::before, .btn.btn-raised.btn-success:disabled:hover, .btn-raised.btn-success.custom-file-control:disabled:hover::before,
+    .btn-group-raised .btn.btn-success.disabled:hover,
+    .btn-group-raised .btn-success.disabled.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-success:disabled:hover,
+    .btn-group-raised .btn-success.custom-file-control:disabled:hover::before {
+      background-color: #4caf50;
+      border-color: #4caf50; }
+  .btn.bmd-btn-fab.btn-info, .bmd-btn-fab.btn-info.custom-file-control::before, .btn.btn-raised.btn-info, .btn-raised.btn-info.custom-file-control::before,
+  .btn-group-raised .btn.btn-info,
+  .btn-group-raised .btn-info.custom-file-control::before {
+    color: #fff;
+    background-color: #03a9f4;
+    border-color: #03a9f4; }
+    .btn.bmd-btn-fab.btn-info:hover, .bmd-btn-fab.btn-info.custom-file-control:hover::before, .btn.btn-raised.btn-info:hover, .btn-raised.btn-info.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-info:hover,
+    .btn-group-raised .btn-info.custom-file-control:hover::before {
+      color: #fff;
+      background-color: #039be0;
+      border-color: #027fb8; }
+    .btn.bmd-btn-fab.btn-info:focus, .bmd-btn-fab.btn-info.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-info.focus, .bmd-btn-fab.btn-info.focus.custom-file-control::before, .btn.btn-raised.btn-info:focus, .btn-raised.btn-info.custom-file-control:focus::before, .btn.btn-raised.btn-info.focus, .btn-raised.btn-info.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-info:focus,
+    .btn-group-raised .btn-info.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-info.focus,
+    .btn-group-raised .btn-info.focus.custom-file-control::before {
+      color: #fff;
+      background-color: #039be0;
+      border-color: #027fb8; }
+    .btn.bmd-btn-fab.btn-info:active, .bmd-btn-fab.btn-info.custom-file-control:active::before, .btn.bmd-btn-fab.btn-info.active, .bmd-btn-fab.btn-info.active.custom-file-control::before,
+    .open > .btn.bmd-btn-fab.btn-info.dropdown-toggle,
+    .open > .bmd-btn-fab.btn-info.dropdown-toggle.custom-file-control::before, .btn.btn-raised.btn-info:active, .btn-raised.btn-info.custom-file-control:active::before, .btn.btn-raised.btn-info.active, .btn-raised.btn-info.active.custom-file-control::before,
+    .open > .btn.btn-raised.btn-info.dropdown-toggle,
+    .open > .btn-raised.btn-info.dropdown-toggle.custom-file-control::before,
+    .btn-group-raised .btn.btn-info:active,
+    .btn-group-raised .btn-info.custom-file-control:active::before,
+    .btn-group-raised .btn.btn-info.active,
+    .btn-group-raised .btn-info.active.custom-file-control::before,
+    .open > .btn-group-raised .btn.btn-info.dropdown-toggle,
+    .open > .btn-group-raised .btn-info.dropdown-toggle.custom-file-control::before {
+      color: #fff;
+      background-color: #039be0;
+      border-color: #027fb8; }
+      .btn.bmd-btn-fab.btn-info:active:hover, .bmd-btn-fab.btn-info.custom-file-control:active:hover::before, .btn.bmd-btn-fab.btn-info:active:focus, .bmd-btn-fab.btn-info.custom-file-control:active:focus::before, .btn.bmd-btn-fab.btn-info:active.focus, .bmd-btn-fab.btn-info.custom-file-control:active.focus::before, .btn.bmd-btn-fab.btn-info.active:hover, .bmd-btn-fab.btn-info.active.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-info.active:focus, .bmd-btn-fab.btn-info.active.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-info.active.focus, .bmd-btn-fab.btn-info.active.focus.custom-file-control::before,
+      .open > .btn.bmd-btn-fab.btn-info.dropdown-toggle:hover,
+      .open > .bmd-btn-fab.btn-info.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.bmd-btn-fab.btn-info.dropdown-toggle:focus,
+      .open > .bmd-btn-fab.btn-info.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.bmd-btn-fab.btn-info.dropdown-toggle.focus,
+      .open > .bmd-btn-fab.btn-info.dropdown-toggle.focus.custom-file-control::before, .btn.btn-raised.btn-info:active:hover, .btn-raised.btn-info.custom-file-control:active:hover::before, .btn.btn-raised.btn-info:active:focus, .btn-raised.btn-info.custom-file-control:active:focus::before, .btn.btn-raised.btn-info:active.focus, .btn-raised.btn-info.custom-file-control:active.focus::before, .btn.btn-raised.btn-info.active:hover, .btn-raised.btn-info.active.custom-file-control:hover::before, .btn.btn-raised.btn-info.active:focus, .btn-raised.btn-info.active.custom-file-control:focus::before, .btn.btn-raised.btn-info.active.focus, .btn-raised.btn-info.active.focus.custom-file-control::before,
+      .open > .btn.btn-raised.btn-info.dropdown-toggle:hover,
+      .open > .btn-raised.btn-info.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.btn-raised.btn-info.dropdown-toggle:focus,
+      .open > .btn-raised.btn-info.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.btn-raised.btn-info.dropdown-toggle.focus,
+      .open > .btn-raised.btn-info.dropdown-toggle.focus.custom-file-control::before,
+      .btn-group-raised .btn.btn-info:active:hover,
+      .btn-group-raised .btn-info.custom-file-control:active:hover::before,
+      .btn-group-raised .btn.btn-info:active:focus,
+      .btn-group-raised .btn-info.custom-file-control:active:focus::before,
+      .btn-group-raised .btn.btn-info:active.focus,
+      .btn-group-raised .btn-info.custom-file-control:active.focus::before,
+      .btn-group-raised .btn.btn-info.active:hover,
+      .btn-group-raised .btn-info.active.custom-file-control:hover::before,
+      .btn-group-raised .btn.btn-info.active:focus,
+      .btn-group-raised .btn-info.active.custom-file-control:focus::before,
+      .btn-group-raised .btn.btn-info.active.focus,
+      .btn-group-raised .btn-info.active.focus.custom-file-control::before,
+      .open > .btn-group-raised .btn.btn-info.dropdown-toggle:hover,
+      .open > .btn-group-raised .btn-info.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn-group-raised .btn.btn-info.dropdown-toggle:focus,
+      .open > .btn-group-raised .btn-info.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn-group-raised .btn.btn-info.dropdown-toggle.focus,
+      .open > .btn-group-raised .btn-info.dropdown-toggle.focus.custom-file-control::before {
+        color: #fff;
+        background-color: #039be0;
+        border-color: #015276; }
+    .open > .btn.bmd-btn-fab.btn-info.dropdown-toggle.bmd-btn-icon, .open > .bmd-btn-fab.btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn.btn-raised.btn-info.dropdown-toggle.bmd-btn-icon, .open > .btn-raised.btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn-group-raised .btn.btn-info.dropdown-toggle.bmd-btn-icon, .open > .btn-group-raised .btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control::before {
+      color: inherit;
+      background-color: #03a9f4; }
+      .open > .btn.bmd-btn-fab.btn-info.dropdown-toggle.bmd-btn-icon:hover, .open > .bmd-btn-fab.btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn.btn-raised.btn-info.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-raised.btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn-group-raised .btn.btn-info.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-group-raised .btn-info.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before {
+        background-color: #039be0; }
+    .btn.bmd-btn-fab.btn-info.disabled:focus, .bmd-btn-fab.btn-info.disabled.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-info.disabled.focus, .bmd-btn-fab.btn-info.disabled.focus.custom-file-control::before, .btn.bmd-btn-fab.btn-info:disabled:focus, .bmd-btn-fab.btn-info.custom-file-control:disabled:focus::before, .btn.bmd-btn-fab.btn-info:disabled.focus, .bmd-btn-fab.btn-info.custom-file-control:disabled.focus::before, .btn.btn-raised.btn-info.disabled:focus, .btn-raised.btn-info.disabled.custom-file-control:focus::before, .btn.btn-raised.btn-info.disabled.focus, .btn-raised.btn-info.disabled.focus.custom-file-control::before, .btn.btn-raised.btn-info:disabled:focus, .btn-raised.btn-info.custom-file-control:disabled:focus::before, .btn.btn-raised.btn-info:disabled.focus, .btn-raised.btn-info.custom-file-control:disabled.focus::before,
+    .btn-group-raised .btn.btn-info.disabled:focus,
+    .btn-group-raised .btn-info.disabled.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-info.disabled.focus,
+    .btn-group-raised .btn-info.disabled.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-info:disabled:focus,
+    .btn-group-raised .btn-info.custom-file-control:disabled:focus::before,
+    .btn-group-raised .btn.btn-info:disabled.focus,
+    .btn-group-raised .btn-info.custom-file-control:disabled.focus::before {
+      background-color: #03a9f4;
+      border-color: #03a9f4; }
+    .btn.bmd-btn-fab.btn-info.disabled:hover, .bmd-btn-fab.btn-info.disabled.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-info:disabled:hover, .bmd-btn-fab.btn-info.custom-file-control:disabled:hover::before, .btn.btn-raised.btn-info.disabled:hover, .btn-raised.btn-info.disabled.custom-file-control:hover::before, .btn.btn-raised.btn-info:disabled:hover, .btn-raised.btn-info.custom-file-control:disabled:hover::before,
+    .btn-group-raised .btn.btn-info.disabled:hover,
+    .btn-group-raised .btn-info.disabled.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-info:disabled:hover,
+    .btn-group-raised .btn-info.custom-file-control:disabled:hover::before {
+      background-color: #03a9f4;
+      border-color: #03a9f4; }
+  .btn.bmd-btn-fab.btn-warning, .bmd-btn-fab.btn-warning.custom-file-control::before, .btn.btn-raised.btn-warning, .btn-raised.btn-warning.custom-file-control::before,
+  .btn-group-raised .btn.btn-warning,
+  .btn-group-raised .btn-warning.custom-file-control::before {
+    color: #fff;
+    background-color: #ff5722;
+    border-color: #ff5722; }
+    .btn.bmd-btn-fab.btn-warning:hover, .bmd-btn-fab.btn-warning.custom-file-control:hover::before, .btn.btn-raised.btn-warning:hover, .btn-raised.btn-warning.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-warning:hover,
+    .btn-group-raised .btn-warning.custom-file-control:hover::before {
+      color: #fff;
+      background-color: #ff470e;
+      border-color: #e43700; }
+    .btn.bmd-btn-fab.btn-warning:focus, .bmd-btn-fab.btn-warning.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-warning.focus, .bmd-btn-fab.btn-warning.focus.custom-file-control::before, .btn.btn-raised.btn-warning:focus, .btn-raised.btn-warning.custom-file-control:focus::before, .btn.btn-raised.btn-warning.focus, .btn-raised.btn-warning.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-warning:focus,
+    .btn-group-raised .btn-warning.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-warning.focus,
+    .btn-group-raised .btn-warning.focus.custom-file-control::before {
+      color: #fff;
+      background-color: #ff470e;
+      border-color: #e43700; }
+    .btn.bmd-btn-fab.btn-warning:active, .bmd-btn-fab.btn-warning.custom-file-control:active::before, .btn.bmd-btn-fab.btn-warning.active, .bmd-btn-fab.btn-warning.active.custom-file-control::before,
+    .open > .btn.bmd-btn-fab.btn-warning.dropdown-toggle,
+    .open > .bmd-btn-fab.btn-warning.dropdown-toggle.custom-file-control::before, .btn.btn-raised.btn-warning:active, .btn-raised.btn-warning.custom-file-control:active::before, .btn.btn-raised.btn-warning.active, .btn-raised.btn-warning.active.custom-file-control::before,
+    .open > .btn.btn-raised.btn-warning.dropdown-toggle,
+    .open > .btn-raised.btn-warning.dropdown-toggle.custom-file-control::before,
+    .btn-group-raised .btn.btn-warning:active,
+    .btn-group-raised .btn-warning.custom-file-control:active::before,
+    .btn-group-raised .btn.btn-warning.active,
+    .btn-group-raised .btn-warning.active.custom-file-control::before,
+    .open > .btn-group-raised .btn.btn-warning.dropdown-toggle,
+    .open > .btn-group-raised .btn-warning.dropdown-toggle.custom-file-control::before {
+      color: #fff;
+      background-color: #ff470e;
+      border-color: #e43700; }
+      .btn.bmd-btn-fab.btn-warning:active:hover, .bmd-btn-fab.btn-warning.custom-file-control:active:hover::before, .btn.bmd-btn-fab.btn-warning:active:focus, .bmd-btn-fab.btn-warning.custom-file-control:active:focus::before, .btn.bmd-btn-fab.btn-warning:active.focus, .bmd-btn-fab.btn-warning.custom-file-control:active.focus::before, .btn.bmd-btn-fab.btn-warning.active:hover, .bmd-btn-fab.btn-warning.active.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-warning.active:focus, .bmd-btn-fab.btn-warning.active.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-warning.active.focus, .bmd-btn-fab.btn-warning.active.focus.custom-file-control::before,
+      .open > .btn.bmd-btn-fab.btn-warning.dropdown-toggle:hover,
+      .open > .bmd-btn-fab.btn-warning.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.bmd-btn-fab.btn-warning.dropdown-toggle:focus,
+      .open > .bmd-btn-fab.btn-warning.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.bmd-btn-fab.btn-warning.dropdown-toggle.focus,
+      .open > .bmd-btn-fab.btn-warning.dropdown-toggle.focus.custom-file-control::before, .btn.btn-raised.btn-warning:active:hover, .btn-raised.btn-warning.custom-file-control:active:hover::before, .btn.btn-raised.btn-warning:active:focus, .btn-raised.btn-warning.custom-file-control:active:focus::before, .btn.btn-raised.btn-warning:active.focus, .btn-raised.btn-warning.custom-file-control:active.focus::before, .btn.btn-raised.btn-warning.active:hover, .btn-raised.btn-warning.active.custom-file-control:hover::before, .btn.btn-raised.btn-warning.active:focus, .btn-raised.btn-warning.active.custom-file-control:focus::before, .btn.btn-raised.btn-warning.active.focus, .btn-raised.btn-warning.active.focus.custom-file-control::before,
+      .open > .btn.btn-raised.btn-warning.dropdown-toggle:hover,
+      .open > .btn-raised.btn-warning.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.btn-raised.btn-warning.dropdown-toggle:focus,
+      .open > .btn-raised.btn-warning.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.btn-raised.btn-warning.dropdown-toggle.focus,
+      .open > .btn-raised.btn-warning.dropdown-toggle.focus.custom-file-control::before,
+      .btn-group-raised .btn.btn-warning:active:hover,
+      .btn-group-raised .btn-warning.custom-file-control:active:hover::before,
+      .btn-group-raised .btn.btn-warning:active:focus,
+      .btn-group-raised .btn-warning.custom-file-control:active:focus::before,
+      .btn-group-raised .btn.btn-warning:active.focus,
+      .btn-group-raised .btn-warning.custom-file-control:active.focus::before,
+      .btn-group-raised .btn.btn-warning.active:hover,
+      .btn-group-raised .btn-warning.active.custom-file-control:hover::before,
+      .btn-group-raised .btn.btn-warning.active:focus,
+      .btn-group-raised .btn-warning.active.custom-file-control:focus::before,
+      .btn-group-raised .btn.btn-warning.active.focus,
+      .btn-group-raised .btn-warning.active.focus.custom-file-control::before,
+      .open > .btn-group-raised .btn.btn-warning.dropdown-toggle:hover,
+      .open > .btn-group-raised .btn-warning.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn-group-raised .btn.btn-warning.dropdown-toggle:focus,
+      .open > .btn-group-raised .btn-warning.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn-group-raised .btn.btn-warning.dropdown-toggle.focus,
+      .open > .btn-group-raised .btn-warning.dropdown-toggle.focus.custom-file-control::before {
+        color: #fff;
+        background-color: #ff470e;
+        border-color: #a22700; }
+    .open > .btn.bmd-btn-fab.btn-warning.dropdown-toggle.bmd-btn-icon, .open > .bmd-btn-fab.btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn.btn-raised.btn-warning.dropdown-toggle.bmd-btn-icon, .open > .btn-raised.btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn-group-raised .btn.btn-warning.dropdown-toggle.bmd-btn-icon, .open > .btn-group-raised .btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control::before {
+      color: inherit;
+      background-color: #ff5722; }
+      .open > .btn.bmd-btn-fab.btn-warning.dropdown-toggle.bmd-btn-icon:hover, .open > .bmd-btn-fab.btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn.btn-raised.btn-warning.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-raised.btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn-group-raised .btn.btn-warning.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-group-raised .btn-warning.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before {
+        background-color: #ff470e; }
+    .btn.bmd-btn-fab.btn-warning.disabled:focus, .bmd-btn-fab.btn-warning.disabled.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-warning.disabled.focus, .bmd-btn-fab.btn-warning.disabled.focus.custom-file-control::before, .btn.bmd-btn-fab.btn-warning:disabled:focus, .bmd-btn-fab.btn-warning.custom-file-control:disabled:focus::before, .btn.bmd-btn-fab.btn-warning:disabled.focus, .bmd-btn-fab.btn-warning.custom-file-control:disabled.focus::before, .btn.btn-raised.btn-warning.disabled:focus, .btn-raised.btn-warning.disabled.custom-file-control:focus::before, .btn.btn-raised.btn-warning.disabled.focus, .btn-raised.btn-warning.disabled.focus.custom-file-control::before, .btn.btn-raised.btn-warning:disabled:focus, .btn-raised.btn-warning.custom-file-control:disabled:focus::before, .btn.btn-raised.btn-warning:disabled.focus, .btn-raised.btn-warning.custom-file-control:disabled.focus::before,
+    .btn-group-raised .btn.btn-warning.disabled:focus,
+    .btn-group-raised .btn-warning.disabled.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-warning.disabled.focus,
+    .btn-group-raised .btn-warning.disabled.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-warning:disabled:focus,
+    .btn-group-raised .btn-warning.custom-file-control:disabled:focus::before,
+    .btn-group-raised .btn.btn-warning:disabled.focus,
+    .btn-group-raised .btn-warning.custom-file-control:disabled.focus::before {
+      background-color: #ff5722;
+      border-color: #ff5722; }
+    .btn.bmd-btn-fab.btn-warning.disabled:hover, .bmd-btn-fab.btn-warning.disabled.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-warning:disabled:hover, .bmd-btn-fab.btn-warning.custom-file-control:disabled:hover::before, .btn.btn-raised.btn-warning.disabled:hover, .btn-raised.btn-warning.disabled.custom-file-control:hover::before, .btn.btn-raised.btn-warning:disabled:hover, .btn-raised.btn-warning.custom-file-control:disabled:hover::before,
+    .btn-group-raised .btn.btn-warning.disabled:hover,
+    .btn-group-raised .btn-warning.disabled.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-warning:disabled:hover,
+    .btn-group-raised .btn-warning.custom-file-control:disabled:hover::before {
+      background-color: #ff5722;
+      border-color: #ff5722; }
+  .btn.bmd-btn-fab.btn-danger, .bmd-btn-fab.btn-danger.custom-file-control::before, .btn.btn-raised.btn-danger, .btn-raised.btn-danger.custom-file-control::before,
+  .btn-group-raised .btn.btn-danger,
+  .btn-group-raised .btn-danger.custom-file-control::before {
+    color: #fff;
+    background-color: #f44336;
+    border-color: #f44336; }
+    .btn.bmd-btn-fab.btn-danger:hover, .bmd-btn-fab.btn-danger.custom-file-control:hover::before, .btn.btn-raised.btn-danger:hover, .btn-raised.btn-danger.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-danger:hover,
+    .btn-group-raised .btn-danger.custom-file-control:hover::before {
+      color: #fff;
+      background-color: #f55549;
+      border-color: #e11b0c; }
+    .btn.bmd-btn-fab.btn-danger:focus, .bmd-btn-fab.btn-danger.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-danger.focus, .bmd-btn-fab.btn-danger.focus.custom-file-control::before, .btn.btn-raised.btn-danger:focus, .btn-raised.btn-danger.custom-file-control:focus::before, .btn.btn-raised.btn-danger.focus, .btn-raised.btn-danger.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-danger:focus,
+    .btn-group-raised .btn-danger.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-danger.focus,
+    .btn-group-raised .btn-danger.focus.custom-file-control::before {
+      color: #fff;
+      background-color: #f55549;
+      border-color: #e11b0c; }
+    .btn.bmd-btn-fab.btn-danger:active, .bmd-btn-fab.btn-danger.custom-file-control:active::before, .btn.bmd-btn-fab.btn-danger.active, .bmd-btn-fab.btn-danger.active.custom-file-control::before,
+    .open > .btn.bmd-btn-fab.btn-danger.dropdown-toggle,
+    .open > .bmd-btn-fab.btn-danger.dropdown-toggle.custom-file-control::before, .btn.btn-raised.btn-danger:active, .btn-raised.btn-danger.custom-file-control:active::before, .btn.btn-raised.btn-danger.active, .btn-raised.btn-danger.active.custom-file-control::before,
+    .open > .btn.btn-raised.btn-danger.dropdown-toggle,
+    .open > .btn-raised.btn-danger.dropdown-toggle.custom-file-control::before,
+    .btn-group-raised .btn.btn-danger:active,
+    .btn-group-raised .btn-danger.custom-file-control:active::before,
+    .btn-group-raised .btn.btn-danger.active,
+    .btn-group-raised .btn-danger.active.custom-file-control::before,
+    .open > .btn-group-raised .btn.btn-danger.dropdown-toggle,
+    .open > .btn-group-raised .btn-danger.dropdown-toggle.custom-file-control::before {
+      color: #fff;
+      background-color: #f55549;
+      border-color: #e11b0c; }
+      .btn.bmd-btn-fab.btn-danger:active:hover, .bmd-btn-fab.btn-danger.custom-file-control:active:hover::before, .btn.bmd-btn-fab.btn-danger:active:focus, .bmd-btn-fab.btn-danger.custom-file-control:active:focus::before, .btn.bmd-btn-fab.btn-danger:active.focus, .bmd-btn-fab.btn-danger.custom-file-control:active.focus::before, .btn.bmd-btn-fab.btn-danger.active:hover, .bmd-btn-fab.btn-danger.active.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-danger.active:focus, .bmd-btn-fab.btn-danger.active.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-danger.active.focus, .bmd-btn-fab.btn-danger.active.focus.custom-file-control::before,
+      .open > .btn.bmd-btn-fab.btn-danger.dropdown-toggle:hover,
+      .open > .bmd-btn-fab.btn-danger.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.bmd-btn-fab.btn-danger.dropdown-toggle:focus,
+      .open > .bmd-btn-fab.btn-danger.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.bmd-btn-fab.btn-danger.dropdown-toggle.focus,
+      .open > .bmd-btn-fab.btn-danger.dropdown-toggle.focus.custom-file-control::before, .btn.btn-raised.btn-danger:active:hover, .btn-raised.btn-danger.custom-file-control:active:hover::before, .btn.btn-raised.btn-danger:active:focus, .btn-raised.btn-danger.custom-file-control:active:focus::before, .btn.btn-raised.btn-danger:active.focus, .btn-raised.btn-danger.custom-file-control:active.focus::before, .btn.btn-raised.btn-danger.active:hover, .btn-raised.btn-danger.active.custom-file-control:hover::before, .btn.btn-raised.btn-danger.active:focus, .btn-raised.btn-danger.active.custom-file-control:focus::before, .btn.btn-raised.btn-danger.active.focus, .btn-raised.btn-danger.active.focus.custom-file-control::before,
+      .open > .btn.btn-raised.btn-danger.dropdown-toggle:hover,
+      .open > .btn-raised.btn-danger.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.btn-raised.btn-danger.dropdown-toggle:focus,
+      .open > .btn-raised.btn-danger.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.btn-raised.btn-danger.dropdown-toggle.focus,
+      .open > .btn-raised.btn-danger.dropdown-toggle.focus.custom-file-control::before,
+      .btn-group-raised .btn.btn-danger:active:hover,
+      .btn-group-raised .btn-danger.custom-file-control:active:hover::before,
+      .btn-group-raised .btn.btn-danger:active:focus,
+      .btn-group-raised .btn-danger.custom-file-control:active:focus::before,
+      .btn-group-raised .btn.btn-danger:active.focus,
+      .btn-group-raised .btn-danger.custom-file-control:active.focus::before,
+      .btn-group-raised .btn.btn-danger.active:hover,
+      .btn-group-raised .btn-danger.active.custom-file-control:hover::before,
+      .btn-group-raised .btn.btn-danger.active:focus,
+      .btn-group-raised .btn-danger.active.custom-file-control:focus::before,
+      .btn-group-raised .btn.btn-danger.active.focus,
+      .btn-group-raised .btn-danger.active.focus.custom-file-control::before,
+      .open > .btn-group-raised .btn.btn-danger.dropdown-toggle:hover,
+      .open > .btn-group-raised .btn-danger.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn-group-raised .btn.btn-danger.dropdown-toggle:focus,
+      .open > .btn-group-raised .btn-danger.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn-group-raised .btn.btn-danger.dropdown-toggle.focus,
+      .open > .btn-group-raised .btn-danger.dropdown-toggle.focus.custom-file-control::before {
+        color: #fff;
+        background-color: #f55549;
+        border-color: #a21309; }
+    .open > .btn.bmd-btn-fab.btn-danger.dropdown-toggle.bmd-btn-icon, .open > .bmd-btn-fab.btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn.btn-raised.btn-danger.dropdown-toggle.bmd-btn-icon, .open > .btn-raised.btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn-group-raised .btn.btn-danger.dropdown-toggle.bmd-btn-icon, .open > .btn-group-raised .btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control::before {
+      color: inherit;
+      background-color: #f44336; }
+      .open > .btn.bmd-btn-fab.btn-danger.dropdown-toggle.bmd-btn-icon:hover, .open > .bmd-btn-fab.btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn.btn-raised.btn-danger.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-raised.btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn-group-raised .btn.btn-danger.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-group-raised .btn-danger.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before {
+        background-color: #f55549; }
+    .btn.bmd-btn-fab.btn-danger.disabled:focus, .bmd-btn-fab.btn-danger.disabled.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-danger.disabled.focus, .bmd-btn-fab.btn-danger.disabled.focus.custom-file-control::before, .btn.bmd-btn-fab.btn-danger:disabled:focus, .bmd-btn-fab.btn-danger.custom-file-control:disabled:focus::before, .btn.bmd-btn-fab.btn-danger:disabled.focus, .bmd-btn-fab.btn-danger.custom-file-control:disabled.focus::before, .btn.btn-raised.btn-danger.disabled:focus, .btn-raised.btn-danger.disabled.custom-file-control:focus::before, .btn.btn-raised.btn-danger.disabled.focus, .btn-raised.btn-danger.disabled.focus.custom-file-control::before, .btn.btn-raised.btn-danger:disabled:focus, .btn-raised.btn-danger.custom-file-control:disabled:focus::before, .btn.btn-raised.btn-danger:disabled.focus, .btn-raised.btn-danger.custom-file-control:disabled.focus::before,
+    .btn-group-raised .btn.btn-danger.disabled:focus,
+    .btn-group-raised .btn-danger.disabled.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-danger.disabled.focus,
+    .btn-group-raised .btn-danger.disabled.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-danger:disabled:focus,
+    .btn-group-raised .btn-danger.custom-file-control:disabled:focus::before,
+    .btn-group-raised .btn.btn-danger:disabled.focus,
+    .btn-group-raised .btn-danger.custom-file-control:disabled.focus::before {
+      background-color: #f44336;
+      border-color: #f44336; }
+    .btn.bmd-btn-fab.btn-danger.disabled:hover, .bmd-btn-fab.btn-danger.disabled.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-danger:disabled:hover, .bmd-btn-fab.btn-danger.custom-file-control:disabled:hover::before, .btn.btn-raised.btn-danger.disabled:hover, .btn-raised.btn-danger.disabled.custom-file-control:hover::before, .btn.btn-raised.btn-danger:disabled:hover, .btn-raised.btn-danger.custom-file-control:disabled:hover::before,
+    .btn-group-raised .btn.btn-danger.disabled:hover,
+    .btn-group-raised .btn-danger.disabled.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-danger:disabled:hover,
+    .btn-group-raised .btn-danger.custom-file-control:disabled:hover::before {
+      background-color: #f44336;
+      border-color: #f44336; }
+  .btn.bmd-btn-fab.btn-light, .bmd-btn-fab.btn-light.custom-file-control::before, .btn.btn-raised.btn-light, .btn-raised.btn-light.custom-file-control::before,
+  .btn-group-raised .btn.btn-light,
+  .btn-group-raised .btn-light.custom-file-control::before {
+    color: #fff;
+    background-color: #f5f5f5;
+    border-color: #f5f5f5; }
+    .btn.bmd-btn-fab.btn-light:hover, .bmd-btn-fab.btn-light.custom-file-control:hover::before, .btn.btn-raised.btn-light:hover, .btn-raised.btn-light.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-light:hover,
+    .btn-group-raised .btn-light.custom-file-control:hover::before {
+      color: #fff;
+      background-color: #ebebeb;
+      border-color: #d6d6d6; }
+    .btn.bmd-btn-fab.btn-light:focus, .bmd-btn-fab.btn-light.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-light.focus, .bmd-btn-fab.btn-light.focus.custom-file-control::before, .btn.btn-raised.btn-light:focus, .btn-raised.btn-light.custom-file-control:focus::before, .btn.btn-raised.btn-light.focus, .btn-raised.btn-light.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-light:focus,
+    .btn-group-raised .btn-light.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-light.focus,
+    .btn-group-raised .btn-light.focus.custom-file-control::before {
+      color: #fff;
+      background-color: #ebebeb;
+      border-color: #d6d6d6; }
+    .btn.bmd-btn-fab.btn-light:active, .bmd-btn-fab.btn-light.custom-file-control:active::before, .btn.bmd-btn-fab.btn-light.active, .bmd-btn-fab.btn-light.active.custom-file-control::before,
+    .open > .btn.bmd-btn-fab.btn-light.dropdown-toggle,
+    .open > .bmd-btn-fab.btn-light.dropdown-toggle.custom-file-control::before, .btn.btn-raised.btn-light:active, .btn-raised.btn-light.custom-file-control:active::before, .btn.btn-raised.btn-light.active, .btn-raised.btn-light.active.custom-file-control::before,
+    .open > .btn.btn-raised.btn-light.dropdown-toggle,
+    .open > .btn-raised.btn-light.dropdown-toggle.custom-file-control::before,
+    .btn-group-raised .btn.btn-light:active,
+    .btn-group-raised .btn-light.custom-file-control:active::before,
+    .btn-group-raised .btn.btn-light.active,
+    .btn-group-raised .btn-light.active.custom-file-control::before,
+    .open > .btn-group-raised .btn.btn-light.dropdown-toggle,
+    .open > .btn-group-raised .btn-light.dropdown-toggle.custom-file-control::before {
+      color: #fff;
+      background-color: #ebebeb;
+      border-color: #d6d6d6; }
+      .btn.bmd-btn-fab.btn-light:active:hover, .bmd-btn-fab.btn-light.custom-file-control:active:hover::before, .btn.bmd-btn-fab.btn-light:active:focus, .bmd-btn-fab.btn-light.custom-file-control:active:focus::before, .btn.bmd-btn-fab.btn-light:active.focus, .bmd-btn-fab.btn-light.custom-file-control:active.focus::before, .btn.bmd-btn-fab.btn-light.active:hover, .bmd-btn-fab.btn-light.active.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-light.active:focus, .bmd-btn-fab.btn-light.active.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-light.active.focus, .bmd-btn-fab.btn-light.active.focus.custom-file-control::before,
+      .open > .btn.bmd-btn-fab.btn-light.dropdown-toggle:hover,
+      .open > .bmd-btn-fab.btn-light.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.bmd-btn-fab.btn-light.dropdown-toggle:focus,
+      .open > .bmd-btn-fab.btn-light.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.bmd-btn-fab.btn-light.dropdown-toggle.focus,
+      .open > .bmd-btn-fab.btn-light.dropdown-toggle.focus.custom-file-control::before, .btn.btn-raised.btn-light:active:hover, .btn-raised.btn-light.custom-file-control:active:hover::before, .btn.btn-raised.btn-light:active:focus, .btn-raised.btn-light.custom-file-control:active:focus::before, .btn.btn-raised.btn-light:active.focus, .btn-raised.btn-light.custom-file-control:active.focus::before, .btn.btn-raised.btn-light.active:hover, .btn-raised.btn-light.active.custom-file-control:hover::before, .btn.btn-raised.btn-light.active:focus, .btn-raised.btn-light.active.custom-file-control:focus::before, .btn.btn-raised.btn-light.active.focus, .btn-raised.btn-light.active.focus.custom-file-control::before,
+      .open > .btn.btn-raised.btn-light.dropdown-toggle:hover,
+      .open > .btn-raised.btn-light.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.btn-raised.btn-light.dropdown-toggle:focus,
+      .open > .btn-raised.btn-light.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.btn-raised.btn-light.dropdown-toggle.focus,
+      .open > .btn-raised.btn-light.dropdown-toggle.focus.custom-file-control::before,
+      .btn-group-raised .btn.btn-light:active:hover,
+      .btn-group-raised .btn-light.custom-file-control:active:hover::before,
+      .btn-group-raised .btn.btn-light:active:focus,
+      .btn-group-raised .btn-light.custom-file-control:active:focus::before,
+      .btn-group-raised .btn.btn-light:active.focus,
+      .btn-group-raised .btn-light.custom-file-control:active.focus::before,
+      .btn-group-raised .btn.btn-light.active:hover,
+      .btn-group-raised .btn-light.active.custom-file-control:hover::before,
+      .btn-group-raised .btn.btn-light.active:focus,
+      .btn-group-raised .btn-light.active.custom-file-control:focus::before,
+      .btn-group-raised .btn.btn-light.active.focus,
+      .btn-group-raised .btn-light.active.focus.custom-file-control::before,
+      .open > .btn-group-raised .btn.btn-light.dropdown-toggle:hover,
+      .open > .btn-group-raised .btn-light.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn-group-raised .btn.btn-light.dropdown-toggle:focus,
+      .open > .btn-group-raised .btn-light.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn-group-raised .btn.btn-light.dropdown-toggle.focus,
+      .open > .btn-group-raised .btn-light.dropdown-toggle.focus.custom-file-control::before {
+        color: #fff;
+        background-color: #ebebeb;
+        border-color: #b5b5b5; }
+    .open > .btn.bmd-btn-fab.btn-light.dropdown-toggle.bmd-btn-icon, .open > .bmd-btn-fab.btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn.btn-raised.btn-light.dropdown-toggle.bmd-btn-icon, .open > .btn-raised.btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn-group-raised .btn.btn-light.dropdown-toggle.bmd-btn-icon, .open > .btn-group-raised .btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control::before {
+      color: inherit;
+      background-color: #f5f5f5; }
+      .open > .btn.bmd-btn-fab.btn-light.dropdown-toggle.bmd-btn-icon:hover, .open > .bmd-btn-fab.btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn.btn-raised.btn-light.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-raised.btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn-group-raised .btn.btn-light.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-group-raised .btn-light.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before {
+        background-color: #ebebeb; }
+    .btn.bmd-btn-fab.btn-light.disabled:focus, .bmd-btn-fab.btn-light.disabled.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-light.disabled.focus, .bmd-btn-fab.btn-light.disabled.focus.custom-file-control::before, .btn.bmd-btn-fab.btn-light:disabled:focus, .bmd-btn-fab.btn-light.custom-file-control:disabled:focus::before, .btn.bmd-btn-fab.btn-light:disabled.focus, .bmd-btn-fab.btn-light.custom-file-control:disabled.focus::before, .btn.btn-raised.btn-light.disabled:focus, .btn-raised.btn-light.disabled.custom-file-control:focus::before, .btn.btn-raised.btn-light.disabled.focus, .btn-raised.btn-light.disabled.focus.custom-file-control::before, .btn.btn-raised.btn-light:disabled:focus, .btn-raised.btn-light.custom-file-control:disabled:focus::before, .btn.btn-raised.btn-light:disabled.focus, .btn-raised.btn-light.custom-file-control:disabled.focus::before,
+    .btn-group-raised .btn.btn-light.disabled:focus,
+    .btn-group-raised .btn-light.disabled.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-light.disabled.focus,
+    .btn-group-raised .btn-light.disabled.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-light:disabled:focus,
+    .btn-group-raised .btn-light.custom-file-control:disabled:focus::before,
+    .btn-group-raised .btn.btn-light:disabled.focus,
+    .btn-group-raised .btn-light.custom-file-control:disabled.focus::before {
+      background-color: #f5f5f5;
+      border-color: #f5f5f5; }
+    .btn.bmd-btn-fab.btn-light.disabled:hover, .bmd-btn-fab.btn-light.disabled.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-light:disabled:hover, .bmd-btn-fab.btn-light.custom-file-control:disabled:hover::before, .btn.btn-raised.btn-light.disabled:hover, .btn-raised.btn-light.disabled.custom-file-control:hover::before, .btn.btn-raised.btn-light:disabled:hover, .btn-raised.btn-light.custom-file-control:disabled:hover::before,
+    .btn-group-raised .btn.btn-light.disabled:hover,
+    .btn-group-raised .btn-light.disabled.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-light:disabled:hover,
+    .btn-group-raised .btn-light.custom-file-control:disabled:hover::before {
+      background-color: #f5f5f5;
+      border-color: #f5f5f5; }
+  .btn.bmd-btn-fab.btn-dark, .bmd-btn-fab.btn-dark.custom-file-control::before, .btn.btn-raised.btn-dark, .btn-raised.btn-dark.custom-file-control::before,
+  .btn-group-raised .btn.btn-dark,
+  .btn-group-raised .btn-dark.custom-file-control::before {
+    color: #fff;
+    background-color: #424242;
+    border-color: #424242; }
+    .btn.bmd-btn-fab.btn-dark:hover, .bmd-btn-fab.btn-dark.custom-file-control:hover::before, .btn.btn-raised.btn-dark:hover, .btn-raised.btn-dark.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-dark:hover,
+    .btn-group-raised .btn-dark.custom-file-control:hover::before {
+      color: #fff;
+      background-color: #383838;
+      border-color: #232323; }
+    .btn.bmd-btn-fab.btn-dark:focus, .bmd-btn-fab.btn-dark.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-dark.focus, .bmd-btn-fab.btn-dark.focus.custom-file-control::before, .btn.btn-raised.btn-dark:focus, .btn-raised.btn-dark.custom-file-control:focus::before, .btn.btn-raised.btn-dark.focus, .btn-raised.btn-dark.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-dark:focus,
+    .btn-group-raised .btn-dark.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-dark.focus,
+    .btn-group-raised .btn-dark.focus.custom-file-control::before {
+      color: #fff;
+      background-color: #383838;
+      border-color: #232323; }
+    .btn.bmd-btn-fab.btn-dark:active, .bmd-btn-fab.btn-dark.custom-file-control:active::before, .btn.bmd-btn-fab.btn-dark.active, .bmd-btn-fab.btn-dark.active.custom-file-control::before,
+    .open > .btn.bmd-btn-fab.btn-dark.dropdown-toggle,
+    .open > .bmd-btn-fab.btn-dark.dropdown-toggle.custom-file-control::before, .btn.btn-raised.btn-dark:active, .btn-raised.btn-dark.custom-file-control:active::before, .btn.btn-raised.btn-dark.active, .btn-raised.btn-dark.active.custom-file-control::before,
+    .open > .btn.btn-raised.btn-dark.dropdown-toggle,
+    .open > .btn-raised.btn-dark.dropdown-toggle.custom-file-control::before,
+    .btn-group-raised .btn.btn-dark:active,
+    .btn-group-raised .btn-dark.custom-file-control:active::before,
+    .btn-group-raised .btn.btn-dark.active,
+    .btn-group-raised .btn-dark.active.custom-file-control::before,
+    .open > .btn-group-raised .btn.btn-dark.dropdown-toggle,
+    .open > .btn-group-raised .btn-dark.dropdown-toggle.custom-file-control::before {
+      color: #fff;
+      background-color: #383838;
+      border-color: #232323; }
+      .btn.bmd-btn-fab.btn-dark:active:hover, .bmd-btn-fab.btn-dark.custom-file-control:active:hover::before, .btn.bmd-btn-fab.btn-dark:active:focus, .bmd-btn-fab.btn-dark.custom-file-control:active:focus::before, .btn.bmd-btn-fab.btn-dark:active.focus, .bmd-btn-fab.btn-dark.custom-file-control:active.focus::before, .btn.bmd-btn-fab.btn-dark.active:hover, .bmd-btn-fab.btn-dark.active.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-dark.active:focus, .bmd-btn-fab.btn-dark.active.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-dark.active.focus, .bmd-btn-fab.btn-dark.active.focus.custom-file-control::before,
+      .open > .btn.bmd-btn-fab.btn-dark.dropdown-toggle:hover,
+      .open > .bmd-btn-fab.btn-dark.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.bmd-btn-fab.btn-dark.dropdown-toggle:focus,
+      .open > .bmd-btn-fab.btn-dark.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.bmd-btn-fab.btn-dark.dropdown-toggle.focus,
+      .open > .bmd-btn-fab.btn-dark.dropdown-toggle.focus.custom-file-control::before, .btn.btn-raised.btn-dark:active:hover, .btn-raised.btn-dark.custom-file-control:active:hover::before, .btn.btn-raised.btn-dark:active:focus, .btn-raised.btn-dark.custom-file-control:active:focus::before, .btn.btn-raised.btn-dark:active.focus, .btn-raised.btn-dark.custom-file-control:active.focus::before, .btn.btn-raised.btn-dark.active:hover, .btn-raised.btn-dark.active.custom-file-control:hover::before, .btn.btn-raised.btn-dark.active:focus, .btn-raised.btn-dark.active.custom-file-control:focus::before, .btn.btn-raised.btn-dark.active.focus, .btn-raised.btn-dark.active.focus.custom-file-control::before,
+      .open > .btn.btn-raised.btn-dark.dropdown-toggle:hover,
+      .open > .btn-raised.btn-dark.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn.btn-raised.btn-dark.dropdown-toggle:focus,
+      .open > .btn-raised.btn-dark.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn.btn-raised.btn-dark.dropdown-toggle.focus,
+      .open > .btn-raised.btn-dark.dropdown-toggle.focus.custom-file-control::before,
+      .btn-group-raised .btn.btn-dark:active:hover,
+      .btn-group-raised .btn-dark.custom-file-control:active:hover::before,
+      .btn-group-raised .btn.btn-dark:active:focus,
+      .btn-group-raised .btn-dark.custom-file-control:active:focus::before,
+      .btn-group-raised .btn.btn-dark:active.focus,
+      .btn-group-raised .btn-dark.custom-file-control:active.focus::before,
+      .btn-group-raised .btn.btn-dark.active:hover,
+      .btn-group-raised .btn-dark.active.custom-file-control:hover::before,
+      .btn-group-raised .btn.btn-dark.active:focus,
+      .btn-group-raised .btn-dark.active.custom-file-control:focus::before,
+      .btn-group-raised .btn.btn-dark.active.focus,
+      .btn-group-raised .btn-dark.active.focus.custom-file-control::before,
+      .open > .btn-group-raised .btn.btn-dark.dropdown-toggle:hover,
+      .open > .btn-group-raised .btn-dark.dropdown-toggle.custom-file-control:hover::before,
+      .open > .btn-group-raised .btn.btn-dark.dropdown-toggle:focus,
+      .open > .btn-group-raised .btn-dark.dropdown-toggle.custom-file-control:focus::before,
+      .open > .btn-group-raised .btn.btn-dark.dropdown-toggle.focus,
+      .open > .btn-group-raised .btn-dark.dropdown-toggle.focus.custom-file-control::before {
+        color: #fff;
+        background-color: #383838;
+        border-color: #020202; }
+    .open > .btn.bmd-btn-fab.btn-dark.dropdown-toggle.bmd-btn-icon, .open > .bmd-btn-fab.btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn.btn-raised.btn-dark.dropdown-toggle.bmd-btn-icon, .open > .btn-raised.btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control::before, .open > .btn-group-raised .btn.btn-dark.dropdown-toggle.bmd-btn-icon, .open > .btn-group-raised .btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control::before {
+      color: inherit;
+      background-color: #424242; }
+      .open > .btn.bmd-btn-fab.btn-dark.dropdown-toggle.bmd-btn-icon:hover, .open > .bmd-btn-fab.btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn.btn-raised.btn-dark.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-raised.btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before, .open > .btn-group-raised .btn.btn-dark.dropdown-toggle.bmd-btn-icon:hover, .open > .btn-group-raised .btn-dark.dropdown-toggle.bmd-btn-icon.custom-file-control:hover::before {
+        background-color: #383838; }
+    .btn.bmd-btn-fab.btn-dark.disabled:focus, .bmd-btn-fab.btn-dark.disabled.custom-file-control:focus::before, .btn.bmd-btn-fab.btn-dark.disabled.focus, .bmd-btn-fab.btn-dark.disabled.focus.custom-file-control::before, .btn.bmd-btn-fab.btn-dark:disabled:focus, .bmd-btn-fab.btn-dark.custom-file-control:disabled:focus::before, .btn.bmd-btn-fab.btn-dark:disabled.focus, .bmd-btn-fab.btn-dark.custom-file-control:disabled.focus::before, .btn.btn-raised.btn-dark.disabled:focus, .btn-raised.btn-dark.disabled.custom-file-control:focus::before, .btn.btn-raised.btn-dark.disabled.focus, .btn-raised.btn-dark.disabled.focus.custom-file-control::before, .btn.btn-raised.btn-dark:disabled:focus, .btn-raised.btn-dark.custom-file-control:disabled:focus::before, .btn.btn-raised.btn-dark:disabled.focus, .btn-raised.btn-dark.custom-file-control:disabled.focus::before,
+    .btn-group-raised .btn.btn-dark.disabled:focus,
+    .btn-group-raised .btn-dark.disabled.custom-file-control:focus::before,
+    .btn-group-raised .btn.btn-dark.disabled.focus,
+    .btn-group-raised .btn-dark.disabled.focus.custom-file-control::before,
+    .btn-group-raised .btn.btn-dark:disabled:focus,
+    .btn-group-raised .btn-dark.custom-file-control:disabled:focus::before,
+    .btn-group-raised .btn.btn-dark:disabled.focus,
+    .btn-group-raised .btn-dark.custom-file-control:disabled.focus::before {
+      background-color: #424242;
+      border-color: #424242; }
+    .btn.bmd-btn-fab.btn-dark.disabled:hover, .bmd-btn-fab.btn-dark.disabled.custom-file-control:hover::before, .btn.bmd-btn-fab.btn-dark:disabled:hover, .bmd-btn-fab.btn-dark.custom-file-control:disabled:hover::before, .btn.btn-raised.btn-dark.disabled:hover, .btn-raised.btn-dark.disabled.custom-file-control:hover::before, .btn.btn-raised.btn-dark:disabled:hover, .btn-raised.btn-dark.custom-file-control:disabled:hover::before,
+    .btn-group-raised .btn.btn-dark.disabled:hover,
+    .btn-group-raised .btn-dark.disabled.custom-file-control:hover::before,
+    .btn-group-raised .btn.btn-dark:disabled:hover,
+    .btn-group-raised .btn-dark.custom-file-control:disabled:hover::before {
+      background-color: #424242;
+      border-color: #424242; }
+  .btn.bmd-btn-fab:hover, .bmd-btn-fab.custom-file-control:hover::before, .btn.bmd-btn-fab:focus, .bmd-btn-fab.custom-file-control:focus::before, .btn.btn-raised:hover, .btn-raised.custom-file-control:hover::before, .btn.btn-raised:focus, .btn-raised.custom-file-control:focus::before,
+  .btn-group-raised .btn:hover,
+  .btn-group-raised .custom-file-control:hover::before,
+  .btn-group-raised .btn:focus,
+  .btn-group-raised .custom-file-control:focus::before {
+    z-index: 1;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
+  .btn.bmd-btn-fab.active, .bmd-btn-fab.active.custom-file-control::before, .btn.bmd-btn-fab:active, .bmd-btn-fab.custom-file-control:active::before, .btn.btn-raised.active, .btn-raised.active.custom-file-control::before, .btn.btn-raised:active, .btn-raised.custom-file-control:active::before,
+  .btn-group-raised .btn.active,
+  .btn-group-raised .active.custom-file-control::before,
+  .btn-group-raised .btn:active,
+  .btn-group-raised .custom-file-control:active::before {
+    z-index: 1;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36); }
+    .btn.bmd-btn-fab.focus, .bmd-btn-fab.focus.custom-file-control::before, .btn.bmd-btn-fab:focus, .bmd-btn-fab.custom-file-control:focus::before, .btn.btn-raised.focus, .btn-raised.focus.custom-file-control::before, .btn.btn-raised:focus, .btn-raised.custom-file-control:focus::before,
+  .btn-group-raised .btn.focus,
+  .btn-group-raised .focus.custom-file-control::before,
+  .btn-group-raised .btn:focus,
+  .btn-group-raised .custom-file-control:focus::before {
+    outline: 0; }  
+
+  .btn.bmd-btn-fab, .bmd-btn-fab.custom-file-control::before, .btn.bmd-btn-icon, .bmd-btn-icon.custom-file-control::before {
+    overflow: hidden;
+    font-size: 1.5rem;
+    line-height: 0; }
+    .btn-group-lg .btn.bmd-btn-fab, .btn-group-lg .bmd-btn-fab.custom-file-control::before,
+    .btn-group-sm .btn.bmd-btn-fab,
+    .btn-group-sm .bmd-btn-fab.custom-file-control::before, .btn.bmd-btn-fab, .bmd-btn-fab.custom-file-control::before, .btn-group-lg .btn.bmd-btn-icon, .btn-group-lg .bmd-btn-icon.custom-file-control::before,
+    .btn-group-sm .btn.bmd-btn-icon,
+    .btn-group-sm .bmd-btn-icon.custom-file-control::before, .btn.bmd-btn-icon, .bmd-btn-icon.custom-file-control::before {
+      padding: 0;
+      border-radius: 50%;
+      line-height: 0; }
+    .btn.bmd-btn-fab .material-icons, .bmd-btn-fab.custom-file-control::before .material-icons, .btn.bmd-btn-icon .material-icons, .bmd-btn-icon.custom-file-control::before .material-icons {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 1.5rem;
+      line-height: 1.5rem;
+      transform: translate(-0.75rem, -0.75rem); }
+  .btn.bmd-btn-fab, .bmd-btn-fab.custom-file-control::before {
+    width: 3.5rem;
+    min-width: 3.5rem;
+    height: 3.5rem;
+    box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.26); }
+    .btn.bmd-btn-fab .ripple-container, .bmd-btn-fab.custom-file-control::before .ripple-container {
+      border-radius: 50%; }
+    .btn.bmd-btn-fab.bmd-btn-fab-sm, .bmd-btn-fab.bmd-btn-fab-sm.custom-file-control::before,
+    .btn-group-sm .btn.bmd-btn-fab,
+    .btn-group-sm .bmd-btn-fab.custom-file-control::before {
+      width: 2.5rem;
+      min-width: 2.5rem;
+      height: 2.5rem; }
+
+      .dropdown-toggle.bmd-btn-icon::after, .dropdown-toggle.bmd-btn-fab::after {
+  display: none; }
+
+.dropdown-toggle.bmd-btn-icon ~ .dropdown-menu.dropdown-menu-top-left, .dropdown-toggle.bmd-btn-icon ~ .dropdown-menu.dropdown-menu-top-right, .dropdown-toggle.bmd-btn-fab ~ .dropdown-menu.dropdown-menu-top-left, .dropdown-toggle.bmd-btn-fab ~ .dropdown-menu.dropdown-menu-top-right {
+  bottom: 2rem; }
+
+.dropdown-toggle.bmd-btn-fab-sm ~ .dropdown-menu.dropdown-menu-top-left, .dropdown-toggle.bmd-btn-fab-sm ~ .dropdown-menu.dropdown-menu-top-right {
+  bottom: 2.5rem; }
+  .fab {
+    background: #03a9f4;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5), 3px 3px 3px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    bottom: 48px;
+    right: 48px;
+    font-size: 2.6667em;
+    display: inline-block;
+    cursor: default;
+    z-index: 2000;
+  }
+  .fab span {
+    vertical-align: middle;
+  }
+  .fab.child {
+    right: 58.66666667px;
+    width: 42.66666667px;
+    height: 42.66666667px;
+    display: none;
+    opacity: 0;
+    font-size: 2em;
+  }
+
+
+.zoom {
+    position: absolute;
+    top: 6.5rem;
+    right: 4rem;
+    height: 70px;
+    z-index: 1200;
+  }
+  
+  .zoom-fab {
+      top: 2.5rem;
+      right: .5rem;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px!important;
+    border-radius: 50%;
+    /* background-color: #009688; */
+    vertical-align: middle!important;
+    text-decoration: none;
+    text-align: center!important;
+    transition: 0.2s ease-out;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1rem 5rem 0 rgba(0, 0, 0, 0.12), 0 3rem 1rem -2rem rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    color: #FFF!important;
+  }
+  
+  .zoom-fab:hover {
+    background-color: #4db6ac;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+  }
+  
+  .zoom-btn-large {
+    width: 60px;
+    height: 60px;
+    line-height: 60px!important;
+  }
+  
+  .zoom-menu {
+    position: absolute;
+    right: 70px;
+    left: auto;
+    top: 50%;
+    transform: translate(20%, 50%);
+    height: 100%;
+    width: 500px;
+    list-style: none;
+    text-align: right;
+  }
+  
+  .zoom-menu li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .zoom-card {
+    position: absolute;
+    right: 150px;
+    top: 70px;
+    transition: box-shadow 0.25s;
+    padding: 24px;
+    border-radius: 2px;
+    background-color: #009688;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    color: #FFF;
+  }
+  
+  .zoom-card ul {
+    -webkit-padding-start: 0;
+    list-style: none;
+    text-align: left;
+  }
+.zoom-btn-person { background-color: #F44336; }
+
+.zoom-btn-person:hover { background-color: #e57373; }
+
+.zoom-btn-doc { background-color: #ffeb3b; }
+
+.zoom-btn-doc:hover { background-color: #fff176; }
+
+.zoom-btn-tangram { background-color: #4CAF50; }
+
+.zoom-btn-tangram:hover { background-color: #81c784; }
+
+.zoom-btn-report { background-color: #2196F3; }
+
+.zoom-btn-report:hover { background-color: #64b5f6; }
+
+.zoom-btn-feedback { background-color: #9c27b0; }
+
+.zoom-btn-feedback:hover { background-color: #ba68c8; }
+
+.scale-transition { transition: transform 0.3s cubic-bezier(0.01, 0.53, 1.63, 0.36) !important; }
+
+.scale-transition.scale-out {
+  transform: scale(0);
+  transition: transform 0.2s !important;
+}
+
+.scale-transition.scale-in { transform: scale(1); }

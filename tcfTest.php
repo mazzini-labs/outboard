@@ -86,7 +86,7 @@ if (getPostValue('timesheet')) {
 <HEAD>
 <TITLE>Timeclock Report: <?php echo $ob->getConfig('board_title') ?></TITLE>
 
-<?php  include 'dependencies.php' ?>
+<?php  include 'include/dependencies.php' ?>
 
 
 <SCRIPT>
@@ -161,7 +161,7 @@ if (getPostValue('timesheet')) {
                var queryString = "?startchoice=" + startchoice ;
             
                queryString +=  "&endchoice=" + endchoice + "&reportchoice=" + reportchoice;
-               ajaxRequest.open("GET", "allEmpTimeclockFunction.php" + queryString, true);
+               ajaxRequest.open("GET", "include/allEmpTimeclockFunction.php" + queryString, true);
                ajaxRequest.send(null); 
             }
   </script>

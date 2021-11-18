@@ -23,7 +23,7 @@ if ($ob->isADstaffspr()) { $ad = true; }
 <html>
 <head>
   <title>OutBoard: <?php echo $ob->getConfig('board_title') ?></title> 
-  <?php  include 'dependencies.php'; ?>
+  <?php  include 'include/dependencies.php'; ?>
   <link rel="stylesheet" type="text/css" href="/css/ob.css?v=1.0">
   <script Language="JavaScript">
     function myReload() {

@@ -105,7 +105,7 @@ if ($ob->isADstaffspr()) {
  <head>
  <title>Spindletop Calendar</title>
 	 <!--===============================================================================================-->
-	 <?php include 'dependencies.php'; ?>
+	 <?php include 'include/dependencies.php'; ?>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css" integrity="sha512-IBfPhioJ2AoH2nST7c0jwU0A3RJ7hwIb3t+nYR4EJ5n9P6Nb/wclzcQNbTd4QFX1lgRAtTT+axLyK7VUCDtjWA==" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css" integrity="sha512-CN6oL2X5VC0thwTbojxZ02e8CVs7rii0yhTLsgsdId8JDlcLENaqISvkSLFUuZk6NcPeB+FbaTfZorhbSqcRYg==" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.css" integrity="sha512-/Jnt6fX98n8zZyuCt4K81+1eQJhWQn/vyMph1UvHywyziYDbu9DFGcJoW8U73m/rkaQBIEAJeoEj+2Rrx4tFyw==" crossorigin="anonymous" />
@@ -113,13 +113,13 @@ if ($ob->isADstaffspr()) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/bootstrap/main.min.css" integrity="sha512-mK6wVf3xsmNcJnp0ZI+YORb6jQBsAIIwkOfMV47DHIiwvkSgR0t7GNCVBiotLQWWR8AND/LxWHAatnja1fU7kQ==" crossorigin="anonymous" />
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/maintest.css?=v1.3">
-	<link rel="stylesheet" type="text/css" href="css/fc_btn.css?v1.0.0.2">
+	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/maintest.css?=v1.3">
+	<link rel="stylesheet" type="text/css" href="assets/css/fc_btn.css?v1.0.0.2">
     <link href="WSB/stylesheet/bootstrap.min.css" rel="stylesheet">
     <link href="WSB/stylesheet/offcanvas.css?v1" rel="stylesheet">
 	<link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
-	<link rel="stylesheet" type="text/css" href="css/glyphicons.css?v1.0.0.8">
+	<link rel="stylesheet" type="text/css" href="assets/css/glyphicons.css?v1.0.0.8">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>

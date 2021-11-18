@@ -124,7 +124,7 @@ if (getGetValue('noupdate')) {
 <HTML>
 <HEAD>
     <TITLE>OutBoard: <?php echo $ob->getConfig('board_title') ?></TITLE> 
-    <?php include 'dependencies.php'; ?>
+    <?php include 'include/dependencies.php'; ?>
 
     <style>
   #container {

@@ -1,5 +1,5 @@
 <?php
-
+// namespace Outboard;
 /**
  * OutboardConfig.php
  *

@@ -107,7 +107,7 @@ if ($ob->isADstaffspr()) {
 <html>
  <head>
  <title>Spindletop Calendar</title>
- <!-- <?php //include 'dependencies.php'; ?> -->
+ <!-- <?php //include 'include/dependencies.php'; ?> -->
   <link rel="stylesheet" href="fullcalendar/packages/core/main.css?" />
   <link rel="stylesheet" href="fullcalendar/packages/daygrid/main.css"></link>
   <link rel="stylesheet" href="fullcalendar/packages/timegrid/main.css"></link>
@@ -115,15 +115,15 @@ if ($ob->isADstaffspr()) {
   <link rel="stylesheet" href="fullcalendar/packages/bootstrap/main.css" />
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/maintest.css?=v1.3">
-	<link rel="stylesheet" type="text/css" href="css/fc_btn.css?v1.0.0.2">
+	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/maintest.css?=v1.3">
+	<link rel="stylesheet" type="text/css" href="assets/css/fc_btn.css?v1.0.0.2">
 	<link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="/css/offcanvas.css?v1.0.0.0" rel="stylesheet">
 	<link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
-	<link rel="stylesheet" type="text/css" href="css/fixed-action-button.css">
-<link rel="stylesheet" type="text/css" href="css/glyphicons.css?v1.0.0.8">
+	<link rel="stylesheet" type="text/css" href="assets/css/fixed-action-button.css">
+<link rel="stylesheet" type="text/css" href="assets/css/glyphicons.css?v1.0.0.8">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
@@ -741,7 +741,7 @@ $(document).ready(function() {
 
 <div class="fixed-action-btn" id="calendarTrash"  class="calendar-trash">
 					<a class="trash btn btn-light btn-lg">
-					<img src="image/trash-2.svg" data-toggle="tooltip" data-placement="left" title="Drag events to me to delete!"/></a>
+					<img src="assets/images/trash-2.svg" data-toggle="tooltip" data-placement="left" title="Drag events to me to delete!"/></a>
 				  </div>
 <!-- Fixed Action Button -->
 <!--	 ##################################################################################################-->
@@ -903,7 +903,7 @@ $(document).ready(function() {
 					</div>
 					<div class="ecal modal-footer">
 						<button type="button" class="trash trashcan btn btn-danger btn-lg">
-							<!-- <img src="image/trash-2.svg" data-toggle="tooltip" data-placement="left" title="Drag events to me to delete!"/> -->
+							<!-- <img src="assets/images/trash-2.svg" data-toggle="tooltip" data-placement="left" title="Drag events to me to delete!"/> -->
 							<i data-feather="trash-2"></i>
 						</button>
 						<button type="button" class="ecal btn btn-secondary" data-dismiss="modal">Close</button>

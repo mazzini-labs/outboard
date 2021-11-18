@@ -1,5 +1,5 @@
 <?php
-
+// namespace Outboard;
 // OutboardAuth.php
 //
 // Performs authentication for the OutBoard

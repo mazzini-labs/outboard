@@ -15,7 +15,7 @@ document.write('  <link rel="stylesheet" type="text/css" href="/css/maintest.css
 document.write('  <link href="/WSB/stylesheet/offcanvas.css?v1" rel="stylesheet">');
 document.write('  <!-- FontAwesome CSS -->');
 document.write('	<link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">');
-document.write('  <link rel="stylesheet" type="text/css" href="css/glyphicons.css?v1.0.0.8">');
+document.write('  <link rel="stylesheet" type="text/css" href="assets/css/glyphicons.css?v1.0.0.8">');
 document.write('  <!-- JQuery -->');
 document.write('  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>');
 document.write('  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>');

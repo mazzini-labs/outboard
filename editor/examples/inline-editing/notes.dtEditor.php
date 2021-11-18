@@ -21,10 +21,10 @@ include 'editor/lib/config.php';
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="css/util.css">
-<link rel="stylesheet" type="text/css" href="css/maintest.css?=v1.2">
-<link rel="stylesheet" type="text/css" href="css/search.css">
-<link rel="stylesheet" type="text/css" href="css/tabs.css">
+<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+<link rel="stylesheet" type="text/css" href="assets/css/maintest.css?=v1.2">
+<link rel="stylesheet" type="text/css" href="assets/css/search.css">
+<link rel="stylesheet" type="text/css" href="assets/css/tabs.css">
 <!-- Bootstrap core CSS -->
 <!-- <link href="./WSB/stylesheet/bootstrap.min.css" rel="stylesheet"> -->
 <!-- Custom styles for this template -->

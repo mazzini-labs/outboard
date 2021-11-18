@@ -7,7 +7,7 @@
 
 $date = date("l, F dS Y, h:i:s A");
 // $style_sheet = join('',file("include/reportstylesheet.php"));
-// $style_sheet = join('',file("dependencies.php"));
+// $style_sheet = join('',file("include/dependencies.php"));
 $filename = "timesheet_for_${userid}_by_${username}";
 $tmpfname = $ob->getConfig('temp_dir').$filename;
 $fd = fopen($tmpfname,"w");

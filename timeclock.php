@@ -107,7 +107,7 @@ if (getPostValue('timesheet')) {
 <HEAD>
 <TITLE>Timeclock Report: <?php echo $ob->getConfig('board_title') ?></TITLE>
 
-<?php  include 'dependencies.php' ?>
+<?php  include 'include/dependencies.php' ?>
 <SCRIPT Language="JavaScript1.2">
   function showData(form) {
     form.show_button_clicked.value = "1";

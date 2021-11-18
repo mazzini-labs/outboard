@@ -12,11 +12,11 @@
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/maintest.css?=v1.2">
-	<link rel="stylesheet" type="text/css" href="css/tabs.css?v1.0.0.4">
-    <link rel="stylesheet" type="text/css" href="css/search.css">
-    <link rel="stylesheet" type="text/css" href="css/fixed-action-button.css">
+<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/maintest.css?=v1.2">
+	<link rel="stylesheet" type="text/css" href="assets/css/tabs.css?v1.0.0.4">
+    <link rel="stylesheet" type="text/css" href="assets/css/search.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/fixed-action-button.css">
 <!--===============================================================================================-->
 		<!-- Bootstrap core CSS -->
     <link href="WSB/stylesheet/bootstrap.min.css?v1" rel="stylesheet">
@@ -25,7 +25,7 @@
     <link href="WSB/stylesheet/offcanvas.css?v1" rel="stylesheet">
 	<link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="css/glyphicons.css?v1.0.0.8">
+<link rel="stylesheet" type="text/css" href="assets/css/glyphicons.css?v1.0.0.8">
 <!-- <script type="text/javascript" src="datatables/datatables.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

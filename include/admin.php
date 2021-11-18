@@ -298,8 +298,8 @@ echo "<div class='col'><a href='outboard.php' class='btn btn-secondary shadow-lg
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/maintest.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/maintest.css">
     <link href="WSB/stylesheet/bootstrap.min.css" rel="stylesheet">
 	<link href="WSB/stylesheet/offcanvas.css?v1" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -312,7 +312,7 @@ echo "<div class='col'><a href='outboard.php' class='btn btn-secondary shadow-lg
   <script src='../fullcalendar/packages/daygrid/main.js'></script>
   <script src='../fullcalendar/packages/bootstrap/main.js'></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> -->
-<?php include 'dependencies.php'; ?>
+<?php include 'include/dependencies.php'; ?>
 </HEAD>
 <style>
 	.shadow-lg 

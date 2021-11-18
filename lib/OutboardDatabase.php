@@ -1,5 +1,5 @@
 <?php
-
+// namespace Outboard;
 /**
  * OutboardDatabase.php
  *
@@ -11,8 +11,9 @@
  *	- Initial creation
  *
  **/
-
-require_once("lib/OutboardConfig.php");
+// define("PROJECT_ROOT_PATH", $_SERVER['DOCUMENT_ROOT']);
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/lib/OutboardConfig.php")){ require_once($_SERVER['DOCUMENT_ROOT'] . "/lib/OutboardConfig.php"); }
+elseif (file_exists("lib/OutboardConfig.php")) { require_once("lib/OutboardConfig.php"); }
 
 class OutboardDatabase extends OutboardConfig {
 
@@ -582,10 +583,43 @@ public function autoLogoutIdlers() {
   }
 }
 
-public function test(){
+public function userSelect(){
   $query = "SELECT userid FROM outboard"; 
   $this->_query($query);
   // $result = mysqli_query($query) or die(mysql_error());
+}
+
+public function allUserSelect(){
+  $query = "SELECT userid FROM outboard"; 
+  // while($result = mysqli_query($this->dbh,$query)){
+  //   $row = $result['userid'];
+  //   return $row;
+  // }
+  // return mysqli_fetch_array($this->dbh,$query);
+  // $results = array();
+  // $i=0;
+  // if ($this->result = mysqli_query($this->dbh,$query)) {
+  //   while($row = $this->result->fetch_array()){
+  //     $rows[$i] = $row;
+  //     $i++;
+  //     // return $row['userid'];
+  //   }
+  
+  // }
+  // return $rows;
+  // return $results;
+  // return $this->_query($query);
+  // $result = mysqli_query($query) or die(mysql_error());
+  $r = $this->dbh->query($query);
+  // $r->free_result();
+  return $r;
+}
+
+public function countUsers(){
+  $query= "select userid from outboard";
+  $this->_query($query);
+  return $this->numRows();
+
 }
 
 
