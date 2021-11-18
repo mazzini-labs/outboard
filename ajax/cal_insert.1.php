@@ -24,7 +24,7 @@
 
  $query = "
  INSERT INTO pto_request 
- (title, start_time, end_time, all_day, remarks, color) 
+ (title, start, end, allDay, description, color) 
  VALUES (:title, :start_event, :end_event, :all_day, :remarks, :color)
  ";
  

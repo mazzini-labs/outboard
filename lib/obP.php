@@ -34,7 +34,7 @@ Class OutboardPayroll extends OutboardConfig {
     $this->setStartDate($startDate);
     $this->setEndDate($endDate);
     $this->_createPeriods();
-    $this->_setNumPeriods();
+    //$this->_setNumPeriods();
   }
 
 public function getNumPeriods() {
@@ -105,7 +105,13 @@ public function _setNumPeriods() {
   return $this->numPeriods = count(array($this->periodStart));
 }
 
-public function _createPeriods(){ 
+public function _createPeriods(){
+  $cyear="";
+  $eyear="";
+  $cmonth="";
+  $emonth="";
+  $cday="";
+  $eday="";
   $sdate = date("Y-m-d",$this->startDate);
   list($year,$month,$day) = preg_split("/-/",$sdate);
   $syear = $year;
@@ -116,12 +122,16 @@ public function _createPeriods(){
   $numPeriods = floor(($this->endDate - $this->startDate) / $period); 
   $this->periodStart[] = date("Y-m-d",$this->startDate);
   $this->periodEnd[] = date("Y-m-d",$this->startDate + $period);
+  // $this->periodEnd[] = date("Y-m-d",$this->startDate - 86400 + ($period * ($i + 1)));
   $today_date = date("Y-m-d");
   list($cyear,$cmonth,$cday) = preg_split("/-/",$today_date);
   
   list($eyear,$emonth,$eday) = preg_split("/-/",$this->endDate);
   $emonth = $emonth * 1; 
   $eday = $eday * 1; 
+  // error_log(print_r($year,true));
+  // error_log(print_r($cyear,true));
+
   // $endloop = date("Y-m-d",mktime(0,0,0,$emonth,$eday,$eyear));
  //do{
 	for($year;$year<=$cyear;$year++){
@@ -135,6 +145,7 @@ public function _createPeriods(){
 			  if($i == 1){
 			    $this->periodStart[] = date("Y-m-d",mktime(0,0,0,$j,$i,$year));
 			    $this->periodEnd[] = date("Y-m-d",mktime(0,0,0,$j,15,$year));
+          // error_log(print_r($this->periodStart,true));
 				//$checkloop = $this->periodEnd[];
 			  }
 			  if ($i == 16) {
@@ -153,9 +164,10 @@ public function _createPeriods(){
 //} while($endloop < $this->periodEnd[]);
 	//bar:
   for($i=0;$i<=$numPeriods;$i++) {
-    $name = $this->periodStart[$i]."|".$this->periodEnd[$i];
-    $periodNamed = array($this->periodName);
-    $periodNamed[$name] = $this->periodStart[$i]." to ".$this->periodEnd[$i];
+
+    $name = @($this->periodStart[$i]."|".$this->periodEnd[$i]);
+    
+    $this->periodName[$name] = @($this->periodStart[$i]." to ".$this->periodEnd[$i]);
     if (! $this->currentPeriod 
 	and $today_date >= $this->periodStart[$i] 
 	and $today_date <= $this->periodEnd[$i]) {

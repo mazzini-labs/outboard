@@ -1,6 +1,6 @@
 <?php
 
-Function pull_down_from_hash($select_name,$current_value,$option_hash,$choose_first=false,$js_fix=false) {
+function pull_down_from_hash($select_name,$current_value,$option_hash,$choose_first=false,$js_fix=false) {
   $rv = "";
   $field_name = $select_name;
   if($js_fix) {
@@ -15,7 +15,7 @@ Function pull_down_from_hash($select_name,$current_value,$option_hash,$choose_fi
   $rv .= ">\n";
   $first_selected = "";
   if ($choose_first) { $first_selected = "SELECTED"; }
-  while ( list($key,$value) = each($option_hash) ) {
+  foreach ($option_hash as $key => $value) {
     if (($key == $current_value) && ! $choose_first) {
       $selected = "SELECTED";
     } else {
@@ -29,5 +29,6 @@ Function pull_down_from_hash($select_name,$current_value,$option_hash,$choose_fi
   $rv .= "</SELECT>\n";
   return $rv;
 }
+
 
 ?>

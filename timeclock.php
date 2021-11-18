@@ -35,7 +35,8 @@ if ($ob->isAdmin()) {
 }
 
 $pay = new OutboardPayroll($ob->getConfig('periodstart'),$ob->getLogEndDate());
-
+// error_log(print_r($ob->getConfig('periodstart'),true));
+// error_log(print_r($ob->getLogEndDate(),true));
 // If we don't have a userid yet, use the username
 if (! $userid = getPostValue('userid')) { $userid = $username; }
 
@@ -99,6 +100,8 @@ if (getPostValue('timesheet')) {
 // 	$ptoTotalHours = $periodCount * 5;
 // 	}
 // }
+
+
 ?>
 <HTML>
 <HEAD>
@@ -163,6 +166,7 @@ if (getPostValue('timesheet')) {
 				<div class='col'>
 				  Pay period: <?php 
 			  $periodHash = $pay->getPeriodNames();
+			  error_log(print_r(pull_down_from_hash("payperiod",$payperiod,$periodHash),true));
 			  echo pull_down_from_hash("payperiod",$payperiod,$periodHash);
 			  ?>&nbsp;
 				</div>

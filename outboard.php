@@ -1,5 +1,6 @@
 <?php 
-if(isset($_REQUEST['pdo'])){ include 'lib/obN.php';} else { include 'lib/ob.php';} 
+if(isset($_REQUEST['pdo'])){ include 'lib/obN.php';} else { include 'lib/ob.php';}
+$readonly = ""; 
 $hr = 0;
 $ap = 0;
 $a1 = 0;

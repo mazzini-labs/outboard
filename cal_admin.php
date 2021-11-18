@@ -233,7 +233,7 @@ $(document).ready(function() {
 		var title = event.title;
 		var id = event.id;
 		$.ajax({
-		url:"ajax/cal_update.php",
+		url:"ajax/cal_date.update.php",
 		type:"POST",
 		data:{title:title, start:start, end:end, id:id},
 		success:function(){
@@ -250,7 +250,7 @@ $(document).ready(function() {
 		var title = event.title;
 		var id = event.id;
 		$.ajax({
-		url:"ajax/cal_update.php",
+		url:"ajax/cal_date.update.php",
 		type:"POST",
 		data:{title:title, start:start, end:end, id:id},
 		success:function()
@@ -381,22 +381,22 @@ $(document).ready(function() {
 	});
 	$(document).on('click', '#eade', function(){ 
 		if ($('#eade').is(":checked")) {
-			$('#eade').val("true");
+			$('#eade').val("1");
 			$('#ets').prop('disabled', true);
 			$('#ete').prop('disabled', true);
 		} else { 
-			$('#eade').val("false"); 
+			$('#eade').val("0"); 
 			$('#ets').prop('disabled', false);
 			$('#ete').prop('disabled', false);
 		}		
 	});
 	$(document).on('click', '#ade', function(){
 		if ($('#ade').is(":checked")) {
-			$('#ade').val("true"); 
+			$('#ade').val("1"); 
 			$('#ts').prop('disabled', true);
 			$('#te').prop('disabled', true);
 		} else { 
-			$('#ade').val("false");
+			$('#ade').val("0");
 			$('#ts').prop('disabled', false);
 			$('#te').prop('disabled', false);
 		}
@@ -427,8 +427,8 @@ $(document).ready(function() {
 		// console.log(ade);
 
 		if ($('#ade').is(":checked")) {
-			$('#ade').val("true");
-		} else { $('#ade').val("false"); }
+			$('#ade').val("1");
+		} else { $('#ade').val("0"); }
 		if($('#dev').val() == "")  
 		{  
 				bootbox.alert("Date is required");  
@@ -482,8 +482,8 @@ $(document).ready(function() {
 		// console.log(ade);
 
 		if ($('#eade').is(":checked")) {
-			$('#eade').val("true");
-		} else { $('#eade').val("false"); }
+			$('#eade').val("1");
+		} else { $('#eade').val("0"); }
 		if($('#edev').val() == "")  
 		{  
 				bootbox.alert("Date is required");  
@@ -507,7 +507,7 @@ $(document).ready(function() {
 			var te  = $('#edev').val() + " " + $('#ete').val();
 			var ade = $('#eade').val(); 
 				$.ajax({  
-					url:"ajax/cal_update.1.php",  
+					url:"ajax/cal_full.update.php",  
 					method:"POST",
 					data: {id:id, cvn:cvn, ts:ts, te:te, drn:drn, ade:ade, type:slt},  
 					beforeSend:function(){  
@@ -614,7 +614,7 @@ $(document).ready(function() {
 		var title = event.title;
 		var id = event.id;
 		$.ajax({
-		url:"cal_update.php",
+		url:"cal_date.update.php",
 		type:"POST",
 		data:{title:title, start:start, end:end, id:id},
 		success:function(){
@@ -631,7 +631,7 @@ $(document).ready(function() {
 		var title = event.title;
 		var id = event.id;
 		$.ajax({
-		url:"cal_update.php",
+		url:"cal_date.update.php",
 		type:"POST",
 		data:{title:title, start:start, end:end, id:id},
 		success:function()
@@ -766,7 +766,7 @@ $(document).ready(function() {
 					</button>
 				</div>
 				
-				<form id="insert_form" action="insert.php" method="POST">
+				<form id="insert_form" method="POST">
 					<div class="modal-body">
 						<div class="row">
 							<div class="col">
@@ -810,10 +810,10 @@ $(document).ready(function() {
 							<!-- <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Type:</label> -->
 							<select class="custom-select input-group input-group-sm" id="slt" required>
 								<option value="" disabled selected hidden>Choose...</option>
-								<option value="17a2b8">Informational</option>
-								<option value="28a745">Holiday</option>
-								<option value="eab208">PTO Request</option>
-                                <option value="0088cc">Approved PTO</option>
+								<option value="#17a2b8">Informational</option>
+								<option value="#28a745">Holiday</option>
+								<option value="#eab208">PTO Request</option>
+                                <option value="#0088cc">Approved PTO</option>
 							</select>
 						</div>
 						
@@ -889,10 +889,10 @@ $(document).ready(function() {
 							<!-- <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Type:</label> -->
 							<select class="ecal custom-select input-group input-group-sm" id="eslt" required>
 								<option value="" disabled selected hidden>Choose...</option>
-								<option value="17a2b8">Informational</option>
-								<option value="28a745">Holiday</option>
-								<option value="eab208">PTO Request</option>
-                                <option value="0088cc">Approved PTO</option>
+								<option value="#17a2b8">Informational</option>
+								<option value="#28a745">Holiday</option>
+								<option value="#eab208">PTO Request</option>
+                                <option value="#0088cc">Approved PTO</option>
 							</select>
 							<div class="invalid-feedback">
 								Please select a type.
@@ -918,7 +918,7 @@ $(document).ready(function() {
 	 
 	 <!--	 ##################################################################################################-->
 	 <!--TESTING FOR FULLCALENDAR - PHP CRUD Bootstrap EDIT EVENTS Modal-->
-	 <div class="modal fade" id="eventedidtmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	 <!-- <div class="modal fade" id="eventedidtmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	 	<div class="modal-dialog" role="document">
 		 	<div class="modal-content">
 				<div class="modal-header">
@@ -956,7 +956,7 @@ $(document).ready(function() {
 				</form>
 			</div>
 		 </div>
-	 </div>
+	 </div> -->
 <!--	 ##################################################################################################-->
  </body>
  <div class="toggle-btn"></div>

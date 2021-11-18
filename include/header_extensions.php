@@ -12,6 +12,19 @@ $url = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 // echo $_SERVER['SERVER_NAME'];
 // echo "<br>" . $_SERVER['REQUEST_URI'];
 // echo $url;
+
+$timesheetactive="";
+$changeupdate="";
+$extensionactive="";
+$calendaractive="";
+$wsbactive="";
+$wikiactive="";
+$vaultactive="";
+$adminactive="";
+$outboardactive="";
+$baseurl="";
+$searchbar="";
+$BasicAuthInUse="";
 $buttons = '<div class="row mr-1"><div class=col>
 <div class="btn-group btn-group-sm"><a class="nav-link btn btn-outline-danger btn-xs" href="outboard.php?logout=1">Log Out  <i data-feather="log-out"></i> </a></div></div></div>';
 switch($url)

@@ -131,8 +131,16 @@ $rowcount = 0;
 $zebra = 0;
 $username = urlencode($username);
 $a= array();
+// $hours= array();
 
 while($row = $ob->getRow()) {
+    $hours="";
+    $change="";
+    $lastup="";
+    $in="";
+    $out="";
+    $rw="";
+    
     # isChangeable just checks who can move dots 
     # there's four options:
     //    all         - Any user (non-readonly) can change anyone's info
@@ -308,15 +316,15 @@ while($row = $ob->getRow()) {
     } 
     elseif(isset($_GET['']))
     {
-        $change = "true";
+        $change = "false"; // was true but changed to false
         $hours = $row["hours"];
     }
-    else 
-    {
-        $change = "false";
-        $hours = $row["hours"];
-        // echo "<td $user_bg>$print_remarks</td>";
-    }
+    // else 
+    // {
+    //     $change = "false";
+    //     $hours = $row["hours"];
+    //     // echo "<td $user_bg>$print_remarks</td>";
+    // }
     
     // while ($row = mysqli_fetch_assoc($result)) 
     // {

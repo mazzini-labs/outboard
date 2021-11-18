@@ -9,11 +9,11 @@ $query = "SELECT * FROM pto_request where is_pto = 0 ORDER BY id";
 $query = "SELECT
 id, 
 title, 
-date_format(start_time,'%Y-%m-%dT%T') as start_time,
-all_day, 
-date_format(end_time,'%Y-%m-%dT%T') as end_time,
+date_format(start,'%Y-%m-%dT%T') as start,
+allDay, 
+date_format(end,'%Y-%m-%dT%T') as end,
 color, 
-remarks
+description
 FROM
     pto_request
 WHERE
@@ -25,18 +25,22 @@ $statement = $connect->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
 //$result = mysql_query($query) or die(mysql_error());
+if(isset($_REQUEST['test'])){
+    echo json_encode($result);
+    exit;
+}
 foreach($result as $row)
 {
     // if($row["all_day"] == "true")?
  $data[] = array(
   'id'   => $row["id"],
-  'allDay'   => $row['all_day'] == "true" ? 1 : 0,
+  'allDay'   => $row['allDay'],
   'title'   => $row["title"],
-  'start'   => $row["start_time"],
-  'end'   => $row["end_time"],
+  'start'   => $row["start"],
+  'end'   => $row["end"],
   
-  'color'   => "#".$row["color"],
-  'description' => $row["remarks"]
+  'color'   => $row["color"],
+  'description' => $row["description"]
  );
 }
 /*foreach($result as $row)
