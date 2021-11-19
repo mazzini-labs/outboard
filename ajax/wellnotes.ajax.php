@@ -43,11 +43,11 @@ $num_records = mysqli_num_rows($result);
 mysqli_close($conn);
 $a= array();
 while ($row = mysqli_fetch_assoc($result)) {
-    if($generalnotes != $row['notes'] || $shutinnotes != $row['si_notes'] || $pumper != $row['pumper'])
-    {
+    // if($generalnotes != $row['notes'] || $shutinnotes != $row['si_notes'] || $pumper != $row['pumper'])
+    // {
         $a['data'][] = $row;
         
-    }
+    // }
     if ($notesupdate != null) {$notesupdate = $row['ne'];}
     if ($generalnotes != null) {$generalnotes = $row['notes'];}
     if ($shutinnotes != null) {$shutinnotes = $row['si_notes'];}

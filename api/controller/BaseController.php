@@ -29,6 +29,8 @@ class BaseController
      */
     protected function getQueryStringParams()
     {
+        // return parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        // return parse_url($_SERVER['QUERY_STRING'], $query);
         return parse_str($_SERVER['QUERY_STRING'], $query);
     }
 
