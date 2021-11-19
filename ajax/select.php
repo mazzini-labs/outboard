@@ -427,8 +427,8 @@
                     }
                     else{
                          $filesGallery .= '<div><a href="'.$row['filepath'].'"></a></div>';
-                         console_log("Type: " . mime_content_type($filePath));
-                         console_log("Extension: " . mime_content_type($ext));
+                         // console_log("Type: " . mime_content_type($filePath));
+                         // console_log("Extension: " . mime_content_type($ext));
                     }
                     // $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
                     // $detected_type = finfo_file( $fileInfo, $filePath );

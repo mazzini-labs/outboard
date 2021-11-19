@@ -101,7 +101,7 @@ $('#input2').on('changed.bs.select', function (e, clickedIndex, isSelected, prev
     // $('#county_drop_down').hide(); // Hide the drop down
     $('#no_county_drop_down').hide(); // Hide the "no counties" message (if it's the case)
 
-    $.getScript("js/states/"+ state.toLowerCase() +".js", function(){
+    $.getScript("/assets/js/states/"+ state.toLowerCase() +".js", function(){
 
     populate(cp);
     

@@ -71,8 +71,8 @@ $mysqli = connect_db();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/colors/trumbowyg.colors.min.js" integrity="sha512-iT7g30i1//3OBZsfoc5XmlULnKQKyxir582Z9fIFWI6+ohfrTdns118QYhCTt0d09aRGcE7IRvCFjw2wngaqRQ==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/history/trumbowyg.history.min.js" integrity="sha512-hvFEVvJ24BqT/WkRrbXdgbyvzMngskW3ROm8NB7sxJH6P4AEN77UexzW3Re5CigIAn2RZr8M6vQloD/JHtwB9A==" crossorigin="anonymous"></script>
     <!-- <script src="js/dashboard.js"></script> -->
-    <script type="text/javascript" src="js/datatables.wsb.prod_data.js?v=1.0.2.98"></script>
-    <!-- <script src="/js/wsb.ddr.js?v1.0.0.14"></script> -->
+    <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.2.98"></script>
+    <!-- <script src="/assets/js/wsb.ddr.js?v1.0.0.14"></script> -->
 </head>
 
 <body class="dash">
@@ -674,8 +674,8 @@ $mysqli = connect_db();
 </body>
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>   
-<script src="/js/bottom_scripts.js?v1.0.0.1"></script>
-<script type="text/javascript" src="js/pldb_county_selectpicker.js?v1.0.0.61"></script>
+<script src="/assets/js/bottom_scripts.js?v1.0.0.1"></script>
+<script type="text/javascript" src="/assets/js/pldb_county_selectpicker.js?v1.0.0.61"></script>
 </html>
 
 

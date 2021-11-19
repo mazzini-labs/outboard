@@ -81,12 +81,12 @@ A failed embed will not have dimensions specified, so you don't see an oddly lar
                     </div>
                 </div> -->
             </div>
-            <script src="js/shim.js?v=1.0.0.1"></script>
-            <script lang="javascript" src="js/dist/xlsx.full.min.js"></script>
-            <script src="js/dropsheet.js"></script>
+            <script src="/assets/js/shim.js?v=1.0.0.1"></script>
+            <script lang="javascript" src="/assets/js/dist/xlsx.full.min.js"></script>
+            <script src="/assets/js/dropsheet.js"></script>
             <!-- <script type="module" src="js/sheetjsw.js"></script> -->
             <!-- <script type="module" src="js/xlsx.modalmain.js?v=1.0.0.3"></script> -->
-            <script src="js/spin.js"></script>
+            <script src="/assets/js/spin.js"></script>
             
         </div>
     </div>

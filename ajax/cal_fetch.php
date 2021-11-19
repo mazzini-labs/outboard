@@ -17,11 +17,11 @@ $data = array();
           $data[] = array(
                'id'   => $row["id"],
                'title'   => $row["title"],
-               'start'   => $row["start_time"],
-               'end'   => $row["end_time"],
-               'allDay'   => $row["all_day"],
-               'color'   => "#".$row["color"],
-               'description' => $row["remarks"]
+               'start'   => $row["start"],
+               'end'   => $row["end"],
+               'allDay'   => $row["allDay"],
+               'color'   => $row["color"],
+               'description' => $row["description"]
           );
      } 
       echo json_encode($data);  

@@ -182,10 +182,6 @@ $(function(){
             $('#ddr-tab').on('shown.bs.tab', function (e) {
                 // .click(function(){
                 
-                console.log(body);
-                console.log(nav);
-                console.log(subnav);
-                console.log(dt_scroller_height);
                 if(clickddr < 1){
                     clickddr++;
                     var info;

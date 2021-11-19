@@ -8,7 +8,7 @@ if(isset($_POST["id"]))
 {
  $query = "
  UPDATE pto_request 
- SET title=:title, start_time=:start_event, end_time=:end_event 
+ SET title=:title, start=:start_event, end=:end_event 
  WHERE id=:id
  ";
  $statement = $connect->prepare($query);

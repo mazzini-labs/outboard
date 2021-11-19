@@ -1,0 +1,92 @@
+// calendar model
+calendar {
+    connect {
+        mysql
+        host
+        dbname
+        dbuser
+        dbpass
+    }
+    
+}
+// calendar controller
+calendarcontroller {
+    // cal_load.php
+    load {
+        query: select * from pto_request where is_pto = 0 order by id
+        statement: execute query
+        result: fetch
+        return result->toJSON();
+    }
+    // cal_date.update.php
+    updateDate(id,title,start,end) {
+        $query = "UPDATE pto_request SET title=:title, start_time=:start_event, end_time=:end_event WHERE id=:id";
+        return rows affected (0 or 1)
+    }
+    // cal_delete.php
+    delete(id) {
+        query: delete from pto_request where id=:id
+        return rows affected (0 or 1)
+    }
+    // cal_fetch_edit.php & cal_fetch.php
+    loadSingle(id) {
+        query: select * from pto_request where id=:id 
+        statement: execute query 
+        result: fetch 
+        return result->toJSON();
+    }
+    // cal_insert.php
+    insert(title,start,end,allDay,description,color) {
+        query = "INSERT INTO pto_request (title, start, end, allDay, description, color) VALUES (:title, :start_event, :end_event, :all_day, :remarks, :color)";
+        statement: execute query 
+        return result->toJSON();
+    }
+    // cal_full.update.php
+    update(id,title,start,end,allDay,description,color) {
+        $query = "UPDATE pto_request SET title=:title, start=:start_event, end=:end_event, allDay=:allDay, description=:remarks, color=:color WHERE id=:id";
+        statement: execute query 
+        return result->toJSON();
+    }
+    
+}
+class Calendar(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+    def cal_load():
+
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+    def __str__(self):
+        return self.question_text
+
+
+class Character {
+    // name: String
+    getName() {
+        return this._name
+    }
+    
+    // homeWorld: Planet
+    getHomeWorld() {
+        return fetchHomeworld(this._homeworldID)
+    }
+    
+    // friends: [Character]
+    getFriends() {
+        return this._friendIDs.map(fetchCharacter)
+    }
+}
+
+# type Character {
+class Character:
+  # name: String
+  def name(self):
+  return self._name
+
+  # homeWorld: Planet
+  def homeWorld(self):
+  return fetchHomeworld(self._homeworldID)
+
+  # friends: [Character]
+  def friends(self):
+  return map(fetchCharacter, self._friendIDs)

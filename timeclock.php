@@ -217,6 +217,6 @@ if (getPostValue('timesheet')) {
 	</div>
 </div>
 </BODY>
-<script src="/js/bottom_scripts.js?v1.0.0.1"></script>
+<script src="/assets/js/bottom_scripts.js?v1.0.0.1"></script>
 </HTML>
 

@@ -60,11 +60,11 @@ $mysqli = connect_noper();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css"/> -->
     <?php include 'include/dependencies.php'; ?>
     <script src="https://unpkg.com/feather-icons"></script>
-    <script type="text/javascript" src="js/chart.js"></script>
+    <script type="text/javascript" src="/assets/js/chart.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
     <script type="text/javascript" src="./assets/js/inlineEdit.js"></script>
-    <script type="text/javascript" src="js/fixed-action-button.js"></script>
+    <script type="text/javascript" src="/assets/js/fixed-action-button.js"></script>
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
 	integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="

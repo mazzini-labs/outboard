@@ -6,6 +6,8 @@ require_once("lib/OutboardAuth.php");
 //include_once("include/char_widths.php");
 include_once("include/common.php");
 
+include 'include/variables.php';
+
 // Create main objects;
 $auth = new OutboardAuth();
 $ob   = new OutboardDatabase();
@@ -69,11 +71,11 @@ $mysqli = connect_db();
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/colors/trumbowyg.colors.min.js" integrity="sha512-iT7g30i1//3OBZsfoc5XmlULnKQKyxir582Z9fIFWI6+ohfrTdns118QYhCTt0d09aRGcE7IRvCFjw2wngaqRQ==" crossorigin="anonymous"></script>
             <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/highlight/trumbowyg.highlight.min.js" integrity="sha512-WqcaEGy8Pv/jIWsXE5a2T/RMO81LN12aGxFQl0ew50NAUQUiX9bNKEpLzwYxn+Ez1TaBBJf+23OX+K4KBcf6wg==" crossorigin="anonymous"></script> -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/history/trumbowyg.history.min.js" integrity="sha512-hvFEVvJ24BqT/WkRrbXdgbyvzMngskW3ROm8NB7sxJH6P4AEN77UexzW3Re5CigIAn2RZr8M6vQloD/JHtwB9A==" crossorigin="anonymous"></script>
-            <script src="/js/tinymce/tinymce.min.js?v1"></script>
-    <script src="/js/tinymce/jquery.tinymce.min.js"></script>
-    <!-- <script type="text/javascript" class="init" src="/js/datatables.wsb.js?v1.0.0.23"></script> -->
-    <script type="text/javascript" src="js/datatables.wsb.prod_data.js?v=1.0.3.37"></script>
-    <!-- <script src="/js/wsb.ddr.js?v1.0.0.14"></script> -->
+            <script src="/assets/js/tinymce/tinymce.min.js?v1"></script>
+    <script src="/assets/js/tinymce/jquery.tinymce.min.js"></script>
+    <!-- <script type="text/javascript" class="init" src="/assets/js/datatables.wsb.js?v1.0.0.23"></script> -->
+    <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.37"></script>
+    <!-- <script src="/assets/js/wsb.ddr.js?v1.0.0.14"></script> -->
 </head>
 
 <body class="bg-light">
@@ -280,13 +282,14 @@ $mysqli = connect_db();
     include 'include/ddr_datepicker.php'; 
     include 'modals/well_entry_modal.php';
     include 'modals/dsr_add_modal.php';
+    include 'modals/prod_add_latest_modal.php';
     ?>
 </div>
 
 </body>
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>   
-<script src="/js/bottom_scripts.js?v1.0.0.1"></script>
+<script src="/assets/js/bottom_scripts.js?v1.0.0.1"></script>
 
 </html>
 

@@ -11,6 +11,9 @@ $la = $_REQUEST["la"];
 $le = $_REQUEST["le"];
 $ge = $_REQUEST["ge"];
 $ad = $_REQUEST["ad"];
+$start_time="";
+$end_time="";
+$remarks="";
 $hr = true;
 $department = "(";
 if ($hr) { 
@@ -78,11 +81,11 @@ foreach($result as $row)
  $data[] = array(
   'id'   => $row["id"],
   'title'   => $row["title"],
-  'start'   => $row["start_time"],
-  'end'   => $row["end_time"],
-  'allDay'   => $row["all_day"],
+  'start'   => $row["start"],
+  'end'   => $row["end"],
+  'allDay'   => $row["allDay"],
   'color'   => "#".$row["color"],
-  'description' => $row["remarks"]
+  'description' => $row["description"]
  );
 }
 /*foreach($result as $row)

@@ -536,7 +536,7 @@ $(document).ready(function() {
 		white-space:normal!important;
 	}
 	p, td {
-		cursor: url("./images/crosshair.gif"), url("./images/crosshair.cur"), crosshair;
+		cursor: url("/assets/images/crosshair.gif"), url("assets/images/crosshair.cur"), crosshair;
 	}
 	td:focus { cursor: text; }
 

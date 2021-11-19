@@ -560,7 +560,7 @@ $(document).ready(function()) {
 	 		<div class="col-8 m-2 p-3 shadow-lg card-body bg-light">
 				<div class="row justify-content-center">
 					<a href="#">
-						<img width=50% src="images/SOGLOGO-01.svg" alt="IMG" >
+						<!-- <img width=50% src="assets/images/SOGLOGO-01.svg" alt="IMG" > -->
 						<br />
 					</a>
 				</div>

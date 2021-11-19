@@ -118,9 +118,8 @@ if ($ob->isADstaffspr()) {
 	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/maintest.css?=v1.3">
 	<link rel="stylesheet" type="text/css" href="assets/css/fc_btn.css?v1.0.0.2">
-	<link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link href="/css/offcanvas.css?v1.0.0.0" rel="stylesheet">
+    <link href="/assets/css/offcanvas.css?v1.0.0.0" rel="stylesheet">
 	<link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="assets/css/fixed-action-button.css">
 <link rel="stylesheet" type="text/css" href="assets/css/glyphicons.css?v1.0.0.8">
@@ -133,7 +132,7 @@ if ($ob->isADstaffspr()) {
   <script src='fullcalendar/packages/list/main.js'></script>
   <script src='fullcalendar/packages/interaction/main.js'></script>
   <script src='fullcalendar/packages/bootstrap/main.js'></script>
-  <script type="text/javascript" src="js/fixed-action-button.js"></script>
+  <script type="text/javascript" src="/assets/js/fixed-action-button.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js" integrity="sha512-8vfyGnaOX2EeMypNMptU+MwwK206Jk1I/tMQV4NkhOz+W8glENoMhGyU6n/6VgQUhQcJH8NqQgHhMtZjJJBv3A==" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css"/>
   <script src="https://unpkg.com/feather-icons"></script>
@@ -451,7 +450,7 @@ $(document).ready(function() {
 			var te  = $('#dev').val() + " " + $('#te').val();
 			var ade = $('#ade').val(); 
 				$.ajax({  
-					url:"ajax/cal_insert.1.php",  
+					url:"ajax/cal_insert.php",  
 					method:"POST",
 					data: {cvn:cvn, ts:ts, te:te, drn:drn, ade:ade, type:slt},  
 					// data: {cvn:$('#cvn').val, ts:$('#ts').val, te:$('#te').val, drn:$('#drn').val, ade:$('#ade').val, type:$('#slt').val},

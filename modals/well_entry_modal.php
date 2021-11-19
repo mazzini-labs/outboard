@@ -502,5 +502,5 @@
         </div>
     </div> 
 </div>
-<!-- <script src="/js/dropdown.js?v=1.0.0.1"></script> -->
+<!-- <script src="/assets/js/dropdown.js?v=1.0.0.1"></script> -->
 <!-- Well Entry Modal -->

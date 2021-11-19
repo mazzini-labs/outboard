@@ -8,7 +8,7 @@
 if($url == active('obd.php')){
 ?>
 <!-- Fixed Action Button -->
-<div id="cs" class="fixed-action-btn fab-ob" style="">
+<div id="cs" class="fixed-action-btn fab-ob">
   <a id="csa" data-user="<?php echo $username ?>" class="btn-floating btn-lg btn-info bg-danger cs" href="#"> 
     <i class="lg-icon" data-feather="edit-3" ></i>
   </a>

@@ -1,14 +1,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <link rel="icon" type="image/png" href="assets/images/icons/favicon.ico"/>
   <!-- Outboard CSS -->
-  <link rel="stylesheet" type="text/css" href="/css/util.css?v1.0.0.6">
-	<link rel="stylesheet" type="text/css" href="/css/tabs.css?v1.0.0.4">
-  <link rel="stylesheet" type="text/css" href="/css/search.css">
-  <link rel="stylesheet" type="text/css" href="/css/fixed-action-button.css?v1.0.0.0">
-  <link rel="stylesheet" type="text/css" href="/css/wsb.style.css?v1.0.0.12">
-  <link rel="stylesheet" type="text/css" href="/css/ob.scrollbar.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/util.css?v1.0.0.6">
+	<link rel="stylesheet" type="text/css" href="../assets/css/tabs.css?v1.0.0.4">
+  <link rel="stylesheet" type="text/css" href="../assets/css/search.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/fixed-action-button.css?v1.0.0.0">
+  <link rel="stylesheet" type="text/css" href="../assets/css/wsb.style.css?v1.0.0.12">
+  <link rel="stylesheet" type="text/css" href="../assets/css/ob.scrollbar.css">
 	<!-- Bootstrap core CSS -->
   <!-- <link href="/WSB/stylesheet/bootstrap.min.css?v1" rel="stylesheet"> -->
   <?php if(isset($_REQUEST["bs5"])) { ?>
@@ -20,8 +20,8 @@
   <!-- <link href="assets/css/bootstrap-modal-bs3patch.css" rel="stylesheet" /> -->
   <!-- <link href="assets/css/bootstrap-modal.css" rel="stylesheet" /> -->
   <?php } ?>
-  <link rel="stylesheet" type="text/css" href="/css/maintest.css?=v1.0.0.6.21">
-  <link href="/css/offcanvas.css?v1.0.0.0" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../assets/css/maintest.css?=v1.0.0.6.21">
+  <link href="../assets/css/offcanvas.css?v1.0.0.0" rel="stylesheet">
   <!-- FontAwesome CSS -->
 	<link href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' rel='stylesheet'>
   <link rel="stylesheet" type="text/css" href="assets/css/glyphicons.css?v1.0.0.8">
@@ -76,7 +76,7 @@
   <!-- Feather Icons JS -->
   <script src="https://unpkg.com/feather-icons"></script>
   <!-- Hide Empty Columns DataTables Custom Function -->
-  <script src="/js/dataTables.hideEmptyColumns.js"></script>
+  <script src="/assets/js/dataTables.hideEmptyColumns.js"></script>
   <!-- FontAwsome Script -->
   <script src="https://kit.fontawesome.com/634c08e21e.js" crossorigin="anonymous"></script>
   <!-- Select Search  -->
@@ -96,8 +96,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.49/js/bootstrap-datetimepicker.min.js" integrity="sha512-jPwanAeILSRxZLeyP1XYBOo67+how4C1Ij54LQSa8xIOP3hKyeWRe24C0scI4QrTeQywKd1meF4Pak/Glv34vA==" crossorigin="anonymous"></script>
 
   <!-- TESTING -->
-  <!-- <script src="/js/tinymce/tinymce.min.js?v1"></script>
-  <script src="/js/tinymce/jquery.tinymce.min.js"></script> -->
+  <!-- <script src="/assets/js/tinymce/tinymce.min.js?v1"></script>
+  <script src="/assets/js/tinymce/jquery.tinymce.min.js"></script> -->
   <!-- Microsoft Teams JavaScript API (via CDN) -->
   <script src="https://statics.teams.microsoft.com/sdk/v1.5.2/js/MicrosoftTeams.min.js" crossorigin="anonymous"></script>
   <script>
@@ -119,8 +119,8 @@
       });
 </script> -->
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/inline/ckeditor.js"></script>
-<link href="/css/wysiwyg.min.css" rel="stylesheet" />
-<script src="/js/wysiwyg.min.js"></script> -->
+<link href="../assets/css/wysiwyg.min.css" rel="stylesheet" />
+<script src="/assets/js/wysiwyg.min.js"></script> -->
 <!-- <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script> -->
 <script src="https://cdn.datatables.net/plug-ins/1.10.22/sorting/datetime-moment.js"></script>
@@ -129,7 +129,7 @@
 
 <!-- <link href="js/lightbox/lightbox.min.css" rel="stylesheet">
 <script src="js/lightbox/lightbox.min.js"></script> -->
-<script src="js/alertify.js"></script>
+<script src="/assets/js/alertify.js"></script>
 <script src="https://unpkg.com/canvas-datagrid"></script>
 <!-- <script src="js/pdf.js"></script> -->
 <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>

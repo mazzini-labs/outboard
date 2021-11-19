@@ -298,7 +298,7 @@ if ($BasicAuthInUse) {
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="/assets/js/main.js"></script>
 	<script language="JavaScript"> loginform.username.focus(); </script>
 	<script>
 		$('.box-wrapper').each(function(index, element) {

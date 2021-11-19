@@ -5,6 +5,8 @@ require_once("lib/OutboardAuth.php");
 //include_once("include/char_widths.php");
 include_once("include/common.php");
 
+include 'include/variables.php';
+
 // Create main objects;
 $auth = new OutboardAuth();
 $ob   = new OutboardDatabase();
@@ -532,7 +534,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
 <head>
     <?php include 'include/dependencies.php'; ?>
     <!-- <script src="https://unpkg.com/feather-icons"></script> -->
-    <script type="text/javascript" src="js/chart.js"></script>
+    <script type="text/javascript" src="/assets/js/chart.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
     <script type="text/javascript" src="./assets/js/inlineEdit.js"></script>
@@ -544,7 +546,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
 	integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
 	crossorigin=""></script> -->
-    <!-- <script src="/js/dropdown.js?v=1.0.0.3"></script> -->
+    <!-- <script src="/assets/js/dropdown.js?v=1.0.0.3"></script> -->
         <?php 
         // console_log($api); 
         ?>
@@ -561,8 +563,8 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
         <!-- <script type="text/javascript" src="js/datatables.wsb.testing.js?v=1.0.0.57"></script> -->
         <!-- <script type="text/javascript" src="js/datatables.wsb.testing.3.js?v=1.0.0.51"></script>
         <script type="text/javascript" src="js/tester.js?v=1.0.0.76"></script> -->
-        <script type="text/javascript" src="js/datatables.wsb.prod_data.js?v=1.0.3.29"></script>
-        <script type="text/javascript" src="js/view-ddr.js?v=1.0.0.76"></script>
+        <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.29"></script>
+        <script type="text/javascript" src="/assets/js/view-ddr.js?v=1.0.0.76"></script>
         
         <?php } else { ?>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/trumbowyg.min.js" integrity="sha512-sffB9/tXFFTwradcJHhojkhmrCj0hWeaz8M05Aaap5/vlYBfLx5Y7woKi6y0NrqVNgben6OIANTGGlojPTQGEw==" crossorigin="anonymous"></script>
@@ -570,10 +572,10 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/colors/trumbowyg.colors.min.js" integrity="sha512-iT7g30i1//3OBZsfoc5XmlULnKQKyxir582Z9fIFWI6+ohfrTdns118QYhCTt0d09aRGcE7IRvCFjw2wngaqRQ==" crossorigin="anonymous"></script>
             <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/highlight/trumbowyg.highlight.min.js" integrity="sha512-WqcaEGy8Pv/jIWsXE5a2T/RMO81LN12aGxFQl0ew50NAUQUiX9bNKEpLzwYxn+Ez1TaBBJf+23OX+K4KBcf6wg==" crossorigin="anonymous"></script> -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/history/trumbowyg.history.min.js" integrity="sha512-hvFEVvJ24BqT/WkRrbXdgbyvzMngskW3ROm8NB7sxJH6P4AEN77UexzW3Re5CigIAn2RZr8M6vQloD/JHtwB9A==" crossorigin="anonymous"></script>
-            <script src="/js/tinymce/tinymce.min.js?v1"></script>
-            <script src="/js/tinymce/jquery.tinymce.min.js"></script>
-        <script type="text/javascript" src="js/datatables.wsb.prod_data.js?v=1.0.3.39"></script>
-        <script type="text/javascript" src="js/view-ddr.js?v=1.0.0.76"></script>
+            <script src="/assets/js/tinymce/tinymce.min.js?v1"></script>
+            <script src="/assets/js/tinymce/jquery.tinymce.min.js"></script>
+        <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.39"></script>
+        <script type="text/javascript" src="/assets/js/view-ddr.js?v=1.0.0.76"></script>
 
         <?php } ?>
         <!-- DDR.JS IS NOT INCLUDED DUE TO DUPLICATION OF ENTRIES -->
@@ -2325,7 +2327,7 @@ include 'modals/file_modal.php';
           <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
           <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
           
-          <script src="/js/bottom_scripts.js?v1.0.0.1"></script>
+          <script src="/assets/js/bottom_scripts.js?v1.0.0.1"></script>
           <!-- <script src="js/fslightbox.js"></script> -->
 
 <script>

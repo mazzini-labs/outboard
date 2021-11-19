@@ -45,7 +45,7 @@ document.write('  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax
 document.write('  <!-- Feather Icons JS -->');
 document.write('  <script src="https://unpkg.com/feather-icons"></script>');
 document.write('  <!-- Hide Empty Columns DataTables Custom Function -->');
-document.write('  <script src="/js/dataTables.hideEmptyColumns.js"></script>');
+document.write('  <script src="/assets/js/dataTables.hideEmptyColumns.js"></script>');
 document.write('  <!-- FontAwsome Script -->');
 document.write('  <script src="https://kit.fontawesome.com/634c08e21e.js" crossorigin="anonymous"></script>');
 document.write('  <!-- Select Search  -->');

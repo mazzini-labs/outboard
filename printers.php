@@ -61,11 +61,8 @@
                 font-stretch: condensed!important;
                 font-size: 12px;
             }
-            thead, tbody, a {
-    /* font-style: normal!important; */
-    /* font-stretch: condensed!important; */
-    
-}
+            /* thead, tbody, a {
+} */
 .smol th,
 .smol td,
 .smol a,

@@ -141,7 +141,7 @@ switch($url)
   case (active('wsb.php')):
     $table = "list";
     $sql = "SELECT api, entity_common_name FROM $table";// ORDER BY well_lease ASC";
-    $result = mysqli_query($mysqli,$sql) or die(mysql_error());
+    $result = mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
     $wsbactive = 'active';
     $search = 'Search wells...';
     $searchbar = '<form class="form-inline active-white active-white2">
@@ -193,7 +193,7 @@ switch($url)
   // case (strpos($url,'http://vprsrv2/prod_data.php')):
     $table = "list";
     $sql = "SELECT api, entity_common_name FROM $table";// ORDER BY well_lease ASC";
-    $result = mysqli_query($mysqli,$sql) or die(mysql_error());
+    $result = mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
     $wsbactive = 'active';
     $search = 'Search...';
     // $searchbar = '<form class="form-inline active-white active-white2">
@@ -288,7 +288,7 @@ break;
 <nav class="navbar navbar-expand-md navbar-scroller navbar-dark bg-dark shadow-lg"> 
 	 <?php if($ob->isReadonly()) { $readonly = true; } else { $readonly = false; }?>
  	 <?php if(getGetValue('noupdate')) $update = 0;?>
-      <img class="navbar-brand" src="images/Flame.svg" width=3% height=auto></img>
+      <img class="navbar-brand" src="assets/images/Flame.svg" width=3% height=auto></img>
       <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
         <span class="navbar-toggler-icon"></span>
       </button>

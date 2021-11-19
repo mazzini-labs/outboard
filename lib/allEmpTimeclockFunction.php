@@ -13,15 +13,14 @@
 define("PROJECT_ROOT_PATH", __DIR__ . "/../");
 // define("PROJECT_ROOT_PATH", $_SERVER['DOCUMENT_ROOT']);
 // define("PROJECT_ROOT_PATH","https://" . $_SERVER["HTTP_HOST"]);
-require_once(PROJECT_ROOT_PATH . "/lib/OutboardAuth.php");
-require_once(PROJECT_ROOT_PATH . "/lib/OutboardTimeclock.php");
-require_once(PROJECT_ROOT_PATH . "/lib/obP.php");
-require_once(PROJECT_ROOT_PATH . "/lib/OutboardDatabase.php");
-
-include_once(PROJECT_ROOT_PATH . "/include/common.php");
-include_once(PROJECT_ROOT_PATH . "/include/html_helper.php");
-include_once(PROJECT_ROOT_PATH . "/include/html_helper_test.php");
-include_once(PROJECT_ROOT_PATH . "/include/fullname.php");
+require_once PROJECT_ROOT_PATH . "/lib/OutboardAuth.php";
+require_once PROJECT_ROOT_PATH . "/lib/OutboardTimeclock.php";
+require_once PROJECT_ROOT_PATH . "/lib/obP.php";
+require_once PROJECT_ROOT_PATH . "/lib/OutboardDatabase.php"; 
+include_once PROJECT_ROOT_PATH . "/include/common.php";
+include_once PROJECT_ROOT_PATH . "/include/html_helper.php";
+include_once PROJECT_ROOT_PATH . "/include/html_helper_test.php";
+include_once PROJECT_ROOT_PATH . "/include/fullname.php";
 
 // Get the session (if there is one)
 $auth = new OutboardAuth();

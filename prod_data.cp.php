@@ -239,11 +239,11 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
 <head>
     <?php include 'include/dependencies.php'; ?>
     <!-- <script src="https://unpkg.com/feather-icons"></script> -->
-    <script type="text/javascript" src="js/chart.js"></script>
+    <script type="text/javascript" src="/assets/js/chart.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
     <script type="text/javascript" src="./assets/js/inlineEdit.js"></script>
-    <!-- <script type="text/javascript" src="js/fixed-action-button.js"></script> -->
+    
     
     <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
 	integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -251,27 +251,23 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
 	integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
 	crossorigin=""></script> -->
-    <script src="/js/dropdown.js?v=1.0.0.3"></script>
+    <script src="/assets/js/dropdown.js?v=1.0.0.3"></script>
         <?php 
         // console_log($api); 
         ?>
         <script type="text/javascript">
             window.api = <?php echo $api; ?>;
         </script>
-        <?php if(isset($_REQUEST['testing'])){ ?>
-        <script type="text/javascript" src="js/datatables.prod_data.testing.js?v=1.0.0.0"></script>
-        <?php } else { ?>
+        
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/trumbowyg.min.js" integrity="sha512-sffB9/tXFFTwradcJHhojkhmrCj0hWeaz8M05Aaap5/vlYBfLx5Y7woKi6y0NrqVNgben6OIANTGGlojPTQGEw==" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/cleanpaste/trumbowyg.cleanpaste.min.js" integrity="sha512-y7o2DGiZAj5/HOX10rSG1zuIq86mFfnqbus0AASAG1oU2WaF2OGwmkt2XsgJ3oYxJ69luyG7iKlQQ6wlZeV3KQ==" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/colors/trumbowyg.colors.min.js" integrity="sha512-iT7g30i1//3OBZsfoc5XmlULnKQKyxir582Z9fIFWI6+ohfrTdns118QYhCTt0d09aRGcE7IRvCFjw2wngaqRQ==" crossorigin="anonymous"></script>
             <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/highlight/trumbowyg.highlight.min.js" integrity="sha512-WqcaEGy8Pv/jIWsXE5a2T/RMO81LN12aGxFQl0ew50NAUQUiX9bNKEpLzwYxn+Ez1TaBBJf+23OX+K4KBcf6wg==" crossorigin="anonymous"></script> -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/history/trumbowyg.history.min.js" integrity="sha512-hvFEVvJ24BqT/WkRrbXdgbyvzMngskW3ROm8NB7sxJH6P4AEN77UexzW3Re5CigIAn2RZr8M6vQloD/JHtwB9A==" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="js/datatables.cp.js?v=1.0.0.31"></script>
-        <?php } ?>
+        <script type="text/javascript" src="/assets/js/datatables.cp.js?v=1.0.0.31"></script>
         
-        <!-- DDR.JS IS NOT INCLUDED DUE TO DUPLICATION OF ENTRIES -->
-        <!-- <script type="text/javascript" src="js/wsb.ddr.js?v=1.0.0.2"></script> -->
-
+        
+        
   <script>
 	 function ajaxSelect(page){
 	   var ajaxRequest;  // The variable that makes Ajax possible!
@@ -597,7 +593,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                     <div class="carded m-3 p-3 shadow-lg">
                         <div class="carded-header"><h1>Compressor DDR 2015-2020</h1></div>
                             <div class="carded-body">
-                                <table id="cTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width=100%;">
+                                <table id="cTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
                                     <thead class="bg-sog">
                                         <tr>
                                             <th <?php echo $width2; ?> class="table-header">Date</th>
@@ -619,7 +615,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                     <div class="carded m-3 p-3 shadow-lg">
                         <div class="carded-header"><h1>Dehydrator DDR 2015-2020</h1></div>
                             <div class="carded-body">
-                                <table id="dTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width=100%;">
+                                <table id="dTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
                                     <thead class="bg-sog">
                                         <tr>
                                             <th <?php echo $width2; ?> class="table-header">Date</th>
@@ -640,7 +636,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                     <div class="carded m-3 p-3 shadow-lg">
                         <div class="carded-header"><h1>SMH DDR 2015-2020</h1></div>
                             <div class="carded-body">
-                                <table id="sTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width=100%;">
+                                <table id="sTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
                                     <thead class="bg-sog">
                                         <tr>
                                             <th <?php echo $width2; ?> class="table-header">Date</th>
@@ -715,7 +711,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                             <h1>Compressor | Pre-2015 DDR</h1>
                         </div>
                         <div class="carded-body">
-                            <table id="compTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width=100%;">
+                            <table id="compTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
                                 <thead class="bg-sog">
                                     <tr>
                                         <th class="table-header">&nbsp;</th>
@@ -744,7 +740,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                             <h1>Dehydrator | Pre-2015 DDR</h1>
                         </div>
                         <div class="carded-body">
-                            <table id="dehyTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width=100%;">
+                            <table id="dehyTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
                                 <thead class="bg-sog">
                                     <tr>
                                         <th class="table-header">&nbsp;</th>
@@ -770,7 +766,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                             <h1>System Maintenance History | Pre-2015 DDR</h1>
                         </div>
                         <div class="carded-body">
-                            <table id="smhTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width=100%;">
+                            <table id="smhTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
                                 <thead class="bg-sog">
                                     <tr>
                                         <th class="table-header">&nbsp;</th>
@@ -796,7 +792,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                             <h1>TXDOT | Pre-2015 DDR</h1>
                         </div>
                         <div class="carded-body">
-                            <table id="txdotTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width=100%;">
+                            <table id="txdotTable" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
                                 <thead class="bg-sog">
                                     <tr>
                                         <th class="table-header">&nbsp;</th>
@@ -824,7 +820,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                     <h1>Before 2015 Summary Report</h1>
                 </div>
                 <div class="carded-body">
-                    <table id="before2015sumrpt" class="table display table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width=100%;">
+                    <table id="before2015sumrpt" class="table display table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
                         <thead class="bg-sog">
                             <tr>
                                 <th class="table-header">&nbsp;</th>
@@ -869,7 +865,7 @@ include 'include/ddr_datepicker.php';
 
           <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
           <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-          <script src="/js/bottom_scripts.js?v1.0.0.1"></script>
+          <script src="/assets/js/bottom_scripts.js?v1.0.0.1"></script>
 <!-- <script type="text/javascript" src="WSB/dashboard/bootstrap.min.js.download"></script> -->
 
 <!-- Icons -->

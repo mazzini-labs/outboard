@@ -45,7 +45,7 @@
   <!-- Feather Icons JS -->
   <script src="https://unpkg.com/feather-icons"></script>
   <!-- Hide Empty Columns DataTables Custom Function -->
-  <script src="/js/dataTables.hideEmptyColumns.js"></script>
+  <script src="/assets/js/dataTables.hideEmptyColumns.js"></script>
   <!-- FontAwsome Script -->
   <script src="https://kit.fontawesome.com/634c08e21e.js" crossorigin="anonymous"></script>
   <!-- Select Search  -->

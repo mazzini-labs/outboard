@@ -32,7 +32,7 @@ if ($ob->isADstaffspr()) { $ad = true; }
     // t = setTimeout("myReload()",<?php echo $update_msec ?>);
   </script>
 
-<script type="text/javascript" class="init" src="/js/datatables.ob.testing.js?v1.0.1.76"> 
+<script type="text/javascript" class="init" src="/assets/js/datatables.ob.testing.js?v1.0.1.76"> 
 // var update = <?php //echo $update; ?>
 </script>
 <?php if ($launch = getGetValue('launch')) { ?>
@@ -370,8 +370,8 @@ var today = moment().format("hh:mm");
   </div>
 
 <?php 
-include 'eventpopup.php';
-include 'readupdate_fab.php'; 
+include 'include/eventpopup.php';
+include 'include/readupdate_fab.php'; 
 // include 'scripts.php';
 ?>
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>

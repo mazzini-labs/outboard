@@ -49,7 +49,7 @@ the first <div> and remove all css from floating_action_button.php -->
                                 
                                 $table = "list";
                                 $sql = "SELECT api, entity_common_name FROM $table";// ORDER BY well_lease ASC";
-                                $result = mysqli_query($mysqli,$sql) or die(mysql_error());
+                                $result = mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
                                     //console_log($result);
                                 ?>
                                 <!-- <option>Select Well:</option> -->
@@ -298,7 +298,7 @@ the first <div> and remove all css from floating_action_button.php -->
                                                     
                                                     $table = "wsbcategories";
                                                     $sql = "SELECT category, slug FROM $table";// ORDER BY well_lease ASC";
-                                                    $result = mysqli_query($mysqli,$sql) or die(mysql_error());
+                                                    $result = mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
                                                         //console_log($result);
                                                     ?>
                                                     <!-- <option>Select Well:</option> -->
@@ -964,6 +964,6 @@ $(function(){
     border-color: #f40f02;
 }
 </style>
-<script src="js/jquery.MultiFile.js?v=1.0.0.8"></script>
-<!-- <script src="js/jQuery.MultiFile.min.js"></script> -->
-<script src="js/custom.js?v=1"></script>
+<script src="/assets/js/jquery.MultiFile.js?v=1.0.0.8"></script>
+<!-- <script src="/assets/js/jQuery.MultiFile.min.js"></script> -->
+<script src="/assets/js/custom.js?v=1"></script>

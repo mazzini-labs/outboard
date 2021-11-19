@@ -220,8 +220,10 @@ if (getPostValue('timesheet')) {
   <div class="carded mt-5 mx-auto col-7 col-12 shadow-sm">
     <div class=" justify-content-center ">
       <div class="row card-img-top mx-auto">
-        <h2><img src="images/SOGLOGO-01.svg" alt="IMG" width="20%"> <br />
-          Personal Timeclock Report</h2>
+        <h2>
+          <!-- <img src="images/SOGLOGO-01.svg" alt="IMG" width="20%">  --><br />
+          Personal Timeclock Report
+        </h2>
       </div>
       <FORM class="" NAME=timeclock METHOD=post ACTION="<?php echo $_SERVER['PHP_SELF'] ?>">
         <div class="carded-body col-7 mx-auto ">
@@ -284,6 +286,6 @@ var today = moment().format("MM/DD/YYYY");
         );
     });
 </script>
-<script src="/js/bottom_scripts.js?v1.0.0.1"></script> 
+<script src="/assets/js/bottom_scripts.js?v1.0.0.1"></script> 
 </HTML>
 

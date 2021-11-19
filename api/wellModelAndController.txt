@@ -1,0 +1,31 @@
+prod_data datatables
+oTable(productiontable) - ajax/prodajax.php
+iTable(ddrtable) - ajax/prodnotes.ajax.php
+sTable(dsrtable) - ajax/dsr.ajax.php
+aDDRTable(ddr2015pres) - ajax/ddr.fetch.php
+vitalstable(vitalstable) - ajax/vitals.ajax.php
+aDSRTable(dsr2015pres) - ajax/ddr.fetchold.php
+bDDRTable(before2015detailrpt) - ajax/ddr.fetchold.php
+bDSRTable(before2015sumrpt) - ajax/ddr.fetchold.php
+notesTable(notestable) - ajax/wellnotes.ajax.php
+
+wsb datatables 
+lTable(latesttable) - ajax/wsb.ajax.lpd.php
+oTable(productiontable) - ajax/wsb.ajax.php
+iTable(productiontable1) - ajax/wsb.ajax.php
+sTable(shutintable) - ajax/si.ajax.php
+pTable(printtable) - ajax/wsb.ajax.php
+
+
+rest of file 
+insert_latest_prod - ajax/insert.ntf.1.php
+insert_form.ddr - ajax/insert.t.php 
+insert_form.dsr - ajax/insert.ntf.php 
+insert_well_form - ajax/insert.well.php -> ajax/fetchwells.php 
+click->.edit_ddr-e - ajax/fetch.php 
+click->.edit_ddr-a - ajax/fetch.php 
+click->.edit_ddr-v - ajax/fetch.php 
+click->.edit_ddr-f - ajax/fetch.php 
+click->.edit_dsr - ajax/fetch.php
+click->.delete_data - ajax/delete.note.php
+click->.edit-well-info - ajax/fetchwells.php

@@ -361,5 +361,5 @@ function console_log($output, $with_script_tags = true) {
 
 	}
 </script>
-<script src="/js/bottom_scripts.js?v1.0.0.1"></script>
+<script src="/assets/js/bottom_scripts.js?v1.0.0.1"></script>
 </HTML>

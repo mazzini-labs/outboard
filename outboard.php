@@ -1,4 +1,5 @@
 <?php 
+include 'include/variables.php';
 if(isset($_REQUEST['pdo'])){ include 'lib/obN.php';} else { include 'lib/ob.php';}
 $readonly = ""; 
 $hr = 0;
@@ -26,7 +27,7 @@ if ($ob->isADstaffspr()) { $ad = true; }
 <head>
   <title>OutBoard: <?php echo $ob->getConfig('board_title') ?></title> 
   <?php  include 'include/dependencies.php'; ?>
-  <link rel="stylesheet" type="text/css" href="/css/ob.css?v=1.0">
+  <link rel="stylesheet" type="text/css" href="assets/css/ob.css?v=1.0">
   <script Language="JavaScript">
     function myReload() {
       self.location = "<?php echo $baseurl ?>?noupdate=1";
@@ -34,7 +35,7 @@ if ($ob->isADstaffspr()) { $ad = true; }
     // t = setTimeout("myReload()",<?php echo $update_msec ?>);
   </script>
 
-<script type="text/javascript" class="init" src="/js/datatables.ob.js?v1.0.0.33">
+<script type="text/javascript" class="init" src="/assets/js/datatables.ob.js?v1.0.0.33">
 // var update = <?php //echo $update; ?>
 </script>
 <?php if ($launch = getGetValue('launch')) { ?>
@@ -282,8 +283,8 @@ $(function(){
   </div>
 
 <?php 
-include 'eventpopup.php';
-include 'readupdate_fab.php'; 
+include 'include/eventpopup.php';
+include 'include/readupdate_fab.php'; 
 // include 'scripts.php';
 ?>
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
