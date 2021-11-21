@@ -126,7 +126,7 @@ if(!empty($_POST))
         $stmt->bind_param('sssssssssssiddddddddisi', $d, $t, $de, $ts, $te, $deb, $cvn, $cin, $drn, $ai, $ad, $ec, $edc, $ecc, $tt, $dt, $dc, $at, $ac, $et, $vitals, $api, $id);
 
         $logstmt = $connect->prepare("INSERT INTO notes_log (notes_id, d, t, de, ts, te, deb, sd, api, cvn, cin, drn, eb, ec, edc, ecc, tt, dt, dc, at, ac, et, ai, ad, vb) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $logstmt->bind_param('issssssssssssiddddddddssi', $last_id, $d, $t, $de, $ts, $te, $deb, $sd, $api, $cvn, $cin, $drn, $eb, $ec, $edc, $ecc, $tt, $dt, $dc, $at, $ac, $et, $ai, $ad, $vitals);
+        $logstmt->bind_param('issssssssssssiddddddddssi', $id, $d, $t, $de, $ts, $te, $deb, $sd, $api, $cvn, $cin, $drn, $eb, $ec, $edc, $ecc, $tt, $dt, $dc, $at, $ac, $et, $ai, $ad, $vitals);
 
         $stmt->execute();
         $logstmt->execute();

@@ -12,14 +12,18 @@ class ProductionController extends BaseController
         // $responseData = json_encode($a);
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
-        $arrQueryStringParams = array();
-        $arrQueryStringParams = $this->getQueryStringParams();
+        // $arrQueryStringParams = array();
+        // $arrQueryStringParams = $this->getQueryStringParams();
+        
+        // $arrQueryStringParams = $this->parse_str($_SERVER['QUERY_STRING'], array());
         // error_log(print_r($arrQueryStringParams,true));
         if (strtoupper($requestMethod) == 'GET') {
             try {
                 $boardModel = new BoardModel();
                 // var_dump($arrQueryStringParams);
                 $apiNo = "00-000-00000";
+                // $apiNo = "42-367-31466";
+                $apiNo = getGetValue('api');
                 // if (isset($arrQueryStringParams['api']) && $arrQueryStringParams['api']) {
                 //     $apiNo = $arrQueryStringParams['api'];
                 // }
@@ -31,7 +35,7 @@ class ProductionController extends BaseController
                 // {
                 //     echo "false";
                 // }
-                $apiNo = $arrQueryStringParams['api'];
+                // $apiNo = $arrQueryStringParams['api'];
                 // $arrUsers = $boardModel->getUsers($apiNo);
                 // $a['data'] = $arrUsers;
                 $data = $boardModel->getWellProduction(($apiNo));
@@ -63,6 +67,40 @@ class ProductionController extends BaseController
      * "/production/ddr" Endpoint - Get DDR-D for a specific well
      */
     public function fetchDdr()
+    {
+        $strErrorDesc = '';
+        $requestMethod = $_SERVER["REQUEST_METHOD"];
+        $arrQueryStringParams = $this->getQueryStringParams();
+
+        if (strtoupper($requestMethod) == 'GET') {
+            try {
+                $boardModel = new BoardModel();
+
+                $apiNo = getGetValue('api');
+                $a['data'] = $boardModel->getDDR($apiNo);
+                $responseData = json_encode($a);
+            } catch (Error $e) {
+                $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
+                $strErrorHeader = 'HTTP/1.1 500 Internal Server Error';
+            }
+        } else {
+            $strErrorDesc = 'Method not supported';
+            $strErrorHeader = 'HTTP/1.1 422 Unprocessable Entity';
+        }
+
+        // send output
+        if (!$strErrorDesc) {
+            $this->sendOutput(
+                $responseData,
+                array('Content-Type: application/json', 'HTTP/1.1 200 OK')
+            );
+        } else {
+            $this->sendOutput(json_encode(array('error' => $strErrorDesc)), 
+                array('Content-Type: application/json', $strErrorHeader)
+            );
+        }
+    }
+    public function fetchDdrOriginalDoesntWork()
     {
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
@@ -114,14 +152,7 @@ class ProductionController extends BaseController
         if (strtoupper($requestMethod) == 'GET') {
             try {
                 $boardModel = new BoardModel();
-
-                // $apiNo = 10;
-                if (isset($arrQueryStringParams['api']) && $arrQueryStringParams['api']) {
-                    $apiNo = $arrQueryStringParams['api'];
-                }
-
-                // $arrUsers = $boardModel->getUsers($apiNo);
-                // $a['data'] = $arrUsers;
+                $apiNo = getGetValue('api');
                 $a['data'] = $boardModel->getDSR($apiNo);
                 $responseData = json_encode($a);
             } catch (Error $e) {
@@ -157,14 +188,7 @@ class ProductionController extends BaseController
         if (strtoupper($requestMethod) == 'GET') {
             try {
                 $boardModel = new BoardModel();
-
-                // $apiNo = 10;
-                if (isset($arrQueryStringParams['api']) && $arrQueryStringParams['api']) {
-                    $apiNo = $arrQueryStringParams['api'];
-                }
-
-                // $arrUsers = $boardModel->getUsers($apiNo);
-                // $a['data'] = $arrUsers;
+                $apiNo = getGetValue('api');
                 $a['data'] = $boardModel->getExcelDDR($apiNo);
                 $responseData = json_encode($a);
             } catch (Error $e) {
@@ -200,14 +224,7 @@ class ProductionController extends BaseController
         if (strtoupper($requestMethod) == 'GET') {
             try {
                 $boardModel = new BoardModel();
-
-                // $apiNo = 10;
-                if (isset($arrQueryStringParams['api']) && $arrQueryStringParams['api']) {
-                    $apiNo = $arrQueryStringParams['api'];
-                }
-
-                // $arrUsers = $boardModel->getUsers($apiNo);
-                // $a['data'] = $arrUsers;
+                $apiNo = getGetValue('api');
                 $a['data'] = $boardModel->getVitals($apiNo);
                 $responseData = json_encode($a);
             } catch (Error $e) {
@@ -243,17 +260,8 @@ class ProductionController extends BaseController
         if (strtoupper($requestMethod) == 'GET') {
             try {
                 $boardModel = new BoardModel();
-
-                // $apiNo = 10;
-                if (isset($arrQueryStringParams['api']) && $arrQueryStringParams['api']) {
-                    $apiNo = $arrQueryStringParams['api'];
-                }
-                if (isset($arrQueryStringParams['sheet']) && $arrQueryStringParams['sheet']) {
-                    $sheet = $arrQueryStringParams['sheet'];
-                }
-
-                // $arrUsers = $boardModel->getUsers($apiNo);
-                // $a['data'] = $arrUsers;
+                $apiNo = getGetValue('api');
+                $sheet = getGetValue('sheet');
                 $a['data'] = $boardModel->getOldExcel($apiNo,$sheet);
                 $responseData = json_encode($a);
             } catch (Error $e) {
@@ -289,14 +297,7 @@ class ProductionController extends BaseController
         if (strtoupper($requestMethod) == 'GET') {
             try {
                 $boardModel = new BoardModel();
-
-                // $apiNo = 10;
-                if (isset($arrQueryStringParams['api']) && $arrQueryStringParams['api']) {
-                    $apiNo = $arrQueryStringParams['api'];
-                }
-
-                // $arrUsers = $boardModel->getUsers($apiNo);
-                // $a['data'] = $arrUsers;
+                $apiNo = getGetValue('api');
                 $a['data'] = $boardModel->getWellInfo($apiNo);
                 $responseData = json_encode($a);
             } catch (Error $e) {

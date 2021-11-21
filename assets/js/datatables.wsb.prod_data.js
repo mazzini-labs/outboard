@@ -2804,6 +2804,8 @@ $(function(){
 
     // })
     // var upload = new FileUploadWithPreview("files");
+    var url = window.location.href;
+        if (url.indexOf("prod_data?testing")  !==-1 ){
     $('#insert_form.ddr').on("submit", function(event){  
         event.preventDefault();  
         var formData = new FormData(this);
@@ -2813,7 +2815,8 @@ $(function(){
         //     alert("File type must be set");
         // } else {
             $.ajax({
-                url: './ajax/insert.t.php',
+                // url: './ajax/insert.t.php',
+                url: './api/notes/ddr',
                 type: 'POST',
                 beforeSend: function(){
                     
@@ -2949,6 +2952,154 @@ $(function(){
         }  
         */
     });
+    } else {
+        $('#insert_form.ddr').on("submit", function(event){  
+            event.preventDefault();  
+            var formData = new FormData(this);
+            
+            // var fileInput = document.getElementById('files[]');
+            // if(filetype !== "" && $('input[type="file"]').val()) {
+            //     alert("File type must be set");
+            // } else {
+                $.ajax({
+                    url: './ajax/insert.t.php',
+                    // url: './api/notes/ddr',
+                    type: 'POST',
+                    beforeSend: function(){
+                        
+                        // if(filetype !== ""){
+                        //     console.log("No input for filetype");
+                        // }
+                        // if(!$('input[type="file"]').val()){
+                        //     console.log("Nothing uploaded for file");
+                        // }
+                    },
+                    xhr: function() {
+                        var my_xhr = $.ajaxSettings.xhr();
+                        if (my_xhr.upload) {
+                            mfl = $('div[class^="MultiFile-label"]');
+                            mfl.children('span').append('<div class="progress hidden"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div></div>');
+                            my_xhr.upload.addEventListener("progress", function(event) {
+                                Progress(event.loaded, event.total);
+                            });
+                        }
+                        return my_xhr;
+                    },
+                    success: function (data) {
+                        // alert("Data Uploaded: "+data);
+                        $('#success.alert').addClass('show');
+                        
+                        setTimeout(function() {  
+                        
+                        
+                        // $('#lastid.ddr-id').html(data.last_id);
+                        setTimeout(function() {
+                            $('#success.alert').removeClass('show');
+                            $('#add_data_Modal').modal('hide');
+                            iTable.ajax.reload();  
+                            $('#drn.ddr-e').trumbowyg('destroy');
+                            $('#drn.ddr-v').trumbowyg('destroy');
+                            $('#drn.ddr-a').trumbowyg('destroy');
+                            $('#drn.ddr-f').trumbowyg('destroy');
+                            $('#insert_form')[0].reset();
+                        }, 3000);
+                    }, 500);
+                    },
+                    error: function(xhr, status, message) 
+                    {
+                        // $("#err").html(e).fadeIn();
+                        // alert(e);
+    
+                        $('#e-details.error-details').text(xhr.status + " " + status + " - " + message);
+                        $('#error.alert').addClass('show');
+    
+                    },        
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+                return false;
+            // }
+            // if($('#MultiFile1_F1').val()) {
+            //     e.preventDefault();
+            //     $('#progress').show();
+            //     $(this).ajaxSubmit({ 
+            //         target:   '#targetLayer', 
+            //         beforeSubmit: function() {
+            //             $(".progress-bar").width('0%');
+            //         },
+            //         uploadProgress: function (event, position, total, percentComplete){	
+            //             $(".progress-bar").width(percentComplete + '%');
+            //             $(".progress-bar").html(percentComplete +' %')
+            //         },
+            //         success:function (){
+            //             $('#loader-icon').hide();
+            //         },
+            //         resetForm: true 
+            //     }); 
+            //     return false; 
+            // }
+            
+            /*
+            if($('#de').val() == "")  
+            {  
+                    alert("Date is required");  
+            }  
+            else  
+            {  
+                // $.ajax({
+                //     url: './ajax/insert.t.php', // <-- point to server-side PHP script 
+                //     dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+                //     cache: false,
+                //     contentType: false,
+                //     processData: false,
+                //     data: $('#insert_form'),                         
+                //     type: 'post',
+                //     success: function(data){
+                //         alert("It worked!"); // <-- display response from the PHP script, if any
+                //     }
+                //     });
+                $.ajax({  
+                    url:"./ajax/insert.t.php",  
+                    method:"POST",  
+                    data:$('#insert_form').serialize(),  
+                    beforeSend:function(){  
+                        $('#insert').val("Inserting");  
+                    },  
+                    success:function(data){
+                        $.ajax({
+                            url: './ajax/insert.t.php', // <-- point to server-side PHP script 
+                            dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: $('#insert_form'),                         
+                            type: 'post',
+                            success: function(data){
+                                alert("It worked!"); // <-- display response from the PHP script, if any
+                            }
+                            });
+                        $('#insert_form')[0].reset();  
+                        $('#add_data_Modal').modal('hide');
+                        //iTable.ajax.reload();  
+                        $('#drn.ddr-e').trumbowyg('destroy');
+                        $('#drn.ddr-v').trumbowyg('destroy');
+                        // $('#drn.ddr-a').trumbowyg('destroy');
+                        $('#drn.ddr-f').trumbowyg('destroy');
+                        $('#lastid.ddr-id').html(data.last_id);
+                    },
+                    error: function(e) 
+                    {
+                        // $("#err").html(e).fadeIn();
+                        alert(e);
+    
+                    }        
+                });         
+            }  
+            */
+        });
+    }
     function Progress(current, total) {
         var percent = ((current / total) * 100).toFixed(0) + "%";
     

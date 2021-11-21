@@ -44,7 +44,20 @@ class WellsDatabase
     //     }
     //     return false;
     // }
+    public function numRows($query = "" , $params = [])
+    {
+        try {
+            $stmt = $this->executeStatement( $query , $params );
+            $result = $stmt->store_result();
+            $result = $stmt->num_rows;		
+            $stmt->close();
 
+            return $result;
+        } catch(Exception $e) {
+            throw New Exception( $e->getMessage() );
+        }
+        return false;
+    }
     private function executeStatement($query = "" , $params = [])
     {
         try {

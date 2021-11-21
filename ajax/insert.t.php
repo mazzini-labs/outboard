@@ -128,9 +128,9 @@ if(!empty($_POST))
         }
         $stmt = $connect->prepare("UPDATE notes SET d=?, t=?, de=?, ts=?, te=?, deb=?, cvn=?, cin=?, drn=?, ai=?, ad=?, ec=?, edc=?, ecc=?, tt=?, dt=?, dc=?, at=?, ac=?, et=?, vb=?, producing_status=? WHERE api = ? AND id = ?");
         $stmt->bind_param('sssssssssssiddddddddissi', $d, $t, $de, $ts, $te, $deb, $cvn, $cin, $drn, $ai, $ad, $ec, $edc, $ecc, $tt, $dt, $dc, $at, $ac, $et, $vitals, $ps, $api, $id);
-
+        $last_id = mysqli_insert_id($connect);
         $logstmt = $connect->prepare("INSERT INTO notes_log (notes_id, d, t, de, ts, te, deb, sd, api, cvn, cin, drn, eb, ec, edc, ecc, tt, dt, dc, at, ac, et, ai, ad, vb, producing_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $logstmt->bind_param('issssssssssssiddddddddssis', $last_id, $d, $t, $de, $ts, $te, $deb, $sd, $api, $cvn, $cin, $drn, $eb, $ec, $edc, $ecc, $tt, $dt, $dc, $at, $ac, $et, $ai, $ad, $vitals, $ps);
+        $logstmt->bind_param('issssssssssssiddddddddssis', $id, $d, $t, $de, $ts, $te, $deb, $sd, $api, $cvn, $cin, $drn, $eb, $ec, $edc, $ecc, $tt, $dt, $dc, $at, $ac, $et, $ai, $ad, $vitals, $ps);
 
         $stmt->execute();
         $logstmt->execute();
@@ -154,6 +154,14 @@ if(!empty($_POST))
         $stmt->execute();
         printf("%d Row inserted.\n", $stmt->affected_rows);
         $last_id = mysqli_insert_id($connect);
+        $checklog = "SELECT sd FROM `notes` WHERE api='$api' AND id='$id'";
+        // console_log("checklog sql:".$checklog);
+        $getSD = mysqli_query($connect, $checklog);
+        while ($row = mysqli_fetch_assoc($getSD)) 
+        {
+                $sd = $row['sd'];
+                console_log("row[sd] =" . $row['sd']);
+        }
         $logstmt = $connect->prepare("INSERT INTO notes_log (notes_id, d, t, de, ts, te, deb, sd, api, cvn, cin, drn, eb, ec, edc, ecc, tt, dt, dc, at, ac, et, ai, ad, vb, producing_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $logstmt->bind_param('issssssssssssiddddddddssis', $last_id, $d, $t, $de, $ts, $te, $deb, $sd, $api, $cvn, $cin, $drn, $eb, $ec, $edc, $ecc, $tt, $dt, $dc, $at, $ac, $et, $ai, $ad, $vitals, $ps);
 

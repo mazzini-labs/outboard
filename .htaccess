@@ -22,3 +22,9 @@ php_value register_globals off
 #api/$1.php/$2?limit=?3
 #RewriteCond %{QUERY_STRING}^$
 #RewriteRule ^api/user\.php/user/list$ /api/user/list/ [QSA,L]
+
+RewriteEngine On
+# RewriteRule ^api/(.*)/(.*)/(.)?$ api/wells.php/$1/$2/$3 [L]
+RewriteRule ^api/([^.]+)/([^.]+)$ /api/wells.php/$1/$2 [L]
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^([^.]+)$ $1.php [NC,L]

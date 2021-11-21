@@ -74,7 +74,7 @@ $mysqli = connect_db();
             <script src="/assets/js/tinymce/tinymce.min.js?v1"></script>
     <script src="/assets/js/tinymce/jquery.tinymce.min.js"></script>
     <!-- <script type="text/javascript" class="init" src="/assets/js/datatables.wsb.js?v1.0.0.23"></script> -->
-    <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.37"></script>
+    <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.42"></script>
     <!-- <script src="/assets/js/wsb.ddr.js?v1.0.0.14"></script> -->
 </head>
 

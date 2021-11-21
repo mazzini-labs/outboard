@@ -18,6 +18,13 @@ Function getPostValue($variable) {
   }
 }
 
+Function getPostVariable($variable) {
+  if (isset($_POST[$variable]) && $_POST[$variable] !== '') {
+    return $x = $_POST[$variable];
+  }
+  else { return $x = null; }
+}
+
 Function tester() {
 $rv = "";
 $rv .= "<SELECT name= ";

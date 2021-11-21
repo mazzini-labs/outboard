@@ -574,7 +574,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/history/trumbowyg.history.min.js" integrity="sha512-hvFEVvJ24BqT/WkRrbXdgbyvzMngskW3ROm8NB7sxJH6P4AEN77UexzW3Re5CigIAn2RZr8M6vQloD/JHtwB9A==" crossorigin="anonymous"></script>
             <script src="/assets/js/tinymce/tinymce.min.js?v1"></script>
             <script src="/assets/js/tinymce/jquery.tinymce.min.js"></script>
-        <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.39"></script>
+        <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.44"></script>
         <script type="text/javascript" src="/assets/js/view-ddr.js?v=1.0.0.76"></script>
 
         <?php } ?>
