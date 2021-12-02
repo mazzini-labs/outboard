@@ -265,24 +265,25 @@ class BoardModel extends WellsDatabase
      * @param mixed $eb Edited by (person).
      * @param mixed $wsbcat Category for files uploaded to WSB.
      */
-    public function insertDDR($array = [])
-    // ($id=null,$na=null,$api,$d, $t, $de, $ts, $te, $deb, $cvn=null, $cin=null, $drn=null, $ai=null, $ad=null, $ec=null, 
-    // $edc=null, $ecc=null, $tt=null, $dt=null, $dc=null, $at=null, $ac=null, $et=null, $ps=null, $ft=null, $eb=null, $ftp=null, $fcp=null, $sitp=null, $sicp=null, 
-    // $chlr=null, $pmp=null, $fl=null, $pms=null, $ct=null, $pus=null, $rsi=null, $pusl=null, $csi=null, $rpj=null, $pmpa=null, $pmsa=null, 
-    // $puon=null, $puoff=null, $injp=null, $wsbcat="Not Categorized")
+    public function insertDDR($id=null,$na=null,$api,$d, $t, $de, $ts, $te, $deb, $cvn=null, $cin=null, $drn=null, $ai=null, $ad=null, $ec=null, 
+    $edc=null, $ecc=null, $tt=null, $dt=null, $dc=null, $at=null, $ac=null, $et=null, $ps=null, $ft=null, $eb=null, $ftp=null, $fcp=null, $sitp=null, $sicp=null, 
+    $chlr=null, $pmp=null, $fl=null, $pms=null, $ct=null, $pus=null, $rsi=null, $pusl=null, $csi=null, $rpj=null, $pmpa=null, $pmsa=null, 
+    $puon=null, $puoff=null, $injp=null, $wsbcat="Not Categorized")
+    // ($array = [])
+
     {
-        error_log(print_r("Breakpoint 1: ". $array,true));
-        console_log(print_r($array,true));
-        if($d == 'a' || $d == 'v') {
-            $ts = '23:59:59';
-            $te = '23:59:59';
-        }
-        error_log(print_r("Breakpoint 2",true));
-        $this->notesAppend($na,$api,$drn,$ps,$ts,$de);
-        $vitals = 0;
-        $vitals = $this->checkVitals($fl,$ct,$ftp,$fcp,$csi,$rpj,
-        $pmp,$pms,$pus,$rsi,$pusl,$pmpa,$pmsa,$sitp,$sicp,
-        $chlr,$injp,$puon,$puoff);
+        // error_log(print_r("Breakpoint 1: ". $array,true));
+        // console_log(print_r($array,true));
+        // if($d == 'a' || $d == 'v') {
+        //     $ts = '23:59:59';
+        //     $te = '23:59:59';
+        // }
+        // error_log(print_r("Breakpoint 2",true));
+        // $this->notesAppend($na,$api,$drn,$ps,$ts,$de);
+        // $vitals = 0;
+        // $vitals = $this->checkVitals($fl,$ct,$ftp,$fcp,$csi,$rpj,
+        // $pmp,$pms,$pus,$rsi,$pusl,$pmpa,$pmsa,$sitp,$sicp,
+        // $chlr,$injp,$puon,$puoff);
         error_log(print_r($id,true));
         if($id != '' || $id != null)
         {
@@ -304,52 +305,52 @@ class BoardModel extends WellsDatabase
         else 
         {
             if($id == null) {error_log(print_r('its null', true)); }
-error_log(print_r('$id: ' . $id, true));
-error_log(print_r('$na: ' . $na, true));
-error_log(print_r('$api: ' . $api, true));
-error_log(print_r('$d: ' . $d, true));
-error_log(print_r('$t: ' . $t, true));
-error_log(print_r('$de: ' . $de, true));
-error_log(print_r('$ts: ' . $ts, true));
-error_log(print_r('$te: ' . $te, true));
-error_log(print_r('$deb: ' . $deb, true));
-error_log(print_r('$cvn: ' . $cvn, true));
-error_log(print_r('$cin: ' . $cin, true));
-error_log(print_r('$drn: ' . $drn, true));
-error_log(print_r('$ai: ' . $ai, true));
-error_log(print_r('$ad: ' . $ad, true));
-error_log(print_r('$ec: ' . $ec, true));
-error_log(print_r('$edc: ' . $edc, true));
-error_log(print_r('$ecc: ' . $ecc, true));
-error_log(print_r('$tt: ' . $tt, true));
-error_log(print_r('$dt: ' . $dt, true));
-error_log(print_r('$dc: ' . $dc, true));
-error_log(print_r('$at: ' . $at, true));
-error_log(print_r('$ac: ' . $ac, true));
-error_log(print_r('$et: ' . $et, true));
-error_log(print_r('$ps: ' . $ps, true));
-error_log(print_r('$ft: ' . $ft, true));
-error_log(print_r('$eb: ' . $eb, true));
-error_log(print_r('$ftp: ' . $ftp, true));
-error_log(print_r('$fcp: ' . $fcp, true));
-error_log(print_r('$sitp: ' . $sitp, true));
-error_log(print_r('$sicp: ' . $sicp, true));
-error_log(print_r('$chlr: ' . $chlr, true));
-error_log(print_r('$pmp: ' . $pmp, true));
-error_log(print_r('$fl: ' . $fl, true));
-error_log(print_r('$pms: ' . $pms, true));
-error_log(print_r('$ct: ' . $ct, true));
-error_log(print_r('$pus: ' . $pus, true));
-error_log(print_r('$rsi: ' . $rsi, true));
-error_log(print_r('$pusl: ' . $pusl, true));
-error_log(print_r('$csi: ' . $csi, true));
-error_log(print_r('$rpj: ' . $rpj, true));
-error_log(print_r('$pmpa: ' . $pmpa, true));
-error_log(print_r('$pmsa: ' . $pmsa, true));
-error_log(print_r('$puon: ' . $puon, true));
-error_log(print_r('$puoff: ' . $puoff, true));
-error_log(print_r('$injp: ' . $injp, true));
-error_log(print_r('$wsbcat: ' . $wsbcat, true));
+            error_log(print_r('$id: ' . $id, true));
+            error_log(print_r('$na: ' . $na, true));
+            error_log(print_r('$api: ' . $api, true));
+            error_log(print_r('$d: ' . $d, true));
+            error_log(print_r('$t: ' . $t, true));
+            error_log(print_r('$de: ' . $de, true));
+            error_log(print_r('$ts: ' . $ts, true));
+            error_log(print_r('$te: ' . $te, true));
+            error_log(print_r('$deb: ' . $deb, true));
+            error_log(print_r('$cvn: ' . $cvn, true));
+            error_log(print_r('$cin: ' . $cin, true));
+            error_log(print_r('$drn: ' . $drn, true));
+            error_log(print_r('$ai: ' . $ai, true));
+            error_log(print_r('$ad: ' . $ad, true));
+            error_log(print_r('$ec: ' . $ec, true));
+            error_log(print_r('$edc: ' . $edc, true));
+            error_log(print_r('$ecc: ' . $ecc, true));
+            error_log(print_r('$tt: ' . $tt, true));
+            error_log(print_r('$dt: ' . $dt, true));
+            error_log(print_r('$dc: ' . $dc, true));
+            error_log(print_r('$at: ' . $at, true));
+            error_log(print_r('$ac: ' . $ac, true));
+            error_log(print_r('$et: ' . $et, true));
+            error_log(print_r('$ps: ' . $ps, true));
+            error_log(print_r('$ft: ' . $ft, true));
+            error_log(print_r('$eb: ' . $eb, true));
+            error_log(print_r('$ftp: ' . $ftp, true));
+            error_log(print_r('$fcp: ' . $fcp, true));
+            error_log(print_r('$sitp: ' . $sitp, true));
+            error_log(print_r('$sicp: ' . $sicp, true));
+            error_log(print_r('$chlr: ' . $chlr, true));
+            error_log(print_r('$pmp: ' . $pmp, true));
+            error_log(print_r('$fl: ' . $fl, true));
+            error_log(print_r('$pms: ' . $pms, true));
+            error_log(print_r('$ct: ' . $ct, true));
+            error_log(print_r('$pus: ' . $pus, true));
+            error_log(print_r('$rsi: ' . $rsi, true));
+            error_log(print_r('$pusl: ' . $pusl, true));
+            error_log(print_r('$csi: ' . $csi, true));
+            error_log(print_r('$rpj: ' . $rpj, true));
+            error_log(print_r('$pmpa: ' . $pmpa, true));
+            error_log(print_r('$pmsa: ' . $pmsa, true));
+            error_log(print_r('$puon: ' . $puon, true));
+            error_log(print_r('$puoff: ' . $puoff, true));
+            error_log(print_r('$injp: ' . $injp, true));
+            error_log(print_r('$wsbcat: ' . $wsbcat, true));
             error_log(print_r("Breakpoint 5",true));
             $stmt = "INSERT INTO notes (d, t, de, ts, te, deb, api, cvn, cin, drn, ai, ad, edc, ecc, tt, dt, dc, at, ac, et, vb, producing_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             error_log(print_r("Breakpoint 5a",true));
@@ -372,7 +373,6 @@ error_log(print_r('$wsbcat: ' . $wsbcat, true));
             }
             error_log(print_r("Breakpoint 5h",true));
         }
-        error_log(print_r("Breakpoint 6",true));
         if($id == '') {
             $a = array("last_id" => $last_id);
         }
@@ -381,14 +381,33 @@ error_log(print_r('$wsbcat: ' . $wsbcat, true));
             $a = array("last_id" => $id);
         }
         echo json_encode($a);  
-        error_log(print_r("Breakpoint 7",true));
-        $wsbslug = Slug($wsbcat);
-        error_log(print_r("Breakpoint 8",true));
-        $this->newCategory($wsbcat,$wsbslug);
-        $this->uploadFile($id,$api,$wsbslug,$de,$ft);
-        error_log(print_r("Breakpoint 9",true));
         
 
+    }
+    public function insertDDRe($d, $t, $de, $ts, $te, $deb, $api, $cvn, $cin, $drn, $eb, $ec, $edc, $ecc, $vitals, $ps)
+    {
+        $stmt = "INSERT INTO notes (d, t, de, ts, te, deb, api, cvn, cin, drn, edc, ecc, vb, producing_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $this->select($stmt,['ssssssssssddis', $d, $t, $de, $ts, $te, $deb, $api, $cvn, $cin, $drn, $edc, $ecc, $vitals, $ps]);
+        $last_id = $this->insert_id;
+        $this->select("SELECT sd FROM `notes` WHERE api=? AND id=?",["si",$api,$last_id]);
+        while($row = $this->fetch_assoc){ $sd = $row['sd']; }
+        
+        // $logstmt = "INSERT INTO notes_log (notes_id, d, t, de, ts, te, deb, sd, api, cvn, cin, drn, eb, ec, edc, ecc, tt, dt, dc, at, ac, et, ai, ad, vb, producing_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        // $this->select($logstmt, ['issssssssssssiddddddddssis', $last_id, $d, $t, $de, $ts, $te, $deb, $sd, $api, $cvn, $cin, $drn, $eb, $ec, $edc, $ecc, $tt, $dt, $dc, $at, $ac, $et, $ai, $ad, $vitals, $ps]);
+
+        $logstmt = "INSERT INTO notes_log (notes_id, d, t, de, ts, te, deb, sd, api, cvn, cin, drn, eb, ec, edc, ecc, vb, producing_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $this->select($logstmt,['issssssssssssiddis', $last_id, $d, $t, $de, $ts, $te, $deb, $sd, $api, $cvn, $cin, $drn, $eb, $ec, $edc, $ecc, $vitals, $ps]);
+    }
+    public function editDDRe($api, $id, $d, $t, $de, $ts, $te, $deb, $cvn, $cin, $drn, $ec, $edc, $ecc, $vitals, $ps, $eb){
+        // error_log(print_r("Breakpoint 4",true));
+        $this->select("SELECT sd FROM `notes` WHERE api=? AND id=?",["si",$api,$id]);
+        while($row = $this->fetch_assoc){ $sd = $row['sd']; }
+        $stmt = "UPDATE notes SET d=?, t=?, de=?, ts=?, te=?, deb=?, cvn=?, cin=?, drn=?, ec=?, edc=?, ecc=?, vb=?, producing_status=? WHERE api = ? AND id = ?";
+        $this->select($stmt,['sssssssssiddissi', $d, $t, $de, $ts, $te, $deb, $cvn, $cin, $drn, $ec, $edc, $ecc, $vitals, $ps, $api, $id]);
+        // $last_id = $this->insert_id;
+        $last_id = $id;
+        $logstmt = "INSERT INTO notes_log (notes_id, d, t, de, ts, te, deb, sd, api, cvn, cin, drn, eb, ec, edc, ecc, vb, producing_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $this->select($logstmt,['issssssssssssiddis', $last_id, $d, $t, $de, $ts, $te, $deb, $sd, $api, $cvn, $cin, $drn, $eb, $ec, $edc, $ecc, $vitals, $ps]);
     }
     public function newCategory($wsbcat,$wsbslug)
     {
@@ -474,6 +493,13 @@ error_log(print_r('$wsbcat: ' . $wsbcat, true));
             // $vitals = 0;
             return 0;
         }
+    }
+    public function insertVitals($api,$id,$de,$fl=null,$ct=null,$ftp=null,$fcp=null,$csi=null,$rpj=null,
+    $pmp=null,$pms=null,$pus=null,$rsi=null,$pusl=null,$pmpa=null,$pmsa=null,$sitp=null,$sicp=null,
+    $chlr=null,$injp=null,$puon=null,$puoff=null)
+    {
+        $vitalstmt = "INSERT INTO vitals (ftp, fcp, sitp, sicp, chlr, pmp, fl, pms, ct, pus, rsi, pusl, csi, rpj, pmpa, pmsa, puon, puoff, api, d, notes_id, injp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
+        $this->select($vitalstmt,['ddddisdssdsdssiissssid', $ftp, $fcp, $sitp, $sicp, $chlr, $pmp, $fl, $pms, $ct, $pus, $rsi, $pusl, $csi, $rpj, $pmpa, $pmsa, $puon, $puoff, $api, $de, $id, $injp]);
     }
     public function notesAppend($na,$api,$drn,$ps,$ts,$de)
     {
