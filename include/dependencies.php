@@ -4,7 +4,7 @@
   <link rel="icon" type="image/png" href="assets/images/icons/favicon.ico"/>
   <!-- Outboard CSS -->
   <link rel="stylesheet" type="text/css" href="../assets/css/util.css?v1.0.0.6">
-	<link rel="stylesheet" type="text/css" href="../assets/css/tabs.css?v1.0.0.4">
+	<link rel="stylesheet" type="text/css" href="../assets/css/tabs.css?v1.0.0.5">
   <!-- <link rel="stylesheet" type="text/css" href="../assets/css/search.css"> -->
   <link rel="stylesheet" type="text/css" href="../assets/css/fixed-action-button.css?v1.0.0.0">
   <!-- <link rel="stylesheet" type="text/css" href="../assets/css/wsb.style.css?v1.0.0.12"> -->
