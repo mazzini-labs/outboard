@@ -8,7 +8,6 @@ $(function(){
     var oTable;
     var iTable;
     var sTable;
-    // var editor;
     var da = "ddr2015pres";
     var sa = "dsr2015pres";
     var db = "before2015detailrpt";
@@ -29,35 +28,6 @@ $(function(){
     var bDSRTable;
     var vTable;
     var editID;
-    // var editor;
-    // var drn = {
-    //     selector: '#drn1',
-    //     skin: "bs",
-    //     // skin: 'oxide-dark',
-    //     content_css: "//vprsrv.org/js/tinymce/skins/ui/bs",
-    //     menubar: false,
-    //     // inline: true,
-    //     plugins: [
-    //         'lists',
-    //         'quickbars',
-    //         'help',
-    //         'autoresize'
-    //     ],
-    //     toolbar: true,
-    //     quickbars_insert_toolbar: 'codesample',
-    //     quickbars_selection_toolbar: "bold italic underline strikethrough forecolor backcolor formatpainter | alignleft aligncenter alignright alignjustify | outdent indent removeformat | code | checklist | casechange",
-    //     // numlist bullist 
-    //     contextmenu: 'copy pastetext | undo redo | help',
-    //     powerpaste_word_import: 'clean',
-    //     powerpaste_html_import: 'clean',
-    // };
-    // editor = tinymce.init(drn);
-    // editor_remove = tinymce.remove();
-    // $(document).on('focusin', function(e) {
-    // if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root").length) {
-    //     e.stopImmediatePropagation();
-    // }
-    // });
     var drn_t = {
         btns: [
             ['viewHTML'],
@@ -66,27 +36,12 @@ $(function(){
             ['strong', 'em', 'del'],
             ['superscript', 'subscript'],
             ['foreColor', 'backColor'],
-            // ['link'],
-            //['insertImage'],
             ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-            //['unorderedList', 'orderedList'],
-            //['horizontalRule'],
             ['removeformat'],
             ['fullscreen']
         ],
         removeformatPasted: true
     };
-    // function refreshPage () {
-    //     var page_y = document.getElementsByTagName("body")[0].scrollTop;
-    //     window.location.href = window.location.href.split('?')[0] + '?page_y=' + page_y;
-    // }
-    // window.onload = function () {
-    //     setTimeout(refreshPage, 35000);
-    //     if ( window.location.href.indexOf('page_y') != -1 ) {
-    //         var match = window.location.href.split('?')[1].split("&")[0].split("=");
-    //         document.getElementsByTagName("body")[0].scrollTop = match[1];
-    //     }
-    // }
     $(document).ready(function() {
         var url = window.location.pathname;
         if (url.indexOf("prod_data")  !==-1 )
@@ -1866,7 +1821,6 @@ $(function(){
                 } );
             };
         
-            // $('#monthly-tab').click(function(){
                 if(click1 < 1){
                     click1++;
                 
@@ -1874,19 +1828,11 @@ $(function(){
                         stateSave: true,
                         "ajax": "./ajax/wsb.ajax.php",
                         "sDom": 't',
-                        //"sDom": 'd',
                         "order": [],
-                        //"paging": false,
-                        //"info": false,
                         "keys": true,
-                        // deferRender: true,
                         scrollY: 800,
-                        // "scrollX": false,
                         scroller: true,
                         "searching": true,
-                        //
-                        // "autoWidth": false, 
-                        
                         "columns": [
                             {
                                 // Combine the Well and API into a single table field
@@ -1945,13 +1891,6 @@ $(function(){
                             {
                                 // 44
                                 "data": "last_prod_date", // Last Active
-                                /* render: function ( data, type, row ) 
-                                {
-                                    var dateSplit = data.split('-');
-                                    return type === "display" || type === "filter" ?
-                                        dateSplit[1] +'-'+ dateSplit[2] +'-'+ dateSplit[0] :
-                                        data;
-                                }, */
                                 "defaultContent": "",
                             },
                             {
@@ -1966,7 +1905,6 @@ $(function(){
                                 if(check == check)
                                 {
                                     return '<span class="daily">' + ( data.gas_sold / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
-                                    // return ( data.gas_sold / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub>';
                                 }
                                 else
                                 {
@@ -1985,7 +1923,6 @@ $(function(){
                                 if(check == check)
                                 {
                                     return '<span class="daily">' + ( data.oil_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
-                                    // return ( data.oil_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub>';
                                 }
                                 else
                                 {
@@ -2004,7 +1941,6 @@ $(function(){
                                 if(check == check)
                                 {
                                     return '<span class="daily">' + ( data.water_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
-                                    // return ( data.water_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub>';
                                 }
                                 else
                                 {
@@ -2023,7 +1959,6 @@ $(function(){
                                 if(check == check)
                                 {
                                     return '<span class="daily">' + ( data.gas_line_loss / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
-                                    // return ( data.gas_line_loss / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub>';
                                 }
                                 else
                                 {
@@ -2045,15 +1980,7 @@ $(function(){
                             {
                                 // 91
                                 "data": "notes_update", // Last Updated
-                                /* render: function ( data, type, row ) 
-                                {
-                                    var dateSplit = data.split('-');
-                                    return type === "display" || type === "filter" ?
-                                        dateSplit[1] +'-'+ dateSplit[2] +'-'+ dateSplit[0] :
-                                        data;
-                                }, */
                                 "render": function(data, type) {
-                                    // return type === 'sort' ? data : moment(data).format('LLL');
                                     return type === 'sort' ? data : moment(data).format('MMM D YYYY') + " <br> " + moment(data).format('LT');
                                 },
                                 "defaultContent": "",
@@ -2070,19 +1997,6 @@ $(function(){
                             { width: "7%", "targets": 12 },
                             { width: "8%", "targets": [3] },
                             { width: "17%", "targets": 0 },
-                            // {
-                            //     render: function (data, type, full, meta) {
-                                    
-                            //         if ( data[5] == 'Shut-in' || data[5] =='Shut-In' || data[5]  == 'INACTIVE' )
-                            //         {
-                            //             return "<div class='text-wrap width-200 highlight'>" + data + "</div>";
-                            //         }
-                            //         else
-                            //         {return "<div class='text-wrap width-200'>" + data + "</div>";}
-                            //     },
-                            //     targets: 13
-                            // },
-
                             {
                                 targets: 5,
                                 "createdCell": function (td, cellData, rowData, row, col) {
@@ -2116,19 +2030,8 @@ $(function(){
                             }
                             
                         ],
-                        // "rowCallback": function( row, data, index ) 
-                        //     {
-                        //         switch(data.notes)
-                        //         {   
-                        //             default:
-                        //                 $('td', row).addClass('text-wrap');
-                        //                 $('td:eq(13)', row).addClass('width-200');    
-                        //         }
-                        //     }
-                                
                     } );
                 };
-            // });
             $('#shutin-tab').click(function(){
                 if(click3 < 1){
                     click3++;
@@ -2433,18 +2336,6 @@ $(function(){
                 iTable.search($(this).val()).draw() ;
                 sTable.search($(this).val()).draw() ;
             })
-            //$('#productionTable_filter').DataTable.search();
-            // $("#searchDropdown").keypress(function(e) {
-            //         //Enter key
-            //         if (e.which == 13) {
-            //             // return false;
-            //             href = $(this).href;
-            //             console.log(href);
-            //             href = $(document).activeElement.href;
-            //             console.log(href);
-            //             window.location = href;
-            //         }
-            // });
             function searchTextbox_keyup() {
                 var $this = $(this);
                 //In jQuery, I use $this as a reference to the jQuery-wrapped this object
@@ -2483,30 +2374,6 @@ $(function(){
               }
             }
           }
-        // $(".wsbcategories").select2({
-        //     placeholder: 'Select a category...',
-        //     theme: 'bootstrap4',
-        //     tags: true,
-        //     createTag: function(params) {
-        //         var term = $.trim(params.term);
-        //         if (term === '') {
-        //         return null;
-        //         }
-        //         return {
-        //         id: term,
-        //         text: term
-        //         }
-        //     }
-        // });
-        // $("#add_data_category").selectpicker({
-        //     liveSearch: true,
-        //     width:"auto",
-        //     size: 'auto',
-        //     name:"wsbcategory",
-        //     size:"1",
-        //     title:"Select Category...",
-        //     style:"btn-primary btn-lg",
-        // });
         $("#state").change(drop_down_list);
 
         
@@ -2530,7 +2397,6 @@ $(function(){
                         $('#insert_latest_prod')[0].reset();  
                         $('#add_latest_Modal').modal('hide');
                         lTable.ajax.reload();  
-                        // lTable.reload();
                         
                     }  
                 });  
@@ -2579,9 +2445,7 @@ $(function(){
     });
 // Insert/Edit/View DDR/DSR
     $('#add').click(function(){  
-        
-        // editor_remove;
-        // editor;
+
         $('#pills-eng-tab').removeClass("disabled not-allowed");
         $('#pills-acct-tab').removeClass("active disabled not-allowed");
         $('#pills-vend-tab').removeClass("active disabled not-allowed");
@@ -2643,22 +2507,9 @@ $(function(){
         $('.ddr-v').prop('disabled', true);
         $('.ddr-f').prop('disabled', true);
     });
-    // var fileInput = $('#files').MultiFile({
-    //   });
-      var filetype = document.getElementById('ft');
-    // $('#ddr-file-input').MultiFile({
-    //     preview: true,
-    //     onFileAppend: function(element, value, master_element){
-    //         console.log("this is firiing");
-    //         if(getFileExtension(value) == 'docx'){ 
-    //             document.querySelector("#fileUpload > div.file-upload-previews > div > span > span > img").replace('<i class="fas fa-file-word fa-2x"></i></div>');
-    //         }
-    //     }
-    // });
-    // $('#files').on('change', function(e){
 
-    // })
-    // var upload = new FileUploadWithPreview("files");
+      var filetype = document.getElementById('ft');
+
     var url = window.location.href;
         if (url.indexOf("prod_data?testing")  !==-1 ){
     $('#insert_form.ddr').on("submit", function(event){  
@@ -2841,20 +2692,16 @@ $(function(){
                         return my_xhr;
                     },
                     success: function (data) {
-                        // alert("Data Uploaded: "+data);
                         $('#success.alert').addClass('show');
                         
                         setTimeout(function() {  
                         
                         
-                        // $('#lastid.ddr-id').html(data.last_id);
                         setTimeout(function() {
                             $('#success.alert').removeClass('show');
                             $('#add_data_Modal').modal('hide');
                             iTable.ajax.reload(null, false);
-                            // info = iTable.page.info().length;
-                            // iTable.scroller().scrollToRow(info);
-                            // window.scrollTo(0,document.querySelector(".dataTables_scrollBody").scrollHeight);  
+ 
                             $('#drn.ddr-e').trumbowyg('destroy');
                             $('#drn.ddr-v').trumbowyg('destroy');
                             $('#drn.ddr-a').trumbowyg('destroy');
@@ -2865,8 +2712,7 @@ $(function(){
                     },
                     error: function(xhr, status, message) 
                     {
-                        // $("#err").html(e).fadeIn();
-                        // alert(e);
+
     
                         $('#e-details.error-details').text(xhr.status + " " + status + " - " + message);
                         $('#error.alert').addClass('show');
@@ -2878,84 +2724,6 @@ $(function(){
                     processData: false
                 });
                 return false;
-            // }
-            // if($('#MultiFile1_F1').val()) {
-            //     e.preventDefault();
-            //     $('#progress').show();
-            //     $(this).ajaxSubmit({ 
-            //         target:   '#targetLayer', 
-            //         beforeSubmit: function() {
-            //             $(".progress-bar").width('0%');
-            //         },
-            //         uploadProgress: function (event, position, total, percentComplete){	
-            //             $(".progress-bar").width(percentComplete + '%');
-            //             $(".progress-bar").html(percentComplete +' %')
-            //         },
-            //         success:function (){
-            //             $('#loader-icon').hide();
-            //         },
-            //         resetForm: true 
-            //     }); 
-            //     return false; 
-            // }
-            
-            /*
-            if($('#de').val() == "")  
-            {  
-                    alert("Date is required");  
-            }  
-            else  
-            {  
-                // $.ajax({
-                //     url: './ajax/insert.t.php', // <-- point to server-side PHP script 
-                //     dataType: 'text',  // <-- what to expect back from the PHP script, if anything
-                //     cache: false,
-                //     contentType: false,
-                //     processData: false,
-                //     data: $('#insert_form'),                         
-                //     type: 'post',
-                //     success: function(data){
-                //         alert("It worked!"); // <-- display response from the PHP script, if any
-                //     }
-                //     });
-                $.ajax({  
-                    url:"./ajax/insert.t.php",  
-                    method:"POST",  
-                    data:$('#insert_form').serialize(),  
-                    beforeSend:function(){  
-                        $('#insert').val("Inserting");  
-                    },  
-                    success:function(data){
-                        $.ajax({
-                            url: './ajax/insert.t.php', // <-- point to server-side PHP script 
-                            dataType: 'text',  // <-- what to expect back from the PHP script, if anything
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            data: $('#insert_form'),                         
-                            type: 'post',
-                            success: function(data){
-                                alert("It worked!"); // <-- display response from the PHP script, if any
-                            }
-                            });
-                        $('#insert_form')[0].reset();  
-                        $('#add_data_Modal').modal('hide');
-                        //iTable.ajax.reload();  
-                        $('#drn.ddr-e').trumbowyg('destroy');
-                        $('#drn.ddr-v').trumbowyg('destroy');
-                        // $('#drn.ddr-a').trumbowyg('destroy');
-                        $('#drn.ddr-f').trumbowyg('destroy');
-                        $('#lastid.ddr-id').html(data.last_id);
-                    },
-                    error: function(e) 
-                    {
-                        // $("#err").html(e).fadeIn();
-                        alert(e);
-    
-                    }        
-                });         
-            }  
-            */
         });
     }
     function Progress(current, total) {
@@ -2979,7 +2747,6 @@ $(function(){
                 $("div.progress").addClass("hidden");
                 $("div.progress-bar").width(0);
                 $("div.progress-bar").text("0%");
-                // $("div#alert").hide();
             }, 3000);
         }, 500);
     }
@@ -2988,24 +2755,8 @@ $(function(){
     }
     $( document ).ajaxSuccess(function( event, xhr, settings ) {
         if ( settings.url == "./ajax/insert.t.php" ) {
-        //   $( ".log" ).text( "Triggered ajaxSuccess handler. The Ajax response was: " +
-        //     xhr.responseText );
             console.log("Triggered ajaxSuccess handler. The Ajax response was: " +
             xhr.responseText );
-
-            // $.ajax({  
-            //     url:"./ajax/file_upload.php",  
-            //     method:"POST",
-            //     // data:  new FormData(this),
-            //     data:$('#insert_form').serialize(),
-            //     contentType: false,
-            //     cache: false,
-            //     processData:false,
-            //     success: function(data)
-            //     {
-            //         console.log("File upload ajax worked!")
-            //     }
-            // });
         }
     });  
     $('#insert_form.dsr').on("submit", function(event){  
@@ -3027,7 +2778,6 @@ $(function(){
                         $('#insert_form.dsr')[0].reset();  
                         $('#add_data_dsr_Modal').modal('hide');
                         sTable.ajax.reload();  
-                        //$('#dsr_table').html(data);  
                     }  
                 });  
         }  
@@ -3052,7 +2802,6 @@ $(function(){
                 success:function(data){  
                     $('#insert_well_form')[0].reset();  
                     $('#well_entry_Modal').modal('hide');
-                    //$('#dsr_table').html(data);
                     var url = window.location.pathname;
                     if (url.indexOf("prod_data")  !==-1 )
                     {
@@ -3122,31 +2871,10 @@ $(function(){
                     $('#d.ddr-e').val(data.d);  
                     $('#cvn.ddr-e').val(data.cvn);  
                     $('#cin.ddr-e').val(data.cin);  
-                    // $('#drn.ddr-e').val(data.drn);
                     $('#ps.ddr-e').val(data.producing_status);
                     $('#drn.ddr-e').trumbowyg('html', data.drn);
-                    // quill.insertText(data.drn);
-                    // $('#drn_ifr.ddr-e').val(data.drn);
-                    // editor.insertContent(data.drn); 
-                    // tinymce.get('drn').setContent(data.drn);
-                    // CKEDITOR.editor.setData(data.drn);
-                    // CKEDITOR.editor.insertText(data.drn);
-                    // CKEDITOR.editor.insertHTML(data.drn);
                     $('#edc.ddr-e').val(data.edc);  
                     $('#ecc.ddr-e').val(data.ecc); 
-                    // console.log(data.deb);  
-                    // console.log(data.t);  
-                    // console.log(data.de);  
-                    // console.log(data.ts);  
-                    // console.log(data.te);  
-                    // console.log(data.id);  
-                    // console.log(data.api);  
-                    // console.log(data.d);  
-                    // console.log(data.cvn);  
-                    // console.log(data.cin);  
-                    // console.log(data.drn); 
-                    // console.log(data.edc);  
-                    // console.log(data.ecc);
                     $('#insert.ddr-e').val("Update");  
                     $('#add_data_Modal').modal('show');  
                     
@@ -3180,7 +2908,6 @@ $(function(){
     $(document).on('click', '.edit_ddr-a', function(){
         $('#ad').datepicker('update', '');  
         var id = $(this).attr("id");
-        // $('#drn.ddr-a').trumbowyg(drn_t);  
         $.ajax({  
                 url:"./ajax/fetch.php",  
                 method:"POST",  
@@ -3199,7 +2926,6 @@ $(function(){
                     $('#cvn.ddr-a').val(data.cvn);  
                     $('#cin.ddr-a').val(data.cin);  
                     $('#drn.ddr-a').val(data.drn); 
-                    // $('#drn.ddr-a').trumbowyg('html', data.drn);
                     $('#edc.ddr-a').val(data.edc);  
                     $('#ecc.ddr-a').val(data.ecc);  
                     $('#ad').val(data.ad); 
@@ -3250,7 +2976,6 @@ $(function(){
                     $('#d.ddr-v').val(data.d);  
                     $('#cvn.ddr-v').val(data.cvn);  
                     $('#cin.ddr-v').val(data.cin);  
-                    // $('#drn.ddr-v').val(data.drn);
                     $('#drn.ddr-v').trumbowyg('html', data.drn); 
                     $('#edc.ddr-v').val(data.edc);  
                     $('#ecc.ddr-v').val(data.ecc); 
@@ -3307,7 +3032,6 @@ $(function(){
                     $('#d.ddr-f').val(data.d);  
                     $('#cvn.ddr-f').val(data.cvn);  
                     $('#cin.ddr-f').val(data.cin);  
-                    // $('#drn.ddr-f').val(data.drn);
                     $('#drn.ddr-f').trumbowyg('html', data.drn); 
                     $('#edc.ddr-f').val(data.edc);  
                     $('#ecc.ddr-f').val(data.ecc);  
@@ -3362,7 +3086,6 @@ $(function(){
                     $('#drn.dsr').val(data.drn); 
                     $('#edc.dsr').val(data.edc);  
                     $('#ecc.dsr').val(data.ecc);  
-                    // $('#drn.dsr').trumbowyg('destroy');
                     $('#drn.dsr').trumbowyg('html', data.drn); 
                     $('#insert.dsr').val("Update");  
                     $('#add_data_dsr_Modal').modal('show');  
@@ -3395,550 +3118,6 @@ $(function(){
     var counter = 0;
     var editcounter = 0;
     var vitalcounter = 0;
-    // const lightbox = new FsLightbox();
-    // $(document).on('click', '.view_data', function(){  
-    //     var id = $(this).attr("id");  
-    //     if(id != '')  
-    //     {  
-    //             $.ajax({  
-    //                 url:"./ajax/select.php",  
-    //                 method:"POST",  
-    //                 data:{id:id},  
-    //                 success:function(data){  
-    //                     $('#ddr_detail').html(data);  
-    //                     $('#dataModal').modal('show'); 
-    //                     feather.replace();
-    //                     // lightbox.refreshFsLightbox();
-    //                     tippy('.r-tooltip', { 
-    //                         arrow: false 
-    //                     });
-    //                     $('#view-edits').click(function(){
-    //                         editID = $('#view-edits').val();
-    //                         // if(clickViewEdit < 1){
-    //                         //     clickViewEdit++;
-                            
-    //                             vTable = $('#editsTable').on('init.dt', function () {
-    //                                 feather.replace();
-    //                                 tippy('.r-tooltip', { 
-    //                                     arrow: false 
-    //                                 });
-    //                                 tippy('.hours', { 
-    //                                     placement: 'right',
-    //                                     arrow: false 
-    //                                 });
-    //                                 } 
-    //                                 ).DataTable( {
-    //                                 "destroy": true,
-    //                                 "ajax": {
-    //                                     "url" : "ajax/viewEdit.ajax.php",
-    //                                     "data": 
-    //                                     {
-    //                                         "api": api,
-    //                                         "id": id
-    //                                     }
-    //                                 }, 
-    //                                 "sDom": 't',
-    //                                 "order": [[0, 'desc'], [1, 'desc']],
-                                    
-    //                                 deferRender: true,
-    //                                 scrollY: 550,
-    //                                 scroller: true,
-    //                                 "searching": true,
-    //                                 "autoWidth": false, 
-    //                                 "columns": [
-    //                                     // {
-    //                                     //     // Change Department Enum to actual name
-    //                                     //     "data": null, render: function ( data, type, row ) 
-    //                                     //     {
-    //                                     //         switch(data.d)
-    //                                     //         {
-    //                                     //             case 'e':
-    //                                     //                 return 'Engineering';
-    //                                     //             break;
-    //                                     //             case 'a':
-    //                                     //                 return 'Accounting';
-    //                                     //             break;
-    //                                     //             case 'v':
-    //                                     //                 return 'Vendor';
-    //                                     //             break;
-    //                                     //             default:
-    //                                     //                 return 'Field';
-    //                                     //             break;
-    //                                     //         }
-    //                                     //     }, 
-    //                                     //     //"data": "d",
-    //                                     //     "defaultContent": ""
-    //                                     // },
-    //                                     {
-    //                                         // Date
-    //                                         // TODO: get dates formatted as M-D-YYYY in select statement
-    //                                         "data": "de",  
-    //                                         "render": function(data, type) {
-    //                                             return type === 'sort' ? data : moment(data).format('L');
-    //                                         },
-    //                                         "defaultContent": ""
-    //                                     },
-    //                                     {
-    //                                         // Time (Start - End)
-    //                                         // TODO: get times formatted as H:MM in select statement
-    //                                         "data": null, render: function ( data, type, row ) 
-    //                                         {
-    //                                             console.log(data.ts);
-    //                                             return type === 'sort' ? data.ts : (moment(data.ts, 'HH:mm:ss').format('hh:mm a')+' - '+moment(data.te, 'HH:mm:ss').format('hh:mm a'));
-    //                                         },
-    //                                         // "data": "ts",
-    //                                         "defaultContent": "",
-    //                                     },
-    //                                     {
-    //                                         // Vendor/Contact
-    //                                         "data": "cvn", 
-    //                                         "defaultContent": "",
-    //                                     },
-    //                                     {
-    //                                         // Invoice # / Contact Info
-    //                                         "data": "cin", 
-    //                                         "defaultContent": "",
-    //                                     },
-    //                                     {
-    //                                         // Invoice Details / DDR
-    //                                         "data": null, render: function ( data, type, row ) 
-    //                                         {
-    //                                             switch(data.d)
-    //                                             {
-    //                                                 case 'e':
-    //                                                     // IMPORTANT: The top regex will only do one carriage return
-    //                                                     // let str = data.drn.replace(/(?:\r\n|\r|\n|\\r\\n|\\r|\\n)/g, '<br>');
-    //                                                     let str = data.drn.replace(/(?:\r\n|\r|\n|\\r|\\n)/g, '<br>');
-                                                        
-    //                                                     return str;
-    //                                                 break;
-    //                                                 case 'a':
-    //                                                     return data.drn;
-    //                                                 break;
-    //                                                 case 'v':
-    //                                                     var rtn = data.drn;
-    //                                                     // These functions check to see if there is a value in the database. If there is not,
-    //                                                     // the table will print out one of the following: null, NaN, or infinity
-    //                                                     // My understanding of the actual logic behind it is that a null value cannot be divided
-    //                                                     // by itself, and will store 'undefined' as the value. Because it's undefined, it then cannot
-    //                                                     // equal to anything (including itself) because it's undefined. 
-    //                                                     var checkdt = data.dt / data.dt; 
-    //                                                     var checkdc = data.dc / data.dc;
-    //                                                     var checkat = data.at / data.at;
-    //                                                     var checkac = data.ac / data.ac;
-    //                                                     var checket = data.et / data.et;
-    //                                                     var checktt = data.tt / data.tt;
-    //                                                     if(checkdt == checkdt || checkdc == checkdc || checkat == checkat || checkac == checkac || checket == checket || checktt == checktt)
-    //                                                     {
-    //                                                         rtn += '<table class="table vendortable" width="100%">';
-    //                                                     }
-    //                                                     if(checkdt == checkdt || checkdc == checkdc)
-    //                                                     {
-    //                                                         rtn += '<tr><td class="vendortable"> Deducted Time:</td><td class="vendortable">  ' + data.dt + ' hours </td>'; 
-    //                                                         rtn += '<td class="vendortable">Deducted Cost:</td><td class="vendortable">  $' + data.dc + '</td><tr>';
-    //                                                     }
-    //                                                     if(checkat == checkat || checkac == checkac)
-    //                                                     {
-    //                                                         rtn += '<tr><td class="vendortable">Adjusted Time:</td><td class="vendortable">  ' + data.at + ' hours </td>';
-    //                                                         rtn += '<td class="vendortable">Adjusted Cost:</td><td class="vendortable">  $' + data.ac + '</td><tr>';
-    //                                                     }
-    //                                                     if(checket == checket )
-    //                                                     {
-    //                                                         rtn += '<tr><td class="vendortable">Estimated Time:</td><td class="vendortable">  ' + data.et + ' hours </td><tr>';
-    //                                                     }
-    //                                                     if(checktt == checktt )
-    //                                                     {
-    //                                                         rtn += '<tr style="border-top: 1px solid rgba(0, 0, 0, 1);"><td class="vendortable">Total Time:</td><td class="vendortable">  ' + data.tt + ' hours</td><tr>';
-    //                                                     }
-    //                                                     if(checkdt == checkdt || checkdc == checkdc || checkat == checkat || checkac == checkac || checket == checket || checktt == checktt)
-    //                                                     {
-    //                                                         rtn += '</table>';
-    //                                                     }
-    //                                                     return rtn;                                                                                
-                                                        
-    //                                                 break;
-    //                                                 default:
-    //                                                     return data.drn;
-    //                                             }
-    //                                         }, 
-    //                                         "defaultContent": "",
-    //                                         },
-    //                                     {
-    //                                         // $ / EDC / 
-    //                                         "data": null, render: function ( data, type, row ) 
-    //                                         {
-    //                                             switch(data.d){
-    //                                                 case 'a':
-    //                                                     return $.fn.dataTable.render.number( ',', '.', 2, '$').display(data.edc);
-    //                                                 break;
-    //                                                 case 'v':
-    //                                                     return $.fn.dataTable.render.number( ',', '.', 2, '$', '/hour').display(data.edc);
-    //                                                 break;
-    //                                                 default:
-    //                                                     return $.fn.dataTable.render.number( ',', '.', 2, '$').display(data.edc);
-                                                    
-    //                                             }
-                                                
-    //                                         },
-    //                                         "defaultContent": "",
-    //                                     },
-    //                                     {
-    //                                         // Approvals / ECC
-    //                                         "data": null, render: function ( data, type, row ) 
-    //                                         {
-    //                                             switch(data.d){
-    //                                                 case 'a':
-    //                                                     if(data.ai != null){
-    //                                                         return 'Approval Initials: '+data.ai+'<hr>Approval Date: '+data.ad;
-    //                                                     }
-    //                                                     else
-    //                                                     {
-    //                                                         return ' - ';
-    //                                                     }
-    //                                                 break;
-    //                                                 case 'v':
-    //                                                     return $.fn.dataTable.render.number( ',', '.', 2, '$').display(data.ecc);
-    //                                                 break;
-    //                                                 default:
-    //                                                     return $.fn.dataTable.render.number( ',', '.', 2, '$').display(data.ecc);
-    //                                             }
-    //                                         },
-    //                                         "defaultContent": "",
-    //                                     },
-    //                                     {
-    //                                         "data": null, render: function ( data, type, row ) 
-    //                                         {
-    //                                             // "<i data-feather='edit-2' style='color: light-blue; height: 1.5em!important; width: 1.5em!important;'></i> Out to Lunch</a></span></div></div>"
-    //                                             // <img class="img-fluid" src="assets/images/edit-2.svg" border=0>
-    //                                             // return '<div class="row"><div class="col"><span class=\"r-tooltip\" data-tippy-content=\"Edit\" tabindex=\"0\"><a class="btn-sm btn-light shadow-lg edit_ddr-'+data.d+'" style="color:blue;" id="'+data.id+'" href="#'+data.id+'"><i data-feather="edit-2" style="color: blue; height: 1.5em!important; width: 1.5em!important;"></i></a></span>&ensp;<a style="color: gray; font-size:9;" id="'+data.id+'"></a><span class=\"r-tooltip\" data-tippy-content=\"View Entry\" tabindex=\"0\"><a class="btn-sm btn-secondary view_data" href="#'+data.id+'" id="'+data.id+'"><i data-feather="eye" style="color: light-blue; height: 1.5em!important; width: 1.5em!important;"></i></a></span><span class=\"r-tooltip\" data-tippy-content=\"Print Entry\" tabindex=\"0\"><a class="btn-sm btn-secondary view_data" href="#'+data.id+'" target="_blank" id="'+data.id+'"><i data-feather="print" style="color: light-blue; height: 1.5em!important; width: 1.5em!important;"></i></a></span></div></div>';
-                                                
-    //                                             var buttons = '<div class="row">';
-    //                                             buttons += '<div class="col">';
-    //                                             // Edit Button HTML
-    //                                             buttons += '<span class=\"r-tooltip\" data-tippy-content=\"Edit\" tabindex=\"0\">';
-    //                                             buttons += '<a class="btn-sm btn-light shadow-lg edit_ddr-'+data.d+'" style="color:blue;" id="'+data.id+'" href="#'+data.id+'">';
-    //                                             buttons += '<i data-feather="edit-2" style="color: blue; height: 1.5em!important; width: 1.5em!important;"></i></a></span>&ensp;';
-                                                
-    //                                             // buttons += '<a style="color: gray; font-size:9;" id="'+data.id+'"></a>';
-
-    //                                             // View Button HTML
-    //                                             buttons += '<span class=\"r-tooltip\" data-tippy-content=\"View Entry\" tabindex=\"0\">';
-    //                                             buttons += '<a class="btn-sm btn-secondary view_data" href="#'+data.id+'" id="'+data.id+'">';
-    //                                             buttons += '<i data-feather="eye" style="color: light-blue; height: 1.5em!important; width: 1.5em!important;"></i></a></span>&ensp;';
-                                                
-    //                                             buttons += '<span class=\"r-tooltip\" data-tippy-content=\"Print Entry\" tabindex=\"0\">';
-    //                                             buttons += '<a class="btn-sm btn-info" href="ajax/printEntry.php?id='+data.id+'" target="_blank" id="'+data.id+'">';
-    //                                             buttons += '<i data-feather="printer" style="color: light-blue; height: 1.5em!important; width: 1.5em!important;"></i></a></span>';
-
-    //                                             buttons += '</div></div>';
-    //                                             return buttons;
-    //                                             // return '<button name="edit" value="Edit" id="'+data.id+'" class="btn btn-info btn-sm edit_ddr-'+data.d+'" data-toggle="tooltip" title="Edit" /><i data-feather="edit-2" style="color: light-blue; height: 1.5em!important; width: 1.5em!important;"></i></button><button data-toggle="tooltip" title="View" name="view" value="view" id="'+data.id+'" class="btn btn-info btn-sm view_data" /><img class="img-fluid" src="assets/images/eye.svg" border=0></button>'; target="_blank"
-    //                                             //return '<input type="button" name="edit" value="Edit" id="'+data.id+'" class="btn btn-info btn-sm edit_ddr-'+data.d+'" /><input type="button" name="view" value="view" id="'+data.id+'" class="btn btn-info btn-sm view_data" />';
-    //                                         },
-    //                                         "defaultContent": "",
-    //                                     },
-    //                                 ],
-    //                                 "columnDefs": [
-                                        
-    //                                     { width: "5%", "targets": [0, 1, 5, 6, 7] },
-    //                                     { width: "10%", "targets": [2, 3] },
-    //                                     { width: "30%", "targets": 4 },
-    //                                     // { type: "time-ui", "targets":  1  },
-    //                                     { className: "text-wrap", "targets":  [3, 4, 5]  },
-
-    //                                     {
-    //                                         targets: [0,1,2,3,4,5,6,7],
-    //                                         "createdCell": function (td, cellData, rowData, row, col) {
-    //                                             // "createdRow" : function (row, data, dataIndex) {
-    //                                             {
-    //                                                 var check = iTable.cell(td,0).data(); 
-    //                                                 //var check = $(cells).html();
-    //                                                 // console.log(iTable.cell(td,0).data());
-    //                                                 /* switch(check){
-    //                                                     case 'Vendor':
-    //                                                         return $(td).css('background-color', '#F08080')
-    //                                                         console.log('Vendor');
-    //                                                         console.log($(cells).html());
-    //                                                         console.log($(row).html());
-    //                                                     // break;
-    //                                                     case 'Engineering':
-    //                                                         return $(row).css('background-color', '#8080F0')
-    //                                                         console.log('Eng');
-    //                                                         console.log($(cells).html());
-    //                                                         console.log($(row).html());
-    //                                                     // break;
-    //                                                     default:
-    //                                                     $(td).css('background-color', '#80F080')
-    //                                                     console.log($(cells).html());
-    //                                                     console.log($(row).html());
-    //                                                     console.log(iTable.cell(row,0).data());
-    //                                                     console.log(iTable.cell(row, row.d).data());
-    //                                                 } */
-    //                                                 if ( check == 'e' ) { 
-    //                                                     $(td).css('color', '#F08080'); 
-    //                                                     // console.log(iTable.cell(td,1).data()); 
-    //                                                 }
-    //                                                 else if ( check == 'Engineering' ) { $(td).css('background-color', '#8080F0'); }
-    //                                             }
-    //                                         },
-                                            
-    //                                     },
-
-    //                                     {
-    //                                         targets: [4,5],
-    //                                         "createdCell": function (td, cellData, rowData, row, col) {
-    //                                             {
-    //                                                 var checkSI = iTable.cell(td,5).data(); 
-    //                                                 if ( checkSI == 'Shut-in' || checkSI == 'Shut-In' || checkSI  == 'INACTIVE' ) 
-    //                                                 {
-    //                                                     $(td).css('font-weight', 'bold')
-    //                                                 }
-    //                                             }
-    //                                         },
-
-    //                                     }                            
-    //                                 ],
-    //                                 "rowCallback": function( row, data, index ) 
-    //                                 {
-    //                                     switch(data.d)
-    //                                     {
-    //                                         case 'e':
-    //                                             $('td').eq(0).find('td').addClass('engineering');
-    //                                             $('td:eq(1)', row).addClass('engineering-date');
-    //                                             // console.log($('td',1));
-    //                                         break;
-    //                                         case 'a':
-    //                                             $('td', row).addClass('accounting');
-    //                                         break;
-    //                                         case 'v':
-    //                                             $('td', row).addClass('vendor smol');
-    //                                         break;
-    //                                         default:
-    //                                             $('td', row).addClass('field');
-    //                                         break;
-    //                                     }
-    //                                 },
-    //                                 // "initComplete": function(settings, json){
-    //                                 //     feather.replace();
-    //                                 //     tippy('.r-tooltip', { 
-    //                                 //         arrow: false 
-    //                                 //     });
-    //                                 //     tippy('.hours', { 
-    //                                 //         placement: 'right',
-    //                                 //         arrow: false 
-    //                                 //     });
-    //                                 // }, 
-    //                                 "drawCallback": function(settings){
-    //                                         feather.replace();
-    //                                         tippy('.r-tooltip', { 
-    //                                             arrow: false 
-    //                                         });
-    //                                         tippy('.hours', { 
-    //                                             placement: 'right',
-    //                                             arrow: false 
-    //                                         });
-    //                                     } 
-                        
-
-    //                             } ); // };
-    //                     });
-    //                     $('#excel').click(function(){
-    //                         // var grid = canvasDatagrid({
-    //                         //     parentNode: document.getElementById('grid'),
-    //                         //     data: []
-    //                         // });
-    //                         // grid.style.height = '100%';
-    //                         // grid.style.width = '100%';
-    //                         // var X = new DropSheet();
-                            
-    //                         $('#file_Modal').modal('show');
-    //                         // var url = "http://oss.sheetjs.com/test_files/formula_stress_test.xlsx";
-    //                         var url = $(this).attr("data-path");
-    //                         // var filename = $(this).attr("data-file");
-    //                         /* set up async GET request */
-    //                         var request = new XMLHttpRequest();
-    //                         request.open("GET", url, true);
-                            
-    //                         request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    //                         // request.responseType = 'blob';
-    //                         request.responseType = "arraybuffer";
-    //                         request.onload = function(e) {
-    //                             if (this.status === 200) {
-    //                                 var data = new Uint8Array(request.response);
-    //                                 var wb = XLSX.read(data, {type:"array"});
-    //                                 process_wb(wb);
-                                    
-    //                                 // var ws = wb.Sheets[wb.SheetNames[0]];
-    //                                 // var data = XLSX.utils.sheet_to_json(ws, {header:1});
-                                    
-    //                                 var _target = document.getElementById('drop');
-    //                                 var _file = document.getElementById('file');
-    //                                 var _grid = document.getElementById('grid');
-    //                                 /** Spinner **/
-    //                                 var spinner;
-                                    
-    //                                 var _workstart = function() { spinner = new Spinner().spin(_target); }
-    //                                 var _workend = function() { spinner.stop(); }
-                                    
-    //                                 var cdg = canvasDatagrid({
-    //                                     parentNode: _grid
-    //                                     });
-    //                                     cdg.style.height = '100%';
-    //                                     cdg.style.width = '100%';
-    //                                 onsheet(data, [wb.SheetNames], ws, _grid, cdg);
-    //                                 function onsheet(json, sheetnames, select_sheet_cb, grid, cdg) {
-    //                                     document.getElementById('footnote').style.display = "none";
-                                    
-    //                                     make_buttons(sheetnames, select_sheet_cb);
-                                    
-    //                                     /* show grid */
-    //                                     grid.style.display = "block";
-    //                                     _resize();
-                                    
-    //                                     /* set up table headers */
-    //                                     var L = 0;
-    //                                     json.forEach(function(r) { if(L < r.length) L = r.length; });
-    //                                     console.log(L);
-    //                                     for(var i = json[0].length; i < L; ++i) {
-    //                                         json[0][i] = "";
-    //                                     }
-                                    
-    //                                     /* load data */
-    //                                     cdg.data = json;
-    //                                     };
-    //                                     /* make the buttons for the sheets */
-    //                                     function make_buttons(sheetnames, cb) {
-    //                                         var buttons = document.getElementById('buttons');
-    //                                         buttons.innerHTML = "";
-    //                                         sheetnames.forEach(function(s,idx) {
-    //                                             var btn = document.createElement('button');
-    //                                             btn.type = 'button';
-    //                                             btn.name = 'btn' + idx;
-    //                                             btn.text = s;
-    //                                             var txt = document.createElement('h3'); txt.innerText = s; btn.appendChild(txt);
-    //                                             btn.addEventListener('click', function() { cb(idx); }, false);
-    //                                             buttons.appendChild(btn);
-    //                                             buttons.appendChild(document.createElement('br'));
-    //                                         });
-    //                                         };
-                                        
-                                            
-                                        
-    //                                         function _resize() {
-    //                                         _grid.style.height = (window.innerHeight - 200) + "px";
-    //                                         _grid.style.width = (window.innerWidth - 200) + "px";
-    //                                         }
-    //                                         window.addEventListener('resize', _resize);
-    //                                     sheetjsw(data, process_wb, readtype);
-    //                                 var filename = $('#excel').attr("data-file");
-    //                                 // var blob = this.response;
-                                    
-    //                                 // if(window.navigator.msSaveOrOpenBlob) {
-    //                                 //     window.navigator.msSaveBlob(blob, fileName);
-    //                                 // }
-    //                                 // else{
-    //                                 // const dT = new DataTransfer();
-    //                                 // var contentTypeHeader = request.getResponseHeader("Content-Type");
-    //                                 // var blobby = new Blob([blob], { type: contentTypeHeader });
-    //                                 // dT.items.add(new File([blobby], filename));
-    //                                 // dT.items.add(new File(data, filename));
-    //                                 // var data = dT.files;
-    //                                     // var downloadLink = window.document.createElement('a');
-                                        
-    //                                     // downloadLink.href = window.URL.createObjectURL();
-    //                                     // downloadLink.download = fileName;
-    //                                     // document.body.appendChild(downloadLink);
-    //                                     // downloadLink.click();
-    //                                     // document.body.removeChild(downloadLink);
-                                       
-    //                             //    }
-
-    //                         // do_file(e.dataTransfer.files);
-                            
-    //                         // var data = request.response;
-    //                         // do_file(data);
-                            
-                            
-    //                         // inp.files = dT.files;
-                            
-                            
-    //                         // DropSheet({
-    //                         //     file: dT.files,
-    //                         //     drop: _target,
-    //                         //     on: {
-    //                         //         workstart: _workstart,
-    //                         //         workend: _workend,
-    //                         //         sheet: _onsheet,
-    //                         //         foo: 'bar'
-    //                         //     },
-    //                         //     errors: {
-    //                         //         badfile: _badfile,
-    //                         //         pending: _pending,
-    //                         //         failed: _failed,
-    //                         //         large: _large,
-    //                         //         foo: 'bar'
-    //                         //     }
-    //                         //     })
-    //                         }
-    //                         // process_wb(workbook);
-    //                         // grid.data = XLSX.utils.sheet_to_json(ws, {header:1});
-    //                         // DropSheet.handleFile(workbook);
-    //                         /* DO SOMETHING WITH workbook HERE */
-    //                         }
-                    
-    //                         request.send();
-    //                     });
-    //                     $('#excell').click(function(){
-    //                         var url = $(this).attr("data-path");
-    //                         var filename = $(this).attr("data-file");
-    //                         const dT = new DataTransfer();
-                            
-    //                         var data = dT.files;
-    //                         $.ajax({  
-    //                             url:url,  
-    //                             method:"GET",  
-    //                             success:function(data){
-    //                                 dT.items.add(new File(filename, data));
-    //                                 _file.files = dT.files;  
-    //                                 DropSheet({
-    //                                     file: _file,
-    //                                     drop: _target,
-    //                                     on: {
-    //                                         workstart: _workstart,
-    //                                         workend: _workend,
-    //                                         sheet: _onsheet,
-    //                                         foo: 'bar'
-    //                                     },
-    //                                     errors: {
-    //                                         badfile: _badfile,
-    //                                         pending: _pending,
-    //                                         failed: _failed,
-    //                                         large: _large,
-    //                                         foo: 'bar'
-    //                                     }
-    //                                     })
-                                    
-    //                             }  
-    //                         });
-    //                     })
-    //                     // $(document).on('click', '.edit-drawer', function(){
-    //                     //     $("#vitals-drawer").hide();
-    //                     //     $("#edit-drawer").toggle();
-    //                     //     $(".edit-drawer-close").click(function(){
-    //                     //         $("#edit-drawer").hide();
-    //                     //     });
-    //                     // });
-    //                     // $(document).on('click', '.vitals-drawer', function(){
-    //                     //     $("#edit-drawer").hide();
-    //                     //     $("#vitals-drawer").toggle();
-    //                     //     $(".vitals-drawer-close").click(function(){
-    //                     //         $("#vitals-drawer").hide();
-    //                     //     });
-    //                     // });
-    //                 }  
-    //             });  
-    //     }            
-    // });
     $(document).on('click', '.delete_data', function(){  
         var id = $(this).attr("id");  
         if(id != '')  
@@ -3966,7 +3145,6 @@ $(function(){
                 data:{api:api},  
                 dataType:"json",  
                 success:function(data){  
-                    // drop_down_list();
                     $('#entity-operator').val(data.entity_operator);  
                     $('#entity-operator-code').val(data.entity_operator_code);  
                     $('#well-lease').val(data.well_lease);  
@@ -4010,7 +3188,6 @@ $(function(){
                     $('#insert-well').val("Update");  
                     $('#well_entry_Modal').modal('show');  
                     $('#well_entry_Modal').on('shown.bs.modal', drop_down_list(data.county_parish));
-                    // $('#county_parish').val(data.county_parish);
                     
                     
                     
@@ -4024,18 +3201,15 @@ $(function(){
         $('#de').val(curDate);
         $('#ts').val(curTime);
         $('#te').val(curTime);
-        // $('.datepicker').datepicker('destroy');
         $('#dee').datepicker('update', curDate);
         
         $('#drn.ddr-e').trumbowyg('destroy');
         $('#drn.ddr-v').trumbowyg('destroy');
-        // $('#drn.ddr-a').trumbowyg('destroy');
         $('#drn.ddr-f').trumbowyg('destroy');
         
         $('#drn.ddr-e').trumbowyg(drn_t);
         $('#drn.ddr-e').trumbowyg(drn_t);
         $('#drn.ddr-v').trumbowyg(drn_t);
-        // $('#drn.ddr-a').trumbowyg(drn_t);
         $('#drn.ddr-f').trumbowyg(drn_t);
         $('#de.dsr').val(curDate);
         $('#dee.dsr').datepicker('update', curDate);
@@ -4043,7 +3217,6 @@ $(function(){
     $(document).on('click', '#add_dsr', function(){
         var now = moment();
         var curDate = now.format('YYYY-MM-DD');
-        // var curTime = now.format('HH:mm:ss');
         $('#de.dsr').val(curDate);
         $('#dee.dsr').datepicker('update', curDate);
         $('#drn.dsr').trumbowyg('destroy');
@@ -4052,123 +3225,12 @@ $(function(){
     $(document).on('click', '#well_entry_Modal', function(){
         var now = moment();
         var curDate = now.format('YYYY-MM-DD');
-        // var curTime = now.format('HH:mm:ss');
-        // $('#spud-date').val(curDate);
         $('#spud-date').datepicker({defaultViewDate: today, format: "yyyy-mm-dd"});
         $('#completion-date').datepicker({defaultViewDate: today, format: "yyyy-mm-dd"});
         $('#first-prod-date').datepicker({defaultViewDate: today, format: "yyyy-mm-dd"});
         $('#last-prod-date').datepicker({defaultViewDate: today, format: "yyyy-mm-dd"});
-        // $('#dee.dsr').datepicker('update', curDate);
-        // $('#drn.dsr').trumbowyg('destroy');
-        // $('#drn.dsr').trumbowyg(drn_t);
 
     })
-    $('#add_data_Modal').on('show.bs.modal', function (e) {
-        // var date = new Date();
-        // var currentDate = date.toISOString().slice(0,10);
-        // var currentTime = date.getHours() + ':' + date.getMinutes();
-        // editor = InlineEditor
-        //         .create( document.querySelector( '#drn' ), 
-        //         {
-        //             // toolbar: [ 'bold', 'italic', 'link', 'undo', 'redo', 'bulletedList', 'numberedList', 'blockQuote' ],
-        //         } )
-        //         .then( editor => {
-        //                 console.log( editor );
-        //         } )
-        //         .catch( error => {
-        //                 console.error( error );
-        //         } );
-        //         $( '#add_data_Modal' ).modal( {
-        //     focus: false
-        // } );
-        
-        // editor = new MediumEditor('#drn');
-    })
-    $('#add_data_Modal').on('hidden.bs.modal', function (e) {
-        // editor.destroy();
-    });
-    // $('edit-drawer-btn').click(function(){
-    
-    // $(document).on('click', '#edit-drawer-btn', function(){
-    //     $('#editsModal').modal('show'); 
-    //     $("#editsModal").on("show.bs.modal", function(event) {
-    //         // $('#edit-close.close').on('click', function(){
-    //         //     $('#editsModal').modal('hide');
-    //         // });
-    //         // ajax call to data
-    //     });
-    // });
-    // $('.modal').on('show.bs.modal', function (event) {
-    //     var idx = $('.modal:visible').length;
-    //     $(this).css('z-index', 1040 + (10 * idx));
-    // });
-    // $('.modal').on('shown.bs.modal', function (event) {
-    //     var idx = ($('.modal:visible').length) - 1; // raise backdrop after animation.
-    //     $('.modal-backdrop').not('.stacked').css('z-index', 1039 + (10 * idx));
-    //     $('.modal-backdrop').not('.stacked').addClass('stacked');
-    // });
-    // $(document).on('click', '#edit-drawer', function(){
-    //     $('#vitalsModal').modal('show'); 
-    //     $("#vitalsModal").on("show.bs.modal", function(event) {
-    //         // ajax call to data
-    //     });
-    // });
-    // $(document).on('click', '#edit-drawer-btn', function(){
-    //     // Get the modal
-    //     var drawer = document.getElementById("edit-drawer");
-        
-    //     // Get the button that opens the modal
-    //     var btn = document.getElementById("edit-drawer-btn");
-        
-    //     // Get the <span> element that closes the modal
-    //     var span = document.getElementsByClassName("edit-drawer-close")[0];
-        
-    //     // When the user clicks the button, open the modal 
-    //     btn.onclick = function() {
-    //         drawer.style.display = "block";
-    //     }
-        
-    //     // When the user clicks on <span> (x), close the modal
-    //     span.onclick = function() {
-    //         drawer.style.display = "none";
-    //     }
-        
-    //     // When the user clicks anywhere outside of the modal, close it
-    //     window.onclick = function(event) {
-    //         if (event.target == drawer) {
-    //             drawer.style.display = "none";
-    //         }
-    //     }
-    // });
-        
-    // $(document).on('click', '#vitals-drawer-btn', function(){
-    //     // Get the modal
-    //     var drawer = document.getElementById("vitals-drawer");
-        
-    //     // Get the button that opens the modal
-    //     var btn = document.getElementById("vitals-drawer-btn");
-        
-    //     // Get the <span> element that closes the modal
-    //     var span = document.getElementsByClassName("vitals-drawer-close")[0];
-        
-    //     // When the user clicks the button, open the modal 
-    //     btn.onclick = function() {
-    //     // $(this).on('click', function(){
-    //         drawer.style.display = "block";
-    //     }
-        
-    //     // When the user clicks on <span> (x), close the modal
-    //     span.onclick = function() {
-    //         drawer.style.display = "none";
-    //     }
-        
-    //     // When the user clicks anywhere outside of the modal, close it
-    //     window.onclick = function(event) {
-    //         if (event.target == drawer) {
-    //             drawer.style.display = "none";
-    //         }
-    //     }
-    // });
     function commaSeparateNumber(val) {
         while (/(\d+)(\d{3})/.test(val.toString())) {
             val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
@@ -4200,21 +3262,16 @@ $(function(){
         
 
         $('#replaceSection').removeClass("show");        
-        // $('#removeSection').addClass("active");
     });
     $('#drn-e-replace').click(function(){  
         
 
         $('#appendSection').removeClass("show");        
-        // $('#removeSection').addClass("active");
     });
     function drop_down_list(c = "")
     {
         var state = $('#state').val();
-        // var cp = $('#county_parish');
         var cp = document.querySelector("#county_parish");
-        //var dd = document.querySelector("#bs-select-3");
-        //var dd = document.querySelector("#bs-select-3 > ul > li");
         if(state == 'AK' || state == 'DC') // Alaska and District Columbia have no counties
         {
         $('#county_drop_down').hide();
@@ -4230,8 +3287,6 @@ $(function(){
         $.getScript("assets/js/states/"+ state.toLowerCase() +".js", function(){
 
         populate(cp);
-        //populate(dd);
-        // populate(document.insert_well_form.county_parish);
 
         $('#loading_county_drop_down').hide(); // Hide the Loading...
         $('#county_drop_down').show(); // Show the drop down
@@ -4241,296 +3296,6 @@ $(function(){
     }
     
     
-    // var X = XLSX;
-
-    // var cDg;
-    // var rABS = typeof FileReader !== 'undefined' && FileReader.prototype && FileReader.prototype.readAsBinaryString;
-    // var useworker = typeof Worker !== 'undefined';
-    // var pending = false;
-    // function fixdata(data) {
-    //     var o = "", l = 0, w = 10240;
-    //     for(; l<data.byteLength/w; ++l)
-    //     o+=String.fromCharCode.apply(null,new Uint8Array(data.slice(l*w,l*w+w)));
-    //     o+=String.fromCharCode.apply(null, new Uint8Array(data.slice(o.length)));
-    //     return o;
-    // }
-
-    // function sheetjsw(data, cb, readtype) {
-    //     pending = true;
-    //     opts.on.workstart();
-    //     var scripts = document.getElementsByTagName('script');
-    //     var dropsheetPath;
-    //     for (var i = 0; i < scripts.length; i++) {
-    //     if (scripts[i].src.indexOf('dropsheet') != -1) {
-    //         dropsheetPath = scripts[i].src.split('dropsheet.js')[0];
-    //     }
-    //     }
-    //     var worker = new Worker(dropsheetPath + 'sheetjsw.js');
-    //     worker.onmessage = function(e) {
-    //     switch(e.data.t) {
-    //         case 'ready': break;
-    //         case 'e': pending = false; console.error(e.data.d); break;
-    //         case 'xlsx':
-    //         pending = false;
-    //         opts.on.workend();
-    //         cb(JSON.parse(e.data.d)); break;
-    //     }
-    //     };
-    //     worker.postMessage({d:data,b:readtype,t:'xlsx'});
-    // }
-    // var last_wb;
-
-    // function to_json(workbook) {
-    //     if(useworker && workbook.SSF) XLSX.SSF.load_table(workbook.SSF);
-    //     var result = {};
-    //     workbook.SheetNames.forEach(function(sheetName) {
-    //     var roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {raw:false, header:1});
-    //     if(roa.length > 0) result[sheetName] = roa;
-    //     });
-    //     return result;
-    // }
-    // function choose_sheet(sheetidx) { process_wb(last_wb, sheetidx); }
-
-    // function process_wb(wb, sheetidx) {
-    //     last_wb = wb;
-    //     opts.on.wb(wb, sheetidx);
-    //     var sheet = wb.SheetNames[sheetidx||0];
-    //     var json = to_json(wb)[sheet];
-    //     opts.on.sheet(json, wb.SheetNames, choose_sheet);
-    // }
-
-    // // var process_wb = (function() {
-    // //     // var XPORT = document.getElementById('xport');
-    // //     var HTMLOUT = document.getElementById('grid');
-
-    // //     return function process_wb(wb) {
-    // //         /* get data */
-    // //         var ws = wb.Sheets[wb.SheetNames[0]];
-    // //         var data = XLSX.utils.sheet_to_json(ws, {header:1});
-
-    // //         /* update canvas-datagrid */
-    // //         if(!cDg) cDg = canvasDatagrid({ parentNode:HTMLOUT, data:data });
-    // //         cDg.style.height = '100%';
-    // //         cDg.style.width = '100%';
-    // //         cDg.data = data;
-    // //         // XPORT.disabled = false;
-
-    // //         /* create schema (for A,B,C column headings) */
-    // //         var range = XLSX.utils.decode_range(ws['!ref']);
-    // //         for(var i = range.s.c; i <= range.e.c; ++i) cDg.schema[i - range.s.c].title = XLSX.utils.encode_col(i);
-
-    // //         HTMLOUT.style.height = (window.innerHeight - 400) + "px";
-    // //         HTMLOUT.style.width = (window.innerWidth - 50) + "px";
-
-    // //         if(typeof console !== 'undefined') console.log("output", new Date());
-    // //     };
-    // // })();
-    // var do_file = (function() {
-    //     var rABS = typeof FileReader !== "undefined" && (FileReader.prototype||{}).readAsBinaryString;
-    //     var domrabs = document.getElementsByName("userabs")[0];
-    //     if(!rABS) domrabs.disabled = !(domrabs.checked = false);
-    
-    //     return function do_file(files) {
-    //         rABS = domrabs.checked;
-    //         var f = files[0];
-    //         var reader = new FileReader();
-    //         reader.onload = function(e) {
-    //             if(typeof console !== 'undefined') console.log("onload", new Date(), rABS);
-    //             var data = e.target.result;
-    //             if(!rABS) data = new Uint8Array(data);
-    //             process_wb(X.read(data, {type: rABS ? 'binary' : 'array'}));
-    //         };
-    //         if(rABS) reader.readAsBinaryString(f);
-    //         else reader.readAsArrayBuffer(f);
-    //     };
-    // })();
-    /* oss.sheetjs.com (C) 2014-present SheetJS -- http://sheetjs.com */
-    /* vim: set ts=2: */
-
-    // var DropSheet = function DropSheet(opts) {
-    //     if(!opts) opts = {};
-    //     var nullfunc = function(){};
-    //     if(!opts.errors) opts.errors = {};
-    //     if(!opts.errors.badfile) opts.errors.badfile = nullfunc;
-    //     if(!opts.errors.pending) opts.errors.pending = nullfunc;
-    //     if(!opts.errors.failed) opts.errors.failed = nullfunc;
-    //     if(!opts.errors.large) opts.errors.large = nullfunc;
-    //     if(!opts.on) opts.on = {};
-    //     if(!opts.on.workstart) opts.on.workstart = nullfunc;
-    //     if(!opts.on.workend) opts.on.workend = nullfunc;
-    //     if(!opts.on.sheet) opts.on.sheet = nullfunc;
-    //     if(!opts.on.wb) opts.on.wb = nullfunc;
-    
-    //     var rABS = typeof FileReader !== 'undefined' && FileReader.prototype && FileReader.prototype.readAsBinaryString;
-    //     var useworker = typeof Worker !== 'undefined';
-    //     var pending = false;
-    //     function fixdata(data) {
-    //     var o = "", l = 0, w = 10240;
-    //     for(; l<data.byteLength/w; ++l)
-    //         o+=String.fromCharCode.apply(null,new Uint8Array(data.slice(l*w,l*w+w)));
-    //     o+=String.fromCharCode.apply(null, new Uint8Array(data.slice(o.length)));
-    //     return o;
-    //     }
-    
-    //     function sheetjsw(data, cb, readtype) {
-    //     pending = true;
-    //     opts.on.workstart();
-    //     var scripts = document.getElementsByTagName('script');
-    //     var dropsheetPath;
-    //     for (var i = 0; i < scripts.length; i++) {
-    //         if (scripts[i].src.indexOf('dropsheet') != -1) {
-    //         dropsheetPath = scripts[i].src.split('dropsheet.js')[0];
-    //         }
-    //     }
-    //     var worker = new Worker(dropsheetPath + 'sheetjsw.js');
-    //     worker.onmessage = function(e) {
-    //         switch(e.data.t) {
-    //         case 'ready': break;
-    //         case 'e': pending = false; console.error(e.data.d); break;
-    //         case 'xlsx':
-    //             pending = false;
-    //             opts.on.workend();
-    //             cb(JSON.parse(e.data.d)); break;
-    //         }
-    //     };
-    //     worker.postMessage({d:data,b:readtype,t:'xlsx'});
-    //     }
-    
-    //     var last_wb;
-    
-    //     function to_json(workbook) {
-    //     if(useworker && workbook.SSF) XLSX.SSF.load_table(workbook.SSF);
-    //     var result = {};
-    //     workbook.SheetNames.forEach(function(sheetName) {
-    //         var roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {raw:false, header:1});
-    //         if(roa.length > 0) result[sheetName] = roa;
-    //     });
-    //     return result;
-    //     }
-    
-    //     function choose_sheet(sheetidx) { process_wb(last_wb, sheetidx); }
-    
-    //     function process_wb(wb, sheetidx) {
-    //     last_wb = wb;
-    //     opts.on.wb(wb, sheetidx);
-    //     var sheet = wb.SheetNames[sheetidx||0];
-    //     var json = to_json(wb)[sheet];
-    //     opts.on.sheet(json, wb.SheetNames, choose_sheet);
-    //     }
-    
-    //     function handleDrop(e) {
-    //     e.stopPropagation();
-    //     e.preventDefault();
-    //     if(pending) return opts.errors.pending();
-    //     var files = e.dataTransfer.files;
-    //     // var files = e;
-    //     var i,f;
-    //     for (i = 0, f = files[i]; i != files.length; ++i) {
-    //         var reader = new FileReader();
-    //         var name = f.name;
-    //         reader.onload = function(e) {
-    //         var data = e.target.result;
-    //         var wb, arr;
-    //         var readtype = {type: rABS ? 'binary' : 'base64' };
-    //         if(!rABS) {
-    //             arr = fixdata(data);
-    //             data = btoa(arr);
-    //         }
-    //         function doit() {
-    //             try {
-    //             if(useworker) { sheetjsw(data, process_wb, readtype); return; }
-    //             wb = XLSX.read(data, readtype);
-    //             process_wb(wb);
-    //             } catch(e) { console.log(e); opts.errors.failed(e); }
-    //         }
-    
-    //         if(e.target.result.length > 1e6) opts.errors.large(e.target.result.length, function(e) { if(e) doit(); });
-    //         else { doit(); }
-    //         };
-    //         if(rABS) reader.readAsBinaryString(f);
-    //         else reader.readAsArrayBuffer(f);
-    //     }
-    //     }
-    
-    //     function handleDragover(e) {
-    //     e.stopPropagation();
-    //     e.preventDefault();
-    //     e.dataTransfer.dropEffect = 'copy';
-    //     }
-    
-    //     // if(opts.drop.addEventListener) {
-    //     // opts.drop.addEventListener('dragenter', handleDragover, false);
-    //     // opts.drop.addEventListener('dragover', handleDragover, false);
-    //     // opts.drop.addEventListener('drop', handleDrop, false);
-    //     // }
-    
-    //     function handleFile(e) {
-    //     if(pending) return opts.errors.pending();
-    //     var files = e.target.files;
-    //     var i,f;
-    //     for (i = 0, f = files[i]; i != files.length; ++i) {
-    //         var reader = new FileReader();
-    //         var name = f.name;
-    //         reader.onload = function(e) {
-    //         var data = e.target.result;
-    //         var wb, arr;
-    //         var readtype = {type: rABS ? 'binary' : 'base64' };
-    //         if(!rABS) {
-    //             arr = fixdata(data);
-    //             data = btoa(arr);
-    //         }
-    //         function doit() {
-    //             try {
-    //             if(useworker) { sheetjsw(data, process_wb, readtype); return; }
-    //             wb = XLSX.read(data, readtype);
-    //             process_wb(wb);
-    //             } catch(e) { console.log(e); opts.errors.failed(e); }
-    //         }
-    
-    //         if(e.target.result.length > 1e6) opts.errors.large(e.target.result.length, function(e) { if(e) doit(); });
-    //         else { doit(); }
-    //         };
-    //         if(rABS) reader.readAsBinaryString(f);
-    //         else reader.readAsArrayBuffer(f);
-    //     }
-    //     }
-    
-    //     if(opts.file && opts.file.addEventListener) opts.file.addEventListener('change', handleFile, false);
-    // };
-    // opts.file.addEventListener('')
-    /* oss.sheetjs.com (C) 2014-present SheetJS -- http://sheetjs.com */
-    /* vim: set ts=2: */
-
-    /** drop target **/
-    // var _target = document.getElementById('drop');
-    // var _target = document.getElementById('drop');
-    // var _file = document.getElementById('file');
-    // var _grid = document.getElementById('grid');
-
-    
-
-    
-
-    
-    
-    /** Drop it like it's hot **/
-    // DropSheet({
-    // file: _file,
-    // drop: _target,
-    // on: {
-    //     workstart: _workstart,
-    //     workend: _workend,
-    //     sheet: _onsheet,
-    //     foo: 'bar'
-    // },
-    // errors: {
-    //     badfile: _badfile,
-    //     pending: _pending,
-    //     failed: _failed,
-    //     large: _large,
-    //     foo: 'bar'
-    // }
-    // })
     /*  The below code allows for me to remove a full table (the daily average table) and place the values in the first table. 
     *   This code allows for the user to toggle between data on a click, so if they *want* to see the daily average, it will allow them to.
     *   However, if they want to see the monthly value again, they can click again (thus, a toggle).
