@@ -232,8 +232,12 @@ a.bg-sog:focus,a.bg-sog:hover,button.bg-sog:focus,button.bg-sog:hover{background
   .nav-underline .active {
     font-weight: 500;
     color: white;
-    background-color: rgb(100, 150, 225)!important;
+    /* background-color: rgb(100, 150, 225)!important; */
+    background-color: #343a40!important;
     box-shadow: 0rem 0rem 1rem 0rem rgba(0,0,0,.175) inset!important;
+}
+.nav-pills .nav-link {
+  border-radius: 0 0 .25rem .25rem !important;
 }
 /* .bg-sog{background-color: rgb(62, 148, 236) !important;} */
 /* a.bg-sog:focus,a.bg-sog:hover,button.bg-sog:focus,button.bg-sog:hover{background-color:rgb(62, 148, 236)!important} */
