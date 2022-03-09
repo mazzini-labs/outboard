@@ -71,13 +71,13 @@ $mysqli = connect_db();
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/colors/trumbowyg.colors.min.js" integrity="sha512-iT7g30i1//3OBZsfoc5XmlULnKQKyxir582Z9fIFWI6+ohfrTdns118QYhCTt0d09aRGcE7IRvCFjw2wngaqRQ==" crossorigin="anonymous"></script>
             <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/highlight/trumbowyg.highlight.min.js" integrity="sha512-WqcaEGy8Pv/jIWsXE5a2T/RMO81LN12aGxFQl0ew50NAUQUiX9bNKEpLzwYxn+Ez1TaBBJf+23OX+K4KBcf6wg==" crossorigin="anonymous"></script> -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/history/trumbowyg.history.min.js" integrity="sha512-hvFEVvJ24BqT/WkRrbXdgbyvzMngskW3ROm8NB7sxJH6P4AEN77UexzW3Re5CigIAn2RZr8M6vQloD/JHtwB9A==" crossorigin="anonymous"></script>
-            <script src="/assets/js/tinymce/tinymce.min.js?v1"></script>
-    <script src="/assets/js/tinymce/jquery.tinymce.min.js"></script>
+            <!-- <script src="/assets/js/tinymce/tinymce.min.js?v1"></script> -->
+    <!-- <script src="/assets/js/tinymce/jquery.tinymce.min.js"></script> -->
     <!-- <script type="text/javascript" class="init" src="/assets/js/datatables.wsb.js?v1.0.0.23"></script> -->
-    <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.42"></script>
+    <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.69"></script>
     <!-- <script src="/assets/js/wsb.ddr.js?v1.0.0.14"></script> -->
 </head>
-
+<style> .daily { display: none; } </style>
 <body class="bg-light">
 <?php  include 'include/header_extensions.php' ?>
 <div class=' '>      
@@ -89,9 +89,6 @@ $mysqli = connect_db();
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="latest-tab" data-toggle="tab" href="#latest" role="tab" aria-controls="latest" aria-selected="true">Latest Daily Production [TESTING]</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="daily-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="daily" aria-selected="false">Average Daily Production</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="shutin-tab" data-toggle="tab" href="#shutin" role="tab" aria-controls="shutin" aria-selected="false">Shut In Well Notes</a>
@@ -142,114 +139,6 @@ $mysqli = connect_db();
                                 <th >Updated</a></th>
                             
                         </thead>
-                    </table>
-                </div>
-                <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="daily-tab" style="position: relative; z-index: 940;">
-                    <!-- <table><tr><td><small>test</small></td></tr><hr><tr><td style="border-top: 1px solid #9ba0a5;"><small>day</small></td></tr></table> -->
-                    <table id="productionTable1" class='table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 smol' style="margin-top: 0px !important;" >
-                        <thead class="bg-sog">
-                                <th >Well</th>
-                                <th >ST</th>
-                                <th >County</a></th>
-                                <th >Block</a></th>
-                                <th >Entity</a></th>
-                                <th >Status</a></th>
-                                <th >Prod</a></th>
-                                <th >Active</a></th>
-                                
-                                <th >Gas</th>
-                                <th >Oil</th>
-                                <th >Water</th>
-                                
-                                <th >Loss</a></th>
-                                <th >Pumper</a></th>
-                                <th >Notes</th>
-                                <th >Last Updated</a></th>
-                        </thead>
-                        <!-- <?php 
-                        /*     $conn = connect_db();
-                            $results = mysqli_query($conn, $query);
-                            $num_records = mysqli_num_rows($results); 
-                            mysqli_close($conn);
-                                // print the contents of the table
-                                echo "<tbody >\n";
-                            while($row = $results -> fetch_assoc())
-                            //for ($i = $_GET['start']; $i < $_GET['end']; $i++)
-                            {
-                                $well_api = $row['api'];
-                                $well_lease = $row['well_lease'];
-                                $well_number = $row['well_no'];
-                                //$wellname = $well_lease . " " . $well_number;
-                                $wellname = $row['entity_common_name'];
-                                $state = $row['state'];
-                                $county = $row['county_parish'];
-                                $block = $row['block'];
-                                $compname = $row['entity_operator_code'];
-                                $wellstatus = $row['producing_status'];
-                                $productiontype = $row['production_type'];
-                                $actiondate = $row['last_prod_date'];
-                                $dayson = $row['days_on'];
-                                $gassold = $row['gas_sold'];
-                                $cur_prod_gas = $gassold;
-                                $cur_prod_oil = $row['oil_prod'];
-                                $cur_prod_water = $row['water_prod'];
-                                if(!$dayson == 0){
-                                $avg_prod_gas = $cur_prod_gas / $dayson;
-                                $avg_prod_oil = $cur_prod_oil / $dayson;
-                                $avg_prod_water = $cur_prod_water / $dayson; 
-                                } else {
-                                    $avg_prod_gas = 0;
-                                    $avg_prod_oil = 0;
-                                    $avg_prod_water = 0; 
-                                }
-                                $lineloss = $row['gas_line_loss'];	
-                                $pumper = $row['pumper'];
-                                $wellcheck = $row['report_frequency'];
-                                $notes = $row['notes'];
-                                $notes_updated = $row['notes_update'];
-                                $datetime = new DateTime($notes_updated);
-                                $last_updated = $datetime->format('Y-m-d');
-                                //$priority = mysql_result($results, $i, "priority");
-                                
-
-                                if($wellstatus == 'Shut-in' || $wellstatus == 'Shut-In' || $wellstatus == 'INACTIVE'){
-                                    //$status = "style='color:red;'><small";
-                                    $status = "style='background-color: #F08080;' $width2><small";
-                                    $boldTagStart = "<strong>";
-                                    $boldTagEnd = "</strong>";
-                                }else{
-                                    $status = "$width2><small";
-                                    $boldTagStart = "";
-                                    $boldTagEnd = "";
-                                }
-                                
-
-                                echo "<tr>\n";
-                                echo "<td $width7><small><a href='prod_data.php?api=$well_api'>$wellname - $well_api</td ></small>\n";
-                                echo "<td $width2><small>$state</td ></small>\n";
-                                echo "<td $width4><small>$county</a></td ></small>\n";
-                                echo "<td $width2><small>$block</td ></small>\n";
-                                echo "<td $width2><small>$compname</td ></small>\n";
-                                echo "<td $status>$wellstatus</td ></small>\n";
-                                echo "<td $width2><small>$productiontype</td ></small>\n";
-                                echo "<td $width2><small>$actiondate</td ></small>\n";
-                                echo "<td $width1><small>". truncate($avg_prod_gas) ." <sup>mcf</sup>/<sub>day</sub></small></td>\n";
-                                echo "<td $width1><small>". truncate($avg_prod_oil) ." <sup>bbl</sup>/<sub>day</sub></small></td>\n";
-                                echo "<td $width1><small>". truncate($avg_prod_water) ." <sup>bbl</sup>/<sub>day</sub></small></td>\n";
-                                
-                                echo "<td $width2><small>". truncate($lineloss) ." mcf</small></td>\n";
-                                echo "<td $width2><small>$pumper</small></td >\n";
-                                echo "<td $width14><small>$boldTagStart $notes $boldTagEnd</small> </td >\n";
-                                echo "<td $width3><small>$last_updated</small></td >\n";
-                                echo "</tr>\n"; 
-
-                                
-                                
-                            }
-                            echo "</tbody>\n";
-                             */
-                            ?> -->
-                    
                     </table>
                 </div>
                 <div class="tab-pane fade " id="shutin" role="tabpanel" aria-labelledby="shutin-tab" style="position: relative; z-index: 940;">
