@@ -104,7 +104,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
 		$status = "style='color:red;'";
 		//$status = "style='background-color: #F08080;'><small";
 	}else{
-		$status = "";
+		$status = "style='color:green;'";
 	}
 	$date = '';
 	$data1 = '';
@@ -563,10 +563,11 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
         <!-- <script type="text/javascript" src="js/datatables.wsb.testing.js?v=1.0.0.57"></script> -->
         <!-- <script type="text/javascript" src="js/datatables.wsb.testing.3.js?v=1.0.0.51"></script>
         <script type="text/javascript" src="js/tester.js?v=1.0.0.76"></script> -->
-        <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.29"></script>
+        <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.43"></script>
         <script type="text/javascript" src="/assets/js/view-ddr.js?v=1.0.0.76"></script>
         
         <?php } else { ?>
+            <link type="stylesheet" href="/assets/css/wsb.style.css" />
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/trumbowyg.min.js" integrity="sha512-sffB9/tXFFTwradcJHhojkhmrCj0hWeaz8M05Aaap5/vlYBfLx5Y7woKi6y0NrqVNgben6OIANTGGlojPTQGEw==" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/cleanpaste/trumbowyg.cleanpaste.min.js" integrity="sha512-y7o2DGiZAj5/HOX10rSG1zuIq86mFfnqbus0AASAG1oU2WaF2OGwmkt2XsgJ3oYxJ69luyG7iKlQQ6wlZeV3KQ==" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/colors/trumbowyg.colors.min.js" integrity="sha512-iT7g30i1//3OBZsfoc5XmlULnKQKyxir582Z9fIFWI6+ohfrTdns118QYhCTt0d09aRGcE7IRvCFjw2wngaqRQ==" crossorigin="anonymous"></script>
@@ -574,9 +575,9 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/history/trumbowyg.history.min.js" integrity="sha512-hvFEVvJ24BqT/WkRrbXdgbyvzMngskW3ROm8NB7sxJH6P4AEN77UexzW3Re5CigIAn2RZr8M6vQloD/JHtwB9A==" crossorigin="anonymous"></script>
             <script src="/assets/js/tinymce/tinymce.min.js?v1"></script>
             <script src="/assets/js/tinymce/jquery.tinymce.min.js"></script>
-        <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.44"></script>
+        <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.94"></script>
         <script type="text/javascript" src="/assets/js/view-ddr.js?v=1.0.0.76"></script>
-
+        
         <?php } ?>
         <!-- DDR.JS IS NOT INCLUDED DUE TO DUPLICATION OF ENTRIES -->
         <!-- <script type="text/javascript" src="js/wsb.ddr.js?v=1.0.0.2"></script> -->
@@ -639,12 +640,187 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
         });
     </script> -->
 </head>
+<style>
+        /* #mapid { 
+           
+            height: 50vh; 
+        } */
+        /* body { */
+                /* top: 56px; */
+            /* overflow-y: hidden; Hide scrollbars */
+        /* } 	 */
+        .production {
+            width: 100%;
+            display: inline-table;
+            height:auto;
+            table-layout: fixed;
+            /* padding-left: 5%; */
+        }
+        /* table{
+            height:0%; 
+            display: -moz-groupbox;
+            overflow: hidden;
+        }
+        tbody{
+            overflow-y: scroll;
+            height: 79vh;
+            width: auto;
+            position: absolute;
+        } */
+        /* table{
+        height:0%; 
+        display: -moz-groupbox;
+        overflow: hidden;
+        } */
+        .table > thead {
+            font-style: normal!important;
+            font-stretch: condensed!important;
+            font-size: 12px;
+        }
+        /* .table > thead > tr {
+        width: 100%;
+        display: inline-table;
+        height:auto;
+        table-layout: fixed;
+        }
+        .table > tbody > tr {
+        width: 100%;
+        display: inline-table;
+        height:auto;
+        table-layout: fixed;
+        }
+        .table > thead > tr > td{
+            padding-left: 1%!important;
+        }
+        .table > tbody > tr > td{
+            padding-left: 1%!important;
+        }
+        
+        table.table > tbody{
+        overflow-y: scroll;
+        height: 70vh;
+        width: auto;
+        position: fixed;
+        } */
 
+        .engineering-date {
+            color: #ff4d4d;
+            font-weight: 900;
+            
+        }
+        td:first-child.engineering-d {
+            font-weight: bold;
+        }
+        .engineering {
+            font-size: 12px;
+        }
+        .accounting {
+            /* background-color: rgba(77,77,255,0.5);  */
+            /* color: white; */
+            color: #4d4dff;
+        }
+        .accounting-text { 
+            color: rgba(77,77,255,0);
+            font-size: 12px;
+        }	
+        td:first-child.accounting-date {
+            font-weight: bold;
+        }	
+        .vendor{
+            /* background-color: gold; */
+            font-size: 11px;
+            background-color: rgba(255, 215, 0, 0.5);
+        }
+        .vendor > table.vendortable {
+            background-color: rgba(204, 255, 204, 1)!important;
+        }
+
+        .vendortable {
+            background-color: rgba(204, 255, 204, 1)!important;
+        }
+        .field {
+            font-size: 12px;
+            color: purple;
+        }
+        td:first-child.field-date { 
+            font-weight: bold; 
+        }	
+        #eng { display: none; }
+        #acct { display: none; }
+        #vend { display: none; }
+        #field { display: none; }
+        .not-allowed { cursor: not-allowed; }
+        .gold { background-color: gold; }
+        .red { background-color: #ff4d4d; }
+        .purple { background-color: purple; color: white; }
+        .blue { background-color: #4d4dff; color: white; }
+        .text-wrap{
+            white-space:normal!important;
+        }
+        .lg-icon {
+            width: 1.625rem;
+            height: 1.625rem;
+            vertical-align: -webkit-baseline-middle;
+
+        }
+        .sm-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            vertical-align: -webkit-baseline-middle;
+            margin-top: 0.75rem;
+        }
+        .smol th,
+        .smol td,
+        .smol a,
+        .smol p {
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+        font-size: 14px;
+        }
+        table.dataTable tbody td 
+        {
+        word-break: break-word;
+        vertical-align: top;
+        }
+        .text-wrap
+        {
+            white-space:normal;
+        }
+        .svg 
+        {
+            width: 24px;
+            height: 24px;
+            color: white;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+        .edit 
+        {
+            background-image: url("./image/edit-2.svg");
+        }
+        .view
+        {
+            background-image: url("./image/eye.svg");
+        }
+        .cumulativeproduction 
+        {
+            width: 13vw;
+            /* height: 10em; */
+            background-color: rbga(255,255,255,0.5);
+            position: fixed;
+            z-index: 1;
+            display: inline-block;
+            overflow: hidden;
+            /* line-height: 1.5; */
+        }
+    </style>
 <body class="bg-light" style="background-color: #0e5092;">
     <?php include 'include/header_extensions.php'; ?>
     <!-- Couldn't control the zoom offset using MapBox's API -- have to edit JS file manually -->
-    <!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script> -->
-    <script src='js/Control.MiniMap.js?v1.0'></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script>
+    <!-- <script type="text/javascript" src='/assets/js/Control.MiniMap.js?v1.1'></script> -->
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.css' rel='stylesheet' />
 <div class='limiter'>     
 <main role="main" >
@@ -665,7 +841,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                 <?php echo $countyparish; ?> County, <?php echo $db_state; ?> 
             </span>
             </div>
-            <div class="col"><li class="divider-vertical h--auto mt--2 p-0 ml-auto">&nbsp;</li></div>
+            <div class="col-auto"><li class="divider-vertical h--auto mt--2 p-0 ml-auto">&nbsp;</li></div>
             <div class="col">
             <span class="text-black p-0 h5 h6">
                 <?php echo $apino; ?> 
@@ -931,7 +1107,24 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                 </div>
 
             <div class="tab-pane fade " id="dsr" role="tabpanel" aria-labelledby="dsr-tab" style="position: relative; z-index: 940;">
-                <div class="carded m-3 p-3 shadow-lg">
+                <div class="carde-d m--3 p--3 shadow--lg">
+                    <!-- <div class="carded--header"><h1>DDR-D | <?php echo $common_name; ?></h1></div> -->
+                        <div class="carded--body">
+                            <table id="dsrTable" class='table display p-0 table--striped table--borderless table-bordered datatable-tab-correct datatable-tab-correct1 table-condensed table-sm smoller table-hover' style="margin-top: 0px !important; width: 100% !important;" >
+                                <thead class="smol bg-sog ">
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>DSR</th>
+                                        <th>$ / EDC</a></th>
+                                        <th>Approvals / ECC</a></th>
+                                        <th>Actions</th>
+                                    </tr>                                       
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+                <!-- <div class="carded m-3 p-3 shadow-lg">
                     <div class="carded-header">
                     <h1>DSR-D</h1>
                     <div class="mx-auto" name="add_dsr" id="add_dsr" href="#add_data_dsr_Modal" data-toggle="modal"><a class="btn btn-primary btn-lg" id=<?php echo $api; ?> href="#">Add DSR Entry</a></div>
@@ -948,14 +1141,14 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             <div class="tab-pane fade " id="t1" role="tabpanel" aria-labelledby="t1-tab" style="position: relative; z-index: 940;">
-				<div class="carded m-3 p-3 shadow-lg">
-                    <div class="carded-header"><h1>DDR 2015-2020</h1></div>
-                        <div class="carded-body">
-                            <table id="ddr2015pres" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
-                                <thead class="bg-sog">
+				<div class="carde-d m--3 p--3 shadow--lg">
+                    <!-- <div class="carded--header"><h1>DDR 2015-2020</h1></div> -->
+                        <div class="carded--body">
+                            <table id="ddr2015pres" class='table display p-0 table--striped table--borderless table-bordered datatable-tab-correct datatable-tab-correct1 table-condensed table-sm smoller table-hover' style="margin-top: 0px !important; width: 100% !important;" >
+                                <thead class="bg-sog smol">
                                     <tr>
                                         <th <?php echo $width2; ?> class="table-header">Date</th>
                                         <th <?php echo $width2; ?> class="table-header">Time</th>
@@ -971,11 +1164,11 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                     </div>
                 </div>
             <div class="tab-pane fade " id="t2" role="tabpanel" aria-labelledby="t2-tab" style="position: relative; z-index: 940;">
-                <div class="carded m-3 p-3 shadow-lg"> 
-                    <div class="carded-header"><h1>DSR 2015-2020</h1></div>
-                        <div class="carded-body">  
-                            <table id="dsr2015pres" class="table table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
-                                <thead class="bg-sog">
+                <div class="carde-d m--3 p--3 shadow--lg"> 
+                    <!-- <div class="carded-header"><h1>DSR 2015-2020</h1></div> -->
+                        <div class="carded--body">  
+                            <table id="dsr2015pres" class='table display p-0 table--striped table--borderless table-bordered datatable-tab-correct datatable-tab-correct1 table-condensed table-sm smoller table-hover' style="margin-top: 0px !important; width: 100% !important;" >
+                                <thead class="bg-sog smol">
                                     <tr>
                                         <th class="table-header">Date</th>
                                         <th class="table-header">&nbsp;</th>
@@ -991,12 +1184,11 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                     </div>
                 </div>
             <div class="tab-pane fade " id="t3" role="tabpanel" aria-labelledby="t3-tab" style="position: relative; z-index: 940;">
-                <div class="carded m-3 p-3 shadow-lg">
-                    <div class="carded-header">
-                        <h1>Before 2015 Detail Report</h1></div>
-                        <div class="carded-body">
-                            <table id="before2015detailrpt" class="table display table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
-                                <thead class="bg-sog">
+                <div class="carde-d m--3 p--3 shadow--lg">
+                    <!--<div class="carded--header"><h1>Before 2015 Detail Report</h1></div> -->
+                        <div class="carded--body">
+                            <table id="before2015detailrpt" class='table display p-0 table--striped table--borderless table-bordered datatable-tab-correct datatable-tab-correct1 table-condensed table-sm smoller table-hover' style="margin-top: 0px !important; width: 100% !important;" >
+                                <thead class="bg-sog smol">
                                     <tr>
                                         <th class="table-header">A</th>
                                         <th class="table-header">B</th>
@@ -1017,12 +1209,11 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                     </div>
                 </div>
             <div class="tab-pane fade " id="t4" role="tabpanel" aria-labelledby="t4-tab" style="position: relative; z-index: 940;">
-                <div class="carded m-3 p-3 shadow-lg">
-                    <div class="carded-header">
-                        <h1>Before 2015 Summary Report</h1></div>
-                        <div class="carded-body">
-                            <table id="before2015sumrpt" class="table display table-striped table-borderless datatable-tab-correct datatable-tab-correct1 table-sm table-hover" style="width:100%;">
-                                <thead class="bg-sog">
+                <div class="carde-d m--3 p--3 shadow--lg">
+                    <!--<div class="carded--header"><h1>Before 2015 Summary Report</h1></div> -->
+                        <div class="carded--body">
+                            <table id="before2015sumrpt" class='table display p-0 table--striped table--borderless table-bordered datatable-tab-correct datatable-tab-correct1 table-condensed table-sm smoller table-hover' style="margin-top: 0px !important; width: 100% !important;" >
+                                <thead class="bg-sog smol">
                                     <tr>
                                         <th class="table-header">&nbsp;</th>
                                         <th class="table-header">A</th>
@@ -1398,9 +1589,60 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
                     // myChart.resize(chart_width, chart_height)
 				</script> 
 				<script>
+                    function getAbsoluteHeight(el) {
+                    // Get the DOM Node if you pass in a string
+                    el = (typeof el === 'string') ? document.querySelector(el) : el; 
+
+                    var styles = window.getComputedStyle(el);
+                    var margin = parseFloat(styles['marginTop']) +
+                                parseFloat(styles['marginBottom']);
+
+                    return Math.ceil(el.offsetHeight + margin);
+                    }
+                    // var body = document.querySelector("body").offsetHeight;
+                    // var nav = document.querySelector("body > nav").offsetHeight;
+                    // var subnav = document.querySelector("#tabs").offsetHeight;
+                    // var table_header = document.querySelector("#ddrTable").offsetHeight;
+                    // var dt_scroller_height = body - nav - subnav - table_header - 5;
+                    // var chart_size = body - nav - nav - subnav - 96;
+                    // chart_size = document.querySelector("#object-div").offsetHeight;
+                    let bodyH = getAbsoluteHeight("body");
+                    let navH = getAbsoluteHeight("body > nav");
+                    let subnavH = getAbsoluteHeight("#tabs");
+                    let chart_sizeH = bodyH - navH - subnavH;
+                    console.log(chart_sizeH);
+                    // col-5 m-3 p-3 shadow-lg carded-body bg-white
+                    $(document).ready(function() {
+                                    tabMove();
+                                    
+                                    // tabResize();
+                    });
+                    window.addEventListener("resize", tabMove);
+                    function tabMove(){
+                        var pillgroup = document.querySelector("#pills-vert").offsetWidth ;
+                        
+                        document.querySelector("#object-div").setAttribute('style', 'left:' + pillgroup + 'px; position: relative;');
+                        document.querySelector("#leftside").setAttribute('style', 'right:' + pillgroup / 2 + 'px; position: relative;');
+                        var body = document.querySelector("body").offsetHeight;
+                    var nav = document.querySelector("body > nav").offsetHeight;
+                    var subnav = document.querySelector("#tabs").offsetHeight;
+                    var table_header = document.querySelector("#ddrTable").offsetHeight;
+                    var dt_scroller_height = body - nav - subnav - table_header - 5;
+                    var chart_size = body - nav - subnav - 96;
+                    document.querySelector("#mapid").setAttribute('style','position:relative;width:100%;height:'+chart_size+'px;')
+                    document.querySelector("ul.justify-content-start.ml-auto.nav.p-0").setAttribute('style', 'width:' + document.querySelector("#myTab").offsetLeft + 'px; position: relative;'); 
+                    }
+                    // document.addEventListener('DOMContentLoaded', function() {})
+                        document.querySelector("#mapid").setAttribute('style','position:relative;width:100%;height:'+chart_sizeH+'px;')
+                    
 					var mymap = L.map('mapid').setView([<?php echo $ytile; ?>,<?php echo $xtile; ?>], 13<?php //echo $zoom; ?>);
                     accessToken = 'pk.eyJ1IjoiaHlkcm9jYXJib24iLCJhIjoiY2thYThrdjZnMGxieDJxbjV0ZW9jZTJ0bSJ9.8kj2dNLDSlNU0IMGoTRZ4g';
                     styleURL = 'hydrocarbon/cktepchad12lb17l00dbrgz6b'
+                    testX = "<?php echo $ytile; ?>"
+                    testY = "<?php echo $xtile; ?>"
+                    console.log(`xLon: ${testX} \n yLat: ${testY}`)
+                    // console.log(`https://api.mapbox.com/styles/v1/${styleURL}/tiles/13/${testX}/${testY}?access_token=${accessToken}`);
+                    // https://api.mapbox.com/styles/v1/hydrocarbon/cktepchad12lb17l00dbrgz6b?access_token=pk.eyJ1IjoiaHlkcm9jYXJib24iLCJhIjoiY2thYThrdjZnMGxieDJxbjV0ZW9jZTJ0bSJ9.8kj2dNLDSlNU0IMGoTRZ4g
 					// L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 					// 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 					// 	maxZoom: 18,
@@ -1430,6 +1672,7 @@ if ( isset( $_POST['submit'] ) || isset( $api) )
 						fillOpacity: 0.5,
 						radius: 500
 					}).addTo(mymap);
+                
 				</script>
 			<!-- </div> -->
             <div class="tab-pane fade" id="vitals" role="tabpanel" aria-labelledby="vitals-tab" style="position: relative; z-index: 940;"> 
