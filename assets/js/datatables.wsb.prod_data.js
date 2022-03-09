@@ -8,7 +8,7 @@ $(function(){
     var oTable;
     var iTable;
     var sTable;
-    var editor;
+    // var editor;
     var da = "ddr2015pres";
     var sa = "dsr2015pres";
     var db = "before2015detailrpt";
@@ -29,35 +29,35 @@ $(function(){
     var bDSRTable;
     var vTable;
     var editID;
-    var editor;
-    var drn = {
-        selector: '#drn1',
-        skin: "bs",
-        // skin: 'oxide-dark',
-        content_css: "//vprsrv.org/js/tinymce/skins/ui/bs",
-        menubar: false,
-        // inline: true,
-        plugins: [
-            'lists',
-            'quickbars',
-            'help',
-            'autoresize'
-        ],
-        toolbar: true,
-        quickbars_insert_toolbar: 'codesample',
-        quickbars_selection_toolbar: "bold italic underline strikethrough forecolor backcolor formatpainter | alignleft aligncenter alignright alignjustify | outdent indent removeformat | code | checklist | casechange",
-        // numlist bullist 
-        contextmenu: 'copy pastetext | undo redo | help',
-        powerpaste_word_import: 'clean',
-        powerpaste_html_import: 'clean',
-    };
-    editor = tinymce.init(drn);
+    // var editor;
+    // var drn = {
+    //     selector: '#drn1',
+    //     skin: "bs",
+    //     // skin: 'oxide-dark',
+    //     content_css: "//vprsrv.org/js/tinymce/skins/ui/bs",
+    //     menubar: false,
+    //     // inline: true,
+    //     plugins: [
+    //         'lists',
+    //         'quickbars',
+    //         'help',
+    //         'autoresize'
+    //     ],
+    //     toolbar: true,
+    //     quickbars_insert_toolbar: 'codesample',
+    //     quickbars_selection_toolbar: "bold italic underline strikethrough forecolor backcolor formatpainter | alignleft aligncenter alignright alignjustify | outdent indent removeformat | code | checklist | casechange",
+    //     // numlist bullist 
+    //     contextmenu: 'copy pastetext | undo redo | help',
+    //     powerpaste_word_import: 'clean',
+    //     powerpaste_html_import: 'clean',
+    // };
+    // editor = tinymce.init(drn);
     // editor_remove = tinymce.remove();
-    $(document).on('focusin', function(e) {
-    if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root").length) {
-        e.stopImmediatePropagation();
-    }
-    });
+    // $(document).on('focusin', function(e) {
+    // if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root").length) {
+    //     e.stopImmediatePropagation();
+    // }
+    // });
     var drn_t = {
         btns: [
             ['viewHTML'],
@@ -275,7 +275,7 @@ $(function(){
                                     buttons += '<div class="col" style="padding: 0 0 .5rem 0!important;">';
                                     // Edit Button HTML
                                     buttons += '<span class=\"r-tooltip\" data-tippy-content=\"Edit\" tabindex=\"0\">';
-                                    buttons += '<a class="btn-sm btn-light shadow-lg edit_ddr-'+data.d+'" style="color:blue;" id="'+data.id+'" href="#'+data.id+'">';
+                                    buttons += '<a class="btn btn-sm btn-light shadow-lg edit_ddr-'+data.d+'" style="color:blue;" id="'+data.id+'" href="#'+data.id+'">';
                                     buttons += '<i data-feather="edit-2" style="color: blue; height: 1.5em!important; width: 1.5em!important;"></i></a></span>&ensp;';
                                     
                                     // buttons += '<a style="color: gray; font-size:9;" id="'+data.id+'"></a>';
@@ -284,7 +284,7 @@ $(function(){
 
                                     // View Button HTML
                                     buttons += '<span class=\"r-tooltip\" data-tippy-content=\"View Entry\" tabindex=\"0\">';
-                                    buttons += '<a class="btn-sm btn-secondary view_data" href="#'+data.id+'" id="'+data.id+'">';
+                                    buttons += '<a class="btn btn-sm btn-secondary view_data" href="#'+data.id+'" id="'+data.id+'">';
                                     buttons += '<i data-feather="eye" style="color: light-blue; height: 1.5em!important; width: 1.5em!important;"></i></a></span>&ensp;';
                                     
                                     buttons += '</div></div>';
@@ -292,7 +292,7 @@ $(function(){
                                     buttons += '<div class="col" style="padding: 0 0 0 0!important;">';
                                     
                                     buttons += '<span class=\"r-tooltip\" data-tippy-content=\"Print Entry\" tabindex=\"0\">';
-                                    buttons += '<a class="btn-sm btn-info" href="ajax/printEntry.php?id='+data.id+'" target="_blank" id="'+data.id+'">';
+                                    buttons += '<a class="btn btn-sm btn-info" href="ajax/printEntry.php?id='+data.id+'" target="_blank" id="'+data.id+'">';
                                     buttons += '<i data-feather="printer" style="color: light-blue; height: 1.5em!important; width: 1.5em!important;"></i></a></span>';
                                     buttons += '</div>';
                                     if (data.sd !== null){
@@ -573,6 +573,8 @@ $(function(){
                                     arrow: false 
                                 });
                                 tippy('.actionbtn', {
+                                    trigger: "click",
+                                    placment: "right",
                                     content(reference) {
                                         const id = "action" + reference.getAttribute('data-id');
                                         console.log(id);
@@ -583,7 +585,8 @@ $(function(){
                                         feather.replace();
                                     }
                                 });
-                                
+                                $('.actionbtn').addClass("btn");
+                                $('.actionbtn').addClass("btn-primary");
                             } 
             
     
@@ -1893,7 +1896,8 @@ $(function(){
                                         var cp;
                                         // console.log(data.entity_type);
                                         if(data.entity_type == "PIPE"){
-                                            cp = ".cp";
+                                            // cp = ".cp";
+                                            cp = "";
                                             // return '<a href="prod_data.cp.php?api='+data.api+'">'+data.entity_common_name+' <br> '+data.api+'</a>';
                                         }
                                         else
@@ -1951,29 +1955,105 @@ $(function(){
                                 "defaultContent": "",
                             },
                             {
-                                // 56
-                                "data": "gas_sold", // Gas (mcf)
-                                "defaultContent": "",
-                                render: $.fn.dataTable.render.number( ',', '.', 0, '', '<small> mcf</small>' )
-                            },
+                            // Gas (mcf)
+                            "data": "gas_sold",
+                            data: null,
+                            render: function ( data, type, row ) {
+                                var rn = $.fn.dataTable.render.number( ',', '.', 0, '', '<small> mcf</small>' ).display(data.gas_sold);
+                                
+                                var check = data.gas_sold / data.days_on;
+
+                                if(check == check)
+                                {
+                                    return '<span class="daily">' + ( data.gas_sold / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+                                    // return ( data.gas_sold / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub>';
+                                }
+                                else
+                                {
+                                    return '<span class="daily">' +data.gas_sold+' <sup>mcf</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+                                }
+                            }},
                             {
-                                // 48
-                                "data": "oil_prod", // Oil (bbl)
-                                "defaultContent": "",
-                                render: $.fn.dataTable.render.number( ',', '.', 0, '', '<small> bbl</small>' )
-                            },
+                            // Oil (bbl)
+                            "data": "oil_prod",
+                            data: null,
+                            render: function ( data, type, row ) {
+                                var rn = $.fn.dataTable.render.number( ',', '.', 0, '', '<small> bbl</small>' ).display(data.oil_prod);
+                                
+                                var check = data.oil_prod / data.days_on;
+                            
+                                if(check == check)
+                                {
+                                    return '<span class="daily">' + ( data.oil_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+                                    // return ( data.oil_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub>';
+                                }
+                                else
+                                {
+                                    return '<span class="daily">' +data.oil_prod+' <sup>bbl</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+                                }
+                            }},
                             {
-                                // 54
-                                "data": "water_prod", // Water (bbl)
-                                "defaultContent": "",
-                                render: $.fn.dataTable.render.number( ',', '.', 0, '', '<small> bbl</small>' )
-                            },
+                            // Water (bbl)
+                            "data": "water_prod",
+                            data: null,
+                            render: function ( data, type, row ) {
+                                var rn = $.fn.dataTable.render.number( ',', '.', 0, '', '<small> bbl</small>' ).display(data.water_prod);
+                                
+                                var check = data.water_prod / data.days_on;
+                            
+                                if(check == check)
+                                {
+                                    return '<span class="daily">' + ( data.water_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+                                    // return ( data.water_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub>';
+                                }
+                                else
+                                {
+                                    return '<span class="daily">' +data.water_prod+' <sup>bbl</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+                                }
+                            }},
                             {
-                                // 56
-                                "data": "gas_line_loss", // Gas Line Loss (mcf)
-                                "defaultContent": "",
-                                render: $.fn.dataTable.render.number( ',', '.', 0, '', '<small> mcf</small>' )
-                            },
+                            // Gas Line Loss (mcf)
+                            "data": "gas_line_loss",
+                            data: null,
+                            render: function ( data, type, row ) {
+                                var rn = $.fn.dataTable.render.number( ',', '.', 0, '', '<small> mcf</small>' ).display(data.gas_line_loss);
+                                
+                                var check = data.gas_line_loss / data.days_on;
+                            
+                                if(check == check)
+                                {
+                                    return '<span class="daily">' + ( data.gas_line_loss / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+                                    // return ( data.gas_line_loss / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub>';
+                                }
+                                else
+                                {
+                                    return '<span class="daily">' +data.gas_line_loss+' <sup>mcf</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+                                }
+                            }},
+                            // {
+                            //     // 56
+                            //     "data": "gas_sold", // Gas (mcf)
+                            //     "defaultContent": "",
+                            //     render: $.fn.dataTable.render.number( ',', '.', 0, '', '<small> mcf</small>' ),
+                            // },
+                            // {
+                            //     // 48
+                            //     "data": "oil_prod", // Oil (bbl)
+                            //     "defaultContent": "",
+                            //     render: $.fn.dataTable.render.number( ',', '.', 0, '', '<small> bbl</small>' )
+                            // },
+                            // {
+                            //     // 54
+                            //     "data": "water_prod", // Water (bbl)
+                            //     "defaultContent": "",
+                            //     render: $.fn.dataTable.render.number( ',', '.', 0, '', '<small> bbl</small>' )
+                            // },
+                            // {
+                            //     // 56
+                            //     "data": "gas_line_loss", // Gas Line Loss (mcf)
+                            //     "defaultContent": "",
+                            //     render: $.fn.dataTable.render.number( ',', '.', 0, '', '<small> mcf</small>' )
+                            // },
                             {
                                 // 74
                                 "data": "pumper", // Pumper
@@ -2004,6 +2084,7 @@ $(function(){
                             },
                         ],
                         "columnDefs": [
+                            { className: "text-wrap dailymonthlytoggle", "targets":  [8, 9, 10, 11]  },
                             { className: "text-wrap", "targets":  [ 12, 13 ]  },
                             { width: "1%", "targets": 1 },
                             { width: "3%", "targets": [4, 6] },
@@ -2072,208 +2153,221 @@ $(function(){
                     } );
                 };
             // });
-            $('#daily-tab').click(function(){
-                if(click2 < 1){
-                    click2++;
-                    iTable = $('#productionTable1').DataTable( {
-                            stateSave: true,
-                            "ajax": "./ajax/wsb.ajax.php",
-                            "sDom": 't',
-                            "order": [],
-                            "keys": true,
-                            deferRender: true,
-                            scrollY: 800,
-                            scroller: true,
-                            "searching": true,
-                            "autoWidth": false, 
-                            "columns": [
-                                {
-                                "data": null, render: function ( data, type, row ) {
-                                    // Combine the Well and API into a single table field
-                                    return '<a href="prod_data.php?api='+data.api+'">'+data.entity_common_name+' <br> '+data.api+'</a>';
-                                }, 
-                                "defaultContent": ""
-                                },
-                                {
-                                "data": "state", // State
-                                "defaultContent": ""
-                                },
-                                {
-                                "data": "county_parish", // County
-                                "defaultContent": "",
-                                },
-                                {
-                                "data": "block", // Block
-                                "defaultContent": "",
-                                },
-                                {
-                                "data": "entity_operator_code", // Entity (Company)
-                                "defaultContent": "",
-                                },
-                                {
-                                    "data": "producing_status", // Production Status
-                                    "defaultContent": "",
-                                    },
-                                {
-                                    "data": "production_type", // Production Type
-                                    "defaultContent": "",
-                                },
-                                {
-                                    "data": "last_prod_date", // Last Active
-                                    /* render: function ( data, type, row ) 
-                                    {
-                                        var dateSplit = data.split('-');
-                                        return type === "display" || type === "filter" ?
-                                            dateSplit[1] +'-'+ dateSplit[2] +'-'+ dateSplit[0] :
-                                            data;
-                                    }, */
-                                    "defaultContent": "",
-                                },
-                                {
-                                // Gas (mcf)
-                                "data": "gas_sold",
-                                data: null,
-                                render: function ( data, type, row ) {
-                                    var check = data.gas_sold / data.days_on;
-
-                                    if(check == check)
-                                    {
-                                        return ( data.gas_sold / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub>';
-                                    }
-                                    else
-                                    {
-                                        return data.gas_sold+' <sup>mcf</sup>/<sub>day</sub>';
-                                    }
-                                },
-                                },
-                                {
-                                "data": "oil_prod", // Oil (bbl)
-                                data: null,
-                                render: function ( data, type, row ) {
-                                    var check = data.oil_prod / data.days_on;
-
-                                    if(check == check)
-                                    {
-                                        return ( data.oil_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup><small>/</small><sub>day</sub>';
-                                        // return ( data.oil_prod / data.days_on ).toFixed(2)+' <table><tr style="background-color: rgba(0,0,0,0)!important;"><td><small>test</small></td></tr><tr><td style="border-top: 1px solid #9ba0a5;"><small>day</small></td></tr></table>';
-                                    }
-                                    else
-                                    {
-                                        return data.oil_prod+' <sup>bbl</sup>/<sub>day</sub>';
-                                    }
-                                }},
-                                {
-                                "data": "water_prod", // Water (bbl)
-                                "defaultContent": "",
-                                data: null,
-                                render: function ( data, type, row ) {
-                                    var check = data.water_prod / data.days_on;
-
-                                    if(check == check)
-                                    {
-                                        return ( data.water_prod / data.days_on ).toFixed(2)+' <sup>bb;</sup>/<sub>day</sub>';
-                                    }
-                                    else
-                                    {
-                                        return data.water_prod+' <sup>bbl</sup>/<sub>day</sub>';
-                                    }
-                                }},
-                                {
-                                "data": "gas_line_loss", // Gas Line Loss (mcf)
-                                "defaultContent": "",
-                                data: null,
-                                render: function ( data, type, row ) {
-                                    var check = data.gas_line_loss / data.days_on;
-
-                                    if(check == check)
-                                    {
-                                        return ( data.gas_line_loss / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub>';
-                                    }
-                                    else
-                                    {
-                                        return data.gas_line_loss+' <sup>mcf</sup>/<sub>day</sub>';
-                                    }
-                                }},
-                                {
-                                    "data": "pumper", // Pumper
-                                    "defaultContent": "",
-                                },
-                                {
-                                    "data": null, render: function (data, type, row) 
-                                    {
-                                        return "<div class='text-wrap width-200'>" + data.notes + "</div>";
-                                    },
-                                    "defaultContent": "",
-                                },
-                                {
-                                "data": "notes_update", // Last Updated
-                                /* render: function ( data, type, row ) {
-                                var dateSplit = data.split('-');
-                                return type === "display" || type === "filter" ?
-                                    dateSplit[1] +'-'+ dateSplit[2] +'-'+ dateSplit[0] :
-                                    data;
-                                }, */
-                                "defaultContent": "",
-                                },
-                            ],
-                        "columnDefs": [
-                            { className: "text-wrap", "targets":  [8, 9, 10, 11, 12, 13]  },
-                            { width: "1%", "targets": 1 },
-                            { width: "3%", "targets": [4, 6] },
-                            { width: "4%", "targets": [5, 7, 9, 14] },
-                            { width: "5%", "targets": [8, 10, 11] },
-                            { width: "6%", "targets": 2 },
-                            { width: "7%", "targets": 12 },
-                            { width: "8%", "targets": [3] },
-                            { width: "17%", "targets": 0 },
-                            // {
-                            //     render: function (data, type, full, meta) {
+            // $('#daily-tab').click(function(){
+            //     if(click2 < 1){
+            //         click2++;
+            //         iTable = $('#productionTable1').DataTable( {
+            //                 stateSave: true,
+            //                 "ajax": "./ajax/wsb.ajax.php",
+            //                 "sDom": 't',
+            //                 "order": [],
+            //                 "keys": true,
+            //                 deferRender: true,
+            //                 scrollY: 800,
+            //                 scroller: true,
+            //                 "searching": true,
+            //                 "autoWidth": false, 
+            //                 "columns": [
+            //                     {
+            //                     "data": null, render: function ( data, type, row ) {
+            //                         // Combine the Well and API into a single table field
+            //                         return '<a href="prod_data.php?api='+data.api+'">'+data.entity_common_name+' <br> '+data.api+'</a>';
+            //                     }, 
+            //                     "defaultContent": ""
+            //                     },
+            //                     {
+            //                     "data": "state", // State
+            //                     "defaultContent": ""
+            //                     },
+            //                     {
+            //                     "data": "county_parish", // County
+            //                     "defaultContent": "",
+            //                     },
+            //                     {
+            //                     "data": "block", // Block
+            //                     "defaultContent": "",
+            //                     },
+            //                     {
+            //                     "data": "entity_operator_code", // Entity (Company)
+            //                     "defaultContent": "",
+            //                     },
+            //                     {
+            //                         "data": "producing_status", // Production Status
+            //                         "defaultContent": "",
+            //                         },
+            //                     {
+            //                         "data": "production_type", // Production Type
+            //                         "defaultContent": "",
+            //                     },
+            //                     {
+            //                         "data": "last_prod_date", // Last Active
+            //                         /* render: function ( data, type, row ) 
+            //                         {
+            //                             var dateSplit = data.split('-');
+            //                             return type === "display" || type === "filter" ?
+            //                                 dateSplit[1] +'-'+ dateSplit[2] +'-'+ dateSplit[0] :
+            //                                 data;
+            //                         }, */
+            //                         "defaultContent": "",
+            //                     },
+            //                     {
+            //                     // Gas (mcf)
+            //                     "data": "gas_sold",
+            //                     data: null,
+            //                     render: function ( data, type, row ) {
+            //                         var rn = $.fn.dataTable.render.number( ',', '.', 0, '', '<small> mcf</small>' ).display(data.gas_sold);
                                     
-                            //         if ( data[5] == 'Shut-in' || data[5] =='Shut-In' || data[5]  == 'INACTIVE' )
-                            //         {
-                            //             return "<div class='text-wrap width-200 highlight'>" + data + "</div>";
-                            //         }
-                            //         else
-                            //         {return "<div class='text-wrap width-200'>" + data + "</div>";}
-                            //     },
-                            //     targets: 13
-                            // },
+            //                         var check = data.gas_sold / data.days_on;
 
-                            {
-                                targets: 5,
-                                "createdCell": function (td, cellData, rowData, row, col) {
-                                    {
-                                        var checkSI = iTable.cell(td,5).data(); 
-                                        if ( checkSI == 'Shut-in' || checkSI == 'Shut-In' || checkSI  == 'INACTIVE' || checkSI == 'Inactive' || checkSI == 'Down' || checkSI == 'TA'  || checkSI == 'P&A' || checkSI == 'S/I' ) 
-                                        {
-                                            $(td).css('background-color', '#F08080')
-                                        }
-                                        else if (checkSI == 'INJ' || checkSI == 'Injector' || checkSI == 'SWD' || checkSI == 'Inj')
-                                        {
-                                            $(td).css('background-color', '#8080F0')
-                                        }
-                                    }
-                                },
+            //                         if(check == check)
+            //                         {
+            //                             return '<span class="daily">' + ( data.gas_sold / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+            //                             // return ( data.gas_sold / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub>';
+            //                         }
+            //                         else
+            //                         {
+            //                             return '<span class="daily">' +data.gas_sold+' <sup>mcf</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+            //                         }
+            //                     }},
+            //                     {
+            //                     // Oil (bbl)
+            //                     "data": "oil_prod",
+            //                     data: null,
+            //                     render: function ( data, type, row ) {
+            //                         var rn = $.fn.dataTable.render.number( ',', '.', 0, '', '<small> bbl</small>' ).display(data.oil_prod);
+                                    
+            //                         var check = data.oil_prod / data.days_on;
                                 
-                            },
+            //                         if(check == check)
+            //                         {
+            //                             return '<span class="daily">' + ( data.oil_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+            //                             // return ( data.oil_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub>';
+            //                         }
+            //                         else
+            //                         {
+            //                             return '<span class="daily">' +data.oil_prod+' <sup>bbl</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+            //                         }
+            //                     }},
+            //                     {
+            //                     // Water (bbl)
+            //                     "data": "water_prod",
+            //                     data: null,
+            //                     render: function ( data, type, row ) {
+            //                         var rn = $.fn.dataTable.render.number( ',', '.', 0, '', '<small> bbl</small>' ).display(data.water_prod);
+                                    
+            //                         var check = data.water_prod / data.days_on;
+                                
+            //                         if(check == check)
+            //                         {
+            //                             return '<span class="daily">' + ( data.water_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+            //                             // return ( data.water_prod / data.days_on ).toFixed(2)+' <sup>bbl</sup>/<sub>day</sub>';
+            //                         }
+            //                         else
+            //                         {
+            //                             return '<span class="daily">' +data.water_prod+' <sup>bbl</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+            //                         }
+            //                     }},
+            //                     {
+            //                     // Gas Line Loss (mcf)
+            //                     "data": "gas_line_loss",
+            //                     data: null,
+            //                     render: function ( data, type, row ) {
+            //                         var rn = $.fn.dataTable.render.number( ',', '.', 0, '', '<small> mcf</small>' ).display(data.gas_line_loss);
+                                    
+            //                         var check = data.gas_line_loss / data.days_on;
+                                
+            //                         if(check == check)
+            //                         {
+            //                             return '<span class="daily">' + ( data.gas_line_loss / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+            //                             // return ( data.gas_line_loss / data.days_on ).toFixed(2)+' <sup>mcf</sup>/<sub>day</sub>';
+            //                         }
+            //                         else
+            //                         {
+            //                             return '<span class="daily">' +data.gas_line_loss+' <sup>mcf</sup>/<sub>day</sub></span><span class="monthly">'+rn+'</span>';
+            //                         }
+            //                     }},
+            //                     {
+            //                         "data": "pumper", // Pumper
+            //                         "defaultContent": "",
+            //                     },
+            //                     {
+            //                         "data": null, render: function (data, type, row) 
+            //                         {
+            //                             return "<div class='text-wrap width-200'>" + data.notes + "</div>";
+            //                         },
+            //                         "defaultContent": "",
+            //                     },
+            //                     {
+            //                     "data": "notes_update", // Last Updated
+            //                     /* render: function ( data, type, row ) {
+            //                     var dateSplit = data.split('-');
+            //                     return type === "display" || type === "filter" ?
+            //                         dateSplit[1] +'-'+ dateSplit[2] +'-'+ dateSplit[0] :
+            //                         data;
+            //                     }, */
+            //                     "defaultContent": "",
+            //                     },
+            //                 ],
+            //             "columnDefs": [
+            //                 { className: "text-wrap dailymonthlytoggle", "targets":  [8, 9, 10, 11]  },
+            //                 { className: "text-wrap", "targets":  [12, 13]  },
+            //                 { width: "1%", "targets": 1 },
+            //                 { width: "3%", "targets": [4, 6] },
+            //                 { width: "4%", "targets": [5, 7, 9, 14] },
+            //                 { width: "5%", "targets": [8, 10, 11] },
+            //                 { width: "6%", "targets": 2 },
+            //                 { width: "7%", "targets": 12 },
+            //                 { width: "8%", "targets": [3] },
+            //                 { width: "17%", "targets": 0 },
+            //                 // {
+            //                 //     render: function (data, type, full, meta) {
+                                    
+            //                 //         if ( data[5] == 'Shut-in' || data[5] =='Shut-In' || data[5]  == 'INACTIVE' )
+            //                 //         {
+            //                 //             return "<div class='text-wrap width-200 highlight'>" + data + "</div>";
+            //                 //         }
+            //                 //         else
+            //                 //         {return "<div class='text-wrap width-200'>" + data + "</div>";}
+            //                 //     },
+            //                 //     targets: 13
+            //                 // },
 
-                            {
-                                targets: 13,
-                                "createdCell": function (td, cellData, rowData, row, col) {
-                                    {
-                                        var checkSI = iTable.cell(td,5).data(); 
-                                        if ( checkSI == 'Shut-in' || checkSI == 'Shut-In' || checkSI  == 'INACTIVE' || checkSI == 'Inactive' || checkSI == 'Down' || checkSI == 'TA'  || checkSI == 'P&A' || checkSI == 'S/I' ) 
-                                        {
-                                            $(td).css('font-weight', 'bold')
-                                        }
-                                    }
-                                },
+            //                 {
+            //                     targets: 5,
+            //                     "createdCell": function (td, cellData, rowData, row, col) {
+            //                         {
+            //                             var checkSI = iTable.cell(td,5).data(); 
+            //                             if ( checkSI == 'Shut-in' || checkSI == 'Shut-In' || checkSI  == 'INACTIVE' || checkSI == 'Inactive' || checkSI == 'Down' || checkSI == 'TA'  || checkSI == 'P&A' || checkSI == 'S/I' ) 
+            //                             {
+            //                                 $(td).css('background-color', '#F08080')
+            //                             }
+            //                             else if (checkSI == 'INJ' || checkSI == 'Injector' || checkSI == 'SWD' || checkSI == 'Inj')
+            //                             {
+            //                                 $(td).css('background-color', '#8080F0')
+            //                             }
+            //                         }
+            //                     },
+                                
+            //                 },
 
-                            }                            
-                        ]
-                        } );
-                };
-            } );
+            //                 {
+            //                     targets: 13,
+            //                     "createdCell": function (td, cellData, rowData, row, col) {
+            //                         {
+            //                             var checkSI = iTable.cell(td,5).data(); 
+            //                             if ( checkSI == 'Shut-in' || checkSI == 'Shut-In' || checkSI  == 'INACTIVE' || checkSI == 'Inactive' || checkSI == 'Down' || checkSI == 'TA'  || checkSI == 'P&A' || checkSI == 'S/I' ) 
+            //                             {
+            //                                 $(td).css('font-weight', 'bold')
+            //                             }
+            //                         }
+            //                     },
+
+            //                 }                            
+            //             ]
+            //             } );
+            //         // document.getElementsByClassName('daily').style.display = "none";
+            //     };
+            // } );
             $('#shutin-tab').click(function(){
                 if(click3 < 1){
                     click3++;
@@ -2996,7 +3090,10 @@ $(function(){
                         setTimeout(function() {
                             $('#success.alert').removeClass('show');
                             $('#add_data_Modal').modal('hide');
-                            iTable.ajax.reload();  
+                            iTable.ajax.reload(null, false);
+                            // info = iTable.page.info().length;
+                            // iTable.scroller().scrollToRow(info);
+                            // window.scrollTo(0,document.querySelector(".dataTables_scrollBody").scrollHeight);  
                             $('#drn.ddr-e').trumbowyg('destroy');
                             $('#drn.ddr-v').trumbowyg('destroy');
                             $('#drn.ddr-a').trumbowyg('destroy');
@@ -4369,7 +4466,7 @@ $(function(){
         $('#county_drop_down').hide(); // Hide the drop down
         $('#no_county_drop_down').hide(); // Hide the "no counties" message (if it's the case)
 
-        $.getScript("js/states/"+ state.toLowerCase() +".js", function(){
+        $.getScript("assets/js/states/"+ state.toLowerCase() +".js", function(){
 
         populate(cp);
         //populate(dd);
@@ -4673,6 +4770,16 @@ $(function(){
     //     foo: 'bar'
     // }
     // })
-
+    /*  The below code allows for me to remove a full table (the daily average table) and place the values in the first table. 
+    *   This code allows for the user to toggle between data on a click, so if they *want* to see the daily average, it will allow them to.
+    *   However, if they want to see the monthly value again, they can click again (thus, a toggle).
+    *   -- CMM, 03.09.22
+    */
+    $(document).on('click', '.dailymonthlytoggle', function(){  
+        $('.daily', this).toggle();
+        $('.monthly', this).toggle();
+        // TODO: an alert (a small one), needs to fire saying if the daily is showing or if the monthly is showing.
+    })
+    
 } );
         
