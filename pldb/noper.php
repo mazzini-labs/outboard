@@ -58,7 +58,7 @@ $mysqli = connect_noper();
 	<script type="text/javascript" src="datatables/datatables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css"/> -->
-    <?php include 'include/dependencies.php'; ?>
+    <?php include '../include/dependencies.php'; ?>
     <script src="https://unpkg.com/feather-icons"></script>
     <script type="text/javascript" src="/assets/js/chart.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
@@ -344,7 +344,7 @@ $mysqli = connect_noper();
             console.log(id);
             // $('#drn.ddr-a').trumbowyg(drn_t);  
             $.ajax({  
-                    url:"./ajax/fetch.noper.php",  
+                    url:"../ajax/fetch.noper.php",  
                     method:"POST",  
                     data:{id:id},  
                     dataType:"json",  
@@ -421,7 +421,7 @@ $mysqli = connect_noper();
                         $entop = '"test"';
                         $table = "`T-PROPERTIES`";
                         $sql = "SELECT Property FROM $table";// ORDER BY well_lease ASC";
-                        $result = mysqli_query($mysqli,$sql) or die(mysql_error());
+                        $result = mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
                             //console_log($result);
                         ?>
                         <!-- <option>Select Well:</option> -->

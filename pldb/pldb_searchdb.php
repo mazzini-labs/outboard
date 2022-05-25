@@ -46,7 +46,8 @@ function btnSearch_Click(){
         if (Trim($cboSrchTypeName.Value) = $strEQUALSSRCH_TXT) {
             // Equals search;
             $strSQLWhere = $strSQLWhere & "AND PROP.Name = // " & FormatString(CStr($txtSrchName.Value), False) & "//  ";
-        elseif (Trim($cboSrchTypeName.Value) = $strBEGINSWITHSRCH_TXT) {
+        }
+        else if (Trim($cboSrchTypeName.Value) = $strBEGINSWITHSRCH_TXT) {
             // Begins with search;
             $strSQLWhere = $strSQLWhere & "AND PROP.Name LIKE // " & FormatString(CStr($txtSrchName.Value), False) & "*//  ";
         } else {
@@ -67,6 +68,7 @@ function btnSearch_Click(){
         if (Trim($cboSrchTypeCounty.Value) = $strEQUALSSRCH_TXT) {
             // Equals search;
             $strSQLWhere = $strSQLWhere & "AND LOC.County = // " & FormatString(CStr($txtSrchCounty.Value), False) & "//  ";
+        }
         elseif (Trim($cboSrchTypeCounty.Value) = $strBEGINSWITHSRCH_TXT) {
             // Begins with search;
             $strSQLWhere = $strSQLWhere & "AND LOC.County LIKE // " & FormatString(CStr($txtSrchCounty.Value), False) & "*//  ";
@@ -81,6 +83,7 @@ function btnSearch_Click(){
         if (Trim($cboSrchTypeBlock.Value) = $strEQUALSSRCH_TXT) {
             // Equals search;
             $strSQLWhere = $strSQLWhere & "AND LOC.Block = // " & FormatString(CStr($txtSrchBlock.Value), False) & "//  ";
+        }
         elseif (Trim($cboSrchTypeBlock.Value) = $strBEGINSWITHSRCH_TXT) {
             // Begins with search;
             $strSQLWhere = $strSQLWhere & "AND LOC.Block LIKE // " & FormatString(CStr($txtSrchBlock.Value), False) & "*//  ";
@@ -127,7 +130,7 @@ function btnSearch_Click(){
 
 function lstSearchResults_Click(){
     // Set error handling;
-    On Error GoTo Err_Handle;
+    // On Error GoTo Err_Handle;
 
     // function fires when listbox row is clicked;
     $strPropId;
