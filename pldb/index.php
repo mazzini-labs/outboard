@@ -202,30 +202,59 @@ $mysqli = connect_db();
     window.user = "<?php echo $userid; ?>";
 </script>
 <script>
-    function addEvent(parent, evt, selector, handler) {
+    /**@function addEvent works similarly to the jQuery $(parent).on(event, callback)
+     * 
+     * @param {Object} parent - The parent element
+     * @param {string} evt - The event, ex. 'click'
+     * @param {string} selector - The selector; examples: .class, #id, tag, etc. 
+     * @param {Any} handler - handler function
+     */
+    addEvent = (parent, evt, selector, handler) => {
         parent.addEventListener(evt, function(event) {
             if (event.target.matches(selector + ', ' + selector + ' *')) {
             handler.apply(event.target.closest(selector), arguments);
             }
         }, false);
     }
-    async function postData(url = '', data = {}) {
-        // Default options are marked with *
-            const response = await fetch(url, {
-                method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                mode: 'cors', // no-cors, *cors, same-origin
-                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: 'same-origin', // include, *same-origin, omit
-                headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                redirect: 'follow', // manual, *follow, error
-                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                body: JSON.stringify(data) // body data type must match "Content-Type" header
-            });
-            return response.json(); // parses JSON response into native JavaScript objects
-        }
+    /**
+	 * Asynchronous function to POST data; used to replace $.ajax(). Default options for this function are marked with *
+	 *
+	 * @param {string} url - The location of the request
+	 * @param {string|null} data - The data to be sent with the request; body data type must match "Content-Type" header
+     * @param {string} method - HTTP request method. Options are GET, *POST, PUT, DELETE, etc. 
+     * @param {string} mode - CORS policy. Options are: no-cors, *cors, same-origin
+     * @param {string} cache - cache policy to be sent with request. Options are: default, *no-cache, reload, force-cache, only-if-cached.
+     * @param {string} credentials - Credentials to be sent. Options are: include, *same-origin, omit
+     * @param {obj} headers - headers to be sent with request. Many options, two are: *'Content-Type': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded'
+     * @param {string} redirect - Options are: manual, *follow, error
+     * @param {string} referrerPolicy - Options are: *no-referrer, no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+     * 
+	 * @return parses JSON response into native JavaScript objects
+	 */
+    async function postData(url = '', data = {}, method = 'POST', 
+                            mode = 'cors', cache = 'no-cache', 
+                            credentials = 'same-origin', 
+                            headers = {'Content-Type': 'application/json'}, 
+                            redirect = 'follow', referrerPolicy = 'no-referrer') {
+        const response = await fetch(url, {
+            method: method, 
+            mode: mode, 
+            cache: cache,
+            credentials: credentials,
+            headers: headers,
+            redirect: redirect, 
+            referrerPolicy: referrerPolicy,
+            body: JSON.stringify(data)
+        });
+        return response.json(); 
+    }
+    /**
+     * Logging function for prettier logging.
+     * 
+     * @param {string} s - string to be logged.
+     * 
+     */
+    log = (s) => { console.log('\n%c'+s, 'color: #17a2b8;') }
     // function setWindowHeight(minus){
     //     var windowHeight = window.innerHeight;
     //     document.body.style.height = windowHeight - minus + "px";
@@ -261,25 +290,77 @@ $mysqli = connect_db();
         // return style;
     }
     isOdd = (num) => { return (num % 2) == 1; }
+    getScrollHeight = () => {
+        let scrollHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight,
+        document.body.getBoundingClientRect().height, document.documentElement.getBoundingClientRect().height
+        );
+        return scrollHeight;
+    }
+    getTransitionEndEventName = () => {
+        var transitions = {
+            "transition"      : "transitionend",
+            "OTransition"     : "oTransitionEnd",
+            "MozTransition"   : "transitionend",
+            "WebkitTransition": "webkitTransitionEnd"
+        }
+        let bodyStyle = document.body.style;
+        for(let transition in transitions) {
+            if(bodyStyle[transition] != undefined) {
+                return transitions[transition];
+            } 
+        }
+    }
+    countChar = (str, char) => {
+        let count = 0;
+        for(let i = 0; i < str.length; i++){
+            str[i] == char && count++;
+        }
+        return count;
+    }
+    hideActive = () => {
+        let active = document.querySelectorAll(".active");
+        for (var i = 0; i < active.length; i++) { 
+            active[i].classList.remove('active');
+        }
+    }
+    /**
+     * Printing function
+     */
+    printReport = () => {
+        let reportView = document.querySelector("#searchresults");
+        let a = `<style type="text/css" media="print"> @page { size: landscape; }</style>`;
+        let b = reportView.innerHTML;
+        let pf = document.getElementById('printing-frame');
+        pf.classList.remove('d-none');
+        window.frames["print_frame"].document.body.innerHTML = a + b;
+        window.frames["print_frame"].window.focus();
+        window.frames['print_frame'].document.body.focus();
+        Notiflix.Loading.pulse('Preparing Report');
+        setTimeout(() => {
+            Notiflix.Loading.remove();
+            window.frames["print_frame"].window.print(); 
+            pf.classList.add('d-none');
+        }, 1000);
+    }
+    hasWhiteSpace = (s) => {
+        return s.indexOf(' ') >= 0;
+    }
     // $(document).ready(function(){
-    document.addEventListener("DOMContentLoaded", function(event) { 
+    document.addEventListener("DOMContentLoaded", function(event) {
+        /* Document Setup */ 
         window.frames["print_frame"].document.title = document.title;
         let linkDash = printCSS("/assets/css/dashboard.css?v1.0.0.3");
         let link = printCSS("/assets/css/main.min.css");
         let linkDT = printCSS("https://cdn.datatables.net/v/bs4/dt-1.10.25/af-2.3.5/b-1.6.3/b-print-1.6.3/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.2/r-2.2.5/rg-1.1.2/rr-1.2.7/sc-2.0.4/sp-1.2.1/sl-1.3.1/datatables.min.css");
-        
         feather.replace();
         const toggle = document.getElementById('toggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarwidth = sidebar.getBoundingClientRect().width;
         const sidebarmenu = document.getElementById('sidebarMenu');
         const fullsidebarwidth = sidebarmenu.getBoundingClientRect().width + sidebarwidth;
-        // let scrollHeight = Math.max(
-        // document.body.scrollHeight, document.documentElement.scrollHeight,
-        // document.body.offsetHeight, document.documentElement.offsetHeight,
-        // document.body.clientHeight, document.documentElement.clientHeight,
-        // document.body.getBoundingClientRect().height, document.documentElement.getBoundingClientRect().height
-        // );
         let sidebarOpenWidth = sidebar.getBoundingClientRect().right;
         let sidebarCloseWidth = sidebar.getBoundingClientRect().left;
         let fakesidebar = sidebar.cloneNode(false);
@@ -289,9 +370,6 @@ $mysqli = connect_db();
             fakesidebar.classList.remove('col-lg-4');
             fakesidebar.classList.remove('sidebar-dash');
         document.getElementById('main-row').insertBefore(fakesidebar, toggle);
-        // fakesidebar.assign
-        // const style = document.createElement("style")
-        // style.textContent = 
         let fakeSidebarStyle = `
         .fake-sidebar {position:absolute; left:${sidebarCloseWidth}px; width:${sidebarwidth}px; height:${sidebar.getBoundingClientRect().height}px; transform:translateX(-100%); -webkit-transform translateX(-100%);}
         .slide-in {animation: slide-in 0.5s forwards; -webkit-animation: slide-in 0.5s forwards; z-index: auto; }
@@ -309,34 +387,32 @@ $mysqli = connect_db();
         const tableheight = winheight;
         const mainDash = document.getElementById('main-dash');
         let isSidebarVis = 1;
+        let transitionEndEventName = getTransitionEndEventName();
         toggle.style.left = `${sidebarOpenWidth}px`;
         mainDash.style.height = winheight;
-        toggleVis = (elem, bool = 0, close = 0, open = 0) => {
-        if(isSidebarVis){
-            isSidebarVis = 0;
-            elem.classList.remove('visible');
-            elem.classList.remove('slide-in')
-            elem.classList.add('slide-out')
-            toggle.firstChild.classList.add('rotate');
-            toggle.style.left = `${close}px`;
-            // return bool;
+        toggleVis = (elem, bool = 0) => {
+            if(isSidebarVis){
+                isSidebarVis = 0;
+                elem.classList.remove('visible');
+                elem.classList.remove('slide-in')
+                elem.classList.add('slide-out')
+                toggle.firstChild.classList.add('rotate');
+                toggle.style.left = `${sidebarCloseWidth}px`;
+            }
+            else{
+                isSidebarVis = 1;
+                elem.classList.add('visible');
+                elem.classList.add('slide-in')
+                elem.classList.remove('slide-out')
+                toggle.firstChild.classList.remove('rotate');
+                toggle.style.left = `${sidebarOpenWidth}px`;
+            }
         }
-        else{
-            isSidebarVis = 1;
-            elem.classList.add('visible');
-            elem.classList.add('slide-in')
-            elem.classList.remove('slide-out')
-            toggle.firstChild.classList.remove('rotate');
-            toggle.style.left = `${open}px`;
-            // return bool;
-        }
-    }
-        toggle.onclick = () => { toggleVis(sidebar, sidebarCloseWidth, sidebarOpenWidth)}
-        
-
+        toggle.onclick = () => { toggleVis(sidebar)}
+        let btn = document.getElementById('printbutton');
+            btn.addEventListener('click', printReport);
         var username = document.getElementById('edit-input-23');
         username.setAttribute("value", user);
-
         var resultTableBool = false;
         var lTable;
         var pTable;
@@ -346,8 +422,6 @@ $mysqli = connect_db();
         var uTable;
         var qTable;
         var sTable;
-        // var click;
-        // var table;
         const click = {
                 location : 0,
                 property : 0,
@@ -372,9 +446,6 @@ $mysqli = connect_db();
             owncomp :  "owncomp ",
             status :   "status",
             update :  "update"
-        }
-        log = (s) => {
-            console.log('\n%c'+s, 'color: #17a2b8;')
         }
         tableload = (value) => {
             // $('.forms').addClass('d-none').removeClass('d-md-block')
@@ -870,16 +941,10 @@ $mysqli = connect_db();
             value = 'query';
             valuetable = value + 'table';
             hideActive();
-            // document.querySelector('.active').classList.remove('active');
             document.querySelector(this).classList.add('active');
-            document.querySelector('.results').each(function(){
-                (document.querySelector(this).attr('id') != value)? document.querySelector(this).classList.add('d-none') : document.querySelector(this).classList.remove('d-none');
-            })
-            document.querySelector('.dtables').each(function(){
-                (document.querySelector(this).attr('id') != valuetable) ? document.querySelector(this).classList.add('d-none') : document.querySelector(this).classList.remove('d-none');
-            })
+            document.querySelector('.results').each(function(){ (document.querySelector(this).attr('id') != value)? document.querySelector(this).classList.add('d-none') : document.querySelector(this).classList.remove('d-none'); })
+            document.querySelector('.dtables').each(function(){ (document.querySelector(this).attr('id') != valuetable) ? document.querySelector(this).classList.add('d-none') : document.querySelector(this).classList.remove('d-none'); })
             document.querySelector(`#${value}_wrapper > div > div.dataTables_scrollHead > div > table`).classList.contains('d-none') && document.querySelector(`#${value}_wrapper > div > div.dataTables_scrollHead > div > table`).classList.remove('d-none')
-            // document.querySelector('#query')
             var datacol = {};
             $.ajax({
                 url:"/ajax/pldb.queryload.php",  
@@ -894,59 +959,12 @@ $mysqli = connect_db();
                         th = document.querySelector('<td>').text(response['column'][i]);
                         thead.insertAdjacentHTML("beforeend",th)
                         document.querySelector('#query').insertAdjacentHTML("beforeend",thead)
-                        
-                        
                         datacol[i] = { "data": '"'+rcl+"'" }
-                        
                     } 
-                    
                     queryload(qvalue, datacol);
                 }
             });
         })
-        // $('.query').on('click', function(e){
-        //     qvalue = $(this).data('query');
-        //     value = 'query';
-        //     valuetable = value + 'table';
-        //     hideActive();
-        //     // $('.active').removeClass('active');
-        //     $(this).addClass('active');
-        //     $('.results').each(function(){
-        //         ($(this).attr('id') != value)? $(this).addClass('d-none') : $(this).removeClass('d-none');
-        //         // (($(this).attr('id') != value) || ($(this).attr('id') != valuetable)) ? $(this).addClass('d-none') : $(this).removeClass('d-none');
-        //     })
-        //     $('.dtables').each(function(){
-        //         ($(this).attr('id') != valuetable) ? $(this).addClass('d-none') : $(this).removeClass('d-none');
-        //     })
-        //     $('#'+value+'_wrapper > div > div.dataTables_scrollHead > div > table').hasClass('d-none') && $('#'+value+'_wrapper > div > div.dataTables_scrollHead > div > table').removeClass('d-none')
-        //     // $('#query')
-        //     var datacol = {};
-        //     $.ajax({
-        //         url:"/ajax/pldb.queryload.php",  
-        //         method:"POST",  
-        //         data:{t:"fields"},  
-        //         dataType:"json",  
-        //         success:function(response){ 
-        //             thead = $('<thead>');
-        //             rcl = response['column'];
-        //             log(rcl);
-        //             for ( var i=0, ien=response['column'].length ; i<ien ; i++ ) {
-        //                 th = $('<td>').text(response['column'][i]);
-        //                 thead.append(th)
-        //                 $('#query').append(thead)
-                        
-                        
-        //                 datacol[i] = { "data": '"'+rcl+"'" }
-                        
-        //             } 
-                    
-        //             queryload(qvalue, datacol);
-        //         }
-        //     });
-        
-        // })
-        // initialize permanent dropdowns:
-        
         $('#input1').selectpicker({width:'100%'});
         $('#input2.strState').selectpicker({width:'100%'});
         $('#input4').selectpicker({width:'100%'});
@@ -954,7 +972,6 @@ $mysqli = connect_db();
         $.ajax({
             url:"/ajax/pldb.formload.php",  
             method:"POST",  
-            // data:{t:"oc"},  
             dataType:"json",  
             success:function(response){ 
                 rd = response;
@@ -967,18 +984,14 @@ $mysqli = connect_db();
                 init_n_pop_select(rd, 'os', 'status', 7);
             }
         })
-
         const WorkZone = () => {
             this;
-            
-            
         }
         let sr_i = 0;
         generateTableHead = (table, data, i = 0) => {
             if(i == 0){
                 if(typeof(document.querySelector('results-thead')) != 'undefined' && document.querySelector('results-thead') != null)
                 {
-                    log('true');
                     while (document.querySelector('results-thead').parentElement.firstChild){
                         document.querySelector('results-thead').parentElement.removeChild(document.querySelector('results-thead').parentElement.firstChild);
                     }
@@ -998,19 +1011,17 @@ $mysqli = connect_db();
             else if (i == 1){
                 if(typeof(document.querySelector('results-thead')) != 'undefined' && document.querySelector('results-thead') != null)
                 {
-                    log('true');
                     while (document.querySelector('results-thead').parentElement.firstChild){
                         document.querySelector('results-thead').parentElement.removeChild(document.querySelector('results-thead').parentElement.firstChild);
                     }
                 }
                 let thead = table.createTHead();
-                thead.classList.add('results-thead');
+                    thead.classList.add('results-thead');
                 let row = thead.insertRow();
-                row.classList.add('results-thead-tr');
-                row.classList.add('table-border-bottom-white');
+                    row.classList.add('results-thead-tr');
+                    row.classList.add('table-border-bottom-white');
                 let row2 = thead.insertRow();
-                row2.classList.add('results-thead-tr2');
-
+                    row2.classList.add('results-thead-tr2');
                 let d1 = ["SOG", "Operated Properties", "Non-Operated Properties", "Total", "Percent of Total"]
                 let d2 = ["Region", "Gross Acres", "Net Acres", "Gross Acres", "Net Acres", "Gross Acres", "Net Acres", "Gross Acres", "Net Acres"];
                 let i = 0;
@@ -1019,12 +1030,10 @@ $mysqli = connect_db();
                     let th = document.createElement("th");
                     let text = document.createTextNode(key);
                     th.appendChild(text);
-                    
                     if (i > 0){
                         th.colSpan = 2;
                         th.classList.add('table-border-left');
                     }
-                    // tr.appendChild(th);
                     row.appendChild(th);
                     i++;
                 }
@@ -1038,13 +1047,11 @@ $mysqli = connect_db();
                     row2.appendChild(th);
                     j++;
                 }
-
             }
             else if (i == 2){
                 if(data == 1){
                     if(typeof(document.querySelector('results-thead')) != 'undefined' && document.querySelector('results-thead') != null)
                     {
-                        log('true');
                         while (document.querySelector('results-thead').parentElement.firstChild){
                             document.querySelector('results-thead').parentElement.removeChild(document.querySelector('results-thead').parentElement.firstChild);
                         }
@@ -1056,7 +1063,6 @@ $mysqli = connect_db();
                     row.classList.add('table-border-bottom-white');
                     let row2 = thead.insertRow();
                     row2.classList.add('results-thead-tr2');
-
                     let d1 = [" ", "Undeveloped", "Developed", "Total"]
                     let d2 = ["Entity", "Gross Acres", "Net Acres", "Gross Acres", "Net Acres", "Gross Acres", "Net Acres"];
                     let i = 0;
@@ -1070,7 +1076,6 @@ $mysqli = connect_db();
                             th.colSpan = 2;
                             th.classList.add('table-border-left');
                         }
-                        // tr.appendChild(th);
                         row.appendChild(th);
                         i++;
                     }
@@ -1087,13 +1092,12 @@ $mysqli = connect_db();
                 }
                 else {
                     let thead = table.createTHead();
-                    thead.classList.add('results-thead2');
+                        thead.classList.add('results-thead2');
                     let row = thead.insertRow();
-                    row.classList.add('results-thead-tr2');
-                    row.classList.add('table-border-bottom-white');
+                        row.classList.add('results-thead-tr2');
+                        row.classList.add('table-border-bottom-white');
                     let row2 = thead.insertRow();
-                    row2.classList.add('results-thead-tr2');
-
+                        row2.classList.add('results-thead-tr2');
                     let d1 = ["Total Undeveloped", "Total Developed", "Grand Total"]
                     let d2 = ["Gross Acres", "Net Acres", "Gross Acres", "Net Acres", "Gross Acres", "Net Acres"];
                     let i = 0;
@@ -1101,20 +1105,16 @@ $mysqli = connect_db();
                     for (let key of d1) {
                         let th = document.createElement("th");
                         let text = document.createTextNode(key);
-                        th.appendChild(text);
-                        
-                        
+                            th.appendChild(text);
                             th.colSpan = 2;
                             th.classList.add('table-border-left');
-                        
-                        // tr.appendChild(th);
                         row.appendChild(th);
                         i++;
                     }
                     for (let key of d2) {
                         let th = document.createElement("th");
                         let text = document.createTextNode(key);
-                        th.appendChild(text);
+                            th.appendChild(text);
                         if (!isOdd(j)){
                             th.classList.add('table-border-left');
                         }
@@ -1122,8 +1122,6 @@ $mysqli = connect_db();
                         j++;
                     }
                 }
-            
-
             }
             else if (i == 3){
                 if(data == 1){
@@ -1282,19 +1280,6 @@ $mysqli = connect_db();
                 }
             }
         }
-        // generateWSTH = (table, data) => { // 4
-
-        // }
-
-        
-
-        // generateLocationTableHead = (table, data) => { //1
-        // }
-        // generateAcreageTableHead = (table, data) => { //2
-        // }
-        generateWellStatusTableHead = (table, data) => { // 3
-            
-        }
         const reportAccessLocale = 'default';
         const reportAccessOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const reportAccessAMPM = {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true};
@@ -1304,26 +1289,10 @@ $mysqli = connect_db();
             let report_time = `Accessed on ${date} at ${time}`;
             return report_time;
         }
-        // generateTable = (table, data) => {
-        //     // let i = 0;
-        //     for (let element of data) {
-        //         let row = table.insertRow();
-        //         // log(element['id'])
-        //         row.classList.add('results-property');
-        //         row.id = element['id'];
-        //         for (key in element) {
-        //         let cell = row.insertCell();
-        //         let text = document.createTextNode(element[key]);
-        //         cell.appendChild(text);
-        //         }
-        //         // i++;
-        //     }
-        // }
         generateTable = (table, data,i = 0) => {
             if(i == 0){
                 for (let element of data) {
                     let row = table.insertRow();
-                    // log(element['id'])
                     row.classList.add('results-property');
                     row.id = element['id'];
                     for (key in element) {
@@ -1331,140 +1300,116 @@ $mysqli = connect_db();
                         let text = document.createTextNode(element[key]);
                         cell.appendChild(text);
                     }
-                    // i++;
                 }
-
             }
             else {
                 let t = table.createTBody();
                 let f = table.createTFoot();
-                
                 for (let element of data) {
                     let row = t.insertRow();
                     let sr1 = t.insertRow();
                     let active = '<small class="text-muted">active</small>';
                     let inactive = '<small class="text-muted">inactive</small>';
-                    // row.classList.add('results-property');
-                    row.id = element['id'];
-                    console.log(element);
+                        row.id = element['id'];
                     let c1 = row.insertCell();
-                    c1.rowSpan = 2;
-                    c1.appendChild(document.createTextNode(element['Company']));
-
+                        c1.rowSpan = 2;
+                        c1.appendChild(document.createTextNode(element['Company']));
                     let coo2 = row.insertCell();
-                    coo2.rowSpan = 2;
-                    coo2.appendChild(document.createTextNode(element['Oil Wells - Operated']));
-                    
+                        coo2.rowSpan = 2;
+                        coo2.appendChild(document.createTextNode(element['Oil Wells - Operated']));
                     let coo3 = row.insertCell();
-                    coo3.classList.add('text-right');
-                    coo3.appendChild(document.createTextNode(element['Oil Wells - Active - Operated']));
+                        coo3.classList.add('text-right');
+                        coo3.appendChild(document.createTextNode(element['Oil Wells - Active - Operated']));
                     let coo4 = row.insertCell(); //appendChild(document.createTextNode(active));
-                    coo4.classList.add('sidebar-dash-heading');
-                    coo4.innerHTML = active;
-                    
+                        coo4.classList.add('sidebar-dash-heading');
+                        coo4.innerHTML = active;
                     let coo5 = sr1.insertCell();
-                    coo5.classList.add('text-right');
-                    coo5.appendChild(document.createTextNode(element['Oil Wells - Inactive - Operated']));
+                        coo5.classList.add('text-right');
+                        coo5.appendChild(document.createTextNode(element['Oil Wells - Inactive - Operated']));
                     let coo6 = sr1.insertCell(); //.appendChild(document.createTextNode('inactive'));
-                    coo6.classList.add('sidebar-dash-heading');
-                    coo6.innerHTML = inactive;
-
+                        coo6.classList.add('sidebar-dash-heading');
+                        coo6.innerHTML = inactive;
                     let cgo2 = row.insertCell();
-                    cgo2.rowSpan = 2;
-                    cgo2.appendChild(document.createTextNode(element['Gas Wells - Operated']));
-                    
+                        cgo2.rowSpan = 2;
+                        cgo2.appendChild(document.createTextNode(element['Gas Wells - Operated']));
                     let cgo3 = row.insertCell();
-                    cgo3.classList.add('text-right');
-                    cgo3.appendChild(document.createTextNode(element['Gas Wells - Active - Operated']));
+                        cgo3.classList.add('text-right');
+                        cgo3.appendChild(document.createTextNode(element['Gas Wells - Active - Operated']));
                     let cgo4 = row.insertCell(); //appendChild(document.createTextNode(active));
-                    cgo4.classList.add('sidebar-dash-heading');
-                    cgo4.innerHTML = active;
-                    
+                        cgo4.classList.add('sidebar-dash-heading');
+                        cgo4.innerHTML = active;
                     let cgo5 = sr1.insertCell();
-                    cgo5.classList.add('text-right');
-                    cgo5.appendChild(document.createTextNode(element['Gas Wells - Inactive - Operated']));
+                        cgo5.classList.add('text-right');
+                        cgo5.appendChild(document.createTextNode(element['Gas Wells - Inactive - Operated']));
                     let cgo6 = sr1.insertCell(); //.appendChild(document.createTextNode('inactive'));
-                    cgo6.classList.add('sidebar-dash-heading');
-                    cgo6.innerHTML = inactive;
-
+                        cgo6.classList.add('sidebar-dash-heading');
+                        cgo6.innerHTML = inactive;
                     let cto2 = row.insertCell();
-                    cto2.rowSpan = 2;
-                    cto2.appendChild(document.createTextNode(element['Wells - Operated']));
-                    
+                        cto2.rowSpan = 2;
+                        cto2.appendChild(document.createTextNode(element['Wells - Operated']));
                     let cto3 = row.insertCell();
-                    cto3.classList.add('text-right');
-                    cto3.appendChild(document.createTextNode(element['Wells - Active - Operated']));
+                        cto3.classList.add('text-right');
+                        cto3.appendChild(document.createTextNode(element['Wells - Active - Operated']));
                     let cto4 = row.insertCell(); //appendChild(document.createTextNode(active));
-                    cto4.classList.add('sidebar-dash-heading');
-                    cto4.innerHTML = active;
-                    
+                        cto4.classList.add('sidebar-dash-heading');
+                        cto4.innerHTML = active;
                     let cto5 = sr1.insertCell();
-                    cto5.classList.add('text-right');
-                    cto5.appendChild(document.createTextNode(element['Wells - Inactive - Operated']));
+                        cto5.classList.add('text-right');
+                        cto5.appendChild(document.createTextNode(element['Wells - Inactive - Operated']));
                     let cto6 = sr1.insertCell(); //.appendChild(document.createTextNode('inactive'));
-                    cto6.classList.add('sidebar-dash-heading');
-                    cto6.innerHTML = inactive;
-
+                        cto6.classList.add('sidebar-dash-heading');
+                        cto6.innerHTML = inactive;
                     let con2 = row.insertCell();
-                    con2.rowSpan = 2;
-                    con2.appendChild(document.createTextNode(element['Oil Wells - Non-Operated']));
-                    
+                        con2.rowSpan = 2;
+                        con2.appendChild(document.createTextNode(element['Oil Wells - Non-Operated']));
                     let con3 = row.insertCell();
-                    con3.classList.add('text-right');
-                    con3.appendChild(document.createTextNode(element['Oil Wells - Active - Non-Operated']));
+                        con3.classList.add('text-right');
+                        con3.appendChild(document.createTextNode(element['Oil Wells - Active - Non-Operated']));
                     let con4 = row.insertCell(); //appendChild(document.createTextNode(active));
-                    con4.classList.add('sidebar-dash-heading');
-                    con4.innerHTML = active;
-                    
+                        con4.classList.add('sidebar-dash-heading');
+                        con4.innerHTML = active;
                     let con5 = sr1.insertCell();
-                    con5.classList.add('text-right');
-                    con5.appendChild(document.createTextNode(element['Oil Wells - Inactive - Non-Operated']));
+                        con5.classList.add('text-right');
+                        con5.appendChild(document.createTextNode(element['Oil Wells - Inactive - Non-Operated']));
                     let con6 = sr1.insertCell(); //.appendChild(document.createTextNode('inactive'));
-                    con6.classList.add('sidebar-dash-heading');
-                    con6.innerHTML = inactive;
-
+                        con6.classList.add('sidebar-dash-heading');
+                        con6.innerHTML = inactive;
                     let cgn2 = row.insertCell();
-                    cgn2.rowSpan = 2;
-                    cgn2.appendChild(document.createTextNode(element['Gas Wells - Non-Operated']));
-                    
+                        cgn2.rowSpan = 2;
+                        cgn2.appendChild(document.createTextNode(element['Gas Wells - Non-Operated']));
                     let cgn3 = row.insertCell();
-                    cgn3.classList.add('text-right');
-                    cgn3.appendChild(document.createTextNode(element['Gas Wells - Active - Non-Operated']));
+                        cgn3.classList.add('text-right');
+                        cgn3.appendChild(document.createTextNode(element['Gas Wells - Active - Non-Operated']));
                     let cgn4 = row.insertCell(); //appendChild(document.createTextNode(active));
-                    cgn4.classList.add('sidebar-dash-heading');
-                    cgn4.innerHTML = active;
-                    
+                        cgn4.classList.add('sidebar-dash-heading');
+                        cgn4.innerHTML = active;
                     let cgn5 = sr1.insertCell();
-                    cgn5.classList.add('text-right');
-                    cgn5.appendChild(document.createTextNode(element['Gas Wells - Inactive - Non-Operated']));
+                        cgn5.classList.add('text-right');
+                        cgn5.appendChild(document.createTextNode(element['Gas Wells - Inactive - Non-Operated']));
                     let cgn6 = sr1.insertCell(); //.appendChild(document.createTextNode('inactive'));
-                    cgn6.classList.add('sidebar-dash-heading');
-                    cgn6.innerHTML = inactive;
-
+                        cgn6.classList.add('sidebar-dash-heading');
+                        cgn6.innerHTML = inactive;
                     let ctn2 = row.insertCell();
-                    ctn2.rowSpan = 2;
-                    ctn2.appendChild(document.createTextNode(element['Wells - Non-Operated']));
-                    
+                        ctn2.rowSpan = 2;
+                        ctn2.appendChild(document.createTextNode(element['Wells - Non-Operated']));
                     let ctn3 = row.insertCell();
-                    ctn3.classList.add('text-right');
-                    ctn3.appendChild(document.createTextNode(element['Wells - Active - Non-Operated']));
+                        ctn3.classList.add('text-right');
+                        ctn3.appendChild(document.createTextNode(element['Wells - Active - Non-Operated']));
                     let ctn4 = row.insertCell(); //appendChild(document.createTextNode(active));
-                    ctn4.classList.add('sidebar-dash-heading');
-                    ctn4.innerHTML = active;
-                    
+                        ctn4.classList.add('sidebar-dash-heading');
+                        ctn4.innerHTML = active;
                     let ctn5 = sr1.insertCell();
-                    ctn5.classList.add('text-right');
-                    ctn5.appendChild(document.createTextNode(element['Wells - Inactive - Non-Operated']));
+                        ctn5.classList.add('text-right');
+                        ctn5.appendChild(document.createTextNode(element['Wells - Inactive - Non-Operated']));
                     let ctn6 = sr1.insertCell(); //.appendChild(document.createTextNode('inactive'));
-                    ctn6.classList.add('sidebar-dash-heading');
-                    ctn6.innerHTML = inactive;
-
+                        ctn6.classList.add('sidebar-dash-heading');
+                        ctn6.innerHTML = inactive;
                     let ct = row.insertCell();
-                    ct.classList.add('text-center');
-                    ct.classList.add('font-weight-bolder');
-                    ct.rowSpan = 2;
-                    ct.colSpan = 3;
-                    ct.appendChild(document.createTextNode(element['Company Totals'] + " wells"));
+                        ct.classList.add('text-center');
+                        ct.classList.add('font-weight-bolder');
+                        ct.rowSpan = 2;
+                        ct.colSpan = 3;
+                        ct.appendChild(document.createTextNode(element['Company Totals'] + " wells"));
                 }
                 const sumValues = obj => Object.values(data).reduce((a, b) => a + b);
                 console.log(sumValues)
@@ -1525,14 +1470,12 @@ $mysqli = connect_db();
                 fct.classList.add('font-weight-bolder');
                 fct.appendChild(document.createTextNode(`${compTotal} wells`));
             }
-
         }
         class genTable {
             constructor(id, data) {
                 this.id = id;
                 this.data = data;
             }
-
         }
         generateTableX = (data) => {
             let table = document.createElement('table');
@@ -1553,7 +1496,6 @@ $mysqli = connect_db();
         function tableCreate() {
             this.element;
             }
-
         tableCreate.prototype = {
             create: function(id, rd) {
                 // Remember the element
@@ -1561,8 +1503,6 @@ $mysqli = connect_db();
                 // This could be chained to the above,
                 // but it's a lot easier to read if it isn't
                 let t = document.querySelector(id);
-                log(id)
-                log(t)
                 t.append(this.element);
             },
             destroy: function() {
@@ -1571,16 +1511,11 @@ $mysqli = connect_db();
         }
         class searchResults {
             constructor(props) {
-                
                 this.h1 =  document.createElement('h1');
                 this.p = document.createElement('p');
                 this.div = document.createElement('div');
                 this.table = document.createElement('table');
-                // this.t2 = document.createElement('table');
-                // this.br1 = document.createElement('br');
-                // this.br2 = document.createElement('br');
             }
-            
             create(id, rd) {
                 let data = Object.keys(rd[0]);
                 const resultHeader = document.querySelector('#result-header');
@@ -1593,30 +1528,19 @@ $mysqli = connect_db();
                 this.div.id = 'results-div';
                 this.div.classList.add('table-responsive');
                 results.appendChild(this.div);
-                
                 this.table.id = 'results-table';
                 this.table.classList.add('table');
                 this.table.classList.add('table-striped');
                 this.table.classList.add('table-sm');
                 this.table.classList.add('table-hover');
                 generateTable(this.table, rd)
-                
                 generateTableHead(this.table, data);
-                //generateLocationTableHead(this.table, data);
-
                 this.div.appendChild(this.table);
-
-                
-                // var sdt = { "sDom": 't', "order": [], scrollY: 825, 
-                //     scroller: true, "searching": true, "autoWidth": false }
-                // sTable = $('#results-table').DataTable(sdt);
-                
             }
             report(id, rd, r2 = null, rt = null, reportType, reportName){
                 // TODO: Add a print button that only prints this section
                 //       Will likely need to create a function that will only print this section
                 let data = Object.keys(rd[0]);
-                console.log(data);
                 const resultHeader = document.querySelector('#result-header');
                 const results = document.querySelector('#results');
                 const br = document.createElement('br');
@@ -1631,11 +1555,9 @@ $mysqli = connect_db();
                 btn.classList.add('btn');
                 btn.classList.add('btn-primary');
                 btn.textContent = 'Print Report';
-                
                 d1.classList.add('col');
                 d2.classList.add('col');
                 d3.classList.add('row');
-
                 this.h1.id = 'rh-h1';
                 this.h1.classList.add('h2');
                 if(reportName.substring(reportName.length - 21) == 'Operated/Non-Operated') // Non-Operated
@@ -1656,26 +1578,18 @@ $mysqli = connect_db();
                     let name = reportName.substring(0, rName);
                     this.h1.innerHTML = `${name} <span class="h5 sidebar-dash-heading text-muted">Operated</span>`;   
                 }
-                
                 else {
                     this.h1.textContent = reportName;
                 }
-                // d1.appendChild(this.h1);
-                // d2.appendChild(btn);
-                // resultHeader.appendChild(d1);
-                // resultHeader.appendChild(d2);
                 resultHeader.appendChild(this.h1);
                 this.div.id = 'results-div';
                 this.div.classList.add('table-responsive');
                 results.appendChild(this.div);
-                
                 this.table.id = 'results-table';
                 this.table.classList.add('table');
                 this.table.classList.add('table-striped');
                 this.table.classList.add('table-sm');
                 this.table.classList.add('table-hover');
-                
-                
                 if(r2 != null){
                     console.log("is not null");
                     t2.id = 'results-table2';
@@ -1694,16 +1608,13 @@ $mysqli = connect_db();
                     t3.classList.add('table-hover');
                     generateTable(t3, rt);
                 }
-                // generateTableHead(this.table, data);
                 if(reportType == 1){
                     generateTableHead(this.table, data, 1);
                     generateTable(this.table, rd)
                 }
                 else if(reportType == 2){
-                    // generateAcreageTableHead(this.table, data);
                 }
                 else if(reportType == 3){
-                    // generateAcreageTableHead(this.table, data);
                 }
                 else if(reportType == 4){
                     generateTableHead(this.table, 1, 2);
@@ -1714,22 +1625,15 @@ $mysqli = connect_db();
                     generateTable(this.table, rd)
                 }
                 else if(reportType == 8){
-                    // generateTableHead(this.table, data);
                     generateTableHead(this.table, data, 4);
                     generateTable(this.table, rd,1);
                 }
-                // 
-
                 this.div.appendChild(this.table);
-
                 if(reportType == 1){
-                    // generateLocationTableHead(this.table, data);
                 }
                 else if(reportType == 2){
-                    // generateAcreageTableHead(this.table, data);
                 }
                 else if(reportType == 3){
-                    // generateAcreageTableHead(this.table, data);
                 }
                 else if(reportType == 4){
                     info.textContent = "(undrilled HBP acreage and undeveloped leasehold)";
@@ -1746,8 +1650,6 @@ $mysqli = connect_db();
                     this.div.appendChild(br);
                 }
                 else if(reportType == 5 || reportType == 6 || reportType == 7){
-                    // generateTableHead(this.table, data);
-                    
                     this.div.appendChild(br);
                     generateTableHead(t2, 2, 3);
                     this.div.appendChild(br);
@@ -1759,49 +1661,17 @@ $mysqli = connect_db();
                     info.innerHTML = "Gross wells is the total number of wells in which a working interest is owned. <br> Net wells is the sum of the fractional working interests owned in gross wells.";
                     this.div.appendChild(info);
                     this.div.appendChild(br);
-
                 }
                 else if(reportType == 8){
-                    // generateWSTH(this.table, data);
                 }
-                // this.br.appendChild(this.t2);
-                
                 this.p.textContent = generateReportAccess();
-                // d1.appendChild(this.p);
-                // d2.appendChild(btn);
-                // d3.appendChild(d1);
-                // d3.appendChild(d2);
-                // this.div.appendChild(d3);
-                // // btn.onclick = printContent(document.querySelector('#searchresults'));
-                // btn.onclick = printSection('searchresults');
-                // // btn.addEventListener('click', printContent(document.querySelector('#searchresults')));
                 this.div.appendChild(this.p);
-                
-                // generateReportTableFoot(this.t2);
-                
-                // var sdt = { "sDom": 't', "order": [], scrollY: 825, 
-                //     scroller: true, "searching": true, "autoWidth": false }
-                // sTable = $('#results-table').DataTable(sdt);
-
             }
             destroy (id, x) {
-                // let rh = document.querySelector('#rh-h1');
-                // while (this.table.firstChild){
-                //     this.table.removeChild(this.table.firstChild);
-                // }
-                // let tableHead = document.querySelector('#results-thead');
-                // tableHead.parentNode.removeChild(tableHead);
-                // sTable.destroy();
                 this.table.remove();
                 this.div.remove();
-                // this.table.parentNode.removeChild(this.table);
-                // this.div.parentNode.removeChild(this.div);
-                // searchLoad(x);
-                
             }
         }
-        
-        
         WorkZone.prototype = {
             create: (id, rd) => {
                 // const data = [
@@ -1909,52 +1779,26 @@ $mysqli = connect_db();
             return false;
         }) 
         $('#editableResults.edb').on("submit", function(event){
-            
             event.preventDefault();
             var formData = new FormData(this);
-            // console.log(formData);
-            // searchLoad(resultTableBool, formData);
             $.ajax({
                 url:"/ajax/pldb.formupdate.php",  
                 type:"POST",  
-                // data:$('#frmSearchDB').serialize(),
                 success: function(response){
-                    // console.log(response[0]);
                     console.log(response);
                     Notiflix.Notify.success('You have successfully updated this entry.', {
                         position: 'center-bottom',
                         showOnlyTheLastOne: true,
                     });
-                    // console.log(response["data"]);
-                    // rd = response.data;
-                    // if(resultTableBool){
-
-                    //     $("#searchresults").removeClass("d-none");
-                    //     let h = document.querySelector('#result-header');
-                    //     h.removeChild(h.firstChild);
-                    //     let t = document.querySelector('#results');
-                    //     while (t.firstChild){ t.removeChild(t.firstChild); }
-                    //     sr_i++;
-                    //     sr = new searchResults();
-                    //     sr.create(`searchresultjs${sr_i}`, rd);
-                    // } else {
-                    //     $("#searchresults").removeClass("d-none");
-                        
-                    //     sr.create(`searchresultjs${sr_i}`, rd);
-                    //     resultTableBool = true;
-                    // }
                 },
                 error: function(xhr, status, message) 
                 {
-                    // $("#err").html(e).fadeIn();
-                    // alert(e);
                     Notiflix.Notify.failure('Error: ' + xhr.status + " " + status + " - " + message, {
                         position: 'center-bottom',
                         showOnlyTheLastOne: true,
                     });
                     $('#e-details.error-details').text(xhr.status + " " + status + " - " + message);
                     $('#error.alert').addClass('show');
-
                 },        
                 data: formData,
                 dataType: "json",
@@ -1962,49 +1806,23 @@ $mysqli = connect_db();
                 contentType: false,
                 processData: false
             });  
-            // !resultTableBool && (resultTableBool = true);
             return false;
         }) 
         $('#addpropertydb').on("submit", function(event){
-            
             event.preventDefault();
             var formData = new FormData(this);
-            // console.log(formData);
-            // searchLoad(resultTableBool, formData);
             $.ajax({
                 url:"/ajax/pldb.formupdate.php",  
                 type:"POST",  
-                // data:$('#frmSearchDB').serialize(),
                 success: function(response){
-                    // console.log(response[0]);
                     console.log(response);
                     Notiflix.Notify.success('You have successfully updated this entry.', {
                         position: 'center-bottom',
                         showOnlyTheLastOne: true,
                     });
-                    // console.log(response["data"]);
-                    // rd = response.data;
-                    // if(resultTableBool){
-
-                    //     $("#searchresults").removeClass("d-none");
-                    //     let h = document.querySelector('#result-header');
-                    //     h.removeChild(h.firstChild);
-                    //     let t = document.querySelector('#results');
-                    //     while (t.firstChild){ t.removeChild(t.firstChild); }
-                    //     sr_i++;
-                    //     sr = new searchResults();
-                    //     sr.create(`searchresultjs${sr_i}`, rd);
-                    // } else {
-                    //     $("#searchresults").removeClass("d-none");
-                        
-                    //     sr.create(`searchresultjs${sr_i}`, rd);
-                    //     resultTableBool = true;
-                    // }
                 },
                 error: function(xhr, status, message) 
                 {
-                    // $("#err").html(e).fadeIn();
-                    // alert(e);
                     Notiflix.Notify.failure('Error: ' + xhr.status + " " + status + " - " + message, {
                         position: 'center-bottom',
                         showOnlyTheLastOne: true,
@@ -2028,99 +1846,38 @@ $mysqli = connect_db();
         $('.tree-group-link').on("click", function(){
             var feather = $(this).children('svg.feather.feather-chevron-right');
             (feather.hasClass('feather-chevron-rotate'))?feather.removeClass('feather-chevron-rotate'):feather.addClass('feather-chevron-rotate');
-            
         })  
-        getTransitionEndEventName = () => {
-        var transitions = {
-            "transition"      : "transitionend",
-            "OTransition"     : "oTransitionEnd",
-            "MozTransition"   : "transitionend",
-            "WebkitTransition": "webkitTransitionEnd"
-        }
-        let bodyStyle = document.body.style;
-        for(let transition in transitions) {
-            if(bodyStyle[transition] != undefined) {
-                return transitions[transition];
-            } 
-        }
-        }
-        let transitionEndEventName = getTransitionEndEventName();
-        hideActive = () => {
-            let active = document.querySelectorAll(".active");
-            for (var i = 0; i < active.length; i++) { 
-                active[i].classList.remove('active');
-            }
-        }
         var hideTables = function() {
             let value = this.dataset.value;
             var valuetable = value + 'table';
-            // document.getElementsByClassName
-            // for (var i = 0; i < pldbSidebarTable.length; i++) { }
-            // $('.active').removeClass('active');
             hideActive();
             $(this).addClass('active');
-            $('.results').each(function(){
-                ($(this).attr('id') != value)? $(this).addClass('d-none') : $(this).removeClass('d-none');
-            })
-            $('.dtables').each(function(){
-                ($(this).attr('id') != valuetable) ? $(this).addClass('d-none') : $(this).removeClass('d-none');
-            })
+            $('.results').each(function(){ ($(this).attr('id') != value)? $(this).addClass('d-none') : $(this).removeClass('d-none'); })
+            $('.dtables').each(function(){ ($(this).attr('id') != valuetable) ? $(this).addClass('d-none') : $(this).removeClass('d-none'); })
             $('#'+value+'_wrapper > div > div.dataTables_scrollHead > div > table').hasClass('d-none') && $('#'+value+'_wrapper > div > div.dataTables_scrollHead > div > table').removeClass('d-none')
-            
-            console.log(value);
-            
         }
         let pldbSidebarTable = document.querySelectorAll(".pldb-sidebar-table");
         for (var i = 0; i < pldbSidebarTable.length; i++) { 
             pldbSidebarTable[i].addEventListener('click', function(event) {
                 let value = this.dataset.value;
                 hideTables.call(this);
-                if(isSidebarVis){
-                    toggleVis(sidebar)
-                    tableload(value)
-                }
-                else {
-                    tableload(value)
-                }
-                console.log(value);
+                if(isSidebarVis){ toggleVis(sidebar); tableload(value); } else { tableload(value); }
             })
         }
         let queriesSidebar = document.querySelectorAll("#queriesSidebar");
         for (var i = 0; i < queriesSidebar.length; i++) { 
             queriesSidebar[i].addEventListener('click', function(event) {
-                // $('.active').removeClass('active');
                 hideActive();
                 $(this).addClass('active');
             })
         }
-        
         let reportsSidebar = document.querySelectorAll("#reportsSidebar");
         for (var i = 0; i < reportsSidebar.length; i++) { 
             reportsSidebar[i].addEventListener('click', function(event) {
-                // $('.active').removeClass('active');
                 hideActive();
                 $(this).addClass('active');
             })
         }
-        // postData("/ajax/pldb.fetchdata.php", {"tble":"pldb_locations"})
-        // .then(response => {
-        //     // Trying to modify the below to use vanilla js, but was this used for anything?
-        //     /**
-        //      *             $.ajax({
-        //     url:"/ajax/pldb.fetchdata.php",  
-        //     method:"POST",  
-        //     data:{"tble":"pldb_locations"},  
-        //     dataType:"json",  
-        //     success:function(response){ 
-        //         rd = response['data'];
-        //         log(rd)
-        //     }
-        // })
-        //      */
-        // })
-        // $('.dataquery').on('click', function(){
-
-        // })
         let dataquery = document.querySelectorAll(".dataquery");
         for (var i = 0; i < dataquery.length; i++) {
             dataquery[i].addEventListener('click', function(event) {
@@ -2134,7 +1891,6 @@ $mysqli = connect_db();
                     response => {
                         try{ rd = response.data;  }
                         catch (error){ Notiflix.Notify.failure('Error: ' + error, { position: 'center-bottom', showOnlyTheLastOne: true }) }
-                        
                         if(rd === undefined)
                         {
                             Notiflix.Notify.failure('Error: No data returned.', 
@@ -2159,12 +1915,10 @@ $mysqli = connect_db();
                             else 
                             {
                                 $("#searchresults").removeClass("d-none");
-                                
                                 sr.create(`searchresultjs${sr_i}`, rd);
                                 resultTableBool = true;
                             }
                         }
-                        
                 }, error => {
                     Notiflix.Notify.failure('Error: ' + error, {
                         position: 'center-bottom',
@@ -2175,8 +1929,6 @@ $mysqli = connect_db();
         let datareport = document.querySelectorAll(".datareport");
         for (var i = 0; i < datareport.length; i++) {
             datareport[i].addEventListener('click', function(event) {
-                // hideActive();
-                // $('.active').removeClass('active');
                 isSidebarVis && toggleVis(sidebar);
                 hideTables.call(this);
                 let editresults = document.getElementById("editresults");
@@ -2201,8 +1953,6 @@ $mysqli = connect_db();
                                 showOnlyTheLastOne: true,
                             })
                         }
-                        // console.log(r2);
-                        // console.log(response);
                         if(rd === undefined)
                         {
                             Notiflix.Notify.failure('Error: No data returned.', 
@@ -2235,9 +1985,6 @@ $mysqli = connect_db();
                                 resultTableBool = true;
                             }
                         }
-                        
-                        
-                        
                 }, error => {
                     Notiflix.Notify.failure('Error: ' + error, {
                         position: 'center-bottom',
@@ -2247,385 +1994,10 @@ $mysqli = connect_db();
                 return false;
                 });
         }
-        // $('.datareport').on('click', function(){
-            
-        //     // $('.results').each(function(){
-        //     //     ($(this).attr('id') != value)? $(this).addClass('d-none') : $(this).removeClass('d-none');
-        //     //     // (($(this).attr('id') != value) || ($(this).attr('id') != valuetable)) ? $(this).addClass('d-none') : $(this).removeClass('d-none');
-        //     // })
-        //     // $('.dtables').each(function(){
-        //     //     ($(this).attr('id') != valuetable) ? $(this).addClass('d-none') : $(this).removeClass('d-none');
-        //     // })
-
-        // })
-        // $.ajax({
-        //     url:"/ajax/pldb.fetchdata.php",  
-        //     method:"POST",  
-        //     data:{"table":"pldb_locations", "simple":1},  
-        //     dataType:"json",  
-        //     success:function(response){ 
-        //         rd = response['data'];
-        //         log(rd.length)
-        //         // log(response['region'])
-        //         var fullregion = {};
-        //         var region = {};
-        //         var li_id = {};
-        //         var a_id = {}
-        //         var span_id = {};
-        //         var i_id = {};
-        //         var cc =  ["sog", "sdc"];
-        //         var ot = { 
-        //             "wells": {
-        //                 "op":{
-        //                     "active":["oil","gas","oilgas"], 
-        //                     "si":["oil","gas","oilgas"]
-        //                 }, 
-        //                 "nonop":{
-        //                     "active":["oil","gas","oilgas"], 
-        //                     "si":["oil","gas","oilgas"]
-        //                 },
-        //                 "both":{
-        //                     "active":["oil","gas","oilgas"], 
-        //                     "si":["oil","gas","oilgas"]
-        //                 }
-        //             },
-        //             "acres":["op", "nonop","both"]};
-        //         var w = ["active", "si"];
-        //         var o = ["op","nonop","both"];
-        //         var t = ["wells", "acres"]
-        //         var og = ["oil", "gas"]
-        //         var count = 0;
-        //         var countB = 0;
-        //         var countC = 0;
-        //         for(a = 0; a < cc.length; a++){
-        //             cc_id = cc[a]+"-queries"
-        //             log(cc_id)
-        //             $('#collapsequeries').append($('<li/>', {id: cc_id, class:"nav-dash-item nav-item"}));
-        //             a_c="nav-link nav-dash-link d-inline-block tree-group-link sidebar-dash-heading d-flex justify-content-between align-items-center sidebar-rounded"
-        //             a_href="#nav-tree-list-wrapper-"
-        //             a_id="tree-link-"
-        //             $('#'+cc_id).append($('<a/>', {class: a_c, href:a_href+cc_id, id: a_id+cc_id}))
-        //             console.log($('#'+cc_id))
-        //             $('#'+a_id+cc_id).attr("data-toggle", "collapse");
-        //             $('#'+a_id+cc_id).attr("role", "button");
-        //             $('#'+a_id+cc_id).append($('<i/>', {class: "d-inline-block text-center tree-icon", "data-feather":"menu"}));
-        //             $('#'+a_id+cc_id).append($('<span/>'), cc[a].toUpperCase());
-        //             $('#'+a_id+cc_id).append($('<i/>', {"data-feather":"chevron-right"}));
-        //             div_c="ml-4 collapse";
-        //             div_id="nav-tree-list-wrapper-"
-        //             $('#'+cc_id).append($('<div/>', {class: div_c, id: div_id+cc_id}));
-        //             $('#'+div_id+cc_id).append($('<ul/>', {class:"flex-column mb-2", id:cc[a]+"-queries-list"}));
-        //             countB++;
-        //             for (b = 0; b < t.length; b++){
-        //                 $('#'+cc[a]+"-queries-list").append($('<li/>', { id: cc[a]+"-"+t[b]+"-queries", class: "nav-item"}));
-        //                 $('#'+cc[a]+"-"+t[b]+"-queries").append($('<a/>', { class: "nav-link nav-dash-link d-inline-block tree-group-link collapsed", id: "tree-link-"+cc[a]+"-"+t[b], href:"#nav-tree-list-wrapper-"+cc[a]+"-"+t[b]}));
-        //                 $('#'+"tree-link-"+cc[a]+"-"+t[b]).attr("data-toggle","collapse")
-        //                 $('#'+"tree-link-"+cc[a]+"-"+t[b]).attr("role","button")
-        //                 $('#'+"tree-link-"+cc[a]+"-"+t[b]).append($('<span/>', {id: cc[a]+"-"+t[b]+"-queries-span", class: "d-inline-block text-center tree-icon", style:"width: 25px"}), t[b].substr(0,1).toUpperCase()+t[b].substr(1));
-        //                 // $('#'+"tree-link-"+cc[a]+"_"+t[b]).append()
-        //                 $('#'+cc[a]+"-"+t[b]+"-queries").append($('<div/>', { id: "nav-tree-list-wrapper-"+cc[a]+"-"+t[b], class: "ml-4 collapse" }));
-        //                 $('#'+"nav-tree-list-wrapper-"+cc[a]+"-"+t[b]).append($('<ul/>', {class:"flex-column mb-2", id:cc[a]+t[b]+"-queries-list"}));
-        //                 countC++;
-        //                 // for (c = 0; c < ot[t[b]].length; c++){
-        //                 for (c = 0; c < o.length; c++){
-        //                     // c_id = cc[a]+"-"+t[b]+"-"+ot[t[b]][o[c]];
-        //                     c_id = cc[a]+"-"+t[b]+"-"+[o[c]];
-        //                     console.log("b: " + b)
-        //                     console.log("c: " + c)
-        //                     console.log(ot[t[b]][o[c]])
-        //                     var ops = {"op":"Operated", "nonop":"Non-Operated", "both":"Op & Non-Op"}
-                            
-        //                     ntlw = "nav-tree-list-wrapper-"+c_id
-        //                     tl = "tree-link-"+c_id
-        //                     $("#"+cc[a]+t[b]+"-queries-list").append($('<li/>', {id:c_id, class: "nav-item"}));
-        //                     $("#"+c_id).append($('<a/>', {id:tl, class: "nav-link nav-dash-link d-inline-block tree-link", href: "#nav-tree-list-wrapper-"+c_id}))
-        //                     // $("#"+tl).append($('<span/>', {id: "nav-tree-list-wrapper-list-"+c_id, class: "d-inline-block text-center tree-icon", style: "width: 25px"}), ops[ot[t[b]][c]])
-        //                     $("#"+tl).append($('<span/>', {id: "nav-tree-list-wrapper-list-"+c_id, class: "d-inline-block text-center tree-icon", style: "width: 25px"}), ops[o[c]])
-        //                     $("#"+tl).attr("data-toggle","collapse");
-        //                     $("#"+tl).attr("button","role");
-        //                     $("#"+c_id).append($('<div/>', {class: "ml-4 collapse", id: ntlw}));
-        //                     $("#"+ntlw).append($('<ul/>', {class:"flex-column mb-2", id:c_id+"-group"}));
-        //                     if(b == 0 ){
-        //                         console.log(t[b]+" - "+ot[t[b]]+" - "+ot[t[b]][o[c]].length + " - " + w.length);
-        //                         // for (d=0; d< ot[t[b]][o[c]].length; d++){
-        //                         for (d=0; d< w.length; d++){
-
-        //                             var actsi = {"active": "Active", "si": "Shut-In"};
-                                
-        //                             var og = ["oil", "gas", "oilgas"]
-        //                             // d_id = cc[a]+"-"+t[b]+"-"+ot[t[b]][o[c]]+"-"+og[d];
-        //                             d_id = cc[a]+"-"+t[b]+"-"+[o[c]]+"-"+w[d]
-        //                             ntlw = "nav-tree-list-wrapper-"+d_id
-        //                             tl = "tree-link-"+d_id
-        //                             console.log(og[d] + "d is " + d);
-        //                             console.log(ot[t[b]][c]);
-        //                             $("#"+cc[a]+t[b]+"-queries-list").append($('<li/>', {id:d_id, class: "nav-item"}));
-        //                             $("#"+d_id).append($('<a/>', {id:tl, class: "nav-link nav-dash-link d-inline-block tree-link", href: "#nav-tree-list-wrapper-"+d_id}))
-        //                             $("#"+tl).append($('<span/>', {id: "nav-tree-list-wrapper-list-"+d_id, class: "d-inline-block text-center tree-icon", style: "width: 25px"}), actsi[w[d]])
-        //                             $("#"+tl).attr("data-toggle","collapse");
-        //                             $("#"+tl).attr("button","role");
-        //                             $("#"+d_id).append($('<div/>', {class: "ml-4 collapse", id: ntlw}));
-        //                             $("#"+ntlw).append($('<ul/>', {class:"flex-column mb-2", id:d_id+"-group"}));
-        //                         }
-        //                         // for(i =0; i < rd.length; i++){
-        //                         //     count++;
-        //                         //     fullregion = rd[i]['region'];
-        //                         //     region = rd[i]['region'].toString().replace(" Region", "");
-        //                         //     // log(region + (hasWhiteSpace(region))? " has whitespace \n replacement is: " +region.replace(" ", "") : "no whitespace")
-        //                         //     if(hasWhiteSpace(region)){ region = region.replace(/\s/g, ''); }
-                                    
-        //                         //     li_id = cc[a]+"-"+t[b]+"-"+ot[t[b]][c] + "-" + region;
-        //                         //     company_code = cc[a];
-        //                         //     entity_type = t[b];
-        //                         //     op_nonop = ot[t[b]][c];
-        //                         //     location_region = region;
-        //                         //     li_class = "nav-item active data-query";
-        //                         //     a_id = "tree-link-" + li_id;
-        //                         //     a_class = "nav-link nav-dash-link d-inline-block tree-link data-query";
-        //                         //     dq = li_id;
-        //                         //     span_class = "d-inline-block text-center tree-icon";
-        //                         //     span_style="width: 25px";
-        //                         //     span_id="tree-span-" + li_id;
-        //                         //     i_class="fas fa-link";
-        //                         //     i_id="tree-icon-"+li_id;
-        //                         //     $("#"+c_id+"-group").append($('<li/>', { id: li_id,class : li_class,}));
-        //                         //     $("#"+li_id).append($('<a/>', {id: a_id, class: a_class, href:'#', onclick:'queryData()'}));
-        //                         //     // log("the id for <a> is: "+a_id+"\n i = "+i+"\n region["+i+"] = "+region
-        //                         //     // +"\n count: "+count+"\n countB: "+countB+"\n countC: "+countC
-        //                         //     // +"\n a: "+a+ "\n b: "+b+"\n c: "+c)
-        //                         //     $('#'+a_id).attr("data-query", dq);
-        //                         //     $('#'+a_id).attr("data-location", fullregion);
-                                    
-        //                         //     $("#"+a_id).append($('<span/>', {id: span_id, class: span_class, style:span_style}), fullregion);
-        //                         //     // log("i = "+i+" & the span_id is "+span_id+" and the full region is "+fullregion)
-        //                         //     $("#"+span_id).append($('<i/>', {id: i_id, class: a_class}));
-        //                         // }
-        //                     } else {
-        //                         for(i =0; i < rd.length; i++){
-        //                             count++;
-        //                             fullregion = rd[i]['region'];
-        //                             region = rd[i]['region'].toString().replace(" Region", "");
-        //                             // log(region + (hasWhiteSpace(region))? " has whitespace \n replacement is: " +region.replace(" ", "") : "no whitespace")
-        //                             if(hasWhiteSpace(region)){ region = region.replace(/\s/g, ''); }
-                                    
-        //                             li_id = cc[a]+"-"+t[b]+"-"+ot[t[b]][c] + "-" + region;
-        //                             company_code = cc[a];
-        //                             entity_type = t[b];
-        //                             op_nonop = ot[t[b]][c];
-        //                             location_region = region;
-        //                             li_class = "nav-item active data-query";
-        //                             a_id = "tree-link-" + li_id;
-        //                             a_class = "nav-link nav-dash-link d-inline-block tree-link data-query";
-        //                             dq = li_id;
-        //                             span_class = "d-inline-block text-center tree-icon";
-        //                             span_style="width: 25px";
-        //                             span_id="tree-span-" + li_id;
-        //                             i_class="fas fa-link";
-        //                             i_id="tree-icon-"+li_id;
-        //                             $("#"+c_id+"-group").append($('<li/>', { id: li_id,class : li_class,}));
-        //                             $("#"+li_id).append($('<a/>', {id: a_id, class: a_class, href:'#', onclick:'queryData()'}));
-        //                             // log("the id for <a> is: "+a_id+"\n i = "+i+"\n region["+i+"] = "+region
-        //                             // +"\n count: "+count+"\n countB: "+countB+"\n countC: "+countC
-        //                             // +"\n a: "+a+ "\n b: "+b+"\n c: "+c)
-        //                             $('#'+a_id).attr("data-query", dq);
-        //                             $('#'+a_id).attr("data-location", fullregion);
-                                    
-        //                             $("#"+a_id).append($('<span/>', {id: span_id, class: span_class, style:span_style}), fullregion);
-        //                             // log("i = "+i+" & the span_id is "+span_id+" and the full region is "+fullregion)
-        //                             $("#"+span_id).append($('<i/>', {id: i_id, class: a_class}));
-        //                         }
-        //                     }
-        //                 }
-                            
-        //             }
-                    
-                            
-                        
-        //         }
-        //         feather.replace();
-                
-        //     }
-        // })
-        $('#sog-acre-nonop-group').append()
-
-        function queryData(){
-            // var a = this;
-            var a = this.oil_gas;
-            var b = this.location_region;
-            var c = this.active_bool;
-            var d = this.company_code;
-            var e = this.op_nonop;
-            var f = this.entity_type;
-            $.ajax({
-                url:"/ajax/pldb.fetchdata.php",  
-                method:"POST",  
-                data:{
-                    "og":a, 
-                    "l":b,
-                    "a":c,
-                    "cc":d,
-                    "op":e,
-                    "et":f
-                },  
-                dataType:"json",  
-                success:function(response){ 
-                    rd = response['data'];
-                }
-            })
-            
-        }
-        /**
-         * Printing function
-         */
-        
-        let btn = document.getElementById('printbutton');
-        // btn.onclick = printContent(document.querySelector('#searchresults'));
-        // btn.addEventListener('click', )
-        // btn.addEventListener('click', function(event) {
-        //         // $('.active').removeClass('active');
-        //         // let reportView = document.querySelector("#main-row > div.ch.col.col--lg-10.col--md-5.ml-sm-auto.px-md-3 > main");
-        //         let reportView = document.querySelector("#searchresults");
-        //         let b = reportView.innerHTML;
-        //         window.frames["print_frame"].document.body.innerHTML = b;
-        //         window.frames["print_frame"].window.focus()
-        //         window.frames['print_frame'].window.focus();
-        //         window.frames["print_frame"].window.print();
-        //             // printDiv(reportView)
-                
-                
-        //         // printContent(reportView);
-        //         // printSection(reportView);
-        //         // $(this).addClass('active');
-        //     })
-        
-        btn.addEventListener('click', printReport);
-        function printReport() {
-            let reportView = document.querySelector("#searchresults");
-            let a = `<style type="text/css" media="print"> @page { size: landscape; }</style>`;
-            let b = reportView.innerHTML;
-            let pf = document.getElementById('printing-frame');
-            pf.classList.remove('d-none');
-            window.frames["print_frame"].document.body.innerHTML = a + b;
-            window.frames["print_frame"].window.focus();
-            window.frames['print_frame'].document.body.focus();
-            Notiflix.Loading.pulse('Preparing Report');
-            setTimeout(() => {
-            //    setTimeout(() => {
-                
-            //    }, 1000);
-                Notiflix.Loading.remove();
-                window.frames["print_frame"].window.print(); 
-                pf.classList.add('d-none');
-            }, 1000);
-            
-        }
-        
     })
-    // function printContent (elem){
-    //         // let elem = document.getElementById("searchresults");
-    //         let WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
-    //         WinPrint.document.write(elem.innerHTML);
-    //         WinPrint.document.close();
-    //         WinPrint.focus();
-    //         WinPrint.print();
-    //         WinPrint.close();
-    //     }
-    // function printSection(el){
-    //     var getFullContent = document.getElementById('printdiv');
-    //     var printsection = el.innerHTML;
-    //     // var printsection = document.getElementById(el).innerHTML;
-    //     getFullContent.innerHTML = printsection;
-    //     window.print();
-    //     // document.body.innerHTML = getFullContent;
-    // }
-    // function printDiv(b) {
-    //     // var a = document.getElementById('printing-css').value;
-    //     // var b = document.getElementById(elementId).innerHTML;
-    //     // var b = elementId.innerHTML;
-    //     // let frame = document.getElementById('printing-frame');
-    //     // let link = document.createElement('link');
-    //     // link.rel = 'stylesheet';
-    //     // link.type = 'text/css';
-    //     // link.href = '/assets/css/main.min.css';
-    //     // let linkDT = document.createElement('link');
-    //     // linkDT.rel = 'stylesheet';
-    //     // linkDT.type = 'text/css';
-    //     // linkDT.href = 'https://cdn.datatables.net/v/bs4/dt-1.10.25/af-2.3.5/b-1.6.3/b-print-1.6.3/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.2/r-2.2.5/rg-1.1.2/rr-1.2.7/sc-2.0.4/sp-1.2.1/sl-1.3.1/datatables.min.css';
-    //     // window.frames["print_frame"].document.title = document.title;
-    //     // window.frames["print_frame"].document.getElementsByTagName('HEAD')[0].appendChild(link);
-    //     // window.frames["print_frame"].document.getElementsByTagName('HEAD')[0].appendChild(linkDT);
-
-    //     // window.frames["print_frame"].document.body.innerHTML = '<style>' + a + '</style>' + b;
-    //     // for(let i = 0; i < 2; i++){
-    //     // frame.style = null;
-    //     // window.frames["print_frame"].document.body.innerHTML = b;
-        
-    //     // window.frames["print_frame"].style = "";
-    //     // setTimeout(window.frames["print_frame"].window.focus(), 10000);
-    //     // window.frames["print_frame"].onfocus = function(){
-    //     //     window.frames["print_frame"].window.print();
-    //     // }
-        
-    //     // frame.style = "display:none;";
-
-    //     window.frames["print_frame"].window.print();
-    //     // }
-    // }
-
-    
-    // $(document).on('click', '.results-property', function(){  
-    //     var id = $(this).attr("id");
-    //     $('tr.table-info').removeClass("table-info");
-    //     $(this).addClass("table-info");
-    //     $.ajax({  
-    //         url:"/ajax/pldb.editdata.php",  
-    //         method:"POST",  
-    //         data:{id:id},  
-    //         dataType:"json",  
-    //         success:function(response){  
-    //             $('.edit-results').removeClass('d-none');
-    //             $("#editresults").removeClass('d-none');
-    //             rd = response.data;
-    //             console.log(response);
-    //             // console.log(rd[0]['id']);
-    //             $('#edit-input-1').val(rd[0]['id']);
-    //             $('#edit-input-2').val(rd[0]['location_id']);
-    //             $('#edit-input-3').val(rd[0]['name']);
-    //             $('#edit-input-4').val(rd[0]['wi']);
-    //             $('#edit-input-5').val(rd[0]['gwi_value']);
-    //             $('#edit-input-6').val(rd[0]['status']);
-    //             $('#edit-input-7').val(rd[0]['ri']);
-    //             $('#edit-input-8').val(rd[0]['nri_value']);
-    //             $('#edit-input-9').val(rd[0]['operating_status']);
-    //             $('#edit-input-10').val(rd[0]['orri']);
-    //             $('#edit-input-11').val(rd[0]['orri_value']);
-    //             $('#edit-input-12').val(rd[0]['owning_company']);
-    //             $('#edit-input-13').val(rd[0]['biapo']);
-    //             $('#edit-input-14').val(rd[0]['ri_values']);
-    //             $('#edit-input-15').val(rd[0]['operator']);
-    //             $('#edit-input-16').val(rd[0]['wbo']);
-    //             $('#edit-input-17').val(rd[0]['legal_description']);
-    //             $('#edit-input-18').val(rd[0]['gross_acres']);
-    //             $('#edit-input-19').val(rd[0]['api']);
-    //             $('#edit-input-20').val(rd[0]['net_acres']);
-    //             $('#edit-input-21').val(rd[0]['lease_number']);
-    //             $('#edit-input-22').val(rd[0]['wp_code']);
-
-    //         }
-    //     })
-    // }) 
     addEvent(document, 'click', '.results-property', function(e){
-        
-        console.log(`this: ${this}\nthis.id: ${this.id}`);
-        // var id = document.getElementById(this).attr("id");
         let id = this.id;
-        try{
-            document.querySelector('tr.table-info').classList.remove("table-info");
-        }
-        catch(e){
-            console.log(`Error: ${e}`);
-        }
-        
+        try{ document.querySelector('tr.table-info').classList.remove("table-info"); } catch(e){ console.log(`Error: ${e}`); }
         document.getElementById(id).classList.add("table-info");
         $.ajax({  
             url:"/ajax/pldb.editdata.php",  
@@ -2664,50 +2036,39 @@ $mysqli = connect_db();
             }
         })
     })
-    addEvent(document, 'click', '.pldb-sidebar-form', function(){
-        var value = document.querySelector(this).data('value');
-        document.querySelector('.sdb').each(function(){
-            (document.querySelector(this).attr('id') != value) ? document.querySelector(this).classList.add('d-none') : document.querySelector(this).classList.remove('d-none');
-            document.querySelector('.forms').classList.add('d-md-block').classList.remove('d-none');
+    addEvent(document, 'click', '.pldb-sidebar-form', function(e){
+        // console.dir(e);
+        // console.dir(this.dataset.value);
+        // console.log(e.path[0]);
+        // console.dir(this.id);
+        // console.log(`this: ${this}\ne: ${e}\ne.target: ${e.target}`)
+        // var value = document.querySelector(e.path[0]).data('value');
+        let value = this.dataset.value;
+        document.querySelector('#btnUpdate').value = 'Add';
+        let nList = document.querySelectorAll('.sdb');
+        let forms = document.querySelectorAll('.forms');
+        // console.log(nList);
+        // console.dir(nList);
+        nList.forEach(element => {
+            // console.log(forms);
+            // console.dir(forms);
+            // console.dir(element.id);
+            // (document.querySelector(this).attr('id') != value) ? document.querySelector(this).classList.add('d-none') : document.querySelector(this).classList.remove('d-none');
+            (element.id != value) ? element.classList.add('d-none') : element.classList.remove('d-none');
+            forms.forEach(element => {
+                element.classList.add('d-md-block')
+                element.classList.contains('d-none') && element.classList.remove('d-none');
+            })
+            // forms.
+            // document.querySelector('.forms').classList.add('d-md-block').classList.remove('d-none');
         })
-    })
-    function hasWhiteSpace(s) {
-        return s.indexOf(' ') >= 0;
-    }
-    addEvent(document, 'click', '.pldb-sidebar-form', function(){
-        document.querySelector('#btnUpdate').val('Add');
-    })
-    
-    
+        // nList.each(function(){
 
-    // document.addEventListener("onclick", )
-
+            
+        // })
+    })
 </script>
-    <!-- <script src="/example/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-    <!-- <script src="/example/static/js/tree.js?1.0.0.7"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      window.nav = new NavTree("#nav-tree", {
-        // searchable: true,
-        // showEmptyGroups: true,
-
-        groupOpenIconClass: "fas",
-        groupOpenIcon: "fa-chevron-down",
-
-        groupCloseIconClass: "fas",
-        groupCloseIcon: "fa-chevron-right",
-
-        linkIconClass: "fas",
-        linkIcon: "fa-link",
-
-        iconWidth: "25px",
-
-        // searchPlaceholderText: "Search",
-      });
-    });
-  </script> -->
 </head>
-
 <body class="dash">
 <?php  include($_SERVER['DOCUMENT_ROOT'] . '/include/header_extensions.php'); ?>
 <div id="react_pldb"></div>
