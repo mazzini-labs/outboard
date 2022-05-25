@@ -1,7 +1,7 @@
 
-                                   # OutBoard
-		           ###### By Richard F. Feuerriegel
-                      ==================================
+# OutBoard
+###### By Richard F. Feuerriegel
+
 
 ##### Current version: 2.2.5                            Release Date: 2009-05-07
 
@@ -90,9 +90,9 @@ information is in the CHANGES file.
 
 
 
-                   -------------------------------
-                   # -- Installation Instructions --
-                   -------------------------------
+-------------------------------
+# -- Installation Instructions --
+-------------------------------
 
 -----------------------------------------------------------------------
 #### IMPORTANT: If you already have the OutBoard installed, please follow the UPGRADE instructions instead of these. 
@@ -194,16 +194,16 @@ You will first need to login as the admin user using your chosen password, and c
 
 ##### History
 -------
-Version | Date
-Version 2.2.5 |                                 Release Date: 2009-05-07
-Version 2.2.4 |                                 Release Date: 2007-02-16
-Version 2.2.3 |                                 Release Date: 2006-12-06
-Version 2.2.2 |                                 Release Date: 2005-10-25
-Version 2.2.1 |                                 Release Date: 2005-03-06
-Version 2.2.0 |                                 Release Date: 2005-03-04
-Version 2.1.0 |                                 Release Date: 2005-02-19
-Version 2.0.0 |                                 Release Date: 2005-02-18
-Version 1.4.0 |                                 Release Date: 2002-04-15
-Version 1.3.0 |                                 Release Date: 2001-06-12
-First released version: 1.2 |                   Release Date: 2000-11-13
+|Version | Date
+|Version 2.2.5 |                                 Release Date: 2009-05-07
+|Version 2.2.4 |                                 Release Date: 2007-02-16
+|Version 2.2.3 |                                 Release Date: 2006-12-06
+|Version 2.2.2 |                                 Release Date: 2005-10-25
+|Version 2.2.1 |                                 Release Date: 2005-03-06
+|Version 2.2.0 |                                 Release Date: 2005-03-04
+|Version 2.1.0 |                                 Release Date: 2005-02-19
+|Version 2.0.0 |                                 Release Date: 2005-02-18
+|Version 1.4.0 |                                 Release Date: 2002-04-15
+|Version 1.3.0 |                                 Release Date: 2001-06-12
+|First released version: 1.2 |                   Release Date: 2000-11-13
 
