@@ -197,7 +197,11 @@ $mysqli = connect_db();
 <!-- <script src="/assets/js/wsb.ddr.js?v1.0.0.14"></script> -->
 <!-- <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script> -->
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  
+<script type="text/javascript" language="javascript" src="<?php $_SERVER['DOCUMENT_ROOT']?>/editor/js/editor.ckeditor5.js"></script>
+	<script type="text/javascript" language="javascript" src="<?php $_SERVER['DOCUMENT_ROOT']?>/editor/js/dataTables.editor.min.js"></script>
+	<script type="text/javascript" src="<?php $_SERVER['DOCUMENT_ROOT']?>/editor/js/editor.bootstrap4.min.js?v=1"></script>
 <script type="text/javascript">
     window.user = "<?php echo $userid; ?>";
 </script>
@@ -217,20 +221,20 @@ $mysqli = connect_db();
         }, false);
     }
     /**
-	 * Asynchronous function to POST data; used to replace $.ajax(). Default options for this function are marked with *
-	 *
-	 * @param {string} url - The location of the request
-	 * @param {string|null} data - The data to be sent with the request; body data type must match "Content-Type" header
-     * @param {string} method - HTTP request method. Options are GET, *POST, PUT, DELETE, etc. 
-     * @param {string} mode - CORS policy. Options are: no-cors, *cors, same-origin
-     * @param {string} cache - cache policy to be sent with request. Options are: default, *no-cache, reload, force-cache, only-if-cached.
-     * @param {string} credentials - Credentials to be sent. Options are: include, *same-origin, omit
-     * @param {obj} headers - headers to be sent with request. Many options, two are: *'Content-Type': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded'
-     * @param {string} redirect - Options are: manual, *follow, error
-     * @param {string} referrerPolicy - Options are: *no-referrer, no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-     * 
-	 * @return parses JSON response into native JavaScript objects
-	 */
+     * Asynchronous function to POST data; used to replace $.ajax(). Default options for this function are marked with *
+     *
+     * @param {string} url - The location of the request
+     * @param {string|null} data - The data to be sent with the request; body data type must match "Content-Type" header
+       * @param {string} method - HTTP request method. Options are GET, *POST, PUT, DELETE, etc. 
+       * @param {string} mode - CORS policy. Options are: no-cors, *cors, same-origin
+       * @param {string} cache - cache policy to be sent with request. Options are: default, *no-cache, reload, force-cache, only-if-cached.
+       * @param {string} credentials - Credentials to be sent. Options are: include, *same-origin, omit
+       * @param {obj} headers - headers to be sent with request. Many options, two are: *'Content-Type': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded'
+       * @param {string} redirect - Options are: manual, *follow, error
+       * @param {string} referrerPolicy - Options are: *no-referrer, no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+       * 
+     * @return parses JSON response into native JavaScript objects
+     */
     async function postData(url = '', data = {}, method = 'POST', 
                             mode = 'cors', cache = 'no-cache', 
                             credentials = 'same-origin', 
@@ -261,19 +265,38 @@ $mysqli = connect_db();
     //     console.log(document.body.style.height);
     // }
     // window.addEventListener("load",setWindowHeight,false);
-    init_n_pop_select = (rd, t, col, num) => {
+    init_n_pop_select = (rd, t, col, num, w, destroy = 0) => {
+        // console.dir(rd);
+        // console.dir(t);
+        // console.dir(col);
+        // console.dir(num);
+        destroy == 1 && $(num).selectpicker('destroy');
         for(i =0; i < rd[t].length; i++){
-            var cc = rd[t][i][col];
-            document.querySelector(`#input${num}`)
+            // var cc = rd[t][i][col];
+            var cc;
+            (col == 'section')? cc = rd[t][i] : cc = rd[t][i][col];
+            // console.dir(cc);
+            document.querySelector(`${num}`)
             .insertAdjacentHTML("beforeend",
-                document.querySelector('option', { 
-                    value: cc,
-                    text : cc,
-                })
+                `<option name="${i}" value='${cc}'>${cc}</option>`
+                // document.querySelector('option', { 
+                //     value: cc,
+                //     text : cc,
+                // })
             );
         }
-        $('#input'+num).selectpicker({width:'100%'});
+        $(num).selectpicker({width:w});
         // document.querySelector(`#input${num}`).selectpicker({width:'100%'});
+    }
+    init_n_pop_datalist = (rd, t, col, num, w) => {
+      for(i =0; i < rd[t].length; i++){
+            var cc;
+            (col == 'section')? cc = rd[t][i] : cc = rd[t][i][col];
+            document.querySelector(`${num}`)
+            .insertAdjacentHTML("beforeend",
+                `<option value="${cc}">${cc}</option>`
+            );
+        }
     }
     printCSS = (url) => {
         let link = document.createElement('link');
@@ -320,12 +343,51 @@ $mysqli = connect_db();
         }
         return count;
     }
-    hideActive = () => {
+    hideOtherActiveEl = () => {
         let active = document.querySelectorAll(".active");
         for (var i = 0; i < active.length; i++) { 
             active[i].classList.remove('active');
         }
     }
+    hideActiveAll = (element, value = 0) => {
+        for (var i = 0; i < element.length; i++) { 
+            element[i].addEventListener('click', function(event) {
+                hideOtherActiveEl();
+                this.classList.add('active');
+            })
+        }
+    }
+    getFExtension = (filename) => {
+        try
+            {return filename.split('.').pop();}
+        catch(e){
+            return null;
+        }
+    }
+    // for (var i = 0; i < pldbSidebarTable.length; i++) { 
+    //         pldbSidebarTable[i].addEventListener('click', function(event) {
+    //             let value = this.dataset.value;
+    //             hideTables.call(this);
+    //             if(isSidebarVis){ toggleVis(sidebar); tableload(value); } else { tableload(value); }
+    //         })
+    //     }
+    toggleTableVis = (nodeList, value = 0) => {
+        if(value){ nodeList.forEach(element => { (element.id != value) ? element.classList.add('d-none') : element.classList.remove('d-none'); }) }
+        else { nodeList.forEach(element => { element.classList.contains('d-none') && element.classList.remove('d-none'); }) }
+    }
+
+    var hideTables = function() {
+            let value = this.dataset.value;
+            var valuetable = value + 'table';
+            hideOtherActiveEl();
+            this.classList.add('active');
+            let results = document.querySelectorAll('.results');
+            let dtables = document.querySelectorAll('.dtables');
+            let wrapper = document.querySelectorAll(`#${value}_wrapper > div > div.dataTables_scrollHead > div > table`);
+            toggleTableVis(results, value);
+            toggleTableVis(dtables, valuetable);
+            toggleTableVis(wrapper);
+        }
     /**
      * Printing function
      */
@@ -345,9 +407,8 @@ $mysqli = connect_db();
             pf.classList.add('d-none');
         }, 1000);
     }
-    hasWhiteSpace = (s) => {
-        return s.indexOf(' ') >= 0;
-    }
+    hasWhiteSpace = (s) => { return s.indexOf(' ') >= 0; }
+    
     // $(document).ready(function(){
     document.addEventListener("DOMContentLoaded", function(event) {
         /* Document Setup */ 
@@ -379,6 +440,21 @@ $mysqli = connect_db();
         @keyframes slide-out { 0% { transform: translateX(0%); opacity: 1;} 100% { transform: translateX(-100%); opacity: 0;} }
         @-webkit-keyframes slide-out { 0% { -webkit-transform: translateX(0%); opacity: 1;} 100% { -webkit-transform: translateX(-100%); opacity: 0;} }`;
         createStyle(fakeSidebarStyle);
+        let scrollHeight = Math.max(
+            document.body.scrollHeight, document.documentElement.scrollHeight,
+            document.body.offsetHeight, document.documentElement.offsetHeight,
+            document.body.clientHeight, document.documentElement.clientHeight,
+            document.body.getBoundingClientRect().height, document.documentElement.getBoundingClientRect().height
+        );
+        // console.log()
+        console.log('Full document height, with scrolled out part: ' + scrollHeight);
+        var nav1 = document.querySelector("body > nav").getBoundingClientRect().height;
+        var subnav = document.querySelector("#pldb-nav > a").getBoundingClientRect().height;
+
+        var dt_scroller_height = scrollHeight - nav1 - subnav;
+
+        
+
         const bodyheightdifference = document.querySelector("body").scrollHeight - document.querySelector("body").offsetHeight;
         const body = document.querySelector("body").offsetHeight;
         const nav = document.querySelector("body > nav").offsetHeight;
@@ -390,6 +466,17 @@ $mysqli = connect_db();
         let transitionEndEventName = getTransitionEndEventName();
         toggle.style.left = `${sidebarOpenWidth}px`;
         mainDash.style.height = winheight;
+        console.log(bodyheightdifference);
+        console.log(dt_scroller_height);
+        // document.querySelector("html").style.height = scrollHeight + "px";
+        // document.querySelector("#offcanvasRight").style.height = scrollHeight + "px";
+        // document.body.style.height = dt_scroller_height - nav + "px";
+        // document.querySelector("#main-row > div.ch.col.col--lg-10.col--md-5.ml-sm-auto.px-md-3").style.height = dt_scroller_height + "px";
+        document.querySelector('#main-div').style.height = dt_scroller_height - nav + "px";
+        document.querySelector('#sidebarMenu').style.height = dt_scroller_height - nav + "px";
+        document.querySelector('#sidebar').style.height = dt_scroller_height - nav + "px";
+        document.querySelector('#fakesidebar').style.height = dt_scroller_height - nav + "px";
+        document.querySelector("#main-row").style.height = dt_scroller_height - nav + "px";
         toggleVis = (elem, bool = 0) => {
             if(isSidebarVis){
                 isSidebarVis = 0;
@@ -422,6 +509,8 @@ $mysqli = connect_db();
         var uTable;
         var qTable;
         var sTable;
+        var cTable;
+        var propid;
         const click = {
                 location : 0,
                 property : 0,
@@ -447,13 +536,40 @@ $mysqli = connect_db();
             status :   "status",
             update :  "update"
         }
+        const offcanvasElementList = document.querySelectorAll('.offcanvas')
+        const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl))
+
+        const bsOffcanvas = new bootstrap.Offcanvas('#offcanvasRight')
+        const offcanvasStart = new bootstrap.Offcanvas("#pdf_Modal")
+        const offcanvasMS = new bootstrap.Offcanvas("#ms_Modal")
+        var drn_t = {
+            btns: [
+                ['viewHTML'],
+                ['undo', 'redo'], // Only supported in Blink browsers
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['foreColor', 'backColor'],
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['removeformat'],
+                ['fullscreen']
+            ],
+            removeformatPasted: true
+        };
+        document.addEventListener('keypress', function (e) {
+            if (e.keyCode === 13 || e.which === 13) {
+                e.preventDefault();
+                return false;
+            }
+            
+        });
         tableload = (value) => {
             // $('.forms').addClass('d-none').removeClass('d-md-block')
             
             const dt ={ 
             location : {
                 "ajax": {
-                "url" : "/ajax/pldb.fetchdata.php",
+                "url" : "db/pldb.fetchdata.php",
                 // "type" : "POST",
                 "data": {
                     "table": 'pldb_locations'
@@ -504,7 +620,7 @@ $mysqli = connect_db();
             },
             property : {
                 "ajax": {
-                "url" : "/ajax/pldb.fetchdata.php",
+                "url" : "db/pldb.fetchdata.php",
                 // "type" : "POST",
                 "data": {
                     "table": 'pldb'
@@ -686,7 +802,7 @@ $mysqli = connect_db();
             },
             opstatus : {
                 "ajax": {
-                    "url": "/ajax/pldb.fetchdata.php", 
+                    "url": "db/pldb.fetchdata.php", 
                     "data": {
                         "table": "pldb_lookup_internal_status"
                     } 
@@ -706,7 +822,7 @@ $mysqli = connect_db();
             },
             owncomp : {
                 "ajax": {
-                    "url": "/ajax/pldb.fetchdata.php", 
+                    "url": "db/pldb.fetchdata.php", 
                     "data": {
                         "table": "pldb_lookup_company_codes"
                     } 
@@ -730,7 +846,7 @@ $mysqli = connect_db();
             },
             status : {
                 "ajax": {
-                    "url": "/ajax/pldb.fetchdata.php", 
+                    "url": "db/pldb.fetchdata.php", 
                     "data": {
                         "table": "pldb_lookup_entity_status"
                     } 
@@ -750,7 +866,7 @@ $mysqli = connect_db();
             },
             update : {
                 "ajax": {
-                    "url": "/ajax/pldb.fetchdata.php", 
+                    "url": "db/pldb.fetchdata.php", 
                     "data": {
                         "table": "pldb_update_history"
                     } 
@@ -815,7 +931,7 @@ $mysqli = connect_db();
             console.log(datacol[1]['data']);
             var qdt = {
                 "ajax": {
-                    "url" : "/ajax/pldb.queryload.php",
+                    "url" : "db/pldb.queryload.php",
                     // "type" : "POST",
                     "data": {
                         "query": value
@@ -862,7 +978,7 @@ $mysqli = connect_db();
             console.log(datacol[1]['data']);
             var qdt = {
                 "ajax": {
-                    "url" : "/ajax/pldb.queryload.php",
+                    "url" : "db/pldb.queryload.php",
                     // "type" : "POST",
                     "data": {
                         "query": value
@@ -902,7 +1018,7 @@ $mysqli = connect_db();
         searchLoad = (value, data) => {
             var sdt = {
                 "ajax": {
-                    "url" : "/ajax/pldb.formsearch.php",
+                    "url" : "db/pldb.formsearch.php",
                     // "type" : "POST",
                     "data": {
                         "query": data
@@ -940,14 +1056,17 @@ $mysqli = connect_db();
             qvalue = document.querySelector(this).data('query');
             value = 'query';
             valuetable = value + 'table';
-            hideActive();
+            hideOtherActiveEl();
             document.querySelector(this).classList.add('active');
-            document.querySelector('.results').each(function(){ (document.querySelector(this).attr('id') != value)? document.querySelector(this).classList.add('d-none') : document.querySelector(this).classList.remove('d-none'); })
-            document.querySelector('.dtables').each(function(){ (document.querySelector(this).attr('id') != valuetable) ? document.querySelector(this).classList.add('d-none') : document.querySelector(this).classList.remove('d-none'); })
-            document.querySelector(`#${value}_wrapper > div > div.dataTables_scrollHead > div > table`).classList.contains('d-none') && document.querySelector(`#${value}_wrapper > div > div.dataTables_scrollHead > div > table`).classList.remove('d-none')
+            let results = document.querySelectorAll('.results');
+            let dtables = document.querySelectorAll('.dtables');
+            let wrapper = document.querySelectorAll(`#${value}_wrapper > div > div.dataTables_scrollHead > div > table`);
+            toggleTableVis(results, value);
+            toggleTableVis(dtables, valuetable);
+            toggleTableVis(wrapper);
             var datacol = {};
             $.ajax({
-                url:"/ajax/pldb.queryload.php",  
+                url:"db/pldb.queryload.php",  
                 method:"POST",  
                 data:{t:"fields"},  
                 dataType:"json",  
@@ -970,18 +1089,43 @@ $mysqli = connect_db();
         $('#input4').selectpicker({width:'100%'});
         // Owning Company
         $.ajax({
-            url:"/ajax/pldb.formload.php",  
+            url:"db/pldb.formload.php",  
             method:"POST",  
             dataType:"json",  
             success:function(response){ 
                 rd = response;
                 col = 'company_code';
-                num = 5;
+                num = '#input5';
                 t = 'oc';
-                console.log(response[t]);
-                init_n_pop_select(rd, t, col, num);
-                init_n_pop_select(rd, 's', 'status', 6);
-                init_n_pop_select(rd, 'os', 'status', 7);
+                w = '100%';
+                console.dir(response);
+                init_n_pop_select(rd, t, col, num, w);
+                init_n_pop_select(rd, 'n', 'name', '#input1b', w); //well names
+                init_n_pop_select(rd, 'b', 'block', '#input4b', w); // block names
+                init_n_pop_select(rd, 's', 'type', '#input6', w);
+                init_n_pop_select(rd, 'os', 'status', '#input7', w);
+                init_n_pop_select(rd, 'snd', 'status_in_depth_update', '#input66', w);
+                init_n_pop_select(rd, 'r', 'region', '#inputRegion', w);
+                init_n_pop_select(rd, 'section', 'section', '#input-ss', '30%');
+                init_n_pop_select(rd, 'township', 'township', '#input-st', '32.5%');
+                init_n_pop_select(rd, 'range', 'range', '#input-sr', '30%');
+
+                init_n_pop_select(rd, t, col, '#edit-input-12', w);
+                init_n_pop_select(rd, 's', 'type', '#edit-input-6', '40%');
+                init_n_pop_select(rd, 'os', 'status', '#edit-input-9', '80%');
+                init_n_pop_select(rd, 'snd', 'status_in_depth_update', '#edit-input-66', '40%');
+                // init_n_pop_select(rd, 'b', 'block', '#edit-input-33', w);
+
+                init_n_pop_select(rd, t, col, '#new-input-12', w);
+                init_n_pop_select(rd, 's', 'type', '#new-input-6', '40%');
+                init_n_pop_select(rd, 'os', 'status', '#new-input-9', '80%');
+                init_n_pop_select(rd, 'snd', 'status_in_depth_update', '#new-input-66', '40%');
+                init_n_pop_datalist(rd, 'b', 'block', '#new-input4b', w);
+                init_n_pop_datalist(rd, 'f', 'field', '#inputfield', w);
+                init_n_pop_datalist(rd, 'c', 'county', '#inputcounty', w);
+                init_n_pop_datalist(rd, 'r', 'region', '#inputregion', w);
+                init_n_pop_datalist(rd, 'op', 'operator', '#inputoperator', w);
+                
             }
         })
         const WorkZone = () => {
@@ -1412,7 +1556,6 @@ $mysqli = connect_db();
                         ct.appendChild(document.createTextNode(element['Company Totals'] + " wells"));
                 }
                 const sumValues = obj => Object.values(data).reduce((a, b) => a + b);
-                console.log(sumValues)
                 let fr = f.insertRow();
                 let oilWellsOpTotal = 0;
                 let gasWellsOpTotal = 0;
@@ -1432,43 +1575,42 @@ $mysqli = connect_db();
                     compTotal += parseInt(data[i]['Company Totals']);                
                 }
                 let fc = fr.insertCell();
-                fc.appendChild(document.createTextNode('TOTAL: '));
-                
+                    fc.appendChild(document.createTextNode('TOTAL: '));
                 let f1 = fr.insertCell();
-                f1.colSpan = 3;
-                f1.classList.add('text-center');
-                f1.classList.add('font-weight-bolder');
-                f1.appendChild(document.createTextNode(`${oilWellsOpTotal} wells`));
+                    f1.colSpan = 3;
+                    f1.classList.add('text-center');
+                    f1.classList.add('font-weight-bolder');
+                    f1.appendChild(document.createTextNode(`${oilWellsOpTotal} wells`));
                 let f2 = fr.insertCell();
-                f2.colSpan = 3;
-                f2.classList.add('text-center');
-                f2.classList.add('font-weight-bolder');
-                f2.appendChild(document.createTextNode(`${gasWellsOpTotal} wells`));
+                    f2.colSpan = 3;
+                    f2.classList.add('text-center');
+                    f2.classList.add('font-weight-bolder');
+                    f2.appendChild(document.createTextNode(`${gasWellsOpTotal} wells`));
                 let f3 = fr.insertCell();
-                f3.colSpan = 3;
-                f3.classList.add('text-center');
-                f3.classList.add('font-weight-bolder');
-                f3.appendChild(document.createTextNode(`${wellsOpTotal} wells`));
+                    f3.colSpan = 3;
+                    f3.classList.add('text-center');
+                    f3.classList.add('font-weight-bolder');
+                    f3.appendChild(document.createTextNode(`${wellsOpTotal} wells`));
                 let f11 = fr.insertCell();
-                f11.colSpan = 3;
-                f11.classList.add('text-center');
-                f11.classList.add('font-weight-bolder');
-                f11.appendChild(document.createTextNode(`${oilWellsNonOpTotal} wells`));
+                    f11.colSpan = 3;
+                    f11.classList.add('text-center');
+                    f11.classList.add('font-weight-bolder');
+                    f11.appendChild(document.createTextNode(`${oilWellsNonOpTotal} wells`));
                 let f21 = fr.insertCell();
-                f21.colSpan = 3;
-                f21.classList.add('text-center');
-                f21.classList.add('font-weight-bolder');
-                f21.appendChild(document.createTextNode(`${gasWellsNonOpTotal} wells`));
+                    f21.colSpan = 3;
+                    f21.classList.add('text-center');
+                    f21.classList.add('font-weight-bolder');
+                    f21.appendChild(document.createTextNode(`${gasWellsNonOpTotal} wells`));
                 let f31 = fr.insertCell();
-                f31.colSpan = 3;
-                f31.classList.add('text-center');
-                f31.classList.add('font-weight-bolder');
-                f31.appendChild(document.createTextNode(`${wellsNonOpTotal} wells`));
+                    f31.colSpan = 3;
+                    f31.classList.add('text-center');
+                    f31.classList.add('font-weight-bolder');
+                    f31.appendChild(document.createTextNode(`${wellsNonOpTotal} wells`));
                 let fct = fr.insertCell();
-                fct.colSpan = 3;
-                fct.classList.add('text-center');
-                fct.classList.add('font-weight-bolder');
-                fct.appendChild(document.createTextNode(`${compTotal} wells`));
+                    fct.colSpan = 3;
+                    fct.classList.add('text-center');
+                    fct.classList.add('font-weight-bolder');
+                    fct.appendChild(document.createTextNode(`${compTotal} wells`));
             }
         }
         class genTable {
@@ -1564,7 +1706,7 @@ $mysqli = connect_db();
                 {
                     let rName = reportName.length - 21;
                     let name = reportName.substring(0, rName);
-                    this.h1.innerHTML = `${name} <span class="h5 sidebar-dash-heading text-muted">Operated/Non-Operated</span>`;   
+                    this.h1.innerHTML = `${name} <span class="h5 sidebar-dash-heading text-muted">Operated & Non-Operated</span>`;   
                 }
                 else if(reportName.substring(reportName.length - 12) == 'Non-Operated') // Non-Operated
                 {
@@ -1730,33 +1872,47 @@ $mysqli = connect_db();
             event.preventDefault();
             var formData = new FormData(this);
             $.ajax({
-                url:"/ajax/pldb.formsearch.php",  
+                url:"db/pldb.formsearch.php",  
                 type:"POST",  
                 success: function(response){
                     console.log(response[0]);
                     console.log(response);
                     console.log(response["data"]);
                     rd = response.data;
-                    if(resultTableBool){
-
-                        $("#searchresults").removeClass("d-none");
-                        let h = document.querySelector('#result-header');
-                        h.removeChild(h.firstChild);
-                        let t = document.querySelector('#results');
-                        while (t.firstChild){ t.removeChild(t.firstChild); }
-                        sr_i++;
-                        sr = new searchResults();
-                        sr.create(`searchresultjs${sr_i}`, rd);
-                        // nt.create('results-div', rd);
-                    } else {
-                        $("#searchresults").removeClass("d-none");
-                        
-                        sr.create(`searchresultjs${sr_i}`, rd);
-                        // nt.create('#results-div', rd);
-                        // var sdt = { "sDom": 't', "order": [], scrollY: 825, 
-                        //     scroller: true, "searching": true, "autoWidth": false }
-                        // sTable = $('#results-table').DataTable(sdt);
-                        resultTableBool = true;
+                    if(rd){
+                      // console.log("hey")
+                      Notiflix.Notify.success('Search successful.', {
+                        position: 'center-bottom',
+                        showOnlyTheLastOne: true,
+                      });
+                      if(resultTableBool){
+                          $("#searchresults").removeClass("d-none");
+                          let h = document.querySelector('#result-header');
+                          h.removeChild(h.firstChild);
+                          let t = document.querySelector('#results');
+                          while (t.firstChild){ t.removeChild(t.firstChild); }
+                          sr_i++;
+                          sr = new searchResults();
+                          sr.create(`searchresultjs${sr_i}`, rd);
+                          // nt.create('results-div', rd);
+                      } else {
+                          $("#searchresults").removeClass("d-none");
+                          
+                          sr.create(`searchresultjs${sr_i}`, rd);
+                          // nt.create('#results-div', rd);
+                          // var sdt = { "sDom": 't', "order": [], scrollY: 825, 
+                          //     scroller: true, "searching": true, "autoWidth": false }
+                          // sTable = $('#results-table').DataTable(sdt);
+                          resultTableBool = true;
+                      }
+                    }
+                    else 
+                    {
+                      console.log("ho")
+                      Notiflix.Notify.failure('Error: No data returned. Please try a different search.', {
+                        position: 'center-bottom',
+                        showOnlyTheLastOne: true,
+                      });
                     }
                     // on a successful search, display
                     // number of records found
@@ -1777,42 +1933,355 @@ $mysqli = connect_db();
                 processData: false
             });  
             return false;
-        }) 
-        $('#editableResults.edb').on("submit", function(event){
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-                url:"/ajax/pldb.formupdate.php",  
-                type:"POST",  
-                success: function(response){
-                    console.log(response);
-                    Notiflix.Notify.success('You have successfully updated this entry.', {
-                        position: 'center-bottom',
-                        showOnlyTheLastOne: true,
-                    });
-                },
-                error: function(xhr, status, message) 
-                {
-                    Notiflix.Notify.failure('Error: ' + xhr.status + " " + status + " - " + message, {
-                        position: 'center-bottom',
-                        showOnlyTheLastOne: true,
-                    });
-                    $('#e-details.error-details').text(xhr.status + " " + status + " - " + message);
-                    $('#error.alert').addClass('show');
-                },        
-                data: formData,
-                dataType: "json",
-                cache: false,
-                contentType: false,
-                processData: false
-            });  
+        });
+        addEvent(document, 'click', '.ms-select', function(e){
+          let url = e.target.dataset.path;
+          console.log(url);
+          offcanvasStart.show();
+          // $('#pptx_Modal').modal('show');
+          
+          document.getElementById('ms-if').setAttribute('src','https://view.officeapps.live.com/op/embed.aspx?src=https://vprsrv.org'+url);
+        });
+        addEvent(document, 'click', '.pdf-select', function(e){
+          /** show modal */
+          let url = e.target.dataset.path;
+          let filename = e.target.dataset.file;
+          let options = { pdfOpenParams: { navpanes: 0, toolbar: 0, statusbar: 0, view: "FitV", pagemode: "thumbs", page: 1 }, forcePDFJS: true, PDFJS_URL: "/assets/js/pdfjs/web/viewer.html" };
+          console.log(url);
+          console.log(filename);
+          console.log(e.target);
+          console.log(e);
+          PDFObject.embed(url, "#pdfcanvas", options)
+          offcanvasStart.show();
+        });
+        
+        addEvent(document, 'click', '#resetForm', function(e){
+          e.preventDefault();
+          document.getElementById('searchdb').reset();
+          $('#input1b').selectpicker('refresh');
+          $('#input2').selectpicker('refresh');
+          $('#input3').selectpicker('refresh');
+          $('#input4b').selectpicker('refresh');
+          $('#input5').selectpicker('refresh');
+          $('#input6').selectpicker('refresh');
+          $('#input66').selectpicker('refresh');
+          $('#input7').selectpicker('refresh');
+          $('#input-ss').selectpicker('refresh');
+          $('#input-st').selectpicker('refresh');
+          $('#input-sr').selectpicker('refresh');
+          $('#inputRegion').selectpicker('refresh');
+          Notiflix.Notify.success('Form reset.', { position: 'center-bottom',showOnlyTheLastOne: true } ); 
+        });
+        addEvent(document, 'click', '.results-property', function(e){
+          let id = this.id;
+          try{ document.querySelector('tr.table-info').classList.remove("table-info"); } catch(e){ console.log(`Error: ${e}`); }
+          document.getElementById(id).classList.add("table-info");
+          
+          let url = "db/pldb.editdata.php";
+          let showFiles = document.getElementById('list-view');
+          postData(url, {"id": id})
+          .then(
+            response => {
+                showFiles.innerHTML = "";
+                try {$('#drn').trumbowyg('destroy');} catch(e) {}
+                $('#drn').trumbowyg(drn_t);
+                bsOffcanvas.show();
+                document.querySelector('.edit-results').classList.remove('d-none');
+                document.querySelector("#editresults").classList.remove('d-none');
+                rd = response.data;
+                console.log(response);
+                console.dir(response);
+                document.querySelector('#offcanvasRightLabel').innerHTML = rd[0]['name'];
+                document.querySelector('#edit-input-1').value = rd[0]['id'];
+                document.querySelector('#edit-input-2').value = rd[0]['location_id'];
+                document.querySelector('#edit-input-3').value = rd[0]['name'];
+                document.querySelector('#edit-input-5').value = rd[0]['gwi_value'];
+                document.querySelector('#edit-input-8').value = rd[0]['nri_value'];
+                document.querySelector('#edit-input-11').value = rd[0]['orri_value'];
+                document.querySelector('#edit-input-14').value = rd[0]['ri_value'];
+                document.querySelector('#edit-input-15').value = rd[0]['operator'];
+                document.querySelector('#edit-input-17').value = rd[0]['legal_description'];
+                document.querySelector('#edit-input-18').value = rd[0]['gross_acres'];
+                document.querySelector('#edit-input-19').value = rd[0]['api'];
+                document.querySelector('#edit-input-20').value = rd[0]['net_acres'];
+                document.querySelector('#edit-input-21').value = rd[0]['lease_number'];
+                document.querySelector('#edit-input-22').value = rd[0]['wp_code'];
+                document.querySelector('#input-section').value = rd[0]['section'];
+                document.querySelector('#input-township').value = rd[0]['township'];
+                document.querySelector('#input-range').value = rd[0]['range'];
+                document.querySelector('#edit-input-24').value = rd[0]['surface_latitude_wgs84'];
+                document.querySelector('#edit-input-25').value = rd[0]['surface_longitude_wgs84'];
+                // document.querySelector('#edit-state').value = rd[0]['state'];
+                document.querySelector('#edit-inputcountylist').value = rd[0]['county'];
+                document.querySelector('#edit-input4b').value = rd[0]['block'];
+                document.querySelector('#edit-inputfieldlist').value = rd[0]['field'];
+                document.querySelector('#edit-inputregionlist').value = rd[0]['region'];
+                // document.querySelector('#edit-input-23').value = rd[0]['block'];
+
+                rd[0]['wi'] == 1 ? document.querySelector('#edit-input-4').checked = true : document.querySelector('#edit-input-4').checked = false;
+                rd[0]['ri'] == 1 ? document.querySelector('#edit-input-7').checked = true : document.querySelector('#edit-input-7').checked = false;
+                rd[0]['orri'] == 1 ? document.querySelector('#edit-input-10').checked = true :  document.querySelector('#edit-input-10').checked = false;
+                rd[0]['biapo'] == 1 ? document.querySelector('#edit-input-13').checked = true : document.querySelector('#edit-input-13').checked = false;
+                rd[0]['wbo'] == 1 ? document.querySelector('#edit-input-16').checked = true : document.querySelector('#edit-input-16').checked = false;
+                $('#edit-input-6').selectpicker('val', rd[0]['type']);
+                $('#edit-input-66').selectpicker('val', rd[0]['status_in_depth_update']);
+                $('#edit-input-9').selectpicker('val', rd[0]['operating_status']);
+                $('#edit-input-12').selectpicker('val', rd[0]['owning_company']);
+                $('#edit-state').selectpicker('val', rd[0]['state']);
+                // $('#edit-input-33').selectpicker('val', rd[0]['block']);
+
+                propid = rd[0]['id']
+                
+                rf = response.files;
+                //  File Area
+                let filesGallery = `<div class="file-uploaded-images">`;
+                const allowed_images = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tif', 'tiff', 'svg'];
+                let mtr = '';
+                
+                if (rf){
+                  //  show files
+                  let imageCarousel = `<div id="image_carousel" class="carousel slide" data-ride="carousel"><ol class="carousel-indicators">`
+                  let imageGallery = `</ol><div class="carousel-inner">`
+                  let imageCount = 0;
+                  
+                  for(let i = 0; i < rf.length; i++){
+                    console.log(rf[i].filename);
+                    console.dir(rf[i]);
+                    if(allowed_images.includes(getFExtension(rf[i].filename))){
+                      filesGallery += `<div class="image"><button id="deleteImage" type="button" class="btn-close" data-dismiss="image" data-id="${rf[i].id}" data-pid="${rf[i].pid}" aria-label="Close"></button><a href="${rf[i].filepath}" data-lightbox="${rf[i].filename}"><img class="rounded" src="${rf[i].filepath}" alt=""></a></div>`
+                    }
+                    else {
+                      if(getFExtension(rf[i].filename) == 'xls' || getFExtension(rf[i].filename) == 'xlsx') {
+                        mtr += `<span class=\"r-tooltip\" data-tippy-content=\"View ${rf[i].filename}\" tabindex=\"0\" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}">`
+                        mtr += `<div name="documentBrowse" class="btn btn-excel ms-select" id="excel${i}" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}">`                                                        
+                        mtr += `<i class="fas fa-file-excel fa-2x" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}"></i></div></span>`;
+                      }
+                      else if(getFExtension(rf[i].filename) == 'ppt' || getFExtension(rf[i].filename) == 'pptx') {
+                        mtr += `<span class=\"r-tooltip\" data-tippy-content=\"View ${rf[i].filename}\" tabindex=\"0\" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}">`
+                        mtr += `<div name="documentBrowse" class="btn btn-powerpoint ms-select" id="powerpoint${i}" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}">`
+                        mtr += `<i class="fas fa-file-powerpoint fa-2x" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}"></i></div></span>`;
+                      }
+                      else if(getFExtension(rf[i].filename) == 'doc' || getFExtension(rf[i].filename) == 'docx') {
+                        mtr += `<span class=\"r-tooltip\" data-tippy-content=\"View ${rf[i].filename}\" tabindex=\"0\" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}">`
+                        mtr += `<div name="documentBrowse" class="btn btn-word ms-select" id="word${i}" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}">`
+                        mtr += `<i class="fas fa-file-word fa-2x" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}"></i></div></span>`;
+                      }
+                      else if(getFExtension(rf[i].filename) == 'pdf' || getFExtension(rf[i].filename) == 'docx') {
+                        mtr += `<span class=\"r-tooltip\" data-tippy-content=\"View ${rf[i].filename}\" tabindex=\"0\" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}">`
+                        mtr += `<div class="btn btn-lg btn-pdf pdf-select" id="pdf${i}" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}">`
+                        mtr += `<i class="fas fa-file-pdf fa-2x" data-file="${rf[i].filename}" data-path="${rf[i].filepath}" href="${rf[i].filepath}"></i></div></span>`
+                      }    
+                    }
+                  }
+                  mtr += filesGallery;
+                  mtr += `</div>`
+                }
+                tippy('.r-tooltip', { 
+                  allowHTML: true,
+                  placement: 'right',
+                  arrow: false 
+                });
+                showFiles.innerHTML = mtr;
+                if(cTable){
+                  currentEditor.ajax(ajaxOpts(propid));
+                  cTable.ajax.url(`${get}?pid=${rd[0]['id']}`).load();
+                  // cTable = $('#currentTable').DataTable( {
+                  //   dom: 'Bt', scrollY: `${offcanvasDTHeight}px`, scroller: true, searching: true, ajax: {"url" : get, /* "db/pldb.fetchcomment.php"*/ "data": {"pid": rd[0]['id'] }},
+                  //   "columns": [{ "data": "sd", "defaultContent": "" }, { "data": "u", "defaultContent": "" },{ "data": "hc", "defaultContent": "" }],
+                  //   "columnDefs": [{ className: "text-wrap", "targets":  [0, 1, 2]  }, {width: "10%", targets: [0,1]}, {width: "20%", targets: 2}],  
+                  //   autoFill: { columns: ':not(:first-child)', editor:  currentEditor}, keys: {columns: ':not(:first-child)', editor:  currentEditor},
+                  //   select: {style:    'os', selector: 'td:first-child', blurable: true }, 
+                  //   buttons: [{ extend: "create", editor: currentEditor, onBlur: 'submit'}, { extend: "remove", editor: currentEditor }],
+                  // } );
+                  // currentEditor.ajax.reload();
+                  // cTable.ajax.reload();
+                  console.log('here i am')
+                }
+                else {
+                  currentEditor = new $.fn.dataTable.Editor( cEditorOpts );
+                  cTable = $('#currentTable').DataTable( {
+                    dom: 'Bt', scrollY: `${offcanvasDTHeight}px`, scroller: true, searching: true, 
+                    // ajax: {"url" : get, /* "db/pldb.fetchcomment.php"*/ "data": {"pid": rd[0]['id'] }},
+                    ajax: `${get}?pid=${rd[0]['id']}`,
+                    "columns": [{ "data": "sd", "defaultContent": "" }, { "data": "u", "defaultContent": "" },{ "data": "hc", "defaultContent": "" },
+                      { "data": null, "className": "dt-center row-remove", "defaultContent": '<i class="fa fa-trash"/>', "orderable": false }
+                    ],
+                    "columnDefs": [{ className: "historical-comment", "targets":  [2]  },{ className: "text-wrap", "targets":  [0, 1, 2]  }, {width: "1%", targets: [0,1]}, {width: "20%", targets: 2}, {width: "2%", targets: 3}],  
+                    // autoFill: { columns: ':not(:first-child)', editor:  currentEditor}, keys: {columns: ':not(:first-child)', editor:  currentEditor},
+                    select: {style:    'os', selector: 'td:first-child', blurable: true }, 
+                    
+                    buttons: [{ extend: "createInline", editor: currentEditor, 
+                        formOptions: {
+                submitTrigger: -1,
+                submitHtml: '<i class="fa fa-play"/>'
+            },
+            onBlur: 'submit'}],
+                  } );
+                  // console.log('hi')
+              }
+            }
+          )
+          // $.ajax({  
+          //     url:"db/pldb.editdata.php",  
+          //     method:"POST",  
+          //     data:{id:id},  
+          //     dataType:"json",  
+          //     success:function(response){  
+          //         try {$('#drn').trumbowyg('destroy');} catch(e) {}
+          //         $('#drn').trumbowyg(drn_t);
+          //         bsOffcanvas.show();
+          //         document.querySelector('.edit-results').classList.remove('d-none');
+          //         document.querySelector("#editresults").classList.remove('d-none');
+          //         rd = response.data;
+          //         console.log(response);
+          //         document.querySelector('#offcanvasRightLabel').innerHTML = rd[0]['name'];
+          //         document.querySelector('#edit-input-1').value = rd[0]['id'];
+          //         document.querySelector('#edit-input-2').value = rd[0]['location_id'];
+          //         document.querySelector('#edit-input-3').value = rd[0]['name'];
+          //         document.querySelector('#edit-input-5').value = rd[0]['gwi_value'];
+          //         document.querySelector('#edit-input-8').value = rd[0]['nri_value'];
+          //         document.querySelector('#edit-input-11').value = rd[0]['orri_value'];
+          //         document.querySelector('#edit-input-14').value = rd[0]['ri_value'];
+          //         document.querySelector('#edit-input-15').value = rd[0]['operator'];
+          //         document.querySelector('#edit-input-17').value = rd[0]['legal_description'];
+          //         document.querySelector('#edit-input-18').value = rd[0]['gross_acres'];
+          //         document.querySelector('#edit-input-19').value = rd[0]['api'];
+          //         document.querySelector('#edit-input-20').value = rd[0]['net_acres'];
+          //         document.querySelector('#edit-input-21').value = rd[0]['lease_number'];
+          //         document.querySelector('#edit-input-22').value = rd[0]['wp_code'];
+          //         // document.querySelector('#edit-input-23').value = rd[0]['block'];
+
+          //         rd[0]['wi'] == 1 ? document.querySelector('#edit-input-4').checked = true : document.querySelector('#edit-input-4').checked = false;
+          //         rd[0]['ri'] == 1 ? document.querySelector('#edit-input-7').checked = true : document.querySelector('#edit-input-7').checked = false;
+          //         rd[0]['orri'] == 1 ? document.querySelector('#edit-input-10').checked = true :  document.querySelector('#edit-input-10').checked = false;
+          //         rd[0]['biapo'] == 1 ? document.querySelector('#edit-input-13').checked = true : document.querySelector('#edit-input-13').checked = false;
+          //         rd[0]['wbo'] == 1 ? document.querySelector('#edit-input-16').checked = true : document.querySelector('#edit-input-16').checked = false;
+          //         // document.querySelector('#edit-input-4').value = rd[0]['wi'];
+          //         // document.querySelector('#edit-input-7').value = rd[0]['ri'];
+          //         // document.querySelector('#edit-input-10').value = rd[0]['orri'];
+          //         // document.querySelector('#edit-input-13').value = rd[0]['biapo'];
+          //         // document.querySelector('#edit-input-16').value = rd[0]['wbo'];
+          //         $('#edit-input-6').selectpicker('val', rd[0]['status']);
+          //         $('#edit-input-66').selectpicker('val', rd[0]['status_in_depth']);
+          //         $('#edit-input-9').selectpicker('val', rd[0]['operating_status']);
+          //         $('#edit-input-12').selectpicker('val', rd[0]['owning_company']);
+          //         $('#edit-input-33').selectpicker('val', rd[0]['block']);
+          //         // document.querySelector('#edit-input-6').value = rd[0]['status'];
+          //         // document.querySelector('#edit-input-66').value = rd[0]['status_in_depth'];
+          //         // document.querySelector('#edit-input-9').value = rd[0]['operating_status'];
+          //         // document.querySelector('#edit-input-12').value = rd[0]['owning_company'];
+          // }
+          // })
+        });
+        addEvent(document, 'submit', '#editableResults', function(e){
+            e.preventDefault();
+            // console.dir(e.target);
+            // console.dir(this);
+            // var files = document.getElementById("files").files;
+            // console.dir(files.length);
+            let url = "db/pldb.formupdate.php";
+
+            // const data = new URLSearchParams();
+            // var formData = new FormData(e.target);
+            var formData = new FormData(document.getElementById('editableResults'));
+            // if(files.length > 0) { formData.append("files", files[0]); }
+            fetch(url, {method: 'POST', body:formData})
+            .then(response=>{
+              try{ rd = response.data;  }
+              catch (error){ Notiflix.Notify.failure('Errora: ' + error, { position: 'center-bottom', showOnlyTheLastOne: true }) }
+              (response.statusText !== "OK" ) ? Notiflix.Notify.failure('Errorb: No data returned.', {position: 'center-bottom', showOnlyTheLastOne: true,}) : Notiflix.Notify.success('Data updated. Please query data again to see changes.', { position: 'center-bottom', showOnlyTheLastOne: true, });
+            }, error => {
+              Notiflix.Notify.failure('Errorc: ' + error, {position: 'center-bottom', showOnlyTheLastOne: true, })
+            })
+            .then(() => { document.getElementById('editableResults').reset(); bsOffcanvas.hide(); })
+            
+            // for(const pair of formData) {
+            //     data.append(pair[0], pair[1]);
+            // }
+            // console.dir(data);
+            
+            // fetch(url, {method: 'POST', body: data, 
+            //   // headers: {'Content-Type': 'multipart/form-data'}
+            // })
+            //     .then(
+            //         response => {
+            //             try{ rd = response.data;  }
+            //             catch (error){ Notiflix.Notify.failure('Errora: ' + error, { position: 'center-bottom', showOnlyTheLastOne: true }) }
+            //             if(response.statusText !== "OK" )
+            //             {
+            //                 Notiflix.Notify.failure('Errorb: No data returned.', 
+            //                 {
+            //                     position: 'center-bottom',
+            //                     showOnlyTheLastOne: true,
+            //                 })
+            //             }
+            //             else 
+            //             {
+            //                 Notiflix.Notify.success('Data updated. Please query data again to see changes.', 
+            //                 {
+            //                     position: 'center-bottom',
+            //                     showOnlyTheLastOne: true,
+            //                 })
+            //             }
+            //     }, error => {
+            //         Notiflix.Notify.failure('Errorc: ' + error, {
+            //             position: 'center-bottom',
+            //             showOnlyTheLastOne: true,
+            //         })
+            //     })
+            //     .then(
+            //         () => {
+            //             document.getElementById('editableResults').reset();
+            //             bsOffcanvas.hide();
+            //         }
+            //     )
             return false;
-        }) 
+        });
+        addEvent(document, 'click', '#deleteImage', function(e){
+          let image = e.target;
+          console.dir(image);
+          console.log(image.id);
+          let id = image.dataset.id;
+          let pid = image.dataset.pid;
+          let url = 'db/pldb.deletefile.php';
+          Notiflix.Confirm.show(
+            'Notiflix Confirm',
+            'Are you sure you want to delete this image? THIS CANNOT BE UNDONE',
+            'Yes',
+            'No',
+            function okCb() {
+              postData(url, {"id": id, "pid": pid})
+              .then((response) => {
+                Notiflix.Report.failure(
+                  'Image Deleted',
+                  'The image was deleted from the database.',
+                  'Okay',
+                );
+                image.parentElement.remove();
+              }, 
+              (error)=> {
+                Notiflix.Report.warning(
+                  'Error',
+                  `There was an error on our end. Please provide the following error message to your administrator: ${error}`,
+                  'Okay'
+                )
+              })
+              
+            },
+            function cancelCb() {
+            
+            },
+            {
+              titleColor: '#ff5549',
+              okButtonBackground: '#ff5549',
+            },
+          );          
+        });
         $('#addpropertydb').on("submit", function(event){
             event.preventDefault();
             var formData = new FormData(this);
             $.ajax({
-                url:"/ajax/pldb.formupdate.php",  
+                url:"db/pldb.formupdate.php",  
                 type:"POST",  
                 success: function(response){
                     console.log(response);
@@ -1820,6 +2289,43 @@ $mysqli = connect_db();
                         position: 'center-bottom',
                         showOnlyTheLastOne: true,
                     });
+                    $.ajax({
+                      url:"db/pldb.formload.php",  
+                      method:"POST",  
+                      dataType:"json",  
+                      success:function(response){ 
+                          rd = response;
+                          col = 'company_code';
+                          num = '#input5';
+                          t = 'oc';
+                          w = '100%';
+                          console.dir(response);
+                          console.log('this should have updated');
+                          init_n_pop_select(rd, t, col, num, w, 1);
+                          init_n_pop_select(rd, 'n', 'name', '#input1b', w, 1); //well names
+                          init_n_pop_select(rd, 'b', 'block', '#input4b', w, 1); // block names
+                          init_n_pop_select(rd, 's', 'type', '#input6', w, 1);
+                          init_n_pop_select(rd, 'os', 'status', '#input7', w, 1);
+                          init_n_pop_select(rd, 'snd', 'status_in_depth_update', '#input66', w, 1);
+                          init_n_pop_select(rd, 'r', 'region', '#inputRegion', w, 1);
+
+                          init_n_pop_select(rd, t, col, '#edit-input-12', w, 1);
+                          init_n_pop_select(rd, 's', 'type', '#edit-input-6', '40%');
+                          init_n_pop_select(rd, 'os', 'status', '#edit-input-9', '80%');
+                          init_n_pop_select(rd, 'snd', 'status_in_depth_update', '#edit-input-66', '40%');
+                          // init_n_pop_select(rd, 'b', 'block', '#edit-input-33', w, 1);
+
+                          init_n_pop_select(rd, t, col, '#new-input-12', w, 1);
+                          init_n_pop_select(rd, 's', 'type', '#new-input-6', '40%');
+                          init_n_pop_select(rd, 'os', 'status', '#new-input-9', '80%');
+                          init_n_pop_select(rd, 'snd', 'status_in_depth_update', '#new-input-66', '40%');
+                          init_n_pop_datalist(rd, 'b', 'block', '#new-input4b', w, 1);
+                          init_n_pop_datalist(rd, 'f', 'field', '#inputfield', w, 1);
+                          init_n_pop_datalist(rd, 'c', 'county', '#inputcounty', w, 1);
+                          init_n_pop_datalist(rd, 'r', 'region', '#inputregion', w, 1);
+                          
+                      }
+                  })
                 },
                 error: function(xhr, status, message) 
                 {
@@ -1847,15 +2353,9 @@ $mysqli = connect_db();
             var feather = $(this).children('svg.feather.feather-chevron-right');
             (feather.hasClass('feather-chevron-rotate'))?feather.removeClass('feather-chevron-rotate'):feather.addClass('feather-chevron-rotate');
         })  
-        var hideTables = function() {
-            let value = this.dataset.value;
-            var valuetable = value + 'table';
-            hideActive();
-            $(this).addClass('active');
-            $('.results').each(function(){ ($(this).attr('id') != value)? $(this).addClass('d-none') : $(this).removeClass('d-none'); })
-            $('.dtables').each(function(){ ($(this).attr('id') != valuetable) ? $(this).addClass('d-none') : $(this).removeClass('d-none'); })
-            $('#'+value+'_wrapper > div > div.dataTables_scrollHead > div > table').hasClass('d-none') && $('#'+value+'_wrapper > div > div.dataTables_scrollHead > div > table').removeClass('d-none')
-        }
+
+        
+
         let pldbSidebarTable = document.querySelectorAll(".pldb-sidebar-table");
         for (var i = 0; i < pldbSidebarTable.length; i++) { 
             pldbSidebarTable[i].addEventListener('click', function(event) {
@@ -1865,19 +2365,26 @@ $mysqli = connect_db();
             })
         }
         let queriesSidebar = document.querySelectorAll("#queriesSidebar");
-        for (var i = 0; i < queriesSidebar.length; i++) { 
-            queriesSidebar[i].addEventListener('click', function(event) {
-                hideActive();
-                $(this).addClass('active');
-            })
-        }
         let reportsSidebar = document.querySelectorAll("#reportsSidebar");
-        for (var i = 0; i < reportsSidebar.length; i++) { 
-            reportsSidebar[i].addEventListener('click', function(event) {
-                hideActive();
-                $(this).addClass('active');
-            })
-        }
+        hideActiveAll(queriesSidebar);
+        hideActiveAll(reportsSidebar);
+        // for (var i = 0; i < queriesSidebar.length; i++) { 
+        //     queriesSidebar[i].addEventListener('click', function(event) {
+        //         hideOtherActiveEl();
+        //         // console.log(`$(this): ${$(this)}\n this: ${this}`);
+        //         console.dir(this);
+        //         console.dir($(this));
+        //         console.dir(`$(this): ${$(this)}\n this: ${this}`);
+        //         $(this).addClass('active');
+        //     })
+        // }
+        
+        // for (var i = 0; i < reportsSidebar.length; i++) { 
+        //     reportsSidebar[i].addEventListener('click', function(event) {
+        //         hideOtherActiveEl();
+        //         $(this).addClass('active');
+        //     })
+        // }
         let dataquery = document.querySelectorAll(".dataquery");
         for (var i = 0; i < dataquery.length; i++) {
             dataquery[i].addEventListener('click', function(event) {
@@ -1886,7 +2393,7 @@ $mysqli = connect_db();
                 var datacol = {};
                 var qvalue = '"'+this.dataset.query+'"';
                 var qvalue = this.dataset.query;
-                postData("/ajax/pldb.queryload.php", {"query": qvalue})
+                postData("db/pldb.queryload.php", {"query": qvalue})
                 .then(
                     response => {
                         try{ rd = response.data;  }
@@ -1939,7 +2446,7 @@ $mysqli = connect_db();
                 var rvalue = '"'+this.dataset.report+'"';
                 var rvalue = this.dataset.report;
                 var name = this.innerText;
-                postData("/ajax/pldb.reportload.php", {"report": rvalue})
+                postData("db/pldb.reportload.php", {"report": rvalue})
                 .then(
                     response => {
                         try{
@@ -1994,78 +2501,203 @@ $mysqli = connect_db();
                 return false;
                 });
         }
-    })
-    addEvent(document, 'click', '.results-property', function(e){
-        let id = this.id;
-        try{ document.querySelector('tr.table-info').classList.remove("table-info"); } catch(e){ console.log(`Error: ${e}`); }
-        document.getElementById(id).classList.add("table-info");
-        $.ajax({  
-            url:"/ajax/pldb.editdata.php",  
-            method:"POST",  
-            data:{id:id},  
-            dataType:"json",  
-            success:function(response){  
-                document.querySelector('.edit-results').classList.remove('d-none');
-                document.querySelector("#editresults").classList.remove('d-none');
-                rd = response.data;
-                console.log(response);
-                // console.log(rd[0]['id']);
-                document.querySelector('#edit-input-1').value = rd[0]['id'];
-                document.querySelector('#edit-input-2').value = rd[0]['location_id'];
-                document.querySelector('#edit-input-3').value = rd[0]['name'];
-                document.querySelector('#edit-input-4').value = rd[0]['wi'];
-                document.querySelector('#edit-input-5').value = rd[0]['gwi_value'];
-                document.querySelector('#edit-input-6').value = rd[0]['status'];
-                document.querySelector('#edit-input-7').value = rd[0]['ri'];
-                document.querySelector('#edit-input-8').value = rd[0]['nri_value'];
-                document.querySelector('#edit-input-9').value = rd[0]['operating_status'];
-                document.querySelector('#edit-input-10').value = rd[0]['orri'];
-                document.querySelector('#edit-input-11').value = rd[0]['orri_value'];
-                document.querySelector('#edit-input-12').value = rd[0]['owning_company'];
-                document.querySelector('#edit-input-13').value = rd[0]['biapo'];
-                document.querySelector('#edit-input-14').value = rd[0]['ri_values'];
-                document.querySelector('#edit-input-15').value = rd[0]['operator'];
-                document.querySelector('#edit-input-16').value = rd[0]['wbo'];
-                document.querySelector('#edit-input-17').value = rd[0]['legal_description'];
-                document.querySelector('#edit-input-18').value = rd[0]['gross_acres'];
-                document.querySelector('#edit-input-19').value = rd[0]['api'];
-                document.querySelector('#edit-input-20').value = rd[0]['net_acres'];
-                document.querySelector('#edit-input-21').value = rd[0]['lease_number'];
-                document.querySelector('#edit-input-22').value = rd[0]['wp_code'];
+        
+        var today = moment().format("YYYY-MM-DD");
+        $('#dee').datepicker({defaultViewDate: today, format: "yyyy-mm-dd"});
+        $('#dee').on('changeDate', function() {
+            $('#de').val(
+                $('#dee').datepicker('getFormattedDate')
+            );
+        });
+            
+            // $("#ad").datepicker({
+            //     autoclose: true,
+            //     format: "yyyy-mm-dd"
+            // });
+            // $('#deel').datepicker({defaultViewDate: today, format: "yyyy-mm-dd"});
+            // $('#deel').on('changeDate', function() {
+            //     $('#del').val(
+            //         $('#deel').datepicker('getFormattedDate')
+            //     );
+            // });
+        
 
+        offcanvasDTHeight = 400;
+        let get = "<?php $_SERVER['DOCUMENT_ROOT']?>/editor/controllers/pldb/get.full.php";
+        let create = "<?php $_SERVER['DOCUMENT_ROOT']?>/editor/controllers/pldb/create.full.php";
+        const edit = "<?php $_SERVER['DOCUMENT_ROOT']?>/editor/controllers/pldb/edit.full.php";
+        const remove = "<?php $_SERVER['DOCUMENT_ROOT']?>/editor/controllers/pldb/remove.full.php";
+        var ajaxOpts = (propid) => {
+          let ajax = {
+            create: {
+              type: 'GET',
+              url:  create,
+              //  + '?u={u}&pid={pid}',
+              // replacements: {
+              //   u: function (key, id, action, data){
+              //     return username.value;
+              //   },
+              //   pid: function (key, id, action, data){
+              //     return propid;
+              //   }
+              // }
+              data: function ( d ) {
+                return $.extend( {}, d, {
+                  'data[0][u]': username.value,
+                  'data[0][pid]': propid
+                } ); }
+              // data: {
+              //   "u": username.value
+              // }
+            },
+            edit: {
+              type: 'PUT',
+              url:  edit
+            },
+            remove: {
+              type: 'DELETE',
+              url:  remove
             }
-        })
-    })
+          }
+          return ajax;
+        }
+        var cEditorOpts = { 
+          ajax: {
+            create: {
+              type: 'GET',
+              url:  create,
+              //  + '?u={u}&pid={pid}',
+              // replacements: {
+              //   u: function (key, id, action, data){
+              //     return username.value;
+              //   },
+              //   pid: function (key, id, action, data){
+              //     return propid;
+              //   }
+              // }
+              data: function ( d ) {
+                return $.extend( {}, d, {
+                  'data[0][u]': username.value,
+                  'data[0][pid]': propid
+                } ); }
+              // data: {
+              //   "u": username.value
+              // }
+            },
+            edit: {
+              type: 'PUT',
+              url:  edit
+            },
+            remove: {
+              type: 'DELETE',
+              url:  remove,
+              // data: function ( d ) {
+              //   return $.extend( {}, d, {
+              //     'data[0][u]': username.value,
+              //     'data[0][pid]': propid
+              //   } ); }
+            }
+          },
+          // data: data,
+          table: "#currentTable",
+          fields: 
+          [  
+            // { 
+            //   label: "Submitted Data", 
+            //   name: "sd",
+            //   type: "datetime",
+            //   format: "YYYY-MM-DD" 
+            // },
+            // { label: "User", name: "u"},
+            {  name: "hc", className:"form-control",type:'textarea'},
+            // { type:"ckeditorInline", label: "Action", name: "desc" },
+            
+          ],
+
+          display: 'bootstrap'
+        } ;
+        // $('#currentTable').on('click', 'td.editor-delete', function (e) {
+        //   e.preventDefault();
+ 
+        //   currentEditor.remove( $(this).closest('tr'), {
+        //       title: 'Delete record',
+        //       message: 'Are you sure you wish to remove this record?',
+        //       buttons: 'Delete'
+        //   } );
+        // } );
+        // $('#currentTable').on( 'click', 'tbody td:not(:first-child)', function (e) {
+          $('#currentTable').on( 'click', 'tbody td.historical-comment', function (e) {
+            currentEditor.inline( this, {
+                buttons: { label: '<i class="fa fa-play"/>', fn: function () { this.submit(); } }
+            } );
+            
+        } );
+        $('#currentTable').on( 'click', 'tbody td.row-remove', function (e) {
+          console.log(this);
+          console.dir(this);
+          let toDelete = this;
+          // currentEditor
+          //       .remove( this, false )
+          //       .submit();
+          Notiflix.Confirm.show(
+            'Confirm Deletion',
+            'You are about to delete a historical comment. This process is IRREVERSIBLE. Are you sure you want to delete?',
+            'Delete',
+            'Cancel',
+            function okCb() {
+              currentEditor
+                .remove( this, false )
+                .submit();
+              Notiflix.Report.failure(
+                'Historical Comment Deleted',
+                'The comment was successfully deleted.',
+                'Close'
+              );
+            }.bind(this),
+            function cancelCb() {
+
+            },
+            {
+              // options
+              titleColor: '#ff5549',
+              okButtonBackground: '#ff5549'
+            }
+          )
+          console.log(this.parentNode);
+            // currentEditor.remove( this.parentNode, {
+            //     title: 'Delete record',
+            //     message: 'Are you sure you wish to delete this record?',
+            //     buttons: 'Delete'
+            // } )
+            // .submit();
+            
+        //     currentEditor
+        // .title( 'Delete row' )
+        // .buttons( 'Confirm delete' )
+        // .message( 'Are you sure you want to remove this row?' )
+        // .remove( this );
+        } );
+        // $('#currentTable tbody').on( 'click', 'a.delete-row', function () {
+        //     currentEditor
+        //         .remove( this, false )
+        //         .submit();
+        // } );
+        
+
+    });
+    /** End of Document Ready */
     addEvent(document, 'click', '.pldb-sidebar-form', function(e){
-        // console.dir(e);
-        // console.dir(this.dataset.value);
-        // console.log(e.path[0]);
-        // console.dir(this.id);
-        // console.log(`this: ${this}\ne: ${e}\ne.target: ${e.target}`)
-        // var value = document.querySelector(e.path[0]).data('value');
         let value = this.dataset.value;
         document.querySelector('#btnUpdate').value = 'Add';
         let nList = document.querySelectorAll('.sdb');
         let forms = document.querySelectorAll('.forms');
-        // console.log(nList);
-        // console.dir(nList);
         nList.forEach(element => {
-            // console.log(forms);
-            // console.dir(forms);
-            // console.dir(element.id);
-            // (document.querySelector(this).attr('id') != value) ? document.querySelector(this).classList.add('d-none') : document.querySelector(this).classList.remove('d-none');
             (element.id != value) ? element.classList.add('d-none') : element.classList.remove('d-none');
             forms.forEach(element => {
                 element.classList.add('d-md-block')
                 element.classList.contains('d-none') && element.classList.remove('d-none');
             })
-            // forms.
-            // document.querySelector('.forms').classList.add('d-md-block').classList.remove('d-none');
         })
-        // nList.each(function(){
-
-            
-        // })
     })
 </script>
 </head>
@@ -2080,1893 +2712,33 @@ $mysqli = connect_db();
             <button class="navbar-toggler navbar-dash-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-label="Toggle navigation">
                 <span class="navbar-toggle-icon navbar-dash-toggler-icon"></span>
             </button>
-            <!-- <input class="form-control-dash form-control-dash-dark w-100" type="text" placeholder="Search" aria-label="Search">
-            <ul class="navbar-dash nav-dash px-3">
-                <li class="nav-dash-item nav-item text-nowrap">
-                <a class="nav-dash-link nav-link" href="#">Sign out</a>
-                </li>
-            </ul> -->
+            </ul>
         </nav>
-        <style>
-            .display-block {
-                display: block;
-            }
-            .table-border-bottom-white {
-                border-bottom: 3px solid #fff !important;
-            }
-            .table-border-left {
-                border-left-color: rgb(222, 226, 230);
-                border-left-style: solid;
-                border-left-width: 2px;
-            }
-            .table-border-right {
-                border-right-color: rgb(222, 226, 230);
-                border-right-style: solid;
-                border-right-width: 2px;
-            }
-            .fake-a {
-                /* color: #fff!important; */
-                cursor: pointer!important;
-            }
-            .fake-a:hover {
-                /* color: #00 */
-                border-radius: 0.25rem 0 0 0.25rem!important;
-                background-color: rgba(0,0,0,0.1);
-            }
-            .vh-40 {
-                height: 40vh!important;
-            }
-            .sidebar-dash .nav-dash-link:hover .fas {
-                color: inherit;
-            }
-            .sidebar-dash .nav-dash-link .fas {
-                margin-right: 4px;
-                color: #999;
-            }
-            .nav-link.nav-dash-link:hover {
-                border-radius: .25rem 0 0 .25rem!important;
-                background-color: rgba(0,0,0,0.1);
-            }
-            .feather-chevron-rotate {
-                transform: rotate(90deg);
-                transition: 500ms;
-            }
-            .feather-chevron-right {
-                transition: 500ms;
-            }
-            .feather-chevron-rotate-back {
-                transform: rotate(-90deg);
-                transition: 500ms;
-            }
-
-            .tree-link:focus,
-            .tree-link.active {
-            color: black;
-            background-color: #f9fafb;
-            }
-
-            .tree-link:hover,
-            .tree-group-link:hover {
-            background-color: rgba(0,0,0,0.1);
-            }
-
-            .no-transition{
-            transition: none !important;
-            }
-            .sidebar-dash .nav-dash-link.active {
-                color: #007bff;
-                background-color: rgba(0,0,0,0.1);
-                border-radius: .25rem 0 0 .25rem!important;
-            }
-            /* a:not(.collapsed) > .sidebar-rounded {
-                color: #007bff;
-                background-color: rgba(0,0,0,0.1);
-                border-radius: .25rem 0 0 .25rem!important;
-            }
-            .nav-dash.nav-dash-link:not(.collapsed){
-                color: #007bff;
-                background-color: rgba(0,0,0,0.1);
-                border-radius: .25rem 0 0 .25rem!important;
-            } */
-            .closebtn a:hover {
-            color: #f1f1f1;
-            }
-            .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-            }
-            .openbtn {
-            font-size: 20px;
-            cursor: pointer;
-            background-color: #111;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            }
-            .openbtn:hover {
-            background-color: #444;
-            }
-            #toggle {
-                display:block;
-                /* font-size: 50px; */
-                transition: all 0.5s;
-                background-color: #333;
-                color: white;
-                padding: 10px 15px;
-                position:absolute;
-                z-index: 1;
-            }
-            #toggle-icon {
-                transition: all 0.5s;
-            }
-            /* #toggle.enter{
-                opacity: 1;
-                left: 0;
-            } */
-            #open {
-            display:none;
-            }
-            /* .translate-rotate {
-            background-color: gold;
-            transform: translateX(180px) rotate(45deg);
-            } */
-            .rotate {
-                transform:rotate(180deg);
-            }
-            /* #sidebar {
-                transition: all 0.25s;
-                animation: fade_in_show 0.5s;
-            } */
-            #fakesidebar.visible {
-                opacity: 1;
-                /* left: 0; */
-            }
-
-            /* #fakesidebar:not(.visible){
-                animation: fade_in_show 0.5s;
-            } */
-
-            /* .fake-sidebar:not(.visible) {
-                            left: -${sidebarwidth-sidebarCloseWidth}px;
-                            animation: fade_in_show 1000ms;
-                            animation-timing-function: linear;
-                        }
-                        @keyframes fade_in_show {
-                            from {
-                                transform: translateX(0%)
-                            }
-
-                            to {
-                                transform: translateX(-100%)
-                            }
-                        }
-                        #slider {
-                            position: absolute;
-                            width: 100px;
-                            height: 100px;
-                            background: blue;
-                            transform: translateX(-100%);
-                            -webkit-transform: translateX(-100%);
-                        } */
-            @keyframes fade_n_show {
-                0% {
-                    opacity: 0;
-                    transform: scale(0);
-                    /* transform: translateX(0%) */
-                }
-
-                100% {
-                    opacity: 1;
-                    /* transform: translateX(0%) */
-                    transform: scale(1);
-                }
-            } 
-            /* @keyframes fade_in_show {
-                from {
-                    transform: translateX(0%)
-                }
-
-                to {
-                    transform: translateX(-100%)
-                }
-            } */
-        </style>
+        <?php include 'include/style.php'; ?>
         <div id="main-dash" class="container-fluid ch">
             <div id="main-row" class="row ch">
-                <nav id="sidebarMenu" class="ch col-md-3 col-lg-2 d-md--block display-block bg-light sidebar-dash co-llapse enter">
-                    <div class="sidebar-dash-sticky pt-3">
-                        <ul class="nav nav-dash flex-column">
-                            <li class="nav-dash-item nav-item">
-                                <a class="pldb-sidebar-form nav-dash-link nav-link active" data-value="searchdb" href="#">
-                                <span data-feather="search"></span>
-                                Search PLDB
-                                </a>
-                            </li>
-                            <li class="nav-dash-item nav-item">
-                                <a class="pldb-sidebar-form nav-dash-link nav-link" data-value="addlocationdb" href="#">
-                                <span data-feather="map-pin"></span>
-                                Add Location
-                                </a>
-                            </li>
-                            <li class="nav-dash-item nav-item">
-                                <a class="pldb-sidebar-form nav-dash-link nav-link" data-value="addpropertydb" href="#">
-                                <span data-feather="home"></span>
-                                Add Property
-                                </a>
-                            </li>
-                        </ul>
-                        
-                        <div class="nav nav-dash flex-column" id="queriesSidebar">
-                            <a class="fake-a text-muted sidebar-rounded dropdown sidebar-dash-heading d-flex justify-content-between align-items-center px-3 mt-2 py-2 mb-1" href="#queries" data-toggle="collapse">
-                                <span>Queries</span><span data-feather="menu"></span>
-                            </a>
-                        </div>
-                        <div class="collapse" id="queries">
-                            <ul id="collapsequeries" class="flex-column mb-2">
-                                <li class="nav-dash-item nav-item">
-                                    <a class="nav-dash-link nav-link dataquery" data-query='0' href="#">
-                                    <span data-feather="list"></span>
-                                    All Bald Prairie N
-                                    </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                    <a class="nav-dash-link nav-link dataquery" data-query='1' href="#">
-                                    <span data-feather="list"></span>
-                                    All Properties
-                                    </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                    <a class="nav-dash-link nav-link dataquery" data-query='2' href="#">
-                                        <span data-feather="list"></span>
-                                        East Texas
-                                    </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                    <a class="nav-dash-link nav-link dataquery" data-query='3' href="#">
-                                        <span data-feather="list"></span>
-                                        SDC - Active Gas Wells
-                                    </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='4' href="#">
-                                    <span data-feather="list"></span>
-                                    SDC - Active Oil Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='5' href="#">
-                                    <span data-feather="list"></span>
-                                    SDC - SI Gas Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='6' href="#">
-                                    <span data-feather="list"></span>
-                                    SDC - SI Oil Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='7' href="#">
-                                    <span data-feather="list"></span>
-                                    SDC Acres
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='8' href="#">
-                                    <span data-feather="list"></span>
-                                    SDC Acres Non-Operated
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='9' href="#">
-                                    <span data-feather="list"></span>
-                                    SDC Acres Operated
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='10' href="#">
-                                    <span data-feather="list"></span>
-                                    SDC Developed Gross Acreage
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='11' href="#">
-                                    <span data-feather="list"></span>
-                                    SDC Developed Net Acreage
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='12' href="#">
-                                    <span data-feather="list"></span>
-                                    SDC Undeveloped Gross Acreage
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='13' href="#">
-                                    <span data-feather="list"></span>
-                                    SDC Undeveloped Net Acreage
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='14' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Acres Operated ar
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='15' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Active Gas Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='16' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Active Oil Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='17' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres in North Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='18' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in Alabama
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='19' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in Arkansas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='20' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in California
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='21' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in East Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='22' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in Gulf Coast texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='23' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in Louisiana
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='24' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in New mexico
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='25' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in North Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='26' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in Oklahoma
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='27' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in Panhandle texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='28' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Non-Operated Properties in West Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='29' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in Alabama
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='30' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in Arkansas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='31' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in California
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='32' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in East Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='33' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in Gulf Coast texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='34' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in Louisiana
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='35' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in New mexico
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='36' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in North Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='37' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in Oklahoma
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='38' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in Panhandle texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='39' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Gross Acres of Operated Properties in West Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='40' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres in North Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='41' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in Alabama
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='42' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in Arkansas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='43' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in California
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='44' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in East Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='45' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in Gulf Coast texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='46' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in Louisiana
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='47' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in New mexico
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='48' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in North Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='49' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in Oklahoma
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='50' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in Panhandle texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='51' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Non-Operated Properties in West Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='52' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in Alabama
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='53' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in Arkansas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='54' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in California
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='55' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in East Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='56' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in Gulf Coast Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='57' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in Louisiana
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='58' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in New Mexico
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='59' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in North Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='60' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in Oklahoma
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='61' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in Panhandle Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='62' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Acres of Operated Properties in West Texas
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='63' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Net Active Gas Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='64' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - SI Gas Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='65' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - SI Oil Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='66' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Total Gross Acres
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='67' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG - Total Net Acres
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='68' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG & SDC - Total Active Gas Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='69' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG & SDC - Total Active Oil Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='70' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG & SDC - Total Gas Wells (Active & SI)
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='71' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG & SDC - Total Oil Wells (Active & SI)
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='72' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG & SDC - Total SI Gas Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='73' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG & SDC - Total SI Oil Wells
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='74' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG Acres
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='75' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG Acres Non-Operated
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='76' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG Acres Non-Operated al
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='77' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG Acres Non-Operated ar
-                                </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                <a class="nav-dash-link nav-link dataquery" data-query='78' href="#">
-                                    <span data-feather="list"></span>
-                                    SOG Acres Non-Operated ca
-                                </a>
-                                </li>
-                                <!-- <li class="nav-dash-item nav-item " id="sdc-queries">
-                                    <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed sidebar-dash-heading d-flex justify-content-between align-items-center sidebar-rounded" id="tree-link-sdc-queries" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sdc-queries">
-                                        <span class="d-inline-block text-center tree-icon" data-feather="menu"></span>
-                                        <span>SDC</span><span data-feather="chevron-right"></span>
-                                    </a>
-                                    <div class="ml-4 collapse" id="nav-tree-list-wrapper-sdc-queries" name="new">
-                                        <ul class="flex-column mb-2">
-                                            <li id="sdc-well-queries" class="nav-item">
-                                                <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sdc-well" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sdc-well">
-                                                    <span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                    Wells
-                                                </a>
-                                                <div class="ml-4 collapse" id="nav-tree-list-wrapper-sdc-well">
-                                                    <ul class="flex-column mb-2">
-                                                    <li id="sdc-well-active" class="nav-item">
-                                                        <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sdc-well-active" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sdc-well-active"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                            Active
-                                                        </a>
-                                                        <div class="ml-4 collapse" id="nav-tree-list-wrapper-sdc-well-active">
-                                                            <ul class="flex-column mb-2">
-                                                                <li id="sdc-well-active-gas" class="nav-item active">
-                                                                <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-well-active-gas"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-well-active-gas"></i></span>
-                                                                    Gas
-                                                                </a>
-                                                                </li>
-                                                                <li id="sdc-well-active-oil" class="nav-item active">
-                                                                <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-well-active-oil"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-well-active-oil"></i></span>
-                                                                    Oil
-                                                                </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li id="sdc-well-si" class="nav-item">
-                                                        <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sdc-well-si" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sdc-well-si"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                            Shut-in
-                                                        </a>
-                                                        <div class="ml-4 collapse" id="nav-tree-list-wrapper-sdc-well-si">
-                                                            <ul class="flex-column mb-2">
-                                                                <li id="sdc-well-si-gas" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-well-si-gas"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-well-si-gas"></i></span>
-                                                                        Gas
-                                                                    </a>
-                                                                </li>
-                                                                <li id="sdc-well-si-oil" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-well-si-oil"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-well-si-oil"></i></span>
-                                                                        Oil
-                                                                    </a>
-                                                                </li> 
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </div>
-                                            </li>
-                                            <li id="sdc-acre-queries" class="nav-item">
-                                                <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sdc-acre" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sdc-acre">
-                                                    <span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                    Acreage
-                                                </a>
-                                                <div class="ml-4 collapse" id="nav-tree-list-wrapper-sdc-acre">
-                                                    <ul class="flex-column mb-2">
-                                                        <li id="sdc-acre-all" class="nav-item">
-                                                            <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sdc-acre-all" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sdc-acre-all"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                                All Acreage
-                                                            </a>
-                                                            <div class="ml-4 collapse" id="nav-tree-list-wrapper-sdc-acre-all">
-                                                                <ul class="flex-column mb-2">
-                                                                <li id="sdc-acre" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-acre"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-acre"></i></span>
-                                                                        Acres
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sdc-acre-nonop" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-acre-nonop"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-acre-nonop"></i></span>
-                                                                        Acres&nbsp;<span class="d-flex align-items-center text-muted">Non-Operated</span>
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sdc-acre-op" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-acre-op"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-acre-op"></i></span>
-                                                                        Acres&ensp;<span class="d-flex align-items-center text-muted">Operated</span>
-                                                                    </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li id="sdc-acre-dev" class="nav-item">
-                                                            <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sdc-acre-dev" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sdc-acre-dev"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                                Developed
-                                                            </a>
-                                                            <div class="ml-4 collapse" id="nav-tree-list-wrapper-sdc-acre-dev">
-                                                                <ul class="flex-column mb-2">
-                                                                    <li id="sdc-acre-dev-gross" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-acre-dev-gross"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-acre-dev-gross"></i></span>
-                                                                        Gross Acreage
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sdc-acre-dev-net" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-acre-dev-net"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-acre-dev-net"></i></span>
-                                                                        Net Acreage
-                                                                    </a>
-                                                                    </li> 
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li id="sdc-acre-undev" class="nav-item">
-                                                            <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sdc-acre-undev" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sdc-acre-undev"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                                Undeveloped
-                                                            </a>
-                                                            <div class="ml-4 collapse" id="nav-tree-list-wrapper-sdc-acre-undev">
-                                                                <ul class="flex-column mb-2">
-                                                                    <li id="sdc-acre-undev-gross" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-acre-undev-gross"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-acre-undev-gross"></i></span>
-                                                                        Gross Acreage
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sdc-acre-undev-net" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sdc-acre-undev-net"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sdc-acre-undev-net"></i></span>
-                                                                        Net Acreage
-                                                                    </a>
-                                                                    </li> 
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-dash-item nav-item " id="sog-queries">
-                                    <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed sidebar-dash-heading d-flex justify-content-between align-items-center sidebar-rounded" id="tree-link-sog-queries" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sog-queries">
-                                        <span class="d-inline-block text-center tree-icon" data-feather="menu"></span>
-                                        <span>SOG</span><span data-feather="chevron-right"></span>
-                                    </a>
-                                    <div class="ml-4 collapse" id="nav-tree-list-wrapper-sog-queries" name="new">
-                                        <ul class="flex-column mb-2">
-                                            <li id="sog-well-queries" class="nav-item">
-                                                <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sog-well" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sog-well">
-                                                    <span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                    Wells
-                                                </a>
-                                                <div class="ml-4 collapse" id="nav-tree-list-wrapper-sog-well">
-                                                    <ul class="flex-column mb-2">
-                                                    <li id="sog-well-active" class="nav-item">
-                                                        <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sog-well-active" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sog-well-active"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                            Active
-                                                        </a>
-                                                        <div class="ml-4 collapse" id="nav-tree-list-wrapper-sog-well-active">
-                                                            <ul class="flex-column mb-2">
-                                                                <li id="sog-well-active-gas" class="nav-item active">
-                                                                <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='15' id="tree-link-sog-well-active-gas"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-well-active-gas"></i></span>
-                                                                    Gas
-                                                                </a>
-                                                                </li>
-                                                                <li id="sog-well-active-oil" class="nav-item active">
-                                                                <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='16' id="tree-link-sog-well-active-oil"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-well-active-oil"></i></span>
-                                                                    Oil
-                                                                </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li id="sog-well-si" class="nav-item">
-                                                        <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sog-well-si" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sog-well-si"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                            Shut-in
-                                                        </a>
-                                                        <div class="ml-4 collapse" id="nav-tree-list-wrapper-sog-well-si">
-                                                            <ul class="flex-column mb-2">
-                                                                <li id="sog-well-si-gas" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sog-well-si-gas"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-well-si-gas"></i></span>
-                                                                        Gas
-                                                                    </a>
-                                                                </li>
-                                                                <li id="sog-well-si-oil" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sog-well-si-oil"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-well-si-oil"></i></span>
-                                                                        Oil
-                                                                    </a>
-                                                                </li> 
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </div>
-                                            </li>
-                                            <li id="sog-acre-queries" class="nav-item">
-                                                <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sog-acre" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sog-acre">
-                                                    <span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                    Acreage
-                                                </a>
-                                                <div class="ml-4 collapse" id="nav-tree-list-wrapper-sog-acre">
-                                                    <ul class="flex-column mb-2">
-                                                        <li id="sog-acre-all-op" class="nav-item">
-                                                            <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sog-acre-all-op" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sog-acre-all-op"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                                Operated
-                                                            </a>
-                                                            <div class="ml-4 collapse" id="nav-tree-list-wrapper-sog-acre-all-op">
-                                                                <ul class="flex-column mb-2">
-                                                                <li id="sog-acre" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sog-acre"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre"></i></span>
-                                                                        Acres
-                                                                    </a>
-                                                                    </li>
-                                                                    <?php
-                                                                    
-                                                                    ?>
-                                                                    <li id="sog-acre-nonop" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sog-acre-nonop"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-nonop"></i></span>
-                                                                        Acres&nbsp;<span class="d-flex align-items-center text-muted">Non-Operated</span>
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-al" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op-al"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op-al"></i></span>
-                                                                        Alabama
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-ar" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op-ar"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op-ar"></i></span>
-                                                                        Arkansas
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-ca" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op-ca"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op-ca"></i></span>
-                                                                        California
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-etx" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op-etx"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op-etx"></i></span>
-                                                                        East Texas
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-gctx" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op-gctx"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op-gctx"></i></span>
-                                                                        Gulf Coast Texas
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-la" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op-la"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op-la"></i></span>
-                                                                        Louisiana
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-ntx" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op-ntx"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op-tx"></i></span>
-                                                                        North Texas
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-nm" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op-nm"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op-nm"></i></span>
-                                                                        New Mexico
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-ok" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op-ok"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op-ok"></i></span>
-                                                                        Oklahoma
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-phtx" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op-phtx"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op-phtx"></i></span>
-                                                                        Panhandle Texas
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-op-wtx" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='sog-acres-op' id="tree-link-sog-acre-op"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-op"></i></span>
-                                                                        West Texas
-                                                                    </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sog-acre-all-nonop" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sog-acre-all-nonop"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                                Non-Operated
-                                                            </a>
-                                                            <div class="ml-4 collapse" id="nav-tree-list-wrapper-sog-acre-all-nonop">
-                                                                <ul id="sog-acre-nonop-group" class="flex-column mb-2">
-                                                                    <li id="sog-acre-Total-nonop" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sog-acre"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre"></i></span>
-                                                                        Acres
-                                                                    </a>
-                                                                    </li>
-                                                                    <?php
-                                                                    
-                                                                    ?>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li id="sog-acre-gross" class="nav-item">
-                                                            <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sog-acre-gross" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sog-acre-gross"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                                Developed
-                                                            </a>
-                                                            <div class="ml-4 collapse" id="nav-tree-list-wrapper-sog-acre-gross">
-                                                                <ul class="flex-column mb-2">
-                                                                    <li id="sog-acre-gross-ntx" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" data-query='15' id="tree-link-sog-acre-gross-ntx"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-gross-ntx"></i></span>
-                                                                        Gross Acreage
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-gross-net" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sog-acre-gross-net"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-gross-net"></i></span>
-                                                                        Net Acreage
-                                                                    </a>
-                                                                    </li> 
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li id="sog-acre-undev" class="nav-item">
-                                                            <a class="nav-link nav-dash-link d-inline-block tree-group-link collapsed" id="tree-link-sog-acre-undev" data-toggle="collapse" role="button" href="#nav-tree-list-wrapper-sog-acre-undev"><span class="d-inline-block text-center tree-icon" data-feather="chevron-right" style="width: 25px;"></span>
-                                                                Undeveloped
-                                                            </a>
-                                                            <div class="ml-4 collapse" id="nav-tree-list-wrapper-sog-acre-undev">
-                                                                <ul class="flex-column mb-2">
-                                                                    <li id="sog-acre-undev-gross" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sog-acre-undev-gross"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-undev-gross"></i></span>
-                                                                        Gross Acreage
-                                                                    </a>
-                                                                    </li>
-                                                                    <li id="sog-acre-undev-net" class="nav-item active">
-                                                                    <a href="#" class="nav-link nav-dash-link d-inline-block tree-link" id="tree-link-sog-acre-undev-net"><span class="d-inline-block text-center tree-icon" style="width: 25px;"><i class="fas fa-link" id="tree-icon-sog-acre-undev-net"></i></span>
-                                                                        Net Acreage
-                                                                    </a>
-                                                                    </li> 
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li> -->
-                            </ul>
-                        </div>
-                        <a id="reportsSidebar" data-toggle="collapse" href="#reports">
-                            <h6 class="fake-a sidebar-dash-heading d-flex justify-content-between align-items-center px-3 py-2 mb-1 text-muted">
-                                <span>Reports</span><span data-feather="book"></span>
-                            </h6>
-                        </a>
-                        <div class="collapse" id="reports">
-                            <ul class="nav-dash flex-column mb-2">
-                                <!-- <li class="ml-4 nav-dash-item nav-item">
-                                    <a class="datareport nav-dash-link nav-link" href="#" data-report="0">
-                                    <span data-feather="file-text"></span>
-                                    Summary Report
-                                    </a>
-                                </li> -->
-                                <li class="ml-4 nav-dash-item nav-item">
-                                    <a class="datareport nav-dash-link nav-link" href="#" data-report="1">
-                                    <span data-feather="file-text"></span>
-                                    SOG Regions Report
-                                    </a>
-                                </li>
-                                <!-- <li class="nav-dash-item nav-item">
-                                    <a class="datareport nav-dash-link nav-link" href="#" data-report="2">
-                                    <span data-feather="file-text"></span>
-                                    SDC Acreage
-                                    </a>
-                                </li>
-                                <li class="nav-dash-item nav-item">
-                                    <a class="datareport nav-dash-link nav-link" href="#" data-report="3">
-                                    <span data-feather="file-text"></span>
-                                    SOG Acreage
-                                    </a>
-                                </li> -->
-                                <li class="ml-4 nav-dash-item nav-item">
-                                    <a class="datareport nav-dash-link nav-link" href="#" data-report="4">
-                                    <span data-feather="file-text"></span>
-                                    SOG + SDC Acreage
-                                    </a>
-                                </li>
-                                <li class="ml-4 nav-dash-item nav-item">
-                                    <a class="datareport nav-dash-link nav-link" href="#" data-report="5">
-                                    <span data-feather="file-text"></span>
-                                    SOG + SDC Well Status
-                                    </a>
-                                </li>
-                                <li class="ml-4 nav-dash-item nav-item">
-                                    <a class="datareport nav-dash-link nav-link" href="#" data-report="6">
-                                    <span data-feather="file-text"></span>
-                                    SOG + SDC Well Status<span class="d-flex align-items-center text-muted">Non-Operated</span>
-                                    </a>
-                                </li>
-                                <li class="ml-4 nav-dash-item nav-item">
-                                    <a class="datareport nav-dash-link nav-link" href="#" data-report="7">
-                                    <span data-feather="file-text"></span>
-                                    SOG + SDC Well Status<span class="d-flex align-items-center text-muted">Operated</span>
-                                    </a>
-                                </li>
-                                <!-- <li class="ml-4 nav-dash-item nav-item">
-                                    <a class="datareport nav-dash-link nav-link" href="#" data-report="9">
-                                    <span data-feather="file-text"></span>
-                                    SOG + SDC Acreage<span class="d-flex align-items-center text-muted">CMM</span>
-                                    </a>
-                                </li> -->
-                                <li class="ml-4 nav-dash-item nav-item">
-                                    <a class="datareport nav-dash-link nav-link" href="#" data-report="8">
-                                    <span data-feather="file-text"></span>
-                                    Well Summary Report<span class="d-flex align-items-center text-muted">Operated/Non-Operated</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h6 class="sidebar-dash-heading d-flex justify-content-between align-items-center px-3 py-2 mb-1 text-muted">
-                            <span>Tables</span><span data-feather="layers"></span>
-                        </h6>
-                        <ul class="nav nav-dash flex-column">
-                            <li class="ml-4 nav-dash-item nav-item">
-                                <a class="pldb-sidebar-table nav-dash-link nav-link" data-value="location" id="sidebarlocation" href="#">
-                                <span data-feather="map"></span>
-                                Locations
-                                </a>
-                            </li>
-                            <li class="ml-4 nav-dash-item nav-item">
-                                <a class="pldb-sidebar-table nav-dash-link nav-link" data-value="property" id="sidebarproperty" href="#">
-                                <span data-feather="globe"></span>
-                                Properties
-                                </a>
-                            </li>
-                            <li class="ml-4 nav-dash-item nav-item">
-                                <a class="pldb-sidebar-table nav-dash-link nav-link" data-value="opstatus" id="sidebaropstatus" href="#">
-                                <span data-feather="book-open"></span>
-                                Operating Status Lookup
-                                </a>
-                            </li>
-                            <li class="ml-4 nav-dash-item nav-item">
-                                <a class="pldb-sidebar-table nav-dash-link nav-link" data-value="owncomp" id="sidebarowncomp" href="#">
-                                <span data-feather="book-open"></span>
-                                Owning Company Lookup
-                                </a>
-                            </li>
-                            <li class="ml-4 nav-dash-item nav-item">
-                                <a class="pldb-sidebar-table nav-dash-link nav-link" data-value="status" id="sidebarstatus" href="#">
-                                <span data-feather="book-open"></span>
-                                Status Lookup
-                                </a>
-                            </li>
-                            <li class="ml-4 nav-dash-item nav-item">
-                                <a class="pldb-sidebar-table nav-dash-link nav-link" data-value="update" id="sidebarupdate" href="#">
-                                <span data-feather="clock"></span>
-                                Update History
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                
+                <?php include 'include/nav.php'; ?>
                 <div id="sidebar" class="ch forms pt-4 col-md-4 col-lg-4 d-md--block display--block bg-dark sidebar-dash co-llapse pr-5 visible">
-                    
-                    <form id="searchdb" class="sdb" method="POST" enctype="multipart/form-data">
-                        <div class="container">
-                            <div class="row pr-5 justify-content-md-center">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input1">Name</label></div>
-                                <div class="col">
-                                    <select id="input1" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchtypeName" size="1" title="Search Type..." data-style="btn-primary btn-sm">
-                                        <option value="equals" data-token="Equals">Equals</option>
-                                        <option value="begins" data-token="Begins With">Begins With</option>
-                                        <option value="contains" data-token="Contains">Contains</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <input id="input1b" name="searchName" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input2">State</label></div>
-                                <div class="col">
-                                    <select id="input2" class="strState" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchState" size="1" title="Select State..." data-style="btn-primary btn-sm">
-                                        <option value="ALL">All</option>
-                                        <option value="AL">Alabama</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="AZ">Arizona</option>
-                                        <option value="AR">Arkansas</option>
-                                        <option value="CA">California</option>
-                                        <option value="CO">Colorado</option>
-                                        <option value="CT">Connecticut</option>
-                                        <option value="DE">Delaware</option>
-                                        <option value="DC">District of Columbia</option>
-                                        <option value="FL">Florida</option>
-                                        <option value="GA">Georgia</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="ID">Idaho</option>
-                                        <option value="IL">Illinois</option>
-                                        <option value="IN">Indiana</option>
-                                        <option value="IA">Iowa</option>
-                                        <option value="KS">Kansas</option>
-                                        <option value="KY">Kentucky</option>
-                                        <option value="LA">Louisiana</option>
-                                        <option value="ME">Maine</option>
-                                        <option value="MD">Maryland</option>
-                                        <option value="MA">Massachusetts</option>
-                                        <option value="MI">Michigan</option>
-                                        <option value="MN">Minnesota</option>
-                                        <option value="MS">Mississippi</option>
-                                        <option value="MO">Missouri</option>
-                                        <option value="MT">Montana</option>
-                                        <option value="NE">Nebraska</option>
-                                        <option value="NV">Nevada</option>
-                                        <option value="NH">New Hampshire</option>
-                                        <option value="NJ">New Jersey</option>
-                                        <option value="NM">New Mexico</option>
-                                        <option value="NY">New York</option>
-                                        <option value="NC">North Carolina</option>
-                                        <option value="ND">North Dakota</option>
-                                        <option value="OH">Ohio</option>
-                                        <option value="OK">Oklahoma</option>
-                                        <option value="OR">Oregon</option>
-                                        <option value="PA">Pennsylvania</option>
-                                        <option value="RI">Rhode Island</option>
-                                        <option value="SC">South Carolina</option>
-                                        <option value="SD">South Dakota</option>
-                                        <option value="TN">Tennessee</option>
-                                        <option value="TX">Texas</option>
-                                        <option value="UT">Utah</option>
-                                        <option value="VT">Vermont</option>
-                                        <option value="VA">Virginia</option>
-                                        <option value="WA">Washington</option>
-                                        <option value="WV">West Virginia</option>
-                                        <option value="WI">Wisconsin</option>
-                                        <option value="WY">Wyoming</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div id="county_drop_down_fake" class="row pr-5">
-                                <div class="col-4 text-right"><label id="labelCountyFake" class="my-1 mr-2 text-white" for="strCountyParishFake">County</label>
-                                
-                                <!-- <label id="label2a" class="my-1 mr-2 text-white labelCountyFake" for="input3a">County</label>-->
-                                </div> 
-                                <div class="col">
-                                <select disabled id="strCountyParishFake" class="" data-live-search="true" data-width="100%" data-size="5" width='auto' name="searchCountyFake" size="1" title="Please select a state..." data-style="btn-primary btn-sm"></select>    
-                                    <!-- <select id="input3" class="strCountyParishFake selectpicker" data-live-search="true" data-width="auto" data-size="5" width='auto' name="api" size="1" title="Search Type..." data-style="btn-primary btn-sm">
-                                        
-                                    </select> -->
-                                </div>
-                                
-                            </div>
-                            <div id="county_drop_down" class="row pr-5 hidden">
-                                <div class="col-4 text-right "><label id="label2b" class="my-1 mr-2 text-white labelCounty" for="input3">County</label></div>
-                                <div class="col">
-                                    <select id="input3" class="strCountyParish" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchCounty" size="1" title="Select County..." data-style="btn-primary btn-sm">
-                                        <!-- <option value="equals" data-token="Equals">Equals</option>
-                                        <option value="begins" data-token="Begins With">Begins With</option>
-                                        <option value="contains" data-token="Contains">Contains</option> -->
-                                    </select>
-                                    <span id="loading_county_drop_down" style="display: none;"><i data-feather="loader">&nbsp;Loading...</i></span>
-                                    <div id="no_county_drop_down" style="display: none;">This state has no counties.</div>
-                                </div>
-
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">Block</label></div>
-                                <div class="col">
-                                    <select id="input4" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchtypeBlock" size="1" title="Search Type..." data-style="btn-primary btn-sm">
-                                        <option value="equals" data-token="Equals">Equals</option>
-                                        <option value="begins" data-token="Begins With">Begins With</option>
-                                        <option value="contains" data-token="Contains">Contains</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <input id="input4b" name="searchBlock" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="" >
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label4" class="my-1 mr-2 text-white" for="input5">Owning Company</label></div>
-                                <div class="col">
-                                    <select id="input5" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchCompany" size="1" title="Select Company..." data-style="btn-primary btn-sm">
-                                        <!-- <option value="equals" data-token="Equals">Equals</option>
-                                        <option value="begins" data-token="Begins With">Begins With</option>
-                                        <option value="contains" data-token="Contains">Contains</option> -->
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label5" class="my-1 mr-2 text-white" for="input6">Type</label></div>
-                                <div class="col">
-                                    <select id="input6" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchEntityType" size="1" title="Select Entity Type..." data-style="btn-primary btn-sm">
-                                        <!-- <option value="equals" data-token="Equals">Equals</option>
-                                        <option value="begins" data-token="Begins With">Begins With</option>
-                                        <option value="contains" data-token="Contains">Contains</option> -->
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label6" class="my-1 mr-2 text-white" for="input7">Status</label></div>
-                                <div class="col">
-                                    <select id="input7" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchEntityStatus" size="1" title="Select Entity Status..." data-style="btn-primary btn-sm">
-                                        <!-- <option value="equals" data-token="Equals">Equals</option>
-                                        <option value="begins" data-token="Begins With">Begins With</option>
-                                        <option value="contains" data-token="Contains">Contains</option> -->
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <!-- <div class="col"><button type="submit" class="btn btn-block btn-primary mb-2">Search</button></div> -->
-                                <div class="col"><button type="submit" id="btnSearch" class="btn btn-block btn-primary mb-2">Search</button></div>
-                                <div class="col"><button type="submit" class="btn btn-block btn-primary mb-2">Reset</button></div>
-                            </div>
-                        </div>
-                    </form>
-                    <form id="addlocationdb" class="sdb d-none" method="POST" enctype="multipart/form-data">
-                        <!-- <span class="h6 sidebar-heading text-white">New Location:</span> -->
-                        <div class="container">
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label1l" class="my-1 mr-2 text-white" for="input2l">State</label></div>
-                                <div class="col">
-                                    <select id="input2l" class="strState" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchState" size="1" title="Select State..." data-style="btn-primary btn-sm">
-                                        <option value="AL">Alabama</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="AZ">Arizona</option>
-                                        <option value="AR">Arkansas</option>
-                                        <option value="CA">California</option>
-                                        <option value="CO">Colorado</option>
-                                        <option value="CT">Connecticut</option>
-                                        <option value="DE">Delaware</option>
-                                        <option value="DC">District of Columbia</option>
-                                        <option value="FL">Florida</option>
-                                        <option value="GA">Georgia</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="ID">Idaho</option>
-                                        <option value="IL">Illinois</option>
-                                        <option value="IN">Indiana</option>
-                                        <option value="IA">Iowa</option>
-                                        <option value="KS">Kansas</option>
-                                        <option value="KY">Kentucky</option>
-                                        <option value="LA">Louisiana</option>
-                                        <option value="ME">Maine</option>
-                                        <option value="MD">Maryland</option>
-                                        <option value="MA">Massachusetts</option>
-                                        <option value="MI">Michigan</option>
-                                        <option value="MN">Minnesota</option>
-                                        <option value="MS">Mississippi</option>
-                                        <option value="MO">Missouri</option>
-                                        <option value="MT">Montana</option>
-                                        <option value="NE">Nebraska</option>
-                                        <option value="NV">Nevada</option>
-                                        <option value="NH">New Hampshire</option>
-                                        <option value="NJ">New Jersey</option>
-                                        <option value="NM">New Mexico</option>
-                                        <option value="NY">New York</option>
-                                        <option value="NC">North Carolina</option>
-                                        <option value="ND">North Dakota</option>
-                                        <option value="OH">Ohio</option>
-                                        <option value="OK">Oklahoma</option>
-                                        <option value="OR">Oregon</option>
-                                        <option value="PA">Pennsylvania</option>
-                                        <option value="RI">Rhode Island</option>
-                                        <option value="SC">South Carolina</option>
-                                        <option value="SD">South Dakota</option>
-                                        <option value="TN">Tennessee</option>
-                                        <option value="TX">Texas</option>
-                                        <option value="UT">Utah</option>
-                                        <option value="VT">Vermont</option>
-                                        <option value="VA">Virginia</option>
-                                        <option value="WA">Washington</option>
-                                        <option value="WV">West Virginia</option>
-                                        <option value="WI">Wisconsin</option>
-                                        <option value="WY">Wyoming</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label5l" class="my-1 mr-2 text-white" for="input6l">Region</label></div>
-                                <div class="col">
-                                    <select id="input6l" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchEntityType" size="1" title="Select Entity Type..." data-style="btn-primary btn-sm">
-                                        <!-- <option value="equals" data-token="Equals">Equals</option>
-                                        <option value="begins" data-token="Begins With">Begins With</option>
-                                        <option value="contains" data-token="Contains">Contains</option> -->
-                                    </select>
-                                </div>
-                            </div>
-                            <div id="county_drop_down_fake" class="row pr-5">
-                                <div class="col-4 text-right"><label id="labelCountyFakel" class="my-1 mr-2 text-white" for="strCountyParishFakel">County</label>
-                                
-                                <!-- <label id="label2a" class="my-1 mr-2 text-white labelCountyFake" for="input3a">County</label>-->
-                                </div> 
-                                <div class="col">
-                                <select disabled id="strCountyParishFakel" class="" data-live-search="true" data-width="100%" data-size="5" width='auto' name="searchCountyFakel" size="1" title="Please select a state..." data-style="btn-primary btn-sm"></select>    
-                                    <!-- <select id="input3" class="strCountyParishFake selectpicker" data-live-search="true" data-width="auto" data-size="5" width='auto' name="api" size="1" title="Search Type..." data-style="btn-primary btn-sm">
-                                        
-                                    </select> -->
-                                </div>
-                                
-                            </div>
-                            <div id="county_drop_down" class="row pr-5 hidden">
-                                <div class="col-4 text-right "><label id="label2bl" class="my-1 mr-2 text-white labelCounty" for="input3l">County</label></div>
-                                <div class="col">
-                                    <select id="input3l" class="strCountyParish" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchCounty" size="1" title="Select County..." data-style="btn-primary btn-sm">
-                                        <!-- <option value="equals" data-token="Equals">Equals</option>
-                                        <option value="begins" data-token="Begins With">Begins With</option>
-                                        <option value="contains" data-token="Contains">Contains</option> -->
-                                    </select>
-                                    <span id="loading_county_drop_downl" style="display: none;"><i data-feather="loader">&nbsp;Loading...</i></span>
-                                    <div id="no_county_drop_downl" style="display: none;">This state has no counties.</div>
-                                </div>
-
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label3l" class="my-1 mr-2 text-white" for="input4l">Block</label></div>
-                                <div class="col">
-                                    <input id="input4l" name="searchBlock" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="" >
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label4l" class="my-1 mr-2 text-white" for="input5l">Field</label></div>
-                                <div class="col">
-                                    <select id="input5l" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="searchCompany" size="1" title="Select Company..." data-style="btn-primary btn-sm">
-                                        <!-- <option value="equals" data-token="Equals">Equals</option>
-                                        <option value="begins" data-token="Begins With">Begins With</option>
-                                        <option value="contains" data-token="Contains">Contains</option> -->
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col"><button type="submit" id="btnSubmitLocation" class="btn btn-block btn-primary mb-2">Submit</button></div>
-                            </div>
-                        </div>
-                    </form>
-                    <form id="addpropertydb" class="sdb d-none" method="POST" enctype="multipart/form-data">
-                        <div class="container">
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input2">Location ID:</label></div>
-                                <div class="col">
-                                    <input id="input2p" name="edit-input-2" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                            </div>
-                            <div class="row pr-5 justify-content-md-center">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input1">Name</label></div>
-                                <div class="col">
-                                    <input id="input1bp" name="edit-input-3" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                                <div class="col-1 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">WI:</label></div>
-                                <div class="col-auto">
-                                <select id="input5" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="edit-input-4" size="1" title="Select Company..." data-style="btn-primary btn-sm">
-                                    <option value="1" data-token="Yes">Yes</option>
-                                    <option value="0" data-token="No">No</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="row pr-5 justify-content-md-center">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input1">Status</label></div>
-                                <div class="col">
-                                    <input id="input1bp" name="edit-input-6" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                                <div class="col-1 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">RI:</label></div>
-                                <div class="col-auto">
-                                <select id="input5" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="edit-input-7" size="1" title="Select Company..." data-style="btn-primary btn-sm">
-                                    <option value="1" data-token="Yes">Yes</option>
-                                    <option value="0" data-token="No">No</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="row pr-5 justify-content-md-center">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input1">Operating Status</label></div>
-                                <div class="col">
-                                    <input id="input1bp" name="edit-input-9" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                                <div class="col-1 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">ORRI:</label></div>
-                                <div class="col-auto">
-                                <select id="input5" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="edit-input-10" size="1" title="Select Company..." data-style="btn-primary btn-sm">
-                                    <option value="1" data-token="Yes">Yes</option>
-                                    <option value="0" data-token="No">No</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="row pr-5 justify-content-md-center">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input1">Owning Company</label></div>
-                                <div class="col">
-                                    <input id="input1bp" name="edit-input-12" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                                <div class="col-1 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">BIAPO:</label></div>
-                                <div class="col-auto">
-                                <select id="input5" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="edit-input-13" size="1" title="Select Company..." data-style="btn-primary btn-sm">
-                                    <option value="1" data-token="Yes">Yes</option>
-                                    <option value="0" data-token="No">No</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="row pr-5 justify-content-md-center">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input1">Operator</label></div>
-                                <div class="col">
-                                    <input id="input1bp" name="edit-input-15" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                                <div class="col-1 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">WBO:</label></div>
-                                <div class="col-auto">
-                                <select id="input5" class="" data-live-search="true" data-width="auto" data-size="5" width='auto' name="edit-input-16" size="1" title="Select Company..." data-style="btn-primary btn-sm">
-                                    <option value="1" data-token="Yes">Yes</option>
-                                    <option value="0" data-token="No">No</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input2">Legal Description</label></div>
-                                <div class="col">
-                                    <input id="input2p" name="edit-input-17" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                            </div>
-                            <div class="row pr-5 justify-content-md-center">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input1">WP Code</label></div>
-                                <div class="col-3">
-                                    <input id="input1bp" name="edit-input-22" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                                <div class="col-2 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">GWI&nbsp;Value</label></div>
-                                <div class="col">
-                                <input id="input1bp" name="edit-input-5" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                            </div>
-                            <div class="row pr-5 justify-content-md-center">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input1">Lease Number</label></div>
-                                <div class="col-3">
-                                    <input id="input1bp" name="edit-input-21" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                                <div class="col-2 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">NRI&nbsp;Value</label></div>
-                                <div class="col">
-                                <input id="input1bp" name="edit-input-8" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                            </div>
-                            <div class="row pr-5 justify-content-md-center">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input1">Net Acres</label></div>
-                                <div class="col-3">
-                                    <input id="input1bp" name="edit-input-20" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                                <div class="col-2 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">ORRI&nbsp;Value</label></div>
-                                <div class="col">
-                                <input id="input1bp" name="edit-input-11" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                            </div>
-                            <div class="row pr-5 justify-content-md-center">
-                                <div class="col-4 text-right"><label id="label1" class="my-1 mr-2 text-white" for="input1">Gross Acres</label></div>
-                                <div class="col-3">
-                                    <input id="input1bp" name="edit-input-18" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                                <div class="col-2 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">RI&nbsp;Value</label></div>
-                                <div class="col">
-                                <input id="input1bp" name="edit-input-14" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="">
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <div class="col-4 text-right"><label id="label3" class="my-1 mr-2 text-white" for="input4">API</label></div>
-                                <div class="col">
-                                    <input id="input4b" name="edit-input-19" type="search" autocomplete="off" class="form-control form-control-sm" style="height:1.5em" value="" >
-                                </div>
-                            </div>
-                            <div class="row pr-5">
-                                <input id="edit-input-23" name="edit-input-23" type="hidden" autocomplete="off" class="" value="<?php echo $userid; ?>">
-                                <!-- <div class="col"><button type="submit" class="btn btn-block btn-primary mb-2">Search</button></div> -->
-                                <div class="col"><button type="submit" id="btnSubmitProperty" class="btn btn-block btn-primary mb-2">Submit</button></div>
-                                <!-- <div class="col"><button type="submit" class="btn btn-block btn-primary mb-2">Reset</button></div> -->
-                            </div>
-                        </div>
-                    </form>
-                    
+                    <?php include 'include/searchdb.php'; ?> 
+                    <?php // include 'include/addlocation.php'; ?> 
+                    <?php include 'include/addproperty.php'; ?> 
                 </div>
-                
-                <!-- <div id="openSearchSidebar" class="pl-0">
-                    <button class="openbtn">&#9776; &#171; &#8810; &#9001; &#10782; &#10096; &#x2770; Open Sidebar</button>
-                </div> -->
-                <!-- <span class="pl-0 pos--absolute pos-fixed"> -->
-                    <!-- <button id="close" data-feather="chevron-left">close</button> -->
-                    <button id="toggle" ><span id="toggle-icon" data-feather="chevron-left"></span></button>
-                    <!-- <button id="open" data-feather="chevron-right">open</button> -->
-                <!-- </div> -->
+                <button id="toggle" class="pldb-tog"><span id="toggle-icon" data-feather="chevron-left"></span></button>
                 <div class="ch col col--lg-10 col--md-5 ml-sm-auto px-md-3">
-                    <div class="dtables" id="locationtable">
-                    <table class="table table-sm table-striped table-hover d-none results" id="location">
-                        <thead>
-                            <th>LocationID</th>
-                            <th>State</th>
-                            <th>Region</th>
-                            <th>County</th>
-                            <th>Block</th>
-                            <th>Field</th>
-                        </thead>
-                    </table>
-                    </div>
-                    <div class="dtables" id="propertytable">
-                        <table class="table table-sm table-striped table-hover d-none results" id="property">
-                            <thead>
-                            <th>ID</th>
-                            <th>Location ID</th>
-                            <th>Name</th>
-                            <th>Status</th>
-                            <th>Specific Status</th>
-                            <th>Operating status</th>
-                            <th>Owning company</th>
-                            <th>Purchaser</th>
-                            <th>TX Op #</th>
-                            <th>Operator</th>
-                            <th>WI</th>
-                            <th>RI</th>
-                            <th>ORRI</th>
-                            <th>BIAPO</th>
-                            <th>WBO</th>
-                            <th>Legal Description</th>
-                            <th>API</th>
-                            <th>GWI Value</th>
-                            <th>NRI Value</th>
-                            <th>ORRI Value</th>
-                            <th>RI Value</th>
-                            <th>WP Code</th>
-                            <th>Gross Acres</th>
-                            <th>Net Acres</th>
-                            <th>Lease No.</th>
-                            <th>Comments</th>
-                            <th>Combined Name</th>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="dtables" id="opstatustable">
-                        <table class="table table-sm table-striped table-hover d-none results" id="opstatus">
-                            <thead>
-                                <th>Status</th>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="dtables" id="owncomptable">
-                        <table class="table table-sm table-striped table-hover d-none results" id="owncomp">
-                            <thead>
-                                <th>ID</th>
-                                <th>Company Codes</th>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="dtables" id="statustable">
-                        <table class="table table-sm table-striped table-hover d-none results" id="status">
-                            <thead>
-                                <th>Status</th>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="dtables" id="updatetable">
-                        <table class="table table-sm table-striped table-hover d-none results" id="update">
-                            <thead>
-                                <th>Action</th>
-                                <th>Property ID</th>
-                                <th>Update Date/Time</th>
-                                <th>User ID</th>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="dtables" id="querytable">
-                        <table class="table table-sm table-striped table-hover d-none results" id="query">
-                        </table>
-                    </div>
+                    <?php include 'include/dtables.php'; ?>
                     <main role="main" class="ch cole-md-5 mle-sm-auto col-elg-6 px--md-4">
                         <div class="results d-none" id="searchresults">
-                            <div id="result-header" class="results d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb--2 mb--3 border--bottom"></div>
-                            <div id="results" class="results overflow-auto vh-40 d-flex justify-content-between flex-wrap flex-md-nowrap align--items-center pt--3 pb--2 mb-3 border-bottom">
-                            
-                                <!-- <h1 class="h2">Results</h1>
-                                <div class="w-100"> -->
-                                <!-- <div class="btn-toolbar mb-2 mb-md-0">
-                                <div class="btn-group mr-2">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                                </div>
-                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                                    <span data-feather="calendar"></span>
-                                    This week
-                                </button>
-                                </div> -->
-                            </div>
-
-                        
+                            <div id="result-header" class="results d-flex justify-content-around flex-wrap flex-md-nowrap align-items-center pt-3 pb--2 mb--3 border--bottom"></div>
+                            <div id="results" class="results overflow-auto vh-70 d-flex justify-content-between flex-wrap flex-md-nowrap align--items-center pt--3 pb--2 mb-3 border-bottom"></div>
                             <div id="editresults" class="d-none">
                                 <h2 id="sectTitle"></h2>
-                                <form id="editableResults" class="edb results edit-results d-none d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt--3 pb--2 mb-3 border-bottom" method="POST" enctype="multipart/form-data">
-                                    <div class="container">
-                                        <div class="row ">
-                                            <div class="col-4 text-left"><label id="edit-label-1" class="my-1 mr-2" for="edit-input-1">Property ID</label></div>
-                                            <div class="col"><input id="edit-input-1" name="edit-input-1" type="search" autocomplete="off" class="form-control form-control-sm" readonly></div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col text-left"><label id="edit-label-2" class="my-1 mr-2" for="edit-input-2">Location ID</label></div>
-                                            <div class="col"><input id="edit-input-2" name="edit-input-2" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col text-left"><label id="edit-label-3" class="my-1 mr-2" for="edit-input-3">Name</label></div>
-                                            <div class="col-4"><input id="edit-input-3" name="edit-input-3" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col-1 text-left"><label id="edit-label-4" class="my-1 mr-2" for="edit-input-4">WI</label></div>
-                                            <div class="col-2"><input id="edit-input-4" name="edit-input-4" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col text-left"><label id="edit-label-5" class="my-1 mr-2" for="edit-input-5">GWI Value</label></div>
-                                            <div class="col-2"><input id="edit-input-5" name="edit-input-5" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col text-left"><label id="edit-label-6" class="my-1 mr-2" for="edit-input-6">Status</label></div>
-                                            <div class="col-4"><input id="edit-input-6" name="edit-input-6" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col-1 text-left"><label id="edit-label-7" class="my-1 mr-2" for="edit-input-7">RI</label></div>
-                                            <div class="col-2"><input id="edit-input-7" name="edit-input-7" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col text-left"><label id="edit-label-8" class="my-1 mr-2" for="edit-input-8">NRI Value</label></div>
-                                            <div class="col-2"><input id="edit-input-8" name="edit-input-8" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col text-left"><label id="edit-label-9" class="my-1 mr-2" for="edit-input-9">Status</label></div>
-                                            <div class="col-4"><input id="edit-input-9" name="edit-input-9" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col-1 text-left"><label id="edit-label-10" class="my-1 mr-2" for="edit-input-10">ORRI</label></div>
-                                            <div class="col-2"><input id="edit-input-10" name="edit-input-10" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col text-left"><label id="edit-label-11" class="my-1 mr-2" for="edit-input-11">ORRI Value</label></div>
-                                            <div class="col-2"><input id="edit-input-11" name="edit-input-11" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col text-left"><label id="edit-label-12" class="my-1 mr-2" for="edit-input-12">Company</label></div>
-                                            <div class="col-4"><input id="edit-input-12" name="edit-input-12" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col-1 text-left"><label id="edit-label-13" class="my-1 mr-2" for="edit-input-13">BIAPO</label></div>
-                                            <div class="col-2"><input id="edit-input-13" name="edit-input-13" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col text-left"><label id="edit-label-14" class="my-1 mr-2" for="edit-input-14">RI Values</label></div>
-                                            <div class="col-2"><input id="edit-input-14" name="edit-input-14" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col text-left"><label id="edit-label-15" class="my-1 mr-2" for="edit-input-15">Operator</label></div>
-                                            <div class="col"><input id="edit-input-15" name="edit-input-15" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col text-left"><label id="edit-label-16" class="my-1 mr-2" for="edit-input-16">WBO</label></div>
-                                            <div class="col"><input id="edit-input-16" name="edit-input-16" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col text-left"><label id="edit-label-17" class="my-1 mr-2" for="edit-input-17">Legal Description</label></div>
-                                            <div class="col"><input id="edit-input-17" name="edit-input-17" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col text-left"><label id="edit-label-18" class="my-1 mr-2" for="edit-input-18">Gross Acres</label></div>
-                                            <div class="col"><input id="edit-input-18" name="edit-input-18" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col text-left"><label id="edit-label-19" class="my-1 mr-2" for="edit-input-19">API</label></div>
-                                            <div class="col"><input id="edit-input-19" name="edit-input-19" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                            <div class="col text-left"><label id="edit-label-20" class="my-1 mr-2" for="edit-input-20">Net Acres</label></div>
-                                            <div class="col"><input id="edit-input-20" name="edit-input-20" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col-4 text-left"><label id="edit-label-21" class="my-1 mr-2" for="edit-input-21">Lease Number</label></div>
-                                            <div class="col"><input id="edit-input-21" name="edit-input-21" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col-4 text-left"><label id="edit-label-22" class="my-1 mr-2" for="edit-input-22">WP Code</label></div>
-                                            <div class="col"><input id="edit-input-22" name="edit-input-22" type="search" autocomplete="off" class="form-control form-control-sm"></div>
-                                        </div>
-                                        <div class="row">
-                                            <input id="edit-input-23" name="edit-input-23" type="hidden" autocomplete="off" class="" value="<?php echo $userid; ?>">
-                                            <div class="col"><button type="submit" id="btnUpdate" class="sdb btn btn-block btn-primary mb-2" val="Update">Update</button></div>
-                                            <div class="col"><button type="submit" class="btn btn-block btn-primary mb-2">Cancel</button></div>
-                                        </div>
-                                    </div>
-                                </form>
+                                <?php include 'include/editableresults.php'; ?>
                             </div>
                         </div>
                         <div id="printReport" class="row d-none"><button id="printbutton" class="btn btn-primary btn-lg">Print Report</button></div>
                         <div id="printdiv"></div>
                     </main>
                 </div>
-                
-                    
-                <!-- <main role="main" class="col-md-5 ml-sm-auto col-lg-6 px-md-4">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Dashboard</h1>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                        </div>
-                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                            <span data-feather="calendar"></span>
-                            This week
-                        </button>
-                        </div>
-                    </div>
-
-
-                    <h2>Section title</h2>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                            <th>#</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td>1,001</td>
-                            <td>random</td>
-                            <td>data</td>
-                            <td>placeholder</td>
-                            <td>text</td>
-                            </tr>
-                            <tr>
-                            <td>1,002</td>
-                            <td>placeholder</td>
-                            <td>irrelevant</td>
-                            <td>visual</td>
-                            <td>layout</td>
-                            </tr>
-                            <tr>
-                            <td>1,003</td>
-                            <td>data</td>
-                            <td>rich</td>
-                            <td>dashboard</td>
-                            <td>tabular</td>
-                            </tr>
-                            <tr>
-                            <td>1,003</td>
-                            <td>information</td>
-                            <td>placeholder</td>
-                            <td>illustrative</td>
-                            <td>data</td>
-                            </tr>
-                            <tr>
-                            <td>1,004</td>
-                            <td>text</td>
-                            <td>random</td>
-                            <td>layout</td>
-                            <td>dashboard</td>
-                            </tr>
-                            <tr>
-                            <td>1,005</td>
-                            <td>dashboard</td>
-                            <td>irrelevant</td>
-                            <td>text</td>
-                            <td>placeholder</td>
-                            </tr>
-                            <tr>
-                            <td>1,006</td>
-                            <td>dashboard</td>
-                            <td>illustrative</td>
-                            <td>rich</td>
-                            <td>data</td>
-                            </tr>
-                            <tr>
-                            <td>1,007</td>
-                            <td>placeholder</td>
-                            <td>tabular</td>
-                            <td>information</td>
-                            <td>irrelevant</td>
-                            </tr>
-                            <tr>
-                            <td>1,008</td>
-                            <td>random</td>
-                            <td>data</td>
-                            <td>placeholder</td>
-                            <td>text</td>
-                            </tr>
-                            <tr>
-                            <td>1,009</td>
-                            <td>placeholder</td>
-                            <td>irrelevant</td>
-                            <td>visual</td>
-                            <td>layout</td>
-                            </tr>
-                            <tr>
-                            <td>1,010</td>
-                            <td>data</td>
-                            <td>rich</td>
-                            <td>dashboard</td>
-                            <td>tabular</td>
-                            </tr>
-                            <tr>
-                            <td>1,011</td>
-                            <td>information</td>
-                            <td>placeholder</td>
-                            <td>illustrative</td>
-                            <td>data</td>
-                            </tr>
-                            <tr>
-                            <td>1,012</td>
-                            <td>text</td>
-                            <td>placeholder</td>
-                            <td>layout</td>
-                            <td>dashboard</td>
-                            </tr>
-                            <tr>
-                            <td>1,013</td>
-                            <td>dashboard</td>
-                            <td>irrelevant</td>
-                            <td>text</td>
-                            <td>visual</td>
-                            </tr>
-                            <tr>
-                            <td>1,014</td>
-                            <td>dashboard</td>
-                            <td>illustrative</td>
-                            <td>rich</td>
-                            <td>data</td>
-                            </tr>
-                            <tr>
-                            <td>1,015</td>
-                            <td>random</td>
-                            <td>tabular</td>
-                            <td>information</td>
-                            <td>text</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                </main> -->
             </div>
         </div>
         <textarea id="printing-css" style="display:none;">
@@ -3977,17 +2749,22 @@ $mysqli = connect_db();
     <?php 
     // include 'include/floating_action_button.php';
     // include 'modals/ddr_add_modal.php'; 
-    // include 'include/ddr_datepicker.php'; 
+    include 'include/file_modal.php'; 
     ?>
 </div>
 
 </body>
-<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<!-- <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+ -->
+ <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> -->
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>   
 <script src="/assets/js/bottom_scripts.js?v1.0.0.1"></script>
-<script type="text/javascript" src="/assets/js/pldb_county_selectpicker.js?v1.0.0.62"></script>
+<script type="text/javascript" src="/assets/js/pldb_county_selectpicker.js?v1.0.0.68"></script>
 <!-- Load our React component. -->
 <!-- <script src="pldb/react_pldb.js"></script> -->
+<script src="/assets/js/lightbox2-2.11.3/src/js/lightbox.js"></script>
 </html>
 
 
