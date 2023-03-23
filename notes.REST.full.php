@@ -1,6 +1,6 @@
 <?php
 include 'lib/ob.php';
-include 'include/wsbFunctions.php';
+// include 'include/wsbFunctions.php';
 
 
 ?>
@@ -44,6 +44,7 @@ include 'include/wsbFunctions.php';
 	<!-- <script type="text/javascript" language="javascript" src="../resources/syntax/shCore.js"></script>
 	<script type="text/javascript" language="javascript" src="../resources/demo.js"></script>
 	<script type="text/javascript" language="javascript" src="../resources/editor-demo.js"></script> -->
+	<!-- <script type="text/javascript" src="/assets/js/datatables.wsb.prod_data.js?v=1.0.3.52"></script> -->
 	<script type="text/javascript" language="javascript" class="init">
 	
 
@@ -310,7 +311,7 @@ $(document).ready(function() {
 			{ extend: "edit",   editor: editor },
 			{ extend: "remove", editor: editor }
 		],
-        'columnDefs': [
+    'columnDefs': [
             { className: "text-wrap notes", "targets":  [10, 11]  },
 			{ className: "notes", "targets":  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]  },
 			{ width: "5%", "targets": [0, 2, 4, 6, 7] },
@@ -470,7 +471,47 @@ $(document).ready(function() {
 		$('#api-hide-spacer').removeClass("hidden");
 		$('#api-hide-div').removeClass("hidden");
 	});
-	$('#insert_well_form').on("submit", function(event){
+	// $('#insert_well_form').on("submit", function(event){
+  //       event.preventDefault();
+        
+  //       if($('#api').val() == "")  
+  //       {  
+  //               alert("API No. is required");  
+  //       }  
+  //       else  
+  //       {  
+  //           var api = $('#api').val();
+  //           $.ajax({
+  //               url:"./ajax/insert.well.php",  
+  //               method:"POST",  
+  //               data:$('#insert_well_form').serialize(),  
+  //               beforeSend:function(){  
+  //                   $('#insert-well').val("Inserting");  
+  //               },  
+  //               success:function(data){  
+  //                   $('#insert_well_form')[0].reset();  
+  //                   $('#well_entry_Modal').modal('hide');
+  //                   oTable.ajax.reload();
+  //                   //$('#dsr_table').html(data);
+  //                   // $.ajax({  
+  //                   //     url:"./ajax/fetchwells.php",  
+  //                   //     method:"POST",  
+  //                   //     data:{api:api},  
+  //                   //     dataType:"json",  
+  //                   //     success:function(data){
+							
+  //                   //     }
+  //                   // });     
+  //               }  
+  //           });  
+  //       }
+  //   });
+	// // var url = window.location.pathname;
+	// if (url.indexOf("notes") === 1) {
+    //   $('div#well-div').removeClass("hidden");
+    //   console.log("notes conditional success " + url);
+    // }
+		$('#insert_well_form').on("submit", function(event){
         event.preventDefault();
         
         if($('#api').val() == "")  
@@ -490,28 +531,91 @@ $(document).ready(function() {
                 success:function(data){  
                     $('#insert_well_form')[0].reset();  
                     $('#well_entry_Modal').modal('hide');
-                    oTable.ajax.reload();
                     //$('#dsr_table').html(data);
-                    // $.ajax({  
-                    //     url:"./ajax/fetchwells.php",  
-                    //     method:"POST",  
-                    //     data:{api:api},  
-                    //     dataType:"json",  
-                    //     success:function(data){
-							
-                    //     }
-                    // });     
+                    var url = window.location.pathname;
+                    if (url.indexOf("prod_data")  !==-1 )
+                    {
+                        $.ajax({  
+                            url:"./ajax/fetchwells.php",  
+                            method:"POST",  
+                            data:{api:api},  
+                            dataType:"json",  
+                            success:function(data){
+                                $('#cn.wellinfo').html(data.entity_common_name);  
+                                $('#an.wellinfo').html(data.api);  
+                                $('#eo.wellinfo').html(data.entity_operator_code);  
+                                $('#p.wellinfo').html(data.pumper);  
+                                $('#s.wellinfo').html(data.state);  
+                                $('#cp.wellinfo').html(data.county_parish);  
+                                $('#b.wellinfo').html(data.block);
+                                $('#lat.wellinfo').html(data.surface_latitude_wgs84);  
+                                $('#long.wellinfo').html(data.surface_longitude_wgs84);
+                                $('#ws.wellinfo').html(data.producing_status);
+                                $('#pt.wellinfo').html(data.production_type);
+                                $('#r.wellinfo').html(data.reservoir);
+                                $('#f.wellinfo').html(data.field);
+                                $('#md.wellinfo').html(data.measured_depth_td);
+                                $('#tvd.wellinfo').html(data.true_vertical_depth);
+                                $('#dt.wellinfo').html(data.drill_type);
+                                $('#cd.wellinfo').html(data.completion_date);
+                                $('#fpd.wellinfo').html(data.first_prod_date);
+                                $('#ggr.wellinfo').html(data.gas_gatherer);
+                                $('#ogr.wellinfo').html(data.oil_gatherer);
+                                $('#up.wellinfo').html(data.upper_perforation);
+                                $('#lp.wellinfo').html(data.lower_perforation);
+                                $('#gg.wellinfo').html(data.gas_gravity);
+                                $('#og.wellinfo').html(data.oil_gravity);
+                                $('#sd.wellinfo').html(data.spud_date);
+                                $('#lpd.wellinfo').html(data.last_prod_date);
+                                $('#l.wellinfo').html(data.landowner);  
+                                $('#gc.wellinfo').html(data.gatecombo);  
+                                $('#ln.wellinfo').html(data.landowner_notes);
+                            }
+                        });   
+                    }
+                    else 
+                    {
+                        oTable.ajax.reload();
+                    }  
                 }  
             });  
         }
-    });
-	// var url = window.location.pathname;
-	// if (url.indexOf("notes") === 1) {
-    //   $('div#well-div').removeClass("hidden");
-    //   console.log("notes conditional success " + url);
-    // }
-} );
+    });  
+		
 
+		$("#state").change(drop_down_list);
+} );
+function drop_down_list(c = "")
+    {
+        var state = $('#state').val();
+        // var cp = $('#county_parish');
+        var cp = document.querySelector("#county_parish");
+        //var dd = document.querySelector("#bs-select-3");
+        //var dd = document.querySelector("#bs-select-3 > ul > li");
+        if(state == 'AK' || state == 'DC') // Alaska and District Columbia have no counties
+        {
+        $('#county_drop_down').hide();
+        $('#no_county_drop_down').show();
+        }
+        else
+        {
+        $('#loading_county_drop_down').show(); // Show the Loading...
+        
+        $('#county_drop_down').hide(); // Hide the drop down
+        $('#no_county_drop_down').hide(); // Hide the "no counties" message (if it's the case)
+
+        $.getScript("assets/js/states/"+ state.toLowerCase() +".js", function(){
+
+        populate(cp);
+        //populate(dd);
+        // populate(document.insert_well_form.county_parish);
+
+        $('#loading_county_drop_down').hide(); // Hide the Loading...
+        $('#county_drop_down').show(); // Show the drop down
+        $('#county_parish').val(c);
+        });
+    }
+    }
 
 
 	</script>

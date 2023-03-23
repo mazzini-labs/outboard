@@ -44,7 +44,18 @@ if ($ob->getConfig('installtables')) { include("include/install.php"); }
 
 // Get the session (if there is one)
 $session = $auth->getSessionCookie();
-
+error_log($session);
+// Trying to figure out a way to send a 'log out signal' if there's no session
+// if(!$session){
+//   // error_log('this works');
+//   // $b= array();
+//   // $b['data'][] = array(
+//   //   'session'    => 'logged out'
+//   // );
+//   // echo(json_encode($b));
+  
+// }
+// else{
 if ($ob->getConfig('authtype') == "internal") {
   $BasicAuthInUse = false;
   if ($username = getPostValue('username') and $password = getPostValue('password')) {
@@ -84,44 +95,149 @@ if (getPostValue('exitadmin')) {
 } elseif (getGetValue('adminscreen') and $ob->isAdmin() ) {
   include("include/admin.php");
 }
+$request = file_get_contents('php://input');
+$rdata = json_decode($request);
+// error_log(($request));
+// error_log(($rdata->update));
+if(!empty($rdata)){
 
-// Get the owner of the dot we want to change (might be someone else's dot)
-$userid = getGetValue('userid');
+    // Get the owner of the dot we want to change (might be someone else's dot)
+    $userid = $rdata->user;
+    if($rdata->status){
+        switch($rdata->status){
+        case 3:
+            $ob->setDotOut($userid);
+            break;
+        case 1: 
+            $ob->setDotIn($userid);
+            break;
+        case 2:
+            $ob->setDotRW($userid);
+            break;
+        default:
+            
+        }
+    }
+    
 
-// The user wants to move the dot to the Out column
-if ($out = getGetValue('out')) { $ob->setDotOut($userid); }
+    // // The user wants to move the dot to the Out column
+    // if ($rdata->out) { $ob->setDotOut($userid); }
 
-// The user wants to move the dot to the In column
-if ($in = getGetValue('in')) { $ob->setDotIn($userid); }
+    // // The user wants to move the dot to the In column
+    // if ($rdata->in) { $ob->setDotIn($userid); }
 
-if ($rw = getGetValue('rw')) { $ob->setDotRW($userid); }
+    // if ($rdata->rw) { $ob->setDotRW($userid); }
 
-// The user wants to move the dot to the specified "will return by" column. The
-// return variable contains the hour in the day that the user will return.
-if ($return = getGetValue('return')) { $ob->setDotTime($userid,$return); }
+    // The user wants to move the dot to the specified "will return by" column. The
+    // return variable contains the hour in the day that the user will return.
+    if ($rdata->return) { $ob->setDotTime($userid,$rdata->return); }
 
-// The user wants to change the remarks. We have to use isset() here first
-// to allow for empty remarks.
-if (isset($_GET['remarks'])) {
-  $remarks = getGetValue('remarks');
-  $ob->setRemarks($userid,$remarks);
+    // The user wants to change the remarks. We have to use isset() here first
+    // to allow for empty remarks.
+    if ($rdata->remarks) {
+        if($rdata->remarks == 'clear'){
+            $ob->setRemarks($userid,"");
+        }
+        else {
+            $ob->setRemarks($userid,$rdata->remarks);
+        }
+    // $remarks = getGetValue('remarks');
+    
+    }
+
+    switch($rdata->update){
+    case 1:
+        $update = 1;
+        $update_msec = $ob->getConfig('update_sec') * 1000;
+        break;
+    default:
+        $update = 0;
+        if ($current['hours'] >= 6 && $current['hours'] <= 18 ) {
+            $update_msec = $ob->getConfig('reload_sec') * 1000;
+        } else {
+            // Set the update rate to the "night rate" if between 6:00pm and 6:00am
+            $update_msec = $ob->getConfig('night_sec') * 1000;
+        }
+    }
+}
+else 
+{
+    // Get the owner of the dot we want to change (might be someone else's dot)
+    $userid = getGetValue('userid');
+
+    // The user wants to move the dot to the Out column
+    if ($out = getGetValue('out')) { $ob->setDotOut($userid); }
+
+    // The user wants to move the dot to the In column
+    if ($in = getGetValue('in')) { $ob->setDotIn($userid); }
+
+    if ($rw = getGetValue('rw')) { $ob->setDotRW($userid); }
+
+    // The user wants to move the dot to the specified "will return by" column. The
+    // return variable contains the hour in the day that the user will return.
+    if ($return = getGetValue('return')) { $ob->setDotTime($userid,$return); }
+
+    // The user wants to change the remarks. We have to use isset() here first
+    // to allow for empty remarks.
+    if (isset($_GET['remarks'])) {
+    $remarks = getGetValue('remarks');
+    $ob->setRemarks($userid,$remarks);
+    }
+
+    // echo (getPostValue('update'));
+    // echo (getGetValue('update'));
+
+    // $a['data'][] = array(
+    //     'postUpdate'    => getPostValue('update'),
+    //     'getUpdate'   => getGetValue('update'),
+    // );
+    // json_encode($a);
+
+    // Appropriately set the update flag.
+    // if ((getGetValue('noupdate') == 0) || (getPostValue('update') == 0)) {
+    //   $update = 1;
+    // //   echo $update;
+    //   if ($current['hours'] >= 6 && $current['hours'] <= 18 ) {
+    //     $update_msec = $ob->getConfig('reload_sec') * 1000;
+    //   } else {
+    //     // Set the update rate to the "night rate" if between 6:00pm and 6:00am
+    //     $update_msec = $ob->getConfig('night_sec') * 1000;
+    //   }
+    // } 
+    // elseif (getPostValue('update') == 1) {
+    //     $update = 1;
+    //   $update_msec = $ob->getConfig('update_sec') * 1000;
+    // }
+    // else {
+    //   $update = 1;
+    //   $update_msec = $ob->getConfig('update_sec') * 1000;
+    // }
+    $get = getGetValue('update');
+    switch($get){
+        case 0:
+            $update = 0;
+            if ($current['hours'] >= 6 && $current['hours'] <= 18 ) {
+                $update_msec = $ob->getConfig('reload_sec') * 1000;
+            } else {
+                // Set the update rate to the "night rate" if between 6:00pm and 6:00am
+                $update_msec = $ob->getConfig('night_sec') * 1000;
+            }
+        break;
+        case 1:
+        $update = 1;
+        $update_msec = $ob->getConfig('update_sec') * 1000;
+        break;
+        default:
+            $update = 0;
+            if ($current['hours'] >= 6 && $current['hours'] <= 18 ) {
+                $update_msec = $ob->getConfig('reload_sec') * 1000;
+            } else {
+                // Set the update rate to the "night rate" if between 6:00pm and 6:00am
+                $update_msec = $ob->getConfig('night_sec') * 1000;
+            }
+    }
 }
 
-
-// Appropriately set the update flag.
-if (getGetValue('noupdate') == 0) {
-  $update = 0;
-//   echo $update;
-  if ($current['hours'] >= 6 && $current['hours'] <= 18 ) {
-    $update_msec = $ob->getConfig('reload_sec') * 1000;
-  } else {
-    // Set the update rate to the "night rate" if between 6:00pm and 6:00am
-    $update_msec = $ob->getConfig('night_sec') * 1000;
-  }
-} else {
-  $update = 1;
-  $update_msec = $ob->getConfig('update_sec') * 1000;
-}
 $header = 
 "";
 // Get the latest outboard information from the database
@@ -305,10 +421,12 @@ while($row = $ob->getRow()) {
             $print_remarks = htmlspecialchars($visible);
         }
     }
+    
     if ($update && $isChangeable) 
     {
         $change = "true";
-        $hours = @($row["hours"]);
+        // $hours = @($row["hours"]);
+        $hours = $row["hours"];
         // echo "<td $user_bg'><a style='color: black;' href=\"javascript:this.change_remark('"
         // . addslashes(htmlspecialchars($row['remarks']))
         // . addslashes($row['remarks'])
@@ -319,6 +437,7 @@ while($row = $ob->getRow()) {
         $change = "false"; // was true but changed to false
         $hours = $row["hours"];
     }
+    $hours = $row["hours"];
     // else 
     // {
     //     $change = "false";
@@ -344,7 +463,14 @@ while($row = $ob->getRow()) {
         'user'      => "" . $username,
         'rw'        => "" . $rw,
         'back'      => "" . $row["back"],
-        'udate'     => "" . $update
+        'udate'     => "" . $update,
+        'm'     => "" . $row["m_hr"],
+        't'     => "" . $row["t_hr"],
+        'w'     => "" . $row["w_hr"],
+        'th'     => "" . $row["th_hr"],
+        'f'     => "" . $row["f_hr"],
+        's'     => "" . $row["s_hr"],
+        'ss'     => "" . $row["ss_hr"]
         
     );
     
@@ -353,4 +479,5 @@ while($row = $ob->getRow()) {
 } // end while
     //*/
     echo (json_encode($a));
+// } // end else
     ?>

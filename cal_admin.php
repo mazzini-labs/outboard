@@ -315,8 +315,10 @@ $(document).ready(function() {
 					console.log(data[0].start);
 					// var obj = JSON.parse(this.responseText);  
 					// console.log(obj.start);
-					var start = moment(data[0].start).format("hh:mm:ss");
-					var end = moment(data[0].end).format("hh:mm:ss");
+					var start = moment(data[0].start).format("HH:mm:ss");
+					var end = moment(data[0].end).format("HH:mm:ss");
+					// var start = data[0].start;
+					// var end = data[0].end;
 					var date = moment(data[0].start).format("YYYY-MM-DD");
 					if(start == end || (start == "08:00:00" && end == "Invalid date")){ $('#ade.ecal').is(":checked"); }
 					// $('#ede').attr('data-date', $.fullCalendar.formatDate(start, "Y-MM-DD"));
@@ -340,7 +342,7 @@ $(document).ready(function() {
 					console.log(data[0].allDay);
         			$('#insert.ecal').val("Update");  
         			$('#eventeditmodal').modal('show');  
-					if ($('#eade.ecal').val() == "false") {
+					if ($('#eade.ecal').val() == "false" || $('#eade.ecal').val() == 0) {
 						
 						$('#ets.ecal').prop('disabled', false);
 						$('#ete.ecal').prop('disabled', false);
@@ -775,11 +777,11 @@ $(document).ready(function() {
 							<div class="col">
 								<div class="form-group">
 									<label for="ts">Start Time</label>
-									<input type="time" value="08:00" step="600" class="ddr form-control" name="ts" id="ts" required>
+									<input type="time" value="08:00" step="300" class="ddr form-control" name="ts" id="ts" required>
 								</div>					
 								<div class="form-group">
 									<label for="te">End Time</label>
-									<input type="time" value="08:00" step="600" class="ddr form-control" name="te" id="te" required>
+									<input type="time" value="08:00" step="300" class="ddr form-control" name="te" id="te" required>
 								</div>
 								<div class="custom-control custom-switch">
 									<input type="checkbox" class="custom-control-input" id="ade" value="">
@@ -811,8 +813,8 @@ $(document).ready(function() {
 								<option value="" disabled selected hidden>Choose...</option>
 								<option value="#17a2b8">Informational</option>
 								<option value="#28a745">Holiday</option>
-								<option value="#eab208">PTO Request</option>
-                                <option value="#0088cc">Approved PTO</option>
+								<option value="#eab208">Time Off Request</option>
+                                <option value="#0088cc">Approved Time Off</option>
 							</select>
 						</div>
 						
@@ -854,11 +856,11 @@ $(document).ready(function() {
 							<div class="ecal col">
 								<div class="ecal form-group">
 									<label for="ets">Start Time</label>
-									<input type="time" value="08:00" step="600" class="ecal ddr form-control" name="ets" id="ets" required>
+									<input type="time" value="08:00" step="300" class="ecal ddr form-control" name="ets" id="ets" required>
 								</div>					
 								<div class="ecal form-group">
 									<label for="ete">End Time</label>
-									<input type="time" value="08:00" step="600" class="ecal ddr form-control" name="ete" id="ete" required>
+									<input type="time" value="08:00" step="300" class="ecal ddr form-control" name="ete" id="ete" required>
 								</div>
 								<div class="ecal custom-control custom-switch">
 									<input type="checkbox" class="ecal custom-control-input" id="eade" value="">
@@ -890,8 +892,8 @@ $(document).ready(function() {
 								<option value="" disabled selected hidden>Choose...</option>
 								<option value="#17a2b8">Informational</option>
 								<option value="#28a745">Holiday</option>
-								<option value="#eab208">PTO Request</option>
-                                <option value="#0088cc">Approved PTO</option>
+								<option value="#eab208">Time Off Request</option>
+                                <option value="#0088cc">Approved Time Off</option>
 							</select>
 							<div class="invalid-feedback">
 								Please select a type.

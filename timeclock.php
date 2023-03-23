@@ -13,7 +13,7 @@ include_once("include/common.php");
 include_once("include/html_helper.php");
 include_once("include/html_helper_test.php");
 include_once("include/fullname.php");
-
+include "include/wsbFunctions.php";
 // Get the session (if there is one)
 $auth = new OutboardAuth();
 $ob = new OutboardDatabase();
@@ -73,6 +73,7 @@ if (getPostValue('timesheet')) {
   include_once("include/timesheet.php");
   exit;
 }
+console_log(json_encode($userHash));
 ###### PTO TEST CODE #####
 // $rolloverFullDate = mktime(0,0,0,date("Y")-1,7,1);
 // $rolloverDate = date("Y-m-d",$rolloverFullDate);
